@@ -177,7 +177,7 @@ export default async function Home() {
       <Container className="mt-24 sm:mt-32 md:mt-56">
         <FadeIn className="max-w-3xl">
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
-            Hi, I'm Taylor, welcome to my little slice of the internet!
+            Hi, I'm Taylor, welcome to my little corner of the internet!
           </h1>
           <p className="mt-6 text-xl text-neutral-600">
             I am a full stack engineer. Creating digital masterpieces from lines
