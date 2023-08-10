@@ -76,7 +76,7 @@ export default function Intro() {
       >
         <Link
           href="#contact"
-          className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none hover:bg-gray-950 transition w-full sm:w-auto"
+          className="group bg-gray-900 dark:bg-white/80 text-white dark:text-gray-900 px-7 py-3 flex items-center gap-2 rounded-full outline-none transition w-full sm:w-auto"
           onClick={() => {
             setActiveSection("Contact");
             setTimeOfLastClick(Date.now());
@@ -97,21 +97,21 @@ export default function Intro() {
 
         <div className="flex flex-row items-center justify-center gap-2 w-full sm:w-auto">
           <a
-            className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 w-1/2 justify-center"
+            className="bg-white p-4 text-gray-900 flex items-center gap-2 rounded-full transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/70 w-1/2 justify-center"
             href="https://linkedin.com/in/tjhorwood"
             target="_blank"
           >
             <BsLinkedin />
-            <span className="block sm:hidden text-base">LinkedIn</span>
+            <span className="block sm:hidden text-base dark:text-white">LinkedIn</span>
           </a>
 
           <a
-            className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full hover:text-gray-950 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 w-1/2 justify-center"
+            className="bg-white p-4 text-gray-900 flex items-center gap-2 text-[1.35rem] rounded-full transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/70 w-1/2 justify-center"
             href="https://github.com/tjhorwood"
             target="_blank"
           >
             <FaGithubSquare />
-            <span className="block sm:hidden text-base">Github</span>
+            <span className="block sm:hidden text-base dark:text-white">Github</span>
           </a>
         </div>
       </motion.div>
