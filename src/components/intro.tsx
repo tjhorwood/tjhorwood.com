@@ -22,7 +22,7 @@ export default function Intro() {
       className="mb-28 max-w-4xl text-center sm:mb-0 scroll-mt-[100rem]"
     >
       <div className="flex items-center justify-center">
-        <div className="relative">
+        <div className="flex flex-1 flex-col items-center justify-center gap-8 sm:flex-row sm:items-start sm:gap-6 md:gap-8 lg:gap-8">
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -34,37 +34,42 @@ export default function Intro() {
             <Image
               src={ProfilePic}
               alt="Taylor portrait"
-              width="200"
-              height="200"
+              width="250"
+              height="250"
               quality="95"
               priority={true}
-              className="h-36 w-36 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
+              className="relative m-2 h-32 w-32 rotate-[4deg] overflow-hidden rounded-[25%] bg-gradient-to-br from-sky-600 to-pink-600 shadow-xl md:h-44 md:w-44 lg:h-48 lg:w-48 object-cover"
             />
           </motion.div>
-
-          <motion.span
-            className="absolute bottom-0 right-0 text-4xl"
+          <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
-              type: "spring",
-              stiffness: 125,
-              delay: 0.1,
-              duration: 0.7,
+              type: "tween",
+              duration: 0.2,
             }}
+            className="flex flex-col items-center gap-2 sm:items-start sm:gap-1 md:gap-2 sm:my-auto"
           >
-            👋
-          </motion.span>
+            <h1 className="font-cursive text-4xl font-bold text-gray-800 drop-shadow-lg dark:text-gray-100 md:text-5xl">
+              Taylor Horwood
+            </h1>
+            <p className="font-cursive text-xl text-gray-600 drop-shadow-xl dark:text-gray-300 md:text-2xl">
+              Developer, tinkerer, indie hacker
+            </p>
+            <p className="flex space-x-4 text-sm text-gray-600 drop-shadow-xl dark:text-gray-300 md:text-base">
+              <span>📍 Philadelphia, PA</span>
+            </p>
+          </motion.div>
         </div>
       </div>
 
-      <motion.h1
-        className="my-10 px-4 text-2xl !leading-[1.5] md:text-3xl"
+      <motion.p
+        className="mt-10 mb-12 !leading-[1.5] text-xl md:text-2xl"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        Hey, I'm Taylor! A full stack developer and avid React lover. I create flawless front-end experiences while taming DevOps challenges for seamless, dependable systems. Let's collaborate to transform your dream into digital magic, shaping a future where innovation meets unwavering reliability!
-      </motion.h1>
+        A full stack developer with a love for React. I create flawless front-end experiences while taming DevOps challenges for seamless, dependable systems. Let's collaborate to transform your dream into digital magic, shaping a future where innovation meets unwavering reliability!
+      </motion.p>
 
       <motion.div
         className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
@@ -91,7 +96,7 @@ export default function Intro() {
           href="/CV.pdf"
           download
         >
-          Download CV{" "}
+          Download Resume{" "}
           <HiDownload className="opacity-60 transition" />
         </a>
 
