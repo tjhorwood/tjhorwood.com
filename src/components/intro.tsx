@@ -4,9 +4,9 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { BsArrowRight, BsLinkedin } from "react-icons/bs";
+import { BsArrowRight, BsGithub, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare } from "react-icons/fa";
+import { FaEnvelope, FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import ProfilePic from "@/images/profile-pic.jpg";
@@ -38,7 +38,7 @@ export default function Intro() {
               height="250"
               quality="95"
               priority={true}
-              className="relative m-2 h-32 w-32 rotate-[4deg] overflow-hidden rounded-[25%] bg-gradient-to-br from-sky-600 to-pink-600 shadow-xl md:h-44 md:w-44 lg:h-48 lg:w-48 object-cover"
+              className="relative m-2 h-36 w-36 rotate-[4deg] overflow-hidden rounded-[25%] bg-gradient-to-br from-sky-600 to-pink-600 shadow-xl md:h-48 md:w-48 lg:h-52 lg:w-52 object-cover"
             />
           </motion.div>
           <motion.div
@@ -48,7 +48,7 @@ export default function Intro() {
               type: "tween",
               duration: 0.2,
             }}
-            className="flex flex-col items-center gap-2 sm:items-start sm:gap-1 md:gap-2 sm:my-auto"
+            className="flex flex-col items-center gap-3 sm:items-start sm:gap-1 md:gap-2 sm:my-auto"
           >
             <h1 className="font-cursive text-4xl font-bold text-gray-800 drop-shadow-lg dark:text-gray-100 md:text-5xl">
               Taylor Horwood
@@ -59,6 +59,21 @@ export default function Intro() {
             <p className="flex space-x-4 text-sm text-gray-600 drop-shadow-xl dark:text-gray-300 md:text-base">
               <span>📍 Philadelphia, PA</span>
             </p>
+            <ul className="flex space-x-1 text-2xl text-gray-500 drop-shadow dark:text-gray-400 md:space-x-3 md:text-3xl">
+              {socials.map((item) => (
+                <li key={item.name}>
+                  {!item.local ?
+                    <a className="flex p-2 opacity-80 transition-all hover:scale-125 hover:opacity-100" target="_blank" rel="noopener" href={item.href}>
+                      <item.icon />
+                    </a>
+                    :
+                    <a className="flex p-2 opacity-80 transition-all hover:scale-125 hover:opacity-100" rel="noopener" href={item.href}>
+                      <item.icon />
+                    </a>
+                  }
+                </li>
+              ))}
+            </ul>
           </motion.div>
         </div>
       </div>
@@ -68,11 +83,11 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        A full stack developer with a love for React. I create flawless front-end experiences while taming DevOps challenges for seamless, dependable systems. Let's collaborate to transform your dream into digital magic, shaping a future where innovation meets unwavering reliability!
+        Full stack developer with a love for React. I create flawless front-end experiences while taming DevOps challenges for seamless, dependable systems. Let's collaborate to transform your dream into digital magic, shaping a future where innovation meets unwavering reliability!
       </motion.p>
 
       <motion.div
-        className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
+        className="flex flex-col sm:flex-row items-center justify-center gap-3 px-4 text-lg font-medium"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -81,45 +96,46 @@ export default function Intro() {
       >
         <Link
           href="#contact"
-          className="group bg-gray-900 dark:bg-white/80 text-white dark:text-gray-900 px-7 py-3 flex items-center gap-2 rounded-full outline-none transition w-full sm:w-auto"
+          className="group bg-gray-900 dark:bg-white/80 text-white dark:text-gray-900 px-7 py-3 flex items-center gap-2 rounded-full outline-none transition hover:scale-105 w-full sm:w-auto"
           onClick={() => {
             setActiveSection("Contact");
             setTimeOfLastClick(Date.now());
           }}
         >
           Get in touch{" "}
-          <BsArrowRight className="opacity-70 transition" />
+          <BsArrowRight className="opacity-70 transition group-hover:translate-x-1" />
         </Link>
 
         <a
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none transition cursor-pointer borderBlack dark:bg-white/10 w-full sm:w-auto"
+          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none transition hover:scale-105 cursor-pointer borderBlack dark:bg-white/10 w-full sm:w-auto"
           href="/CV.pdf"
           download
         >
           Download Resume{" "}
-          <HiDownload className="opacity-60 transition" />
+          <HiDownload className="opacity-60 transition group-hover:translate-x-1" />
         </a>
-
-        <div className="flex flex-row items-center justify-center gap-2 w-full sm:w-auto">
-          <a
-            className="bg-white p-4 text-gray-900 flex items-center gap-2 rounded-full transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/70 w-1/2 justify-center"
-            href="https://linkedin.com/in/tjhorwood"
-            target="_blank"
-          >
-            <BsLinkedin />
-            <span className="block sm:hidden text-base dark:text-white">LinkedIn</span>
-          </a>
-
-          <a
-            className="bg-white p-4 text-gray-900 flex items-center gap-2 text-[1.35rem] rounded-full transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/70 w-1/2 justify-center"
-            href="https://github.com/tjhorwood"
-            target="_blank"
-          >
-            <FaGithubSquare />
-            <span className="block sm:hidden text-base dark:text-white">Github</span>
-          </a>
-        </div>
       </motion.div>
     </section>
   );
 }
+
+const socials = [
+  {
+    "name": "LinkedIn",
+    "href": "https://linkedin.com/in/tjhorwood",
+    "icon": BsLinkedin,
+    "local": false
+  },
+  {
+    "name": "GitHub",
+    "href": "https://github.com/tjhorwood",
+    "icon": BsGithub,
+    "local": false
+  },
+  {
+    "name": "Contact",
+    "href": "#contact",
+    "icon": FaEnvelope,
+    "local": true
+  }
+]

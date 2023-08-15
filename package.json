@@ -10,6 +10,7 @@
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
+    "@headlessui/react": "^1.7.16",
     "@react-email/components": "^0.0.7",
     "@react-email/tailwind": "^0.0.8",
     "@types/node": "20.5.0",
