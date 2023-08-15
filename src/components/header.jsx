@@ -9,21 +9,6 @@ import { useActiveSectionContext } from "@/context/active-section-context";
 import { Popover, Transition } from "@headlessui/react";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
 
-function CloseIcon(props) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path
-        d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
 function MobileNavItem({ href, children }) {
   return (
     <li>
@@ -37,7 +22,7 @@ function MobileNavItem({ href, children }) {
 function MobileNavigation(props) {
   return (
     <Popover {...props}>
-      <Popover.Button className="group fixed top-5 right-5 bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-30 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950">
+      <Popover.Button className="group fixed top-5 right-5 bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-30 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950 outline-none">
         <RiMenu3Line className="h-6 w-6 text-gray-500 dark:text-gray-400" />
       </Popover.Button>
       <Transition.Root>
@@ -52,10 +37,10 @@ function MobileNavigation(props) {
         >
           <Popover.Panel
             focus
-            className="fixed inset-x-4 top-5 z-50 origin-top rounded-2xl bg-white py-6 ring-1 ring-gray-900/5 dark:ring-gray-800 dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-90"
+            className="fixed inset-x-4 top-5 z-50 origin-top rounded-2xl bg-white py-6 ring-1 ring-gray-900/5 dark:ring-gray-800 dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-80 backdrop-blur-[0.5rem]"
           >
             <div className="flex flex-row-reverse items-center justify-between px-6">
-              <Popover.Button aria-label="Close menu" className="-m-1 p-1">
+              <Popover.Button aria-label="Close menu" className="-m-1 p-1 outline-none">
                 <RiCloseLine className="h-6 w-6 text-gray-500 dark:text-gray-400" />
               </Popover.Button>
             </div>
@@ -98,7 +83,7 @@ export default function Header() {
                 className={clsx(
                   "flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:text-gray-400 dark:hover:text-gray-100",
                   {
-                    "text-gray-950 dark:text-gray-100":
+                    "text-gray-950 dark:text-white":
                       activeSection === link.name,
                   }
                 )}

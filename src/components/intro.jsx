@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { BsArrowRight, BsGithub, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
-import { FaEnvelope, FaGithubSquare } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import ProfilePic from "@/images/profile-pic.jpg";
@@ -38,7 +38,7 @@ export default function Intro() {
               height="250"
               quality="95"
               priority={true}
-              className="relative m-2 h-36 w-36 rotate-[4deg] overflow-hidden rounded-[25%] bg-gradient-to-br from-sky-600 to-pink-600 shadow-xl md:h-48 md:w-48 lg:h-52 lg:w-52 object-cover"
+              className="relative m-2 h-40 w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 rotate-[4deg] overflow-hidden rounded-[25%] shadow-xl object-cover"
             />
           </motion.div>
           <motion.div
@@ -59,15 +59,15 @@ export default function Intro() {
             <p className="flex space-x-4 text-sm text-gray-600 drop-shadow-xl dark:text-gray-300 md:text-base">
               <span>📍 Philadelphia, PA</span>
             </p>
-            <ul className="flex space-x-1 text-2xl text-gray-500 drop-shadow dark:text-gray-400 md:space-x-3 md:text-3xl">
+            <ul className="flex space-x-1 text-2xl text-gray-600 drop-shadow dark:text-gray-300 md:space-x-3 md:text-3xl">
               {socials.map((item) => (
                 <li key={item.name}>
                   {!item.local ?
-                    <a className="flex p-2 opacity-80 transition-all hover:scale-125 hover:opacity-100" target="_blank" rel="noopener" href={item.href}>
+                    <a className="flex p-2 transition-all hover:scale-125" target="_blank" rel="noopener" href={item.href}>
                       <item.icon />
                     </a>
                     :
-                    <a className="flex p-2 opacity-80 transition-all hover:scale-125 hover:opacity-100" rel="noopener" href={item.href}>
+                    <a className="flex p-2 transition-all hover:scale-125" rel="noopener" href={item.href}>
                       <item.icon />
                     </a>
                   }
@@ -83,7 +83,7 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        Full stack developer with a love for React. I create flawless front-end experiences while taming DevOps challenges for seamless, dependable systems. Let's collaborate to transform your dream into digital magic, shaping a future where innovation meets unwavering reliability!
+        Site reliability engineer by day and full stack developer by night. I create flawless front-end experiences while taming DevOps challenges for seamless, dependable systems. Let's collaborate to transform your dream into digital magic, shaping a future where innovation meets unwavering reliability!
       </motion.p>
 
       <motion.div
@@ -103,16 +103,16 @@ export default function Intro() {
           }}
         >
           Get in touch{" "}
-          <BsArrowRight className="opacity-70 transition group-hover:translate-x-1" />
+          <BsArrowRight className="opacity-70 transition" />
         </Link>
 
         <a
           className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none transition hover:scale-105 cursor-pointer borderBlack dark:bg-white/10 w-full sm:w-auto"
-          href="/CV.pdf"
+          href="/resume.pdf"
           download
         >
           Download Resume{" "}
-          <HiDownload className="opacity-60 transition group-hover:translate-x-1" />
+          <HiDownload className="opacity-60 transition" />
         </a>
       </motion.div>
     </section>

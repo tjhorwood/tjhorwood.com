@@ -35,51 +35,120 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Graduated bootcamp",
-    location: "Miami, FL",
+    title: "Associate's Degree",
+    location: "Kaplan University",
     description:
-      "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
+      "I graduated with my Associates Degree in Computer Networking.",
     icon: React.createElement(LuGraduationCap),
-    date: "2019",
+    date: "2011",
   },
   {
-    title: "Front-End Developer",
-    location: "Orlando, FL",
+    title: "Application Support Analyst",
+    location: "Amtrak",
     description:
-      "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
+      "I worked for Amtrak as an Application Support Analyst. My job was to provide support for internal tools (such as time entry, parts ordering, booking travel, etc.) for employees across the United States",
     icon: React.createElement(CgWorkAlt),
-    date: "2019 - 2021",
+    date: "2011 - 2013",
   },
   {
-    title: "Full-Stack Developer",
-    location: "Houston, TX",
+    title: "Tier II Technical Support Specialist",
+    location: "CRF Health",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
-    icon: React.createElement(FaReact),
-    date: "2021 - present",
+      "",
+    icon: React.createElement(CgWorkAlt),
+    date: "2013 - 2015",
+  },
+  {
+    title: "Application Specialist",
+    location: "CRF Health",
+    description:
+      "",
+    icon: React.createElement(CgWorkAlt),
+    date: "2015 - 2015",
+  },
+  {
+    title: "Bachelor's Degree",
+    location: "Purdue University",
+    description:
+      "I graduated with my Bachelor's Degree in Information Technology.",
+    icon: React.createElement(LuGraduationCap),
+    date: "2011",
+  },
+  {
+    title: "Sr. Customer Success Engineer",
+    location: "Syapse",
+    description:
+      "",
+    icon: React.createElement(CgWorkAlt),
+    date: "2015 - 2018",
+  },
+  {
+    title: "Site Reliability Engineer",
+    location: "Syapse",
+    description:
+      "",
+    icon: React.createElement(CgWorkAlt),
+    date: "2018 - 2022",
+  },
+  {
+    title: "Sr. Service Operations Engineer",
+    location: "Syapse",
+    description:
+      "",
+    icon: React.createElement(CgWorkAlt),
+    date: "2022 - 2022",
+  },
+  {
+    title: "Team Lead, Service Operations Engineering",
+    location: "Syapse",
+    description:
+      "",
+    icon: React.createElement(CgWorkAlt),
+    date: "2022 - Present",
   },
 ] as const;
 
 export const projectsData = [
   {
-    title: "CorpComment",
+    title: "National League Gaming",
     description:
       "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
+    tags: ["React", "Next.js", "Tailwind", "Prisma", "PostgreSQL", "Stripe"],
     imageUrl: corpcommentImg,
   },
   {
-    title: "rmtDev",
+    title: "GRS Mechanical",
+    description:
+      "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
+    tags: ["React", "Next.js", "Tailwind"],
+    imageUrl: corpcommentImg,
+  },
+  {
+    title: "StandardCBD",
     description:
       "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
+    tags: ["Wordpress", "eCommerce"],
     imageUrl: rmtdevImg,
   },
   {
-    title: "Word Analytics",
+    title: "Terplandia",
     description:
       "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-    tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
+    tags: ["Wordpress", "eCommerce"],
+    imageUrl: wordanalyticsImg,
+  },
+  {
+    title: "CapForge",
+    description:
+      "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
+    tags: ["Wordpress"],
+    imageUrl: wordanalyticsImg,
+  },
+  {
+    title: "Sahu Studio",
+    description:
+      "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
+    tags: ["Wordpress"],
     imageUrl: wordanalyticsImg,
   },
 ] as const;
