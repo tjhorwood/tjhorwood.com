@@ -11,7 +11,7 @@ export default function About() {
   return (
     <motion.section
       ref={ref}
-      className="mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28"
+      className="mb-28 max-w-[46rem] text-center leading-8 sm:mb-40 scroll-mt-28"
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.175 }}
@@ -43,6 +43,9 @@ export default function About() {
         learning about{" "}
         <span className="font-medium">history and philosophy</span>. I'm also
         learning how to play the guitar.
+      </p>
+      <p>
+        I am a loving husband and father who enjoys spending time with my family, engaging in outdoor activities, working on cars, and creating/building things in my workshop. I am also passionate about technology and enjoy tinkering with my homelab and coding for fun. These hobbies have taught me valuable problem-solving skills and a desire to constantly learn and improve. As a well-rounded individual, I bring a unique perspective and a can-do attitude to every task.
       </p>
     </motion.section>
   );

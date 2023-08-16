@@ -1,7 +1,12 @@
 import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
-import { FaReact } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { LuGraduationCap } from "react-icons/lu";
+import nationalleaguegamingImg from "@/images/nationalleaguegaming.png";
+import standardcbdImg from "@/images/standardcbd.png";
+import terplandiaImg from "@/images/terplandia.png";
+import capforgeImg from "@/images/capforge.png"
 import corpcommentImg from "@/images/corpcomment.png";
 import rmtdevImg from "@/images/rmtdev.png";
 import wordanalyticsImg from "@/images/wordanalytics.png";
@@ -113,43 +118,49 @@ export const projectsData = [
     title: "National League Gaming",
     description:
       "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
-    tags: ["React", "Next.js", "Tailwind", "Prisma", "PostgreSQL", "Stripe"],
-    imageUrl: corpcommentImg,
+    tags: ["React", "Next.js", "Tailwind", "Prisma", "PostgreSQL", "Stripe", "SendGrid"],
+    imageUrl: nationalleaguegamingImg,
+    href: "https://nationalleaguegaming.com"
   },
   {
     title: "GRS Mechanical",
     description:
       "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
-    tags: ["React", "Next.js", "Tailwind"],
+    tags: ["React", "Next.js", "Tailwind", "SendGrid"],
     imageUrl: corpcommentImg,
+    href: "https://grsmechanical.com"
   },
   {
     title: "StandardCBD",
     description:
       "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
-    tags: ["Wordpress", "eCommerce"],
-    imageUrl: rmtdevImg,
+    tags: ["Wordpress", "WooCommerce", "ShipStation"],
+    imageUrl: standardcbdImg,
+    href: "https://standardcbd.com"
   },
   {
     title: "Terplandia",
     description:
       "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-    tags: ["Wordpress", "eCommerce"],
-    imageUrl: wordanalyticsImg,
+    tags: ["Wordpress", "WooCommerce", "ShipStation"],
+    imageUrl: terplandiaImg,
+    href: "https://terplandia.com"
   },
   {
     title: "CapForge",
     description:
       "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
     tags: ["Wordpress"],
-    imageUrl: wordanalyticsImg,
+    imageUrl: capforgeImg,
+    href: "https://capforge.com"
   },
   {
     title: "Sahu Studio",
     description:
       "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
     tags: ["Wordpress"],
-    imageUrl: wordanalyticsImg,
+    imageUrl: corpcommentImg,
+    href: "https://sahustudio.me"
   },
 ] as const;
 
@@ -176,5 +187,28 @@ export const skillsData = [
   "MySQL",
   "Python",
   "Django",
-  "Framer Motion"
+  "Framer Motion",
+  "Wordpress",
+  "Webflow"
+] as const;
+
+export const socialsData = [
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/in/tjhorwood",
+    icon: BsLinkedin,
+    local: false
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/tjhorwood",
+    icon: BsGithub,
+    local: false
+  },
+  {
+    name: "Contact",
+    href: "#contact",
+    icon: FaEnvelope,
+    local: true
+  }
 ] as const;
