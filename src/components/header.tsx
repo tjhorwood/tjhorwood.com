@@ -1,15 +1,15 @@
-"use client";
+'use client'
 
-import React, { Fragment } from "react";
-import { motion } from "framer-motion";
-import { links } from "@/lib/data";
-import Link from "next/link";
-import clsx from "clsx";
-import { useActiveSectionContext } from "@/context/active-section-context";
-import { Popover, Transition } from "@headlessui/react";
-import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
+import React, { Fragment } from 'react'
+import { motion } from 'framer-motion'
+import { links } from '@/lib/data'
+import Link from 'next/link'
+import clsx from 'clsx'
+import { useActiveSectionContext } from '@/context/active-section-context'
+import { Popover, Transition } from '@headlessui/react'
+import { RiMenu3Line, RiCloseLine } from 'react-icons/ri'
 
-function MobileNavItem({ href, children }: { href: any, children: any }) {
+function MobileNavItem({ href, children }: { href: any; children: any }) {
   return (
     <li>
       <Popover.Button as={Link} href={href} className="block py-3">
@@ -22,7 +22,7 @@ function MobileNavItem({ href, children }: { href: any, children: any }) {
 function MobileNavigation(props: any) {
   return (
     <Popover {...props}>
-      <Popover.Button className="group fixed top-5 right-5 bg-white w-[3rem] h-[3rem] bg-opacity-80 backdrop-blur-[0.5rem] border border-white border-opacity-30 shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-gray-950 outline-none">
+      <Popover.Button className="group fixed right-5 top-5 flex h-[3rem] w-[3rem] items-center justify-center rounded-full border border-white border-opacity-30 bg-white bg-opacity-80 shadow-2xl outline-none backdrop-blur-[0.5rem] transition-all hover:scale-[1.15] active:scale-105 dark:bg-gray-950">
         <RiMenu3Line className="h-6 w-6 text-gray-500 dark:text-gray-400" />
       </Popover.Button>
       <Transition.Root>
@@ -37,18 +37,23 @@ function MobileNavigation(props: any) {
         >
           <Popover.Panel
             focus
-            className="fixed inset-x-4 top-5 z-50 origin-top rounded-2xl bg-white py-6 ring-1 ring-gray-900/5 dark:ring-gray-800 dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-80 backdrop-blur-[0.5rem]"
+            className="fixed inset-x-4 top-5 z-50 origin-top rounded-2xl bg-white py-6 ring-1 ring-gray-900/5 backdrop-blur-[0.5rem] dark:border-black/40 dark:bg-gray-950 dark:bg-opacity-80 dark:ring-gray-800"
           >
             <div className="flex flex-row-reverse items-center justify-between px-6">
-              <Popover.Button aria-label="Close menu" className="-m-1 p-1 outline-none">
+              <Popover.Button
+                aria-label="Close menu"
+                className="-m-1 p-1 outline-none"
+              >
                 <RiCloseLine className="h-6 w-6 text-gray-500 dark:text-gray-400" />
               </Popover.Button>
             </div>
             <nav className="mt- px-10">
               <ul className="-my-2 divide-y divide-gray-100 text-base text-gray-800 dark:divide-gray-100/5 dark:text-gray-300">
-              {links.map((link) => (
-                <MobileNavItem key={link.name} href={link.hash}>{link.name}</MobileNavItem>
-              ))}
+                {links.map((link) => (
+                  <MobileNavItem key={link.name} href={link.hash}>
+                    {link.name}
+                  </MobileNavItem>
+                ))}
               </ul>
             </nav>
           </Popover.Panel>
@@ -60,47 +65,47 @@ function MobileNavigation(props: any) {
 
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
-    useActiveSectionContext();
+    useActiveSectionContext()
 
   return (
-    <header className="z-[999] relative">
+    <header className="relative z-[999]">
       <motion.div
-        className="hidden md:block fixed top-6 left-1/2 h-[3.25rem] w-[36rem] rounded-full border border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] dark:bg-gray-950 dark:border-black/40 dark:bg-opacity-75"
-        initial={{ y: -100, x: "-50%", opacity: 0 }}
-        animate={{ y: 0, x: "-50%", opacity: 1 }}
+        className="fixed left-1/2 top-6 hidden h-[3.25rem] w-[30rem] rounded-full border border-white border-opacity-40 bg-white bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem] dark:border-black/40 dark:bg-gray-950 dark:bg-opacity-75 md:block"
+        initial={{ y: -100, x: '-50%', opacity: 0 }}
+        animate={{ y: 0, x: '-50%', opacity: 1 }}
       ></motion.div>
 
-      <nav className="hidden md:flex fixed top-[1.7rem] left-1/2 h-[initial] py-0 -translate-x-1/2">
+      <nav className="fixed left-1/2 top-[1.7rem] hidden h-[initial] -translate-x-1/2 py-0 md:flex">
         <ul className="flex w-[22rem] flex-wrap items-center justify-center gap-y-1 text-[0.9rem] font-medium text-gray-500 md:w-[initial] md:flex-nowrap md:gap-5">
           {links.map((link) => (
             <motion.li
-              className="h-3/4 flex items-center justify-center relative"
+              className="relative flex h-3/4 items-center justify-center"
               key={link.hash}
               initial={{ y: -100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
             >
               <Link
                 className={clsx(
-                  "flex w-full items-center justify-center px-3 py-3 hover:text-gray-950 transition dark:text-gray-400 dark:hover:text-gray-100",
+                  'flex w-full items-center justify-center px-3 py-3 transition hover:text-gray-950 dark:text-gray-400 dark:hover:text-gray-100',
                   {
-                    "text-gray-950 dark:text-white":
+                    'text-gray-950 dark:text-white':
                       activeSection === link.name,
-                  }
+                  },
                 )}
                 href={link.hash}
                 onClick={() => {
-                  setActiveSection(link.name);
-                  setTimeOfLastClick(Date.now());
+                  setActiveSection(link.name)
+                  setTimeOfLastClick(Date.now())
                 }}
               >
                 {link.name}
 
                 {link.name === activeSection && (
                   <motion.span
-                    className="bg-gray-200 rounded-full absolute inset-0 -z-10 dark:bg-gray-700"
+                    className="absolute inset-0 -z-10 rounded-full bg-gray-200 dark:bg-gray-700"
                     layoutId="activeSection"
                     transition={{
-                      type: "spring",
+                      type: 'spring',
                       stiffness: 380,
                       damping: 30,
                     }}
@@ -113,5 +118,5 @@ export default function Header() {
       </nav>
       <MobileNavigation className="pointer-events-auto md:hidden" />
     </header>
-  );
+  )
 }

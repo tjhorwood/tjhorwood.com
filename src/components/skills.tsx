@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import React from "react";
-import SectionHeading from "./section-heading";
-import { skillsData } from "@/lib/data";
-import { useSectionInView } from "@/lib/hooks";
-import { motion } from "framer-motion";
+import React from 'react'
+import SectionHeading from './section-heading'
+import { skillsData } from '@/lib/data'
+import { useSectionInView } from '@/lib/hooks'
+import { motion } from 'framer-motion'
 
 const fadeInAnimationVariants = {
   initial: {
@@ -18,10 +18,10 @@ const fadeInAnimationVariants = {
       delay: 0.05 * index,
     },
   }),
-};
+}
 
 export default function Skills() {
-  const { ref } = useSectionInView("Skills");
+  const { ref } = useSectionInView('Skills')
 
   return (
     <section
@@ -33,7 +33,7 @@ export default function Skills() {
       <ul className="flex flex-wrap justify-center gap-2 text-lg text-gray-900">
         {skillsData.map((skill, index) => (
           <motion.li
-            className="bg-gray-200 rounded-xl px-5 py-3 dark:bg-white/10 dark:text-white/80"
+            className="rounded-xl bg-gray-200 px-5 py-3 dark:bg-white/10 dark:text-white/80"
             key={index}
             variants={fadeInAnimationVariants}
             initial="initial"
@@ -48,5 +48,5 @@ export default function Skills() {
         ))}
       </ul>
     </section>
-  );
+  )
 }
