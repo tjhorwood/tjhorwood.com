@@ -3,17 +3,14 @@
 import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import { BsArrowRight } from 'react-icons/bs'
 import { HiDownload } from 'react-icons/hi'
 import { useSectionInView } from '@/lib/hooks'
-import { useActiveSectionContext } from '@/context/active-section-context'
 import { socialsData } from '@/lib/data'
 import ProfilePic from '@/images/profile-pic.jpg'
 
 export default function Intro() {
   const { ref } = useSectionInView('Home', 0.5)
-  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
 
   return (
     <section
