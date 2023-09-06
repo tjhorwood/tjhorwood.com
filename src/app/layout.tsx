@@ -24,11 +24,6 @@ export default function RootLayout({
       <body
         className={`${inter.className} relative bg-gray-50 pt-20 text-gray-950 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90 md:pt-36`}
       >
-        <script
-          async
-          src="https://umami.tjhorwood.com/script.js"
-          data-website-id="6b3c8c55-ee0b-499d-964a-54435dcf6aa3"
-        ></script>
         <div className="absolute right-[11rem] top-[-6rem] -z-10 h-[31.25rem] w-[31.25rem] rounded-full bg-[#fbe2e3] blur-[10rem] dark:bg-[#946263] sm:w-[68.75rem]"></div>
         <div className="absolute left-[-35rem] top-[-1rem] -z-10 h-[31.25rem] w-[50rem] rounded-full bg-[#dbd7fb] blur-[10rem] dark:bg-[#676394] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem]"></div>
 
