@@ -1,13 +1,14 @@
 import React from 'react'
+import { BsGithub, BsLinkedin } from 'react-icons/bs'
 import { CgWorkAlt } from 'react-icons/cg'
 import { FaEnvelope } from 'react-icons/fa'
-import { BsGithub, BsLinkedin } from 'react-icons/bs'
 import { LuGraduationCap } from 'react-icons/lu'
+
+import capforgeImg from '@/images/capforge.png'
 import nationalleaguegamingImg from '@/images/nationalleaguegaming.png'
+import sahustudioImg from '@/images/sahustudio.png'
 import standardcbdImg from '@/images/standardcbd.png'
 import terplandiaImg from '@/images/terplandia.png'
-import capforgeImg from '@/images/capforge.png'
-import sahustudioImg from '@/images/sahustudio.png'
 
 export const links = [
   {

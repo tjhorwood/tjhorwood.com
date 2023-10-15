@@ -1,13 +1,15 @@
 'use client'
 
-import React, { Fragment } from 'react'
-import { motion } from 'framer-motion'
-import { links } from '@/lib/data'
-import Link from 'next/link'
-import clsx from 'clsx'
-import { useActiveSectionContext } from '@/context/active-section-context'
 import { Popover, Transition } from '@headlessui/react'
-import { RiMenu3Line, RiCloseLine } from 'react-icons/ri'
+import clsx from 'clsx'
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import React, { Fragment } from 'react'
+import { RiCloseLine,RiMenu3Line } from 'react-icons/ri'
+
+import { links } from '@/lib/data'
+
+import { useActiveSectionContext } from '@/context/active-section-context'
 
 function MobileNavItem({ href, children }: { href: any; children: any }) {
   return (

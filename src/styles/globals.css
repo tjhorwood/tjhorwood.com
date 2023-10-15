@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  --line-color: #e5e7eb;
-}
-
-html.dark {
-  --line-color: rgba(255, 255, 255, 0.2);
-}
-
-.borderBlack {
-  @apply border border-black/10;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -58,5 +46,14 @@ html.dark {
     --border: 12 6.5% 15.1%;
     --input: 12 6.5% 15.1%;
     --ring: 24 5.7% 82.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

@@ -1,17 +1,18 @@
-import Header from '@/components/header'
+import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import ActiveSectionContextProvider from '@/context/active-section-context'
-import Footer from '@/components/footer'
-import ThemeSwitch from '@/components/theme-switch'
-import ThemeContextProvider from '@/context/theme-context'
-import { Toaster } from 'react-hot-toast'
+
 import '@/styles/globals.css'
+
+import Footer from '@/components/footer'
+import Header from '@/components/Header'
+
+import { ThemeProvider } from '@/components/ThemeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Taylor Horwood | Personal Portfolio',
-  description: 'Taylor Horwood | Personal Portfolio',
+export const metadata: Metadata = {
+  title: 'Taylor Horwood',
+  description: 'Personal Portfolio',
 }
 
 export default function RootLayout({
@@ -22,20 +23,24 @@ export default function RootLayout({
   return (
     <html lang="en" className="!scroll-smooth">
       <body
-        className={`${inter.className} relative bg-gray-50 pt-20 text-gray-950 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90 md:pt-36`}
+        className={`${inter.className} bg-primary text-primary width-full antialiased`}
       >
-        <div className="absolute right-[11rem] top-[-6rem] -z-10 h-[31.25rem] w-[31.25rem] rounded-full bg-[#fbe2e3] blur-[10rem] dark:bg-[#946263] sm:w-[68.75rem]"></div>
-        <div className="absolute left-[-35rem] top-[-1rem] -z-10 h-[31.25rem] w-[50rem] rounded-full bg-[#dbd7fb] blur-[10rem] dark:bg-[#676394] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem]"></div>
-
-        <ThemeContextProvider>
-          <ActiveSectionContextProvider>
-            <Header />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <div
+            className={
+              'mx-auto max-w-[700px] px-6 pb-24 pt-16 md:px-6 md:pb-44 md:pt-20'
+            }
+          >
             {children}
-            <Footer />
-            <Toaster position="top-right" />
-            <ThemeSwitch />
-          </ActiveSectionContextProvider>
-        </ThemeContextProvider>
+          </div>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )
