@@ -36,6 +36,7 @@ export default function Intro() {
               quality="95"
               priority={true}
               className="relative m-2 h-40 w-40 rotate-[4deg] overflow-hidden rounded-[25%] object-cover shadow-xl sm:h-44 sm:w-44 md:h-48 md:w-48 lg:h-56 lg:w-56"
+              unoptimized={true}
             />
           </motion.div>
           <motion.div
