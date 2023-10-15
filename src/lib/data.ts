@@ -1,14 +1,14 @@
-import React from 'react'
-import { BsGithub, BsLinkedin } from 'react-icons/bs'
-import { CgWorkAlt } from 'react-icons/cg'
-import { FaEnvelope } from 'react-icons/fa'
-import { LuGraduationCap } from 'react-icons/lu'
+import React from 'react';
+import { BsGithub, BsLinkedin } from 'react-icons/bs';
+import { CgWorkAlt } from 'react-icons/cg';
+import { FaEnvelope } from 'react-icons/fa';
+import { LuGraduationCap } from 'react-icons/lu';
 
-import capforgeImg from '@/images/capforge.png'
-import nationalleaguegamingImg from '@/images/nationalleaguegaming.png'
-import sahustudioImg from '@/images/sahustudio.png'
-import standardcbdImg from '@/images/standardcbd.png'
-import terplandiaImg from '@/images/terplandia.png'
+import capforgeImg from '@/images/capforge.png';
+import nationalleaguegamingImg from '@/images/nationalleaguegaming.png';
+import sahustudioImg from '@/images/sahustudio.png';
+import standardcbdImg from '@/images/standardcbd.png';
+import terplandiaImg from '@/images/terplandia.png';
 
 export const links = [
   {
@@ -31,7 +31,7 @@ export const links = [
     name: 'Experience',
     hash: '#experience',
   },
-] as const
+] as const;
 
 export const experiencesData = [
   {
@@ -106,7 +106,7 @@ export const experiencesData = [
     icon: React.createElement(CgWorkAlt),
     date: '2022 - Present',
   },
-] as const
+] as const;
 
 export const projectsData = [
   {
@@ -157,7 +157,7 @@ export const projectsData = [
     imageUrl: sahustudioImg,
     href: 'https://sahustudio.me',
   },
-] as const
+] as const;
 
 export const skillsData = [
   'Kubernetes',
@@ -185,7 +185,7 @@ export const skillsData = [
   'Framer Motion',
   'Wordpress',
   'Webflow',
-] as const
+] as const;
 
 export const socialsData = [
   {
@@ -199,8 +199,8 @@ export const socialsData = [
     icon: BsGithub,
   },
   {
-    name: 'Contact',
+    name: 'Email',
     href: 'mailto:contact@tjhorwood.com',
     icon: FaEnvelope,
   },
-] as const
+] as const;

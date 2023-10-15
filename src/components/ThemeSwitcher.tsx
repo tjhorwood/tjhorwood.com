@@ -1,26 +1,26 @@
-import { Listbox } from '@headlessui/react'
-import clsx from 'clsx'
-import { AnimatePresence,motion } from 'framer-motion'
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-import { HiCheck, HiMoon, HiSun } from 'react-icons/hi'
+import { Listbox } from '@headlessui/react';
+import clsx from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { HiCheck, HiMoon, HiSun } from 'react-icons/hi';
 
 const themes = [
   { id: 'system', label: 'Automatic' },
   { id: 'light', label: 'Light' },
   { id: 'dark', label: 'Dark' },
-]
+];
 
 export default function ThemeSwitcher() {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   if (!mounted) {
-    return null
+    return null;
   }
 
   return (
@@ -30,9 +30,9 @@ export default function ThemeSwitcher() {
           const iconClassName = clsx(
             'h-5 w-5 transition-colors dark:hover:text-neutral-50',
             open ? 'dark:text-neutral-50' : 'text-secondary',
-          )
+          );
           return (
-            <div className="relative">
+            <div className='relative'>
               <Listbox.Button
                 className={clsx(
                   'relative flex h-8 w-8 cursor-default items-center justify-center rounded-full focus:outline-none ',
@@ -53,7 +53,7 @@ export default function ThemeSwitcher() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ type: 'spring', bounce: 0.3, duration: 0.3 }}
-                    className="w-42 absolute right-0 mt-2 max-h-60 origin-top-right overflow-auto rounded-xl bg-white p-2 text-base shadow-lg backdrop-blur-lg focus:outline-none dark:bg-black sm:text-sm"
+                    className='w-42 absolute right-0 mt-2 max-h-60 origin-top-right overflow-auto rounded-xl bg-white p-2 text-base shadow-lg backdrop-blur-lg focus:outline-none dark:bg-black sm:text-sm'
                   >
                     {themes.map((theme) => (
                       <Listbox.Option
@@ -78,10 +78,10 @@ export default function ThemeSwitcher() {
                               {theme.label}
                             </span>
                             {selected ? (
-                              <span className="absolute inset-y-0 left-0 flex items-center pl-3 dark:text-neutral-50">
+                              <span className='absolute inset-y-0 left-0 flex items-center pl-3 dark:text-neutral-50'>
                                 <HiCheck
-                                  className="h-5 w-5"
-                                  aria-hidden="true"
+                                  className='h-5 w-5'
+                                  aria-hidden='true'
                                 />
                               </span>
                             ) : null}
@@ -93,9 +93,9 @@ export default function ThemeSwitcher() {
                 )}
               </AnimatePresence>
             </div>
-          )
+          );
         }}
       </Listbox>
     </>
-  )
+  );
 }
