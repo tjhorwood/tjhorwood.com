@@ -6,7 +6,6 @@ import Section from '@/components/Section';
 import ConnectLinks from '@/components/ConnectLinks';
 import Workplaces from '@/components/Workplaces';
 // import Gallery from '@/components/Gallery';
-import CapForge from '@/images/capforge.png';
 import Syapse from '@/images/syapse.png';
 import CRFHealth from '@/images/crfhealth.jpg';
 import Amtrak from '@/images/amtrak.png';
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <div className='flex flex-col gap-16 md:gap-24'>
+    <div className='flex flex-col gap-16'>
       <div>
         <h1 className='animate-in text-3xl font-bold tracking-tight'>
           About Me
@@ -29,45 +28,24 @@ export default function About() {
           Just a quick glimpse.
         </p>
       </div>
-      {/* <div className='mb-8 lg:hidden'>
-        <div
-          className='animate-in'
-          style={{ '--index': 1 } as React.CSSProperties}
-        >
-          <Image
-            src={meLily}
-            alt={'me and lily'}
-            width={324}
-            height={139}
-            className='pointer-events-none relative inset-0 h-60 -rotate-6 rounded-2xl bg-gray-400 object-cover shadow-md'
-            priority
-          />
-        </div>
-
-        <div
-          className='animate-in'
-          style={{ '--index': 2 } as React.CSSProperties}
-        >
-          <Image
-            src={colorado}
-            alt={'me and lily'}
-            width={220}
-            height={260}
-            className='pointer-events-none absolute inset-0 -top-48 left-[45%] w-48 rotate-6 rounded-2xl bg-gray-400 object-cover shadow-md md:left-[60%] md:w-56'
-            priority
-          />
-        </div>
-      </div>
-      <div className='hidden lg:block'>
-        <Gallery />
-      </div> */}
       <div
         className='flex animate-in flex-col gap-16 md:gap-24'
         style={{ '--index': 3 } as React.CSSProperties}
       >
         <Section heading='About' headingAlignment='left'>
           <div className='flex flex-col gap-6'>
-            <p>Hello world, I&apos;m Brian Ruiz!</p>
+            <p>Hello world, I&apos;m Taylor Horwood!</p>
+
+            <p>
+              Loving husband and father who enjoys spending time with my family,
+              engaging in outdoor activities, working on cars, and
+              creating/building things in my workshop. I am also very passionate
+              about technology and enjoy tinkering with my homelab and coding
+              for fun. These hobbies have taught me valuable problem-solving
+              skills and a desire to constantly learn and improve. As a
+              well-rounded individual, I bring a unique perspective and a can-do
+              attitude to every task.
+            </p>
 
             <p>
               I have a passion for design and am always looking for ways to
@@ -134,21 +112,13 @@ export default function About() {
         <Section heading='Work' headingAlignment='left'>
           <div className='flex w-full flex-col gap-8'>
             <p>
-              {new Date().getFullYear() - 2015}+ years of professional
+              {new Date().getFullYear() - 2011}+ years of professional
               development experience.
             </p>
             <p>
               I started my career teaching others how to code, which I will
               always be appreciative of. Then I worked at a few small local
-              companies. Now I&apos;m a full stack engineer currently working at{' '}
-              <a
-                className='underline'
-                href='https://hines.com'
-                target='__blank'
-              >
-                Hines
-              </a>
-              , one of the largest private real estate investors in the world.
+              companies.
             </p>
             <Workplaces items={workplaces} />
           </div>

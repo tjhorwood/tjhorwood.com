@@ -26,7 +26,7 @@ function Workplace({ title, company, imageSrc, time, link }: Workplace) {
           <p className='text-secondary'>{company}</p>
         </div>
       </div>
-      {time && <p className='text-secondary'>{time}</p>}
+      {time && <p className='text-right text-secondary'>{time}</p>}
     </>
   );
   return (

@@ -7,7 +7,7 @@ import ProfilePic from '@/images/profile.png';
 
 export default async function Home() {
   return (
-    <div className='flex flex-col gap-16 md:gap-24'>
+    <div className='flex flex-col gap-16'>
       <div className='flex animate-in flex-col gap-8'>
         <div
           className='flex animate-in flex-col-reverse gap-6 text-secondary md:flex-row md:items-center'
@@ -34,10 +34,10 @@ export default async function Home() {
           </div>
         </div>
         <p
-          className='max-w-lg animate-in text-primary'
+          className='max-w-2xl animate-in text-primary'
           style={{ '--index': 2 } as React.CSSProperties}
         >
-          Hi world, I'm Taylor Horwood a site reliability engineer by day and
+          Hello world, I'm Taylor Horwood a site reliability engineer by day and
           full stack developer by night. I create flawless front-end experiences
           while taming DevOps challenges for seamless, dependable systems. Let's
           collaborate to transform your dream into digital magic, shaping a
