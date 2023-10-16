@@ -8,13 +8,12 @@ import { Fragment } from 'react';
 
 import NavLink from '@/components/ui/NavLink';
 
-import ThemeSwitcher from './ThemeSwitcher';
+import ThemeSwitcher from '@/components/ThemeSwitcher';
 
 const links = [
   { label: 'About', href: '/about' },
   { label: 'Gear', href: '/gear' },
   { label: 'Projects', href: '/projects' },
-  { label: 'Experience', href: '/experience' },
 ];
 
 export default function Header() {
@@ -79,7 +78,7 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     className={clsx(
-                      'rounded-md px-4 py-2 transition-colors hover:text-primary',
+                      'rounded-md px-4 py-2 transition-colors hover:bg-primary hover:text-primary',
                       pathname === link.href
                         ? 'bg-secondaryA font-medium'
                         : 'font-normal',

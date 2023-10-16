@@ -10,7 +10,7 @@ export default async function Home() {
     <div className='flex flex-col gap-16 md:gap-24'>
       <div className='flex animate-in flex-col gap-8'>
         <div
-          className='flex animate-in flex-col-reverse gap-6 md:flex-row md:items-center'
+          className='flex animate-in flex-col-reverse gap-6 text-secondary md:flex-row md:items-center'
           style={{ '--index': 1 } as React.CSSProperties}
         >
           <Image
@@ -22,11 +22,11 @@ export default async function Home() {
             unoptimized={true}
           />
           <div className='ml-2 space-y-1'>
-            <h1 className='animate-in text-3xl font-bold tracking-tight text-primary-foreground'>
+            <h1 className='animate-in text-3xl font-bold tracking-tight text-primary'>
               Taylor Horwood
             </h1>
             <p
-              className='animate-in text-primary-foreground'
+              className='animate-in text-secondary'
               style={{ '--index': 1 } as React.CSSProperties}
             >
               Developer, tinkerer, indie hacker
@@ -34,17 +34,17 @@ export default async function Home() {
           </div>
         </div>
         <p
-          className='max-w-lg animate-in text-primary-foreground'
+          className='max-w-lg animate-in text-primary'
           style={{ '--index': 2 } as React.CSSProperties}
         >
-          Site reliability engineer by day and full stack developer by night. I
-          create flawless front-end experiences while taming DevOps challenges
-          for seamless, dependable systems. Let's collaborate to transform your
-          dream into digital magic, shaping a future where innovation meets
-          unwavering reliability!
+          Hi world, I'm Taylor Horwood a site reliability engineer by day and
+          full stack developer by night. I create flawless front-end experiences
+          while taming DevOps challenges for seamless, dependable systems. Let's
+          collaborate to transform your dream into digital magic, shaping a
+          future where innovation meets unwavering reliability!
         </p>
         <ul
-          className='animated-list flex animate-in flex-col gap-2 text-primary-foreground md:flex-row md:gap-6'
+          className='animated-list flex animate-in flex-col gap-2 text-secondary md:flex-row md:gap-6'
           style={{ '--index': 2 } as React.CSSProperties}
         >
           <li className='transition-opacity'>

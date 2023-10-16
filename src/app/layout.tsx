@@ -9,7 +9,10 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Taylor Horwood',
+  title: {
+    template: `%s | Taylor Horwood`,
+    default: 'Taylor Horwood',
+  },
   description: 'Personal Portfolio',
 };
 
@@ -19,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className='!scroll-smooth'>
+    <html lang='en'>
       <body
         className={`${inter.className} width-full bg-primary text-primary antialiased`}
       >
