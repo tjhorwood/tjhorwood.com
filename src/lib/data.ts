@@ -11,26 +11,55 @@ import standardcbdImg from '@/images/standardcbd.png';
 import terplandiaImg from '@/images/terplandia.png';
 
 export const links = [
+  { label: 'About', href: '/about' },
+  { label: 'Gear', href: '/gear' },
+  { label: 'Projects', href: '/projects' },
+] as const;
+
+export const socialsData = [
   {
-    name: 'Home',
-    hash: '#home',
+    name: 'LinkedIn',
+    href: 'https://linkedin.com/in/tjhorwood',
+    icon: BsLinkedin,
   },
   {
-    name: 'About',
-    hash: '#about',
+    name: 'GitHub',
+    href: 'https://github.com/tjhorwood',
+    icon: BsGithub,
   },
   {
-    name: 'Projects',
-    hash: '#projects',
+    name: 'Email',
+    href: 'mailto:contact@tjhorwood.com',
+    icon: FaEnvelope,
   },
-  {
-    name: 'Skills',
-    hash: '#skills',
-  },
-  {
-    name: 'Experience',
-    hash: '#experience',
-  },
+] as const;
+
+export const skillsData = [
+  'Kubernetes',
+  'Terraform',
+  'Docker',
+  'HTML',
+  'CSS',
+  'JavaScript',
+  'TypeScript',
+  'React',
+  'Next.js',
+  'Node.js',
+  'Git',
+  'Tailwind',
+  'Prisma',
+  'MongoDB',
+  'Redux',
+  'GraphQL',
+  'Apollo',
+  'Express',
+  'PostgreSQL',
+  'MySQL',
+  'Python',
+  'Django',
+  'Framer Motion',
+  'Wordpress',
+  'Webflow',
 ] as const;
 
 export const experiencesData = [
@@ -156,51 +185,5 @@ export const projectsData = [
     tags: ['Wordpress'],
     imageUrl: sahustudioImg,
     href: 'https://sahustudio.me',
-  },
-] as const;
-
-export const skillsData = [
-  'Kubernetes',
-  'Terraform',
-  'Docker',
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'TypeScript',
-  'React',
-  'Next.js',
-  'Node.js',
-  'Git',
-  'Tailwind',
-  'Prisma',
-  'MongoDB',
-  'Redux',
-  'GraphQL',
-  'Apollo',
-  'Express',
-  'PostgreSQL',
-  'MySQL',
-  'Python',
-  'Django',
-  'Framer Motion',
-  'Wordpress',
-  'Webflow',
-] as const;
-
-export const socialsData = [
-  {
-    name: 'LinkedIn',
-    href: 'https://linkedin.com/in/tjhorwood',
-    icon: BsLinkedin,
-  },
-  {
-    name: 'GitHub',
-    href: 'https://github.com/tjhorwood',
-    icon: BsGithub,
-  },
-  {
-    name: 'Email',
-    href: 'mailto:contact@tjhorwood.com',
-    icon: FaEnvelope,
   },
 ] as const;

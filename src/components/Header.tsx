@@ -10,11 +10,7 @@ import NavLink from '@/components/ui/NavLink';
 
 import ThemeSwitcher from '@/components/ThemeSwitcher';
 
-const links = [
-  { label: 'About', href: '/about' },
-  { label: 'Gear', href: '/gear' },
-  { label: 'Projects', href: '/projects' },
-];
+import { links } from '@/lib/data';
 
 export default function Header() {
   const pathname = `/${usePathname().split('/')[1]}`; // active paths on dynamic subpages

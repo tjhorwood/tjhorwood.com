@@ -10,6 +10,8 @@ import Syapse from '@/images/syapse.png';
 import CRFHealth from '@/images/crfhealth.jpg';
 import Amtrak from '@/images/amtrak.png';
 
+import { skillsData } from '@/lib/data';
+
 export const metadata: Metadata = {
   title: 'About',
 };
@@ -103,6 +105,21 @@ export default function About() {
                       </svg>
                     </div>
                   </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Section>
+
+        <Section heading='Skills' headingAlignment='left'>
+          <div className='flex w-full flex-col gap-8'>
+            <ul className='flex flex-wrap justify-start gap-2'>
+              {skillsData.map((skill, index) => (
+                <li
+                  className='rounded-xl bg-secondary px-5 py-3 dark:text-primary'
+                  key={index}
+                >
+                  {skill}
                 </li>
               ))}
             </ul>
