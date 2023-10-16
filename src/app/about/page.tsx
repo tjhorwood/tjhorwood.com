@@ -10,6 +10,8 @@ import Workplaces from '@/components/Workplaces';
 import Amtrak from '@/images/amtrak.png';
 import CRFHealth from '@/images/crfhealth.jpg';
 import Syapse from '@/images/syapse.png';
+import { Button } from '@/components/ui/button';
+import { FiDownload } from 'react-icons/fi';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -156,6 +158,19 @@ export default function About() {
               real-world problems and make a positive impact on the world.
             </p>
             <Workplaces items={workplaces} />
+            <Button
+              className='bg-secondary text-center'
+              variant='default'
+              size='lg'
+            >
+              <a
+                className='flex w-full cursor-pointer items-center gap-2 rounded-lg outline-none'
+                href='/resume.pdf'
+                download
+              >
+                Download Resume <FiDownload className='h-4 w-4' />
+              </a>
+            </Button>
           </div>
         </Section>
       </div>
