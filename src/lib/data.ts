@@ -27,11 +27,6 @@ export const socialsData = [
     href: 'https://github.com/tjhorwood',
     icon: BsGithub,
   },
-  {
-    name: 'Email',
-    href: 'mailto:contact@tjhorwood.com',
-    icon: FaEnvelope,
-  },
 ] as const;
 
 export const skillsData = [

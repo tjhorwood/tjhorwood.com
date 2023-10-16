@@ -17,6 +17,8 @@
     "@headlessui/react": "^1.7.17",
     "@netlify/plugin-nextjs": "^4.40.2",
     "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-scroll-area": "^1.0.5",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "20.8.6",
     "@types/react": "18.2.28",

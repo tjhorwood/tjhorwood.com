@@ -5,6 +5,8 @@ import { FiArrowUpRight, FiDownload } from 'react-icons/fi';
 
 import ProfilePic from '@/images/profile.png';
 
+import { socialsData } from '@/lib/data';
+
 export default async function Home() {
   return (
     <div className='flex flex-col gap-16'>
@@ -31,6 +33,20 @@ export default async function Home() {
             >
               Developer, tinkerer, indie hacker
             </p>
+            <ul className='animated-list hidden animate-in space-x-6 pt-4 text-secondary md:flex md:justify-start'>
+              {socialsData.map((item) => (
+                <li key={item.name}>
+                  <a
+                    className='flex items-center gap-x-2'
+                    rel='noopener'
+                    href={item.href}
+                  >
+                    <item.icon className='h-6 w-6' />
+                    <span>{item.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
         <p
@@ -43,6 +59,20 @@ export default async function Home() {
           collaborate to transform your dream into digital magic, shaping a
           future where innovation meets unwavering reliability!
         </p>
+        <ul className='animated-list flex animate-in justify-start space-x-6 py-2 text-secondary md:hidden'>
+          {socialsData.map((item) => (
+            <li key={item.name}>
+              <a
+                className='flex items-center gap-x-2'
+                rel='noopener'
+                href={item.href}
+              >
+                <item.icon className='h-6 w-6' />
+                <span>{item.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
         <ul
           className='animated-list flex animate-in flex-col gap-2 text-secondary md:flex-row md:gap-6'
           style={{ '--index': 2 } as React.CSSProperties}
