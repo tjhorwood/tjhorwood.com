@@ -1,14 +1,15 @@
 import { Metadata } from 'next';
 
-import Link from '@/components/ui/Link';
-import Section from '@/components/Section';
-import ConnectLinks from '@/components/ConnectLinks';
-import Workplaces from '@/components/Workplaces';
-import Syapse from '@/images/syapse.png';
-import CRFHealth from '@/images/crfhealth.jpg';
-import Amtrak from '@/images/amtrak.png';
-
 import { skillsData } from '@/lib/data';
+
+import ConnectLinks from '@/components/ConnectLinks';
+import Section from '@/components/Section';
+import Link from '@/components/ui/Link';
+import Workplaces from '@/components/Workplaces';
+
+import Amtrak from '@/images/amtrak.png';
+import CRFHealth from '@/images/crfhealth.jpg';
+import Syapse from '@/images/syapse.png';
 
 export const metadata: Metadata = {
   title: 'About',

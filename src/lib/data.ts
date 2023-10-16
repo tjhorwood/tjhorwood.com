@@ -1,7 +1,6 @@
 import React from 'react';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
 import { CgWorkAlt } from 'react-icons/cg';
-import { FaEnvelope } from 'react-icons/fa';
 import { LuGraduationCap } from 'react-icons/lu';
 
 import capforgeImg from '@/images/capforge.png';

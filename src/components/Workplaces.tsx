@@ -1,6 +1,5 @@
-import Link from '@/components/ui/Link';
-import Image, { StaticImageData } from 'next/image';
 import cn from 'clsx';
+import Image, { StaticImageData } from 'next/image';
 
 import {
   Sheet,

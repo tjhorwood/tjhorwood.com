@@ -6,11 +6,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Fragment } from 'react';
 
-import NavLink from '@/components/ui/NavLink';
+import { links } from '@/lib/data';
 
 import ThemeSwitcher from '@/components/ThemeSwitcher';
-
-import { links } from '@/lib/data';
+import NavLink from '@/components/ui/NavLink';
 
 export default function Header() {
   const pathname = `/${usePathname().split('/')[1]}`; // active paths on dynamic subpages

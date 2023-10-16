@@ -1,5 +1,6 @@
-import Link from '@/components/ui/Link';
 import { Metadata } from 'next';
+
+import Link from '@/components/ui/Link';
 
 export const metadata: Metadata = {
   title: '404',

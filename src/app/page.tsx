@@ -3,9 +3,9 @@ import Link from 'next/link';
 import React from 'react';
 import { FiArrowUpRight, FiDownload } from 'react-icons/fi';
 
-import ProfilePic from '@/images/profile.png';
-
 import { socialsData } from '@/lib/data';
+
+import ProfilePic from '@/images/profile.png';
 
 export default async function Home() {
   return (

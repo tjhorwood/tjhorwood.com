@@ -1,5 +1,5 @@
-import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 import cn from 'clsx';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 import { ReactNode } from 'react';
 
 type LinkProps = {

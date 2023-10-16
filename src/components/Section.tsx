@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import cn from 'clsx';
+import { ReactNode } from 'react';
 
 type SectionProps = {
   heading: string;
