@@ -3,13 +3,13 @@ import Image, { StaticImageData } from 'next/image';
 import cn from 'clsx';
 
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/Dialog';
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 
 type Workplace = {
   title: string;
@@ -43,28 +43,31 @@ function Workplace({
           <p className='text-secondary'>{company}</p>
         </div>
       </div>
-      {time && <p className='text-right text-secondary'>{time}</p>}
+      {time && <p className='ml-3 text-right text-secondary'>{time}</p>}
     </>
   );
   return (
     <li className='transition-opacity' key={company}>
-      <Dialog>
-        <DialogTrigger className='-mx-3 -my-2 flex w-full justify-between px-3 py-2 no-underline'>
+      <Sheet>
+        <SheetTrigger className='-mx-3 -my-2 flex w-full justify-between px-3 py-2 no-underline'>
           {content}
-        </DialogTrigger>
-        <DialogContent className='max-h-[500px] overflow-scroll rounded-xl sm:max-w-[600px]'>
-          <DialogHeader>
-            <DialogTitle>{title}</DialogTitle>
-            <DialogDescription>{company}</DialogDescription>
-          </DialogHeader>
-          <ul className='list-inside list-disc space-y-2'>
+        </SheetTrigger>
+        <SheetContent>
+          <SheetHeader>
+            <SheetTitle>{title}</SheetTitle>
+            <SheetDescription>{company}</SheetDescription>
+          </SheetHeader>
+          <p className='py-4 text-secondary'>
+            Below you will find some of the key responsibilites for this role:
+          </p>
+          <ul className='ml-4 list-disc space-y-3'>
             {description &&
               description.map((item: any, itemIdx: any) => (
                 <li key={itemIdx}>{item.content}</li>
               ))}
           </ul>
-        </DialogContent>
-      </Dialog>
+        </SheetContent>
+      </Sheet>
     </li>
   );
 }

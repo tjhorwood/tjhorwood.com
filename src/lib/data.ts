@@ -12,7 +12,7 @@ import terplandiaImg from '@/images/terplandia.png';
 
 export const links = [
   { label: 'About', href: '/about' },
-  { label: 'Gear', href: '/gear' },
+  { label: 'Links', href: '/links' },
   { label: 'Projects', href: '/projects' },
 ] as const;
 

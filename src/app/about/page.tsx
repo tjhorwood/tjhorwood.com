@@ -1,11 +1,9 @@
-import Image from 'next/image';
 import { Metadata } from 'next';
 
 import Link from '@/components/ui/Link';
 import Section from '@/components/Section';
 import ConnectLinks from '@/components/ConnectLinks';
 import Workplaces from '@/components/Workplaces';
-// import Gallery from '@/components/Gallery';
 import Syapse from '@/images/syapse.png';
 import CRFHealth from '@/images/crfhealth.jpg';
 import Amtrak from '@/images/amtrak.png';
@@ -38,29 +36,47 @@ export default function About() {
           <div className='flex flex-col gap-6'>
             <p>Hello world, I&apos;m Taylor Horwood!</p>
             <p>
-              I'm a loving husband and father who loves spending time with my
-              family, whether we're going on adventures, playing games, or just
-              cuddling up on the couch. I'm also a bit of a jack-of-all-trades,
-              with a passion for outdoor activities, working on cars, and
-              creating things in my workshop.
+              I'm a DevOps/SRE engineer with a passion for solving complex
+              problems and building reliable and scalable systems. I'm also a
+              loving husband and father who loves spending time with my family,
+              whether we're going on adventures, playing games, or just cuddling
+              up on the couch watching a good movie. I'm a bit of a
+              jack-of-all-trades, with a passion for outdoor activities, working
+              on cars, and creating things in my workshop.
             </p>
             <p>
               When I'm not spending time with my family, you'll find me outside
-              gaming, hiking, biking, or at the gym. I'm also a bit of a car
+              hiking, biking, gaming, or at the gym. I'm also a bit of a car
               guy, and I love tinkering with cars.
             </p>
             <p>
-              In my workshop, you'll find me building all sorts of things. I
-              love the challenge of figuring out how to make things work, and
-              I'm always coming up with new ideas for things to build.
+              I'm also super passionate about technology outside of work. I have
+              a homelab where I experiment with different software and hardware,
+              and I also enjoy coding for fun.
             </p>
             <p>
-              I'm also very passionate about technology. I have a homelab where
-              I experiment with different software and hardware, and I also
-              enjoy coding for fun. My hobbies have taught me valuable
-              problem-solving skills and a desire to constantly learn and
-              improve.
+              My hobbies have taught me valuable skills that are directly
+              transferable to my work, such as:
             </p>
+            <ul className='ml-6 list-disc space-y-2'>
+              <li>
+                <strong>Problem-solving</strong>: I'm able to think critically
+                and creatively to solve complex problems, both big and small.
+              </li>
+              <li>
+                <strong>Learning agility</strong>: I'm constantly learning new
+                things and staying up-to-date on the latest technologies.
+              </li>
+              <li>
+                <strong>Attention to detail</strong>: I'm meticulous in my work
+                and have a high degree of attention to detail.
+              </li>
+              <li>
+                <strong>Communication and teamwork</strong>: I'm an effective
+                communicator and team player, able to collaborate with others to
+                achieve common goals.
+              </li>
+            </ul>
             <p>
               I'm a well-rounded individual with a wide range of interests, and
               I always bring a unique perspective and a can-do attitude to every
@@ -126,13 +142,17 @@ export default function About() {
         <Section heading='Work' headingAlignment='left'>
           <div className='flex w-full flex-col gap-8'>
             <p>
-              {new Date().getFullYear() - 2011}+ years of professional
-              development experience.
+              {new Date().getFullYear() - 2011}+ years of diverse professional
+              experience.
             </p>
             <p>
-              I started my career teaching others how to code, which I will
-              always be appreciative of. Then I worked at a few small local
-              companies.
+              I began my career in customer facing roles, where I developed
+              strong communication and interpersonal skills. I then transitioned
+              to a technical support role, where I discovered my passion for
+              technology. I have since progressed up the ranks, gaining
+              expertise in cloud computing, software development, and data
+              science. I am very passionate about using technology to solve
+              real-world problems and make a positive impact on the world.
             </p>
             <Workplaces items={workplaces} />
           </div>
@@ -144,7 +164,7 @@ export default function About() {
 
 const workplaces = [
   {
-    title: 'Team Lead - Service Ops Engineering',
+    title: 'Team Lead, Service Ops Engineering',
     company: 'Syapse',
     time: '2022 - 2023',
     imageSrc: Syapse,
@@ -296,13 +316,30 @@ const workplaces = [
     imageSrc: Syapse,
     link: 'https://syapse.com',
     description: [
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
+      {
+        content:
+          'Provide email, telephone, and video-based technical and application support to end-users of the Syapse system to help ensure quality of care for our customers’ patients.',
+      },
+      {
+        content:
+          'Triage and identify solutions to customer incidents and communicate them to Syapse, both internally and to customers.',
+      },
+      {
+        content:
+          'Debug incidents in code to find the root cause of issues and develop solutions following the software development lifecycle.',
+      },
+      {
+        content:
+          'Monitor and manage back-end processes to ensure application uptime requirements and service level agreement compliance.',
+      },
+      {
+        content:
+          'Develop customized reports from databases to extract and collect data for utilization reporting needs.',
+      },
+      {
+        content:
+          'Maintain a detailed understanding of product architecture, technical components, and application functionality, e.g., by configuring the Syapse application and integrating external systems using Python and JavaScript.',
+      },
     ],
   },
   {
@@ -312,29 +349,43 @@ const workplaces = [
     imageSrc: CRFHealth,
     link: 'https://signanthealth.com/',
     description: [
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
+      {
+        content:
+          'Build applications for handheld and tablet platforms according to the requirements gathered and interpretation of the client clinical protocol. Actively participated in client/design/review meetings and performed functional requirements gathering and documentation creation. Also provided guidance to the client on the most suitable solution, ensuring that all recommendations are achievable within the scope of the product.',
+      },
+      {
+        content:
+          'Investigate and propose solutions for change in requirements or potential issue/bug. Work with the Project Managers to ensure complete review of application design for end user use and adherence to a clinical protocol. Support development, review and approval of project related study documentation during the course of the Project Lifecycle, ensure documentation is complete and of a high quality. Present solutions at client design review and testing meetings at customer sites (as needed).',
+      },
+      {
+        content:
+          'Implemented data post-processing tools using Java or other programming languages (Python, Ruby, JavaScript, XML). ',
+      },
+      {
+        content:
+          'Ensure that the Project Team maintains a high quality service and on time delivery of project outputs for the client. Ensure knowledge and understanding remains up-to-date with software releases and updates. Supported the on-boarding and training/mentoring of new hires.',
+      },
     ],
   },
   {
-    title: 'Tier II - Technical Support',
+    title: 'Tier II, Technical Support',
     company: 'CRF Health',
     time: '2013 - 2015',
     imageSrc: CRFHealth,
     link: 'https://signanthealth.com/',
     description: [
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
+      {
+        content:
+          'Provide support for escalated calls from Tier I helpdesk. Ensuring tickets are responded to and resolved in a timely and accurate manner by providing clear and concise instructions and resolutions for escalated issues.',
+      },
+      {
+        content:
+          'Create knowledge base articles and conduct training to Tier I agents on new technologies, best practices for supporting a site or patient call, client specific material, among other topics.',
+      },
+      {
+        content:
+          'Perform local testing and validation of the wireless carrier and landline network infrastructure in various countries world-wide.',
+      },
     ],
   },
   {
@@ -344,13 +395,22 @@ const workplaces = [
     imageSrc: Amtrak,
     link: 'https://amtrak.com',
     description: [
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
-      { content: '' },
+      {
+        content:
+          'Front End Support for Amtrak Applications (WMS, eTrax and Maximo). Worked with multiple groups to provide excellent customer service and troubleshooting skills, in order to promptly resolve any and all issues that arise. Also played a primary role in the integration of RSA Tokens to allow remote access into Amtrak’s Network.',
+      },
+      {
+        content:
+          'WMS (Work Management System) – Monitor, update and troubleshoot over 500 WMS Thin Clients (kiosks used by mechanical employees to enter time, complete reports and order train parts) and over 130 IP Time Clocks (used to clock in and out with SMARTID badges).',
+      },
+      {
+        content:
+          'eTrax – Procurement application used by Amtrak employees to process purchase requisitions, payment requests, expense reports, and book travel. My duty was to monitor and maintain the application, as well as assist its users with all aspects of the site.',
+      },
+      {
+        content:
+          'Maximo – Monitor, update and troubleshoot over 70 TEDs (Time Entry Devices, used by engineering employees to swipe in and out). Also assist employees with issues being experienced with time entry and inspections they are performing on both a computer and on a mobile device.',
+      },
     ],
   },
 ];
