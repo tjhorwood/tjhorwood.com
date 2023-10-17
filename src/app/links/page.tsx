@@ -8,7 +8,7 @@ import ProfilePic from '@/images/profile.png';
 export default function Links() {
   return (
     <>
-      <div className='flex flex-col gap-16'>
+      <div className='mx-auto flex max-w-4xl flex-col gap-16'>
         <div className='flex animate-in flex-col gap-8'>
           <Image
             src={ProfilePic}

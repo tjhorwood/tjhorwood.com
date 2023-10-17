@@ -1,17 +1,17 @@
 import { Metadata } from 'next';
+import { FiDownload } from 'react-icons/fi';
 
 import { skillsData } from '@/lib/data';
 
 import ConnectLinks from '@/components/ConnectLinks';
 import Section from '@/components/Section';
+import { Button } from '@/components/ui/button';
 import Link from '@/components/ui/Link';
 import Workplaces from '@/components/Workplaces';
 
 import Amtrak from '@/images/amtrak.png';
 import CRFHealth from '@/images/crfhealth.jpg';
 import Syapse from '@/images/syapse.png';
-import { Button } from '@/components/ui/button';
-import { FiDownload } from 'react-icons/fi';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <div className='flex flex-col gap-16'>
+    <div className='mx-auto flex max-w-4xl flex-col gap-16'>
       <div>
         <h1 className='animate-in text-3xl font-bold tracking-tight'>
           About Me
@@ -132,7 +132,7 @@ export default function About() {
             <ul className='flex flex-wrap justify-start gap-2'>
               {skillsData.map((skill, index) => (
                 <li
-                  className='rounded-xl bg-secondary px-5 py-3 dark:text-primary'
+                  className='rounded-xl bg-tertiary px-5 py-3 dark:text-primary'
                   key={index}
                 >
                   {skill}
