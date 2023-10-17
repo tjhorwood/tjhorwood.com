@@ -19,6 +19,7 @@ export default function Link(props: LinkProps) {
         props.className,
       )}
       target={isExternal ? '_blank' : undefined}
+      rel='noopener noreferrer'
     >
       {props.children}
     </NextLink>

@@ -54,6 +54,7 @@ export default function Projects() {
                   <a
                     href={project.href}
                     target='_blank'
+                    rel='noopener noreferrer'
                     className='w-full sm:w-40'
                   >
                     <button className='flex w-full items-center justify-center rounded-lg bg-gray-900 px-8 py-2 text-lg text-white outline-none transition hover:scale-105 dark:bg-white/80 dark:text-gray-900'>
