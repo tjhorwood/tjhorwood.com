@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { FiDownload } from 'react-icons/fi';
 
-import { skillsData, platformData } from '@/lib/data';
+import { skillsData, platformData, databaseData } from '@/lib/data';
 
 import ConnectLinks from '@/components/ConnectLinks';
 import Section from '@/components/Section';
@@ -149,6 +149,21 @@ export default function About() {
                   key={index}
                 >
                   {platform}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Section>
+
+        <Section heading='Databases' headingAlignment='left'>
+          <div className='flex w-full flex-col gap-8'>
+            <ul className='flex flex-wrap justify-start gap-2'>
+              {databaseData.map((database, index) => (
+                <li
+                  className='rounded-xl bg-tertiary px-5 py-3 dark:text-primary'
+                  key={index}
+                >
+                  {database}
                 </li>
               ))}
             </ul>
