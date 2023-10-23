@@ -74,7 +74,19 @@ export const platformData = [
   'Prometheus',
   'Grafana',
   'Django',
+  'Jira',
+  'Confluence',
+  'Salesforce',
 ] as const;
+
+export const databaseData = [
+  'PostgreSQL',
+  'MySQL',
+  'SQLite',
+  'MariaDB',
+  'MongoDB',
+  'Redis',
+];
 
 export const experiencesData = [
   {
