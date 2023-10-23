@@ -54,7 +54,39 @@ export const skillsData = [
   'Framer Motion',
   'Wordpress',
   'Webflow',
+  'Angular',
+  'Go',
 ] as const;
+
+export const platformData = [
+  'Visual Studio Code',
+  'Vim',
+  'Bash/ZSH',
+  'Git',
+  'GitHub',
+  'GitLab',
+  'Docker',
+  'Kubernetes',
+  'Terraform',
+  'AWS',
+  'Jenkins',
+  'CircleCi',
+  'Prometheus',
+  'Grafana',
+  'Django',
+  'Jira',
+  'Confluence',
+  'Salesforce',
+] as const;
+
+export const databaseData = [
+  'PostgreSQL',
+  'MySQL',
+  'SQLite',
+  'MariaDB',
+  'MongoDB',
+  'Redis',
+];
 
 export const experiencesData = [
   {

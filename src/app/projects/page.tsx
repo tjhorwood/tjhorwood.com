@@ -20,7 +20,7 @@ export default function Projects() {
           className='animate-in text-secondary'
           style={{ '--index': 1 } as React.CSSProperties}
         >
-          Just a quick glimpse.
+          Here are a few of the projects I have worked on.
         </p>
       </div>
       <div

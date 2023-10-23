@@ -64,8 +64,9 @@ export default async function Home() {
             <li key={item.name}>
               <a
                 className='flex items-center gap-x-2'
-                rel='noopener'
+                rel='noopener noreferrer'
                 href={item.href}
+                target='_blank'
               >
                 <item.icon className='h-6 w-6' />
                 <span>{item.name}</span>

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { FiDownload } from 'react-icons/fi';
 
-import { skillsData } from '@/lib/data';
+import { skillsData, platformData, databaseData } from '@/lib/data';
 
 import ConnectLinks from '@/components/ConnectLinks';
 import Section from '@/components/Section';
@@ -12,6 +12,7 @@ import Workplaces from '@/components/Workplaces';
 import Amtrak from '@/images/amtrak.png';
 import CRFHealth from '@/images/crfhealth.jpg';
 import Syapse from '@/images/syapse.png';
+import { platform } from 'os';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -43,14 +44,9 @@ export default function About() {
               problems and building reliable and scalable systems. I'm also a
               loving husband and father who loves spending time with my family,
               whether we're going on adventures, playing games, or just cuddling
-              up on the couch watching a good movie. I'm a bit of a
-              jack-of-all-trades, with a passion for outdoor activities, working
-              on cars, and creating things in my workshop.
-            </p>
-            <p>
-              When I'm not spending time with my family, you'll find me outside
-              hiking, biking, gaming, or at the gym. I'm also a bit of a car
-              guy, and I love tinkering with cars.
+              up on the couch watching a good movie. When I'm not spending time
+              with my family, you'll find me outside hiking, biking, gaming, at
+              the gym, or tinkering with technology.{' '}
             </p>
             <p>
               I'm also super passionate about technology outside of work. I have
@@ -81,9 +77,11 @@ export default function About() {
               </li>
             </ul>
             <p>
-              I'm a well-rounded individual with a wide range of interests, and
-              I always bring a unique perspective and a can-do attitude to every
-              task.
+              I'm a bit of a jack-of-all-trades, with a passion for outdoor
+              activities, working on cars, creating things, and solving
+              problems. I'm also a well-rounded individual with a wide range of
+              interests, and I always bring a unique perspective and a can-do
+              attitude to every task.
             </p>
           </div>
         </Section>
@@ -136,6 +134,36 @@ export default function About() {
                   key={index}
                 >
                   {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Section>
+
+        <Section heading='Tools & Platforms' headingAlignment='left'>
+          <div className='flex w-full flex-col gap-8'>
+            <ul className='flex flex-wrap justify-start gap-2'>
+              {platformData.map((platform, index) => (
+                <li
+                  className='rounded-xl bg-tertiary px-5 py-3 dark:text-primary'
+                  key={index}
+                >
+                  {platform}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Section>
+
+        <Section heading='Databases' headingAlignment='left'>
+          <div className='flex w-full flex-col gap-8'>
+            <ul className='flex flex-wrap justify-start gap-2'>
+              {databaseData.map((database, index) => (
+                <li
+                  className='rounded-xl bg-tertiary px-5 py-3 dark:text-primary'
+                  key={index}
+                >
+                  {database}
                 </li>
               ))}
             </ul>
