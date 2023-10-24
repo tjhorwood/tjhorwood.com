@@ -64,20 +64,21 @@ export default function Header() {
             leaveTo='opacity-0 translate-y-1'
           >
             <Popover.Panel className='absolute right-0 z-10 mt-2 w-40 origin-top-right overflow-auto rounded-xl bg-white p-2 text-base shadow-lg backdrop-blur-lg focus:outline-none dark:bg-black/95 sm:text-sm'>
-              <div className='grid'>
+              <div className='grid space-y-1'>
                 {links.map((link) => (
-                  <Link
+                  <Popover.Button
+                    as={Link}
                     key={link.href}
                     href={link.href}
                     className={clsx(
-                      'rounded-md px-4 py-2 transition-colors hover:bg-primary hover:text-primary',
+                      'rounded-md px-4 py-2 text-center transition-colors hover:bg-secondary hover:text-primary',
                       pathname === link.href
-                        ? 'bg-secondaryA font-medium'
+                        ? 'bg-secondary font-medium'
                         : 'font-normal',
                     )}
                   >
                     {link.label}
-                  </Link>
+                  </Popover.Button>
                 ))}
               </div>
             </Popover.Panel>
