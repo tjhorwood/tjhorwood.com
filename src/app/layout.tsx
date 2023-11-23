@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${inter.className} width-full bg-primary text-primary antialiased`}
+        className={`${inter.className} width-full no-scrollbar bg-primary text-primary antialiased`}
       >
         <ThemeProvider
           attribute='class'

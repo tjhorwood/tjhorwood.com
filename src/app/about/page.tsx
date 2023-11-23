@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { FiDownload } from 'react-icons/fi';
 
-import { skillsData, platformData, databaseData } from '@/lib/data';
+import { databaseData,platformData, skillsData } from '@/lib/data';
 
 import ConnectLinks from '@/components/ConnectLinks';
 import Section from '@/components/Section';
@@ -12,7 +12,6 @@ import Workplaces from '@/components/Workplaces';
 import Amtrak from '@/images/amtrak.png';
 import CRFHealth from '@/images/crfhealth.jpg';
 import Syapse from '@/images/syapse.png';
-import { platform } from 'os';
 
 export const metadata: Metadata = {
   title: 'About',
