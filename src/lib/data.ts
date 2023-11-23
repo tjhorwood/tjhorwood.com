@@ -10,9 +10,9 @@ import standardcbdImg from '@/images/standardcbd.png';
 import terplandiaImg from '@/images/terplandia.png';
 
 export const links = [
-  { label: 'About', href: '/about' },
-  { label: 'Links', href: '/links' },
-  { label: 'Projects', href: '/projects' },
+  { id: 'about', label: 'About', href: '/about' },
+  { id: 'links', label: 'Links', href: '/links' },
+  { id: 'links', label: 'Projects', href: '/projects' },
 ] as const;
 
 export const socialsData = [

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-import { HiCheck, HiMoon, HiSun } from 'react-icons/hi';
+import { HiMoon, HiSun } from 'react-icons/hi';
 
 const themes = [
   { id: 'system', label: 'Automatic' },
@@ -60,7 +60,7 @@ export default function ThemeSwitcher() {
                         key={theme.id}
                         className={({ active }) =>
                           clsx(
-                            'relative cursor-default select-none rounded-md py-2 pl-10 pr-4',
+                            'relative cursor-default select-none rounded-md px-4 py-2',
                             active
                               ? 'bg-neutral-200/50 dark:bg-neutral-900'
                               : '',
@@ -72,19 +72,13 @@ export default function ThemeSwitcher() {
                           <>
                             <span
                               className={`block truncate ${
-                                selected ? 'font-medium' : 'font-normal'
+                                selected
+                                  ? 'bg-neutral-200/50 font-medium dark:bg-neutral-900'
+                                  : 'font-normal'
                               }`}
                             >
                               {theme.label}
                             </span>
-                            {selected ? (
-                              <span className='absolute inset-y-0 left-0 flex items-center pl-3 dark:text-neutral-50'>
-                                <HiCheck
-                                  className='h-5 w-5'
-                                  aria-hidden='true'
-                                />
-                              </span>
-                            ) : null}
                           </>
                         )}
                       </Listbox.Option>
