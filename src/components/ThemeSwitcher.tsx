@@ -53,15 +53,18 @@ export default function ThemeSwitcher() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ type: 'spring', bounce: 0.3, duration: 0.3 }}
-                    className='w-42 absolute right-0 mt-2 max-h-60 origin-top-right overflow-auto rounded-xl bg-white p-2 text-base shadow-lg backdrop-blur-lg focus:outline-none dark:bg-black sm:text-sm'
+                    className='absolute right-0 mt-2 max-h-60 w-36 origin-top-right space-y-1 overflow-auto rounded-xl bg-white p-2 text-base shadow-lg backdrop-blur-lg focus:outline-none dark:bg-black sm:text-sm'
                   >
                     {themes.map((theme) => (
                       <Listbox.Option
                         key={theme.id}
-                        className={({ active }) =>
+                        className={({ active, selected }) =>
                           clsx(
-                            'relative cursor-default select-none rounded-md px-4 py-2',
+                            'relative w-full cursor-pointer select-none rounded-md px-4 py-2',
                             active
+                              ? 'bg-neutral-200/50 dark:bg-neutral-900'
+                              : '',
+                            selected
                               ? 'bg-neutral-200/50 dark:bg-neutral-900'
                               : '',
                           )
@@ -71,10 +74,8 @@ export default function ThemeSwitcher() {
                         {({ selected }) => (
                           <>
                             <span
-                              className={`block truncate ${
-                                selected
-                                  ? 'bg-neutral-200/50 font-medium dark:bg-neutral-900'
-                                  : 'font-normal'
+                              className={`relative w-full ${
+                                selected ? 'font-medium' : 'font-normal'
                               }`}
                             >
                               {theme.label}
