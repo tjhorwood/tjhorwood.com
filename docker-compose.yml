@@ -1,0 +1,13 @@
+---
+version: '3.9'
+
+services:
+  nationalleaguegaming:
+    container_name: tjhorwood
+    image: tjhorwood
+    restart: always
+    ports:
+      - 3033:3033
+    build:
+      context: .
+      dockerfile: Dockerfile
