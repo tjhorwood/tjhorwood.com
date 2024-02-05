@@ -37,7 +37,11 @@ export async function loader({ request }: LoaderFunctionArgs) {
 export default function AppWithProviders() {
   const data = useLoaderData<typeof loader>();
   return (
-    <ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme" disableTransitionOnThemeChange>
+    <ThemeProvider
+      specifiedTheme={data.theme}
+      themeAction="/action/set-theme"
+      disableTransitionOnThemeChange
+    >
       <App />
     </ThemeProvider>
   );
@@ -55,9 +59,9 @@ export function App() {
         <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
         <Links />
       </head>
-      <body style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }} className="w-full bg-background text-primary transition-colors no-scrollbar antialiased">
+      <body className="bg-background text-primary no-scrollbar w-full antialiased transition-colors">
         <Header />
-        <div className='px-6 pb-24 pt-16 md:px-6 md:pb-44 md:pt-20'>
+        <div className="px-6 pb-24 pt-16 md:px-6 md:pb-44 md:pt-20">
           <Outlet />
         </div>
         <ScrollRestoration />
