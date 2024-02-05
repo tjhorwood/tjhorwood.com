@@ -7,5 +7,9 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Links() {
-  return <h1>Links Page</h1>;
+  return (
+    <div className="container">
+      <h1>Links Page</h1>
+    </div>
+  );
 }

@@ -15,8 +15,8 @@ import { headerLinks } from "@/lib/data";
 export default function Header() {
   const [, setTheme] = useTheme();
   return (
-    <header className="relative top-0 z-20">
-      <nav className="lg mx-auto flex max-w-4xl items-center justify-between gap-3 px-4 py-3 md:px-6">
+    <header className="container relative top-0 z-20 bg-background transition-colors">
+      <nav className="mx-auto flex max-w-4xl items-center justify-between gap-3 py-3">
         <NavLink to="/" className="text-primary shrink-0">
           <svg
             version="1.2"
@@ -49,7 +49,7 @@ export default function Header() {
         <div className="ml-auto flex h-8 w-8 items-center justify-center md:ml-0">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="text-primary transition-colors">
                 <RiSunFill className="block h-5 w-5 transition-all dark:hidden" />
                 <RiMoonFill className="hidden h-5 w-5 transition-all dark:block" />
                 <span className="sr-only">Toggle theme</span>

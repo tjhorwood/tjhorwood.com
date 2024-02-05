@@ -7,5 +7,9 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Projects() {
-  return <h1>Projects Page</h1>;
+  return (
+    <div className="container">
+      <h1>Projects Page</h1>
+    </div>
+  );
 }
