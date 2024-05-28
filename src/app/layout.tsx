@@ -5,6 +5,7 @@ import '@/styles/globals.css';
 
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,6 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
+      <head>
+        <Script defer src="https://umami.tjhorwood.com/script.js" data-website-id="41944f1f-525f-41e1-ac85-b745ca2b6d6b" />
+      </head>
       <body
         className={`${inter.className} width-full no-scrollbar bg-primary text-primary antialiased`}
       >
