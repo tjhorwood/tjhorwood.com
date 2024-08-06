@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const Custom404 = (): JSX.Element => (
-  <div className='flex flex-col gap-2'>
+  <div className='mx-auto flex max-w-4xl flex-col gap-2'>
     <h1>404 - Page not found</h1>
     <p className='text-secondary'>
       Uh oh! This page does not exists, maybe you clicked an old link or
