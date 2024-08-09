@@ -1,4 +1,9 @@
-import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from '@headlessui/react';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
@@ -35,7 +40,7 @@ export default function ThemeSwitcher() {
             <div className='relative'>
               <ListboxButton
                 className={clsx(
-                  'relative flex h-8 w-8 cursor-default items-center justify-center rounded-full focus:outline-none ',
+                  'relative flex h-8 w-8 cursor-default items-center justify-center rounded-full focus:outline-none',
                 )}
               >
                 {resolvedTheme === 'dark' ? (
@@ -74,8 +79,9 @@ export default function ThemeSwitcher() {
                         {({ selected }) => (
                           <>
                             <span
-                              className={`relative w-full ${selected ? 'font-medium' : 'font-normal'
-                                }`}
+                              className={`relative w-full ${
+                                selected ? 'font-medium' : 'font-normal'
+                              }`}
                             >
                               {theme.label}
                             </span>

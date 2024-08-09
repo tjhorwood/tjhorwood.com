@@ -37,7 +37,7 @@ export default function Links() {
         </div>
 
         <ul
-          className='animated-list grid flex-grow animate-in grid-cols-1 gap-2 lg:gap-3 mx-auto w-full md:w-9/12'
+          className='animated-list mx-auto grid w-full flex-grow animate-in grid-cols-1 gap-2 md:w-9/12 lg:gap-3'
           style={{ '--index': 3 } as React.CSSProperties}
         >
           {ConnectLinks.map((link) => (
