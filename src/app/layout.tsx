@@ -5,7 +5,6 @@ import '@/styles/globals.css';
 
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/ThemeProvider';
-import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 

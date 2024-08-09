@@ -46,10 +46,15 @@ module.exports = {
           '0%': { transform: 'translateY(-18px)', opacity: 0 },
           '100%': { transform: 'translateY(0px)', opacity: 1 },
         },
+        'in-from-right': {
+          '0%': { transform: 'translateX(100%)', opacity: 0 },
+          '100%': { transform: 'translateX(0)', opacity: 1 },
+        },
       },
       animation: {
         in: 'in .6s both',
         'in-reverse': 'in-reverse .6s both',
+        'in-from-right': 'in-from-right .3s both',
       },
     },
   },

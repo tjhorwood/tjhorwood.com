@@ -51,7 +51,7 @@ function Workplace({
         <SheetTrigger className='-mx-3 -my-2 flex w-full justify-between px-3 py-2 no-underline'>
           {content}
         </SheetTrigger>
-        <SheetContent>
+        <SheetContent className='w-11/12'>
           <SheetHeader>
             <SheetTitle>{title}</SheetTitle>
             <SheetDescription>{company}</SheetDescription>

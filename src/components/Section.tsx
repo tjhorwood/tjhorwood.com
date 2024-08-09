@@ -19,7 +19,7 @@ export default function Section({
   return (
     <section
       className={cn(
-        'col-reverse flex flex-col gap-2 md:flex-row md:gap-9',
+        'col-reverse flex flex-col gap-2 md:flex-row md:gap-8',
         sectionClass,
       )}
     >
