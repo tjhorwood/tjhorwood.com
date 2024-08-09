@@ -8,7 +8,7 @@ import ProfilePic from '@/images/profile.png';
 export default function Links() {
   return (
     <>
-      <div className='mx-auto flex max-w-4xl flex-col gap-16'>
+      <div className='mx-auto flex max-w-5xl flex-col gap-16'>
         <div className='flex animate-in flex-col gap-8'>
           <Image
             src={ProfilePic}
@@ -37,7 +37,7 @@ export default function Links() {
         </div>
 
         <ul
-          className='animated-list grid flex-grow animate-in grid-cols-1 gap-2 lg:gap-3'
+          className='animated-list grid flex-grow animate-in grid-cols-1 gap-2 lg:gap-3 mx-auto w-full md:w-9/12'
           style={{ '--index': 3 } as React.CSSProperties}
         >
           {ConnectLinks.map((link) => (

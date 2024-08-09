@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <header className='relative top-0 z-20 bg-primary md:sticky'>
-      <nav className='lg mx-auto flex max-w-4xl items-center justify-between gap-3 px-4 py-3 md:px-6'>
+      <nav className='lg mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3'>
         <Link href='/' className='shrink-0 text-secondary'>
           <svg
             version='1.2'
