@@ -10,9 +10,9 @@ import ProfilePic from '@/images/profile.png';
 export default async function Home() {
   return (
     <div className='mx-auto flex max-w-4xl flex-col gap-16'>
-      <div className='animate-in flex flex-col gap-8'>
+      <div className='flex animate-in flex-col gap-8'>
         <div
-          className='animate-in text-secondary flex flex-col-reverse gap-6 md:flex-row md:items-center'
+          className='flex animate-in flex-col-reverse gap-6 text-secondary md:flex-row md:items-center'
           style={{ '--index': 1 } as React.CSSProperties}
         >
           <Image
@@ -20,11 +20,11 @@ export default async function Home() {
             alt='avatar'
             width={150}
             height={150}
-            className='bg-secondary rounded-full'
+            className='rounded-full bg-secondary'
             unoptimized={true}
           />
           <div className='ml-2 space-y-1'>
-            <h1 className='animate-in text-primary text-3xl font-bold tracking-tight'>
+            <h1 className='animate-in text-3xl font-bold tracking-tight text-primary'>
               Taylor Horwood
             </h1>
             <p
@@ -33,7 +33,7 @@ export default async function Home() {
             >
               Developer, tinkerer, indie hacker
             </p>
-            <ul className='animated-list animate-in text-secondary hidden space-x-6 pt-4 md:flex md:justify-start'>
+            <ul className='animated-list hidden animate-in space-x-6 pt-4 text-secondary md:flex md:justify-start'>
               {socialsData.map((item) => (
                 <li key={item.name}>
                   <a
@@ -60,7 +60,7 @@ export default async function Home() {
           collaborate to transform your dream into digital magic, shaping a
           future where innovation meets unwavering reliability!
         </p>
-        <ul className='animated-list animate-in text-secondary flex justify-start space-x-6 py-2 md:hidden'>
+        <ul className='animated-list flex animate-in justify-start space-x-6 py-2 text-secondary md:hidden'>
           {socialsData.map((item) => (
             <li key={item.name}>
               <a
@@ -76,7 +76,7 @@ export default async function Home() {
           ))}
         </ul>
         <ul
-          className='animated-list animate-in text-secondary flex flex-col gap-2 md:flex-row md:gap-6'
+          className='animated-list flex animate-in flex-col gap-2 text-secondary md:flex-row md:gap-6'
           style={{ '--index': 2 } as React.CSSProperties}
         >
           <li className='transition-opacity'>

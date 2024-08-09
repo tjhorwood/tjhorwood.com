@@ -1,7 +1,12 @@
 import { Metadata } from 'next';
 import { FiDownload } from 'react-icons/fi';
 
-import { databaseData, platformData, skillsData, workplacesData } from '@/lib/data';
+import {
+  databaseData,
+  platformData,
+  skillsData,
+  workplacesData,
+} from '@/lib/data';
 
 import ConnectLinks from '@/components/ConnectLinks';
 import Section from '@/components/Section';
@@ -168,7 +173,8 @@ export default function About() {
         <Section heading='Work' headingAlignment='left'>
           <div className='flex w-full flex-col gap-8'>
             <p>
-              {new Date().getFullYear() - 2011}+ years of diverse professional experience.
+              {new Date().getFullYear() - 2011}+ years of diverse professional
+              experience.
             </p>
             <p>
               I began my career in customer facing roles, where I developed
