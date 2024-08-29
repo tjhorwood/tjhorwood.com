@@ -18,6 +18,27 @@ export const metadata: Metadata = {
   title: 'About',
 };
 
+const ListSection = ({
+  heading,
+  data,
+}: {
+  heading: string;
+  data: string[];
+}) => (
+  <Section heading={heading} headingAlignment='left'>
+    <ul className='flex flex-wrap justify-start gap-2'>
+      {data.map((item, index) => (
+        <li
+          key={index}
+          className='rounded-xl bg-tertiary px-5 py-3 dark:text-primary'
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  </Section>
+);
+
 export default function About() {
   return (
     <div className='mx-auto flex max-w-5xl flex-col gap-16'>
@@ -126,50 +147,15 @@ export default function About() {
           </div>
         </Section>
 
-        <Section heading='Skills' headingAlignment='left'>
-          <div className='flex w-full flex-col gap-8'>
-            <ul className='flex flex-wrap justify-start gap-2'>
-              {skillsData.map((skill, index) => (
-                <li
-                  className='rounded-xl bg-tertiary px-5 py-3 dark:text-primary'
-                  key={index}
-                >
-                  {skill}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Section>
-
-        <Section heading='Tools & Platforms' headingAlignment='left'>
-          <div className='flex w-full flex-col gap-8'>
-            <ul className='flex flex-wrap justify-start gap-2'>
-              {platformData.map((platform, index) => (
-                <li
-                  className='rounded-xl bg-tertiary px-5 py-3 dark:text-primary'
-                  key={index}
-                >
-                  {platform}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Section>
-
-        <Section heading='Databases' headingAlignment='left'>
-          <div className='flex w-full flex-col gap-8'>
-            <ul className='flex flex-wrap justify-start gap-2'>
-              {databaseData.map((database, index) => (
-                <li
-                  className='rounded-xl bg-tertiary px-5 py-3 dark:text-primary'
-                  key={index}
-                >
-                  {database}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Section>
+        <ListSection
+          heading='Skills'
+          data={skillsData as unknown as string[]}
+        />
+        <ListSection
+          heading='Tools & Platforms'
+          data={platformData as unknown as string[]}
+        />
+        <ListSection heading='Databases' data={databaseData as string[]} />
 
         <Section heading='Work' headingAlignment='left'>
           <div className='flex w-full flex-col gap-8'>
@@ -186,7 +172,10 @@ export default function About() {
               science. I am very passionate about using technology to solve
               real-world problems and make a positive impact on the world.
             </p>
-            <Workplaces items={workplacesData} />
+            <Workplaces items={workplacesData.map(item => ({
+              ...item,
+              imageSrc: item.imageSrc.src
+            }))} />
             <Button
               className='bg-secondary text-center'
               variant='default'

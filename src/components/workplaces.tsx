@@ -1,10 +1,8 @@
 import cn from 'clsx';
-import Image, { StaticImageData } from 'next/image';
-
+import Image from 'next/image';
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -13,10 +11,10 @@ import {
 type Workplace = {
   title: string;
   company: string;
-  imageSrc: string | StaticImageData;
+  imageSrc: string;
   time?: string;
   link?: string;
-  description?: any;
+  description?: { content: string }[];
 };
 
 function Workplace({
@@ -45,36 +43,36 @@ function Workplace({
       {time && <p className='ml-3 text-right text-secondary'>{time}</p>}
     </>
   );
+
   return (
-    <li className='transition-opacity' key={company}>
-      <Sheet>
-        <SheetTrigger className='-mx-3 -my-2 flex w-full justify-between px-3 py-2 no-underline'>
-          {content}
-        </SheetTrigger>
-        <SheetContent className='w-11/12'>
-          <SheetHeader>
-            <SheetTitle>{title}</SheetTitle>
-            <SheetDescription>{company}</SheetDescription>
-          </SheetHeader>
-          <p className='py-4 text-secondary'>
-            Below you will find some of the key responsibilites for this role:
-          </p>
-          <ul className='ml-4 list-disc space-y-3'>
-            {description &&
-              description.map((item: any, itemIdx: any) => (
-                <li key={itemIdx}>{item.content}</li>
-              ))}
-          </ul>
-        </SheetContent>
-      </Sheet>
-    </li>
+    <Sheet>
+      <SheetTrigger className='-mx-3 -my-2 flex w-full justify-between px-3 py-2 no-underline'>
+        {content}
+      </SheetTrigger>
+      <SheetContent className='w-11/12'>
+        <SheetHeader>
+          <SheetTitle>{title}</SheetTitle>
+          <p className='text-secondary'>{company}</p>
+        </SheetHeader>
+        <p className='py-4 text-secondary'>Key responsibilities:</p>
+        <ul className='ml-4 list-disc space-y-3'>
+          {description?.map(({ content }, index) => (
+            <li key={index}>{content}</li>
+          ))}
+        </ul>
+      </SheetContent>
+    </Sheet>
   );
 }
 
 export default function Workplaces({ items }: { items: Workplace[] }) {
   return (
     <ul className='animated-list flex flex-col gap-8'>
-      {items.map(Workplace)}
+      {items.map((item, index) => (
+        <li key={index}>
+          <Workplace {...item} />
+        </li>
+      ))}
     </ul>
   );
 }
