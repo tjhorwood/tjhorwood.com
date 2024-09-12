@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Additional styles */
+@import 'additional-styles/utility-patterns.css';
+@import 'additional-styles/range-slider.css';
+@import 'additional-styles/toggle-switch.css';
+@import 'additional-styles/theme.css';
+
 @import '@radix-ui/colors/gray.css';
 @import '@radix-ui/colors/gray-alpha.css';
 @import '@radix-ui/colors/gray-dark.css';
@@ -156,6 +162,63 @@ input:-webkit-autofill:focus {
       0px 0px 20px #d2a8ff,
       inset 0px 1px 3px rgba(255, 255, 255, 0.22);
   }
+}
+
+@keyframes sending-animation {
+  0% {
+    background-color: #dbeafe;
+    transform: scale(1);
+  }
+  50% {
+    background-color: #bfdbfe; /* Blue sending color */
+    transform: scale(1.02);
+  }
+  100% {
+    background-color: #bfdbfe;
+    transform: scale(1);
+  }
+}
+
+@keyframes error-animation {
+  0% {
+    background-color: #fee2e2; /* Original button color */
+    transform: scale(1);
+  }
+  50% {
+    background-color: #fecaca; /* Green success color */
+    transform: scale(1.02);
+  }
+  100% {
+    background-color: #fecaca;
+    transform: scale(1);
+  }
+}
+
+@keyframes success-animation {
+  0% {
+    background-color: #dcfce7;
+    transform: scale(1);
+  }
+  50% {
+    background-color: #bbf7d0; /* Red error color */
+    transform: scale(1.02);
+  }
+  100% {
+    background-color: #bbf7d0;
+    transform: scale(1);
+  }
+}
+
+.button-animate-success {
+  animation: success-animation 0.6s ease-in-out forwards;
+}
+
+.button-animate-error {
+  animation: error-animation 0.6s ease-in-out forwards;
+}
+
+.button-animate-sending {
+  animation: sending-animation 0.6s ease-in-out forwards;
 }
 
 @media (hover: hover) {

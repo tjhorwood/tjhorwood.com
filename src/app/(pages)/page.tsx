@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import { FiArrowUpRight, FiDownload } from 'react-icons/fi';
+
 import { socialsData } from '@/lib/data';
+
 import Link from '@/components/link';
+
 import ProfilePic from '@/images/profile.png';
 
 const SocialLinks = ({ className }: { className: string }) => (
@@ -54,11 +57,11 @@ export default function Home() {
           className='animate-in text-primary'
           style={{ '--index': 2 } as React.CSSProperties}
         >
-          Hello world, I'm Taylor Horwood a site reliability engineer by day and
-          full stack developer by night. I create flawless front-end experiences
-          while taming DevOps challenges for seamless, dependable systems. Let's
-          collaborate to transform your dream into digital magic, shaping a
-          future where innovation meets unwavering reliability!
+          Hello world, I&apos;m Taylor Horwood a site reliability engineer by
+          day and full stack developer by night. I create flawless front-end
+          experiences while taming DevOps challenges for seamless, dependable
+          systems. Let&apos;s collaborate to transform your dream into digital
+          magic, shaping a future where innovation meets unwavering reliability!
         </p>
         <SocialLinks className='animated-list flex animate-in justify-start space-x-6 py-2 text-secondary md:hidden' />
         <ul
@@ -67,13 +70,8 @@ export default function Home() {
         >
           {[
             {
-              href: 'mailto:contact@tjhorwood.com',
-              text: 'Email me',
-              icon: FiArrowUpRight,
-            },
-            {
-              href: '/links',
-              text: 'More ways to connect',
+              href: '/contact',
+              text: 'Contact me',
               icon: FiArrowUpRight,
             },
             { href: '/resume.pdf', text: 'Download Resume', icon: FiDownload },

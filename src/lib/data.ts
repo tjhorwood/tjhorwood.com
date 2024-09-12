@@ -13,10 +13,10 @@ import terplandiaImg from '@/images/terplandia.png';
 
 export const links = [
   { id: 'about', label: 'About', href: '/about' },
-  { id: 'links', label: 'Links', href: '/links' },
   { id: 'projects', label: 'Projects', href: '/projects' },
   { id: 'blog', label: 'Blog', href: '/blog' },
   { id: 'gear', label: 'Gear', href: '/gear' },
+  { id: 'contact', label: 'Contact', href: '/contact' },
 ] as const;
 
 export const socialsData = [

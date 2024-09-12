@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
-import dynamic from 'next/dynamic';
 
 import '@/styles/globals.css';
 
@@ -39,9 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <div className='px-6 pb-24 pt-16 md:px-6 md:pb-44 md:pt-20'>
-            {children}
-          </div>
+          {children}
         </ThemeProvider>
         <Suspense fallback={null}>
           <MatomoAnalytics />
