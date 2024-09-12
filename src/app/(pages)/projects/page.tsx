@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
 
@@ -6,8 +5,6 @@ import { projectsData } from '@/lib/data';
 
 import Link from '@/components/link';
 import Section from '@/components/section';
-
-export const metadata: Metadata = { title: 'Projects' };
 
 export default function Projects() {
   return (

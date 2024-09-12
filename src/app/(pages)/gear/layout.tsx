@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About',
-  description: 'About Me',
+  title: 'Gear',
+  description: 'My Gear',
 };
 
-export default function AboutLayout({
+export default function GearLayout({
   children,
 }: {
   children: React.ReactNode;

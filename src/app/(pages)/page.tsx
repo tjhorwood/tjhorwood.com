@@ -57,11 +57,11 @@ export default function Home() {
           className='animate-in text-primary'
           style={{ '--index': 2 } as React.CSSProperties}
         >
-          Hello world, I&apos;m Taylor Horwood a site reliability engineer by day and
-          full stack developer by night. I create flawless front-end experiences
-          while taming DevOps challenges for seamless, dependable systems. Let&apos;s
-          collaborate to transform your dream into digital magic, shaping a
-          future where innovation meets unwavering reliability!
+          Hello world, I&apos;m Taylor Horwood a site reliability engineer by
+          day and full stack developer by night. I create flawless front-end
+          experiences while taming DevOps challenges for seamless, dependable
+          systems. Let&apos;s collaborate to transform your dream into digital
+          magic, shaping a future where innovation meets unwavering reliability!
         </p>
         <SocialLinks className='animated-list flex animate-in justify-start space-x-6 py-2 text-secondary md:hidden' />
         <ul
