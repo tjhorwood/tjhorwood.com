@@ -86,14 +86,14 @@ export default function Contact() {
     </div>
   );
 
-  const buttonClassName = `w-full text-lg transition hover:scale-[1.02] ${
+  const buttonClassName = `w-full text-lg transition-all hover:scale-[1.02] ${
     status.type === 'success'
       ? 'button-animate-success font-semibold text-green-700'
       : status.type === 'error'
         ? 'button-animate-error font-semibold text-red-700'
         : status.type === 'sending'
-          ? 'bg-gray-900 text-white dark:bg-white/80 dark:text-gray-900'
-          : 'bg-gray-900 text-white dark:bg-white/80 dark:text-gray-900'
+          ? 'bg-gray-900 hover:bg-gray-900/90 text-white dark:bg-white/80 dark:text-gray-900'
+          : 'bg-gray-900 hover:bg-gray-900/90 text-white dark:bg-white/80 dark:text-gray-900'
   }`;
 
   return (
@@ -151,11 +151,11 @@ export default function Contact() {
             More ways to connect
           </p>
           <ul
-            className='animated-list grid w-full flex-grow animate-in grid-cols-1 gap-4'
+            className='grid w-full flex-grow animate-in grid-cols-1 gap-4'
             style={{ '--index': 3 } as React.CSSProperties}
           >
             {ConnectLinks.map(({ label, href, icon }) => (
-              <li key={label} className='col-span-1 transition-opacity'>
+              <li key={label} className='col-span-1 transition-all hover:scale-105'>
                 <Link
                   href={href}
                   className='inline-grid w-full rounded-lg bg-tertiary p-4 no-underline transition-opacity'

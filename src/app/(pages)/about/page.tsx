@@ -26,7 +26,7 @@ const ListSection = ({
       {data.map((item, index) => (
         <li
           key={index}
-          className='rounded-xl bg-tertiary px-5 py-3 dark:text-primary'
+          className='rounded-xl bg-tertiary px-4 py-2 dark:text-primary'
         >
           {item}
         </li>
