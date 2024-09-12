@@ -13,7 +13,10 @@ export default function Projects() {
   return (
     <div className='mx-auto flex max-w-5xl flex-col gap-12'>
       <header>
-        <h1 className='animate-in text-3xl font-bold tracking-tight' style={{ '--index': 1 } as React.CSSProperties}>
+        <h1
+          className='animate-in text-3xl font-bold tracking-tight'
+          style={{ '--index': 1 } as React.CSSProperties}
+        >
           Projects
         </h1>
         <p

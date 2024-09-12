@@ -39,8 +39,10 @@ export default function About() {
   return (
     <div className='mx-auto flex max-w-5xl flex-col gap-12'>
       <div>
-        <h1 className='animate-in text-3xl font-bold tracking-tight'
-        style={{ '--index': 1 } as React.CSSProperties}>
+        <h1
+          className='animate-in text-3xl font-bold tracking-tight'
+          style={{ '--index': 1 } as React.CSSProperties}
+        >
           About Me
         </h1>
         <p
@@ -51,7 +53,7 @@ export default function About() {
         </p>
       </div>
       <div
-        className='animate-in flex flex-col gap-16 md:gap-24'
+        className='flex animate-in flex-col gap-16 md:gap-24'
         style={{ '--index': 3 } as React.CSSProperties}
       >
         <Section heading='About' headingAlignment='left'>

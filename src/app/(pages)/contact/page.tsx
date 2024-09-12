@@ -1,11 +1,11 @@
 'use client';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 
+import ConnectLinks from '@/components/connect-links';
+import Link from '@/components/link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import ConnectLinks from '@/components/connect-links';
-import Link from '@/components/link';
 
 const initialFormData = {
   firstname: '',
@@ -112,12 +112,15 @@ export default function Contact() {
           love to hear from you!
         </p>
       </div>
-      <div className='flex flex-col md:flex-row gap-12 lg:px-4'>
+      <div className='flex flex-col gap-12 md:flex-row lg:px-4'>
         <div
-          className='w-full md:w-2/3 animate-in'
+          className='w-full animate-in md:w-2/3'
           style={{ '--index': 2 } as React.CSSProperties}
         >
-          <form className='mx-auto max-w-full space-y-4' onSubmit={handleSubmit}>
+          <form
+            className='mx-auto max-w-full space-y-4'
+            onSubmit={handleSubmit}
+          >
             <div className='-mx-3 flex flex-wrap space-y-4 sm:space-y-0'>
               {renderField('firstname', 'First Name')}
               {renderField('lastname', 'Last Name')}
@@ -141,10 +144,12 @@ export default function Contact() {
           </form>
         </div>
         <div
-          className='w-full md:w-1/3 animate-in'
+          className='w-full animate-in md:w-1/3'
           style={{ '--index': 3 } as React.CSSProperties}
         >
-          <p className='mb-1 block text-sm font-medium text-primary'>More ways to connect</p>
+          <p className='mb-1 block text-sm font-medium text-primary'>
+            More ways to connect
+          </p>
           <ul
             className='animated-list grid w-full flex-grow animate-in grid-cols-1 gap-4'
             style={{ '--index': 3 } as React.CSSProperties}
