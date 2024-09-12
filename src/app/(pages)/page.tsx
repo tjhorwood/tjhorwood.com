@@ -57,9 +57,9 @@ export default function Home() {
           className='animate-in text-primary'
           style={{ '--index': 2 } as React.CSSProperties}
         >
-          Hello world, I'm Taylor Horwood a site reliability engineer by day and
+          Hello world, I&apos;m Taylor Horwood a site reliability engineer by day and
           full stack developer by night. I create flawless front-end experiences
-          while taming DevOps challenges for seamless, dependable systems. Let's
+          while taming DevOps challenges for seamless, dependable systems. Let&apos;s
           collaborate to transform your dream into digital magic, shaping a
           future where innovation meets unwavering reliability!
         </p>
