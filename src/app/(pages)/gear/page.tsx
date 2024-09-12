@@ -1,6 +1,6 @@
 export default function Gear() {
   return (
-    <div className='mx-auto flex max-w-5xl flex-col gap-16'>
+    <div className='mx-auto flex max-w-5xl flex-col gap-12'>
       <div>
         <h1 className='animate-in text-3xl font-bold tracking-tight'>Gear</h1>
         <p

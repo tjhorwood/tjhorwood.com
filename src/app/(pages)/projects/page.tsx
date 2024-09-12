@@ -1,22 +1,24 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
+import { StaticImageData } from 'next/image';
+
 import { projectsData } from '@/lib/data';
+
 import Link from '@/components/link';
 import Section from '@/components/section';
-import { StaticImageData } from 'next/image';
 
 export const metadata: Metadata = { title: 'Projects' };
 
 export default function Projects() {
   return (
-    <div className='mx-auto flex max-w-5xl flex-col gap-16'>
+    <div className='mx-auto flex max-w-5xl flex-col gap-12'>
       <header>
-        <h1 className='animate-in text-3xl font-bold tracking-tight'>
+        <h1 className='animate-in text-3xl font-bold tracking-tight' style={{ '--index': 1 } as React.CSSProperties}>
           Projects
         </h1>
         <p
           className='animate-in text-secondary'
-          style={{ '--index': 1 } as React.CSSProperties}
+          style={{ '--index': 2 } as React.CSSProperties}
         >
           Here are a few of the projects I have worked on.
         </p>

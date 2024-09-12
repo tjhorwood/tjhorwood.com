@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+'use-client';
 import { FiDownload } from 'react-icons/fi';
 
 import {
@@ -13,10 +13,6 @@ import Link from '@/components/link';
 import Section from '@/components/section';
 import { Button } from '@/components/ui/button';
 import Workplaces from '@/components/workplaces';
-
-export const metadata: Metadata = {
-  title: 'About',
-};
 
 const ListSection = ({
   heading,
@@ -41,20 +37,21 @@ const ListSection = ({
 
 export default function About() {
   return (
-    <div className='mx-auto flex max-w-5xl flex-col gap-16'>
+    <div className='mx-auto flex max-w-5xl flex-col gap-12'>
       <div>
-        <h1 className='animate-in text-3xl font-bold tracking-tight'>
+        <h1 className='animate-in text-3xl font-bold tracking-tight'
+        style={{ '--index': 1 } as React.CSSProperties}>
           About Me
         </h1>
         <p
           className='animate-in text-secondary'
-          style={{ '--index': 1 } as React.CSSProperties}
+          style={{ '--index': 2 } as React.CSSProperties}
         >
           Just a quick glimpse.
         </p>
       </div>
       <div
-        className='flex animate-in flex-col gap-16 md:gap-24'
+        className='animate-in flex flex-col gap-16 md:gap-24'
         style={{ '--index': 3 } as React.CSSProperties}
       >
         <Section heading='About' headingAlignment='left'>
@@ -172,10 +169,12 @@ export default function About() {
               science. I am very passionate about using technology to solve
               real-world problems and make a positive impact on the world.
             </p>
-            <Workplaces items={workplacesData.map(item => ({
-              ...item,
-              imageSrc: item.imageSrc.src
-            }))} />
+            <Workplaces
+              items={workplacesData.map((item) => ({
+                ...item,
+                imageSrc: item.imageSrc.src,
+              }))}
+            />
             <Button
               className='bg-secondary text-center'
               variant='default'

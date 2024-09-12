@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import { FiArrowUpRight, FiDownload } from 'react-icons/fi';
+
 import { socialsData } from '@/lib/data';
+
 import Link from '@/components/link';
+
 import ProfilePic from '@/images/profile.png';
 
 const SocialLinks = ({ className }: { className: string }) => (
@@ -67,13 +70,8 @@ export default function Home() {
         >
           {[
             {
-              href: 'mailto:contact@tjhorwood.com',
-              text: 'Email me',
-              icon: FiArrowUpRight,
-            },
-            {
-              href: '/links',
-              text: 'More ways to connect',
+              href: '/contact',
+              text: 'Contact me',
               icon: FiArrowUpRight,
             },
             { href: '/resume.pdf', text: 'Download Resume', icon: FiDownload },
