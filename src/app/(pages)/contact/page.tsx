@@ -155,7 +155,10 @@ export default function Contact() {
             style={{ '--index': 3 } as React.CSSProperties}
           >
             {ConnectLinks.map(({ label, href, icon }) => (
-              <li key={label} className='col-span-1 transition-all hover:scale-105'>
+              <li
+                key={label}
+                className='col-span-1 transition-all hover:scale-105'
+              >
                 <Link
                   href={href}
                   className='inline-grid w-full rounded-lg bg-tertiary p-4 no-underline transition-opacity'
