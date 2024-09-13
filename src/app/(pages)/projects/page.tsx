@@ -50,13 +50,13 @@ function ProjectCard({
 }) {
   return (
     <div className='mb-6 break-inside-avoid'>
-      <div className='hover:shadow-primary/50 dark:hover:shadow-primary/50 group relative transform overflow-hidden rounded-xl bg-tertiary transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg'>
+      <div className='md:hover:shadow-primary/50 dark:md:hover:shadow-primary/50 group relative transform overflow-hidden rounded-xl bg-tertiary transition-all duration-300 md:hover:-translate-y-1 md:hover:scale-[1.02] md:hover:shadow-lg'>
         <div className='relative h-64 overflow-hidden p-2'>
           <Image
             src={imageUrl}
             alt={title}
             quality={95}
-            className='h-full w-full rounded-lg object-cover object-top transition-transform duration-300 group-hover:scale-105'
+            className='h-full w-full rounded-lg object-cover object-top transition-transform duration-300 group-hover:md:scale-105'
             unoptimized={true}
           />
         </div>
