@@ -7,7 +7,7 @@ import Link from '@/components/link';
 
 export default function Projects() {
   return (
-    <div className='mx-auto flex max-w-5xl flex-col gap-12'>
+    <div className='max-w-5xl mx-auto flex flex-col gap-12'>
       <header>
         <h1
           className='animate-in text-3xl font-bold tracking-tight'
@@ -50,18 +50,18 @@ function ProjectCard({
 }) {
   return (
     <div className='mb-6 break-inside-avoid'>
-      <div className='md:hover:shadow-primary/50 dark:md:hover:shadow-primary/50 group relative transform overflow-hidden rounded-xl bg-tertiary transition-all duration-300 md:hover:-translate-y-1 md:hover:scale-[1.02] md:hover:shadow-lg'>
+      <div className='md:hover:shadow-primary/50 dark:md:hover:shadow-primary/50 group relative transform overflow-hidden rounded-xl bg-tertiary transition-all duration-300'>
         <div className='relative h-64 overflow-hidden p-2'>
           <Image
             src={imageUrl}
             alt={title}
             quality={95}
-            className='h-full w-full rounded-lg object-cover object-top transition-transform duration-300 group-hover:md:scale-105'
+            className='h-full w-full rounded-lg object-cover object-top transition-transform duration-300'
             unoptimized={true}
           />
         </div>
         <div className='flex flex-col space-y-4 px-5 pb-5 pt-4 sm:pt-6'>
-          <h3 className='text-2xl font-bold transition-colors duration-300 group-hover:text-primary'>
+          <h3 className='text-2xl font-bold transition-colors duration-300'>
             {title}
           </h3>
           <p className='mt-2 text-gray-700 dark:text-white/70'>{description}</p>
@@ -76,7 +76,7 @@ function ProjectCard({
             ))}
           </ul>
           <Link href={href} className='w-full sm:w-40'>
-            <button className='w-full rounded-lg bg-gray-900 px-6 py-2 text-white transition hover:scale-105 dark:bg-white/80 dark:text-gray-900'>
+            <button className='w-full rounded-lg bg-gray-900 px-6 py-2 text-white transition dark:bg-white/80 dark:text-gray-900'>
               Visit site
             </button>
           </Link>

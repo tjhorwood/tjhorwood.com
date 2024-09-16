@@ -425,14 +425,14 @@ export const projectsData = [
     imageUrl: standardcbdImg,
     href: 'https://standardcbd.com',
   },
-  {
-    title: 'Terplandia',
-    description:
-      'Terplandia is an e-commerce platform dedicated to the retail of terpenes sourced from hemp derivatives. The platform offers a curated selection of these premium terpenes, catering to a discerning clientele seeking to explore and integrate these natural compounds into various applications.',
-    tags: ['Wordpress', 'WooCommerce', 'ShipStation'],
-    imageUrl: terplandiaImg,
-    href: 'https://terplandia.com',
-  },
+  // {
+  //   title: 'Terplandia',
+  //   description:
+  //     'Terplandia is an e-commerce platform dedicated to the retail of terpenes sourced from hemp derivatives. The platform offers a curated selection of these premium terpenes, catering to a discerning clientele seeking to explore and integrate these natural compounds into various applications.',
+  //   tags: ['Wordpress', 'WooCommerce', 'ShipStation'],
+  //   imageUrl: terplandiaImg,
+  //   href: 'https://terplandia.com',
+  // },
   {
     title: 'CapForge',
     description:
