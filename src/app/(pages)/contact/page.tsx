@@ -97,7 +97,7 @@ export default function Contact() {
   }`;
 
   return (
-    <div className='mx-auto flex max-w-5xl flex-col gap-10'>
+    <div className='flex flex-col gap-10'>
       <div>
         <h1 className='animate-in text-3xl font-bold tracking-tight'>
           Contact Me
