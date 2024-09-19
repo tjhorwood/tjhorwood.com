@@ -8,6 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 type Workplace = {
   title: string;
@@ -47,11 +48,11 @@ function Workplace({
 
   return (
     <Sheet>
-      <SheetTrigger className='-mx-3 -my-2 flex w-full justify-between px-3 py-2 no-underline'>
+      <SheetTrigger className='-mx-3 -my-2 flex w-full justify-between px-3 py-2 no-underline transition-all duration-200 hover:scale-[1.02]'>
         {content}
       </SheetTrigger>
-      <SheetContent className='w-11/12'>
-        <SheetHeader>
+      <SheetContent className='w-[90%] bg-primary overflow-scroll'>
+        <SheetHeader className='text-left'>
           <SheetTitle>{title}</SheetTitle>
           <p className='text-secondary'>{company}</p>
         </SheetHeader>
@@ -68,7 +69,7 @@ function Workplace({
 
 export default function Workplaces({ items }: { items: Workplace[] }) {
   return (
-    <ul className='animated-list flex flex-col gap-8'>
+    <ul className='flex flex-col gap-8'>
       {items.map((item, index) => (
         <li key={index}>
           <Workplace {...item} />
