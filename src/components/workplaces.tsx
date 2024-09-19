@@ -51,7 +51,7 @@ function Workplace({
       <SheetTrigger className='-mx-3 -my-2 flex w-full justify-between px-3 py-2 no-underline transition-all duration-200 hover:scale-[1.02]'>
         {content}
       </SheetTrigger>
-      <SheetContent className='w-[90%] bg-primary overflow-scroll'>
+      <SheetContent className='w-[90%] overflow-scroll bg-primary'>
         <SheetHeader className='text-left'>
           <SheetTitle>{title}</SheetTitle>
           <p className='text-secondary'>{company}</p>

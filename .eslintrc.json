@@ -1,12 +1,12 @@
 {
   "extends": [
-    "next/eslint",
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "@next/next/no-duplicate-head": "off"
+    "@next/next/no-duplicate-head": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],

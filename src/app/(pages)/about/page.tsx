@@ -7,8 +7,6 @@ import {
   workplacesData,
 } from '@/lib/data';
 
-import ConnectLinks from '@/components/connect-links';
-import Link from '@/components/link';
 import Section from '@/components/section';
 import { Button } from '@/components/ui/button';
 import Workplaces from '@/components/workplaces';
