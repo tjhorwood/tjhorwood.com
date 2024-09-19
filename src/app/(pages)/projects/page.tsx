@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { projectsData } from '@/lib/data';
 
 import Link from '@/components/link';
-
 import {
   Dialog,
   DialogContent,
