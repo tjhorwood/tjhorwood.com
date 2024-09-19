@@ -99,13 +99,8 @@ export default function Contact() {
   return (
     <div className='flex flex-col gap-10'>
       <div>
-        <h1 className='animate-in text-3xl font-bold tracking-tight'>
-          Contact Me
-        </h1>
-        <p
-          className='animate-in text-secondary'
-          style={{ '--index': 1 } as React.CSSProperties}
-        >
+        <h1 className='text-3xl font-bold tracking-tight'>Contact Me</h1>
+        <p className='text-secondary'>
           I&apos;m always open to new opportunities, collaborations, and
           interesting conversations. Whether you have a project in mind, a
           question, or just want to say hello, feel free to reach out. I&apos;d
@@ -113,10 +108,7 @@ export default function Contact() {
         </p>
       </div>
       <div className='flex flex-col gap-12 md:flex-row lg:px-4'>
-        <div
-          className='w-full animate-in md:w-2/3'
-          style={{ '--index': 2 } as React.CSSProperties}
-        >
+        <div className='w-full md:w-2/3'>
           <form
             className='mx-auto max-w-full space-y-4'
             onSubmit={handleSubmit}
@@ -143,21 +135,15 @@ export default function Contact() {
             </div>
           </form>
         </div>
-        <div
-          className='w-full animate-in md:w-1/3'
-          style={{ '--index': 3 } as React.CSSProperties}
-        >
+        <div className='w-full md:w-1/3'>
           <p className='mb-1 block text-sm font-medium text-primary'>
             More ways to connect
           </p>
-          <ul
-            className='grid w-full flex-grow animate-in grid-cols-1 gap-4'
-            style={{ '--index': 3 } as React.CSSProperties}
-          >
+          <ul className='grid w-full flex-grow grid-cols-1 gap-4'>
             {ConnectLinks.map(({ label, href, icon }) => (
               <li
                 key={label}
-                className='col-span-1 transition-all hover:scale-105'
+                className='col-span-1 transition-all hover:scale-[1.02]'
               >
                 <Link
                   href={href}

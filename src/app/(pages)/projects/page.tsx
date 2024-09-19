@@ -10,6 +10,7 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogOverlay,
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
@@ -20,39 +21,40 @@ export default function Projects() {
   return (
     <div className='flex flex-col gap-12'>
       <header>
-        <h1
-          className='animate-in text-3xl font-bold tracking-tight'
-          style={{ '--index': 1 } as React.CSSProperties}
-        >
-          Projects
-        </h1>
-        <p
-          className='animate-in text-secondary'
-          style={{ '--index': 2 } as React.CSSProperties}
-        >
+        <h1 className='text-3xl font-bold tracking-tight'>Projects</h1>
+        <p className='text-secondary'>
           Here are a few of the projects I have worked on.
         </p>
       </header>
 
-      <div
-        className='animate-in columns-1 gap-6 space-y-6 md:columns-2 lg:columns-3 xl:columns-4'
-        style={{ '--index': 3 } as React.CSSProperties}
-      >
+      <div className='grid w-full grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3'>
         {projectsData.map(
           ({ title, description, tags, href, imageUrl }, index) => (
             <Dialog key={index}>
               <DialogTrigger>
-                <div className='w-full rounded-lg bg-gray-900 px-6 py-2 text-white transition dark:bg-white/80 dark:text-gray-900'>
-                  {title}
+                <div className='group relative h-80 w-full overflow-hidden rounded-lg shadow-md transition-shadow duration-200 hover:shadow-lg'>
+                  <Image
+                    src={imageUrl}
+                    alt={title}
+                    className='w-full transform object-cover transition-transform duration-200'
+                  />
+
+                  <div className='absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+                    <div className='absolute bottom-0 p-4'>
+                      <h3 className='text-lg font-semibold text-white'>
+                        {title}
+                      </h3>
+                    </div>
+                  </div>
                 </div>
               </DialogTrigger>
-              <DialogContent className='absolute mx-auto inset-0 bg-tertiary top-1/4 max-w-2xl h-fit'>
+              <DialogContent className='inset-0 mx-auto mt-auto h-fit max-w-2xl bg-tertiary md:my-auto'>
                 <DialogHeader>
-                  <DialogTitle>{title}</DialogTitle>
+                  <DialogTitle className='text-left'>{title}</DialogTitle>
                 </DialogHeader>
                 <ScrollArea>
                   <div className='space-y-6'>
-                    <div className='relative h-72'>
+                    <div className='relative h-80'>
                       <Image
                         src={imageUrl}
                         alt={title}
@@ -71,9 +73,7 @@ export default function Projects() {
                         </li>
                       ))}
                     </ul>
-                    <div>
-                      {description}
-                    </div>
+                    <div>{description}</div>
                     <div>
                       <Link href={href} className='w-full sm:w-40'>
                         <button className='w-full rounded-lg bg-gray-900 px-6 py-2 text-white transition dark:bg-white/80 dark:text-gray-900'>
@@ -87,57 +87,6 @@ export default function Projects() {
             </Dialog>
           ),
         )}
-      </div>
-    </div>
-  );
-}
-
-function ProjectCard({
-  title,
-  description,
-  tags,
-  href,
-  imageUrl,
-}: {
-  title: string;
-  description: string;
-  tags: readonly string[];
-  href: string;
-  imageUrl: string | StaticImageData;
-}) {
-  return (
-    <div className='mb-6 break-inside-avoid'>
-      <div className='md:hover:shadow-primary/50 dark:md:hover:shadow-primary/50 group relative transform overflow-hidden rounded-xl bg-tertiary transition-all duration-300'>
-        <div className='relative h-64 overflow-hidden p-2'>
-          <Image
-            src={imageUrl}
-            alt={title}
-            quality={95}
-            className='h-full w-full rounded-lg object-cover object-top transition-transform duration-300'
-            unoptimized={true}
-          />
-        </div>
-        <div className='flex flex-col space-y-4 px-5 pb-5 pt-4 sm:pt-6'>
-          <h3 className='text-2xl font-bold transition-colors duration-300'>
-            {title}
-          </h3>
-          <p className='mt-2 text-gray-700 dark:text-white/70'>{description}</p>
-          <ul className='flex flex-wrap gap-2'>
-            {tags.map((tag, index) => (
-              <li
-                key={index}
-                className='rounded-lg bg-primary px-3 py-1 text-xs uppercase tracking-wider text-primary'
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
-          <Link href={href} className='w-full sm:w-40'>
-            <button className='w-full rounded-lg bg-gray-900 px-6 py-2 text-white transition dark:bg-white/80 dark:text-gray-900'>
-              Visit site
-            </button>
-          </Link>
-        </div>
       </div>
     </div>
   );

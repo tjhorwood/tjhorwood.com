@@ -28,11 +28,8 @@ const SocialLinks = ({ className }: { className: string }) => (
 export default function Home() {
   return (
     <div className='mx-auto flex max-w-4xl flex-col gap-16'>
-      <div className='flex animate-in flex-col gap-8'>
-        <div
-          className='flex animate-in flex-col-reverse gap-6 text-secondary md:flex-row md:items-center'
-          style={{ '--index': 1 } as React.CSSProperties}
-        >
+      <div className='flex flex-col gap-8'>
+        <div className='flex flex-col-reverse gap-6 text-secondary md:flex-row md:items-center'>
           <Image
             src={ProfilePic}
             alt='avatar'
@@ -41,33 +38,22 @@ export default function Home() {
             className='rounded-full bg-secondary'
           />
           <div className='ml-2 space-y-1'>
-            <h1 className='animate-in text-3xl font-bold tracking-tight text-primary'>
+            <h1 className='text-3xl font-bold tracking-tight text-primary'>
               Taylor Horwood
             </h1>
-            <p
-              className='animate-in text-secondary'
-              style={{ '--index': 1 } as React.CSSProperties}
-            >
-              Developer, tinkerer, indie hacker
-            </p>
-            <SocialLinks className='animated-list hidden animate-in space-x-6 pt-4 text-secondary md:flex md:justify-start' />
+            <p className='text-secondary'>Developer, tinkerer, indie hacker</p>
+            <SocialLinks className='hidden space-x-6 pt-4 text-secondary md:flex md:justify-start' />
           </div>
         </div>
-        <p
-          className='animate-in text-primary'
-          style={{ '--index': 2 } as React.CSSProperties}
-        >
+        <p className='text-primary'>
           Hello world, I&apos;m Taylor Horwood a site reliability engineer by
           day and full stack developer by night. I create flawless front-end
           experiences while taming DevOps challenges for seamless, dependable
           systems. Let&apos;s collaborate to transform your dream into digital
           magic, shaping a future where innovation meets unwavering reliability!
         </p>
-        <SocialLinks className='animated-list flex animate-in justify-start space-x-6 py-2 text-secondary md:hidden' />
-        <ul
-          className='animated-list flex animate-in flex-col gap-2 text-secondary md:flex-row md:gap-6'
-          style={{ '--index': 2 } as React.CSSProperties}
-        >
+        <SocialLinks className='flex justify-start space-x-6 py-2 text-secondary md:hidden' />
+        <ul className='flex flex-col gap-2 text-secondary md:flex-row md:gap-6'>
           {[
             {
               href: '/contact',
