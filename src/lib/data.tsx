@@ -9,6 +9,7 @@ import nationalleaguegamingImg from '@/images/nationalleaguegaming.png';
 import sahustudioImg from '@/images/sahustudio.png';
 import standardcbdImg from '@/images/standardcbd.png';
 import Syapse from '@/images/syapse.png';
+import Image from 'next/image';
 
 export const links = [
   { id: 'about', label: 'About', href: '/about' },
@@ -397,7 +398,7 @@ export const projectsData = [
     description:
       'Health Sync introduces a wellness app designed to enhance productivity, focus, and overall well-being. It features bodyweight exercises, yoga, guided meditation, and breathwork, all accessible from home. The app is noted for its simple interface, daily fresh content, and health insurance-approved fitness programs. It also provides resources for incorporating well-being practices into family life. The platform is available on macOS and Windows.',
     tags: ['React', 'Next.js', 'Tailwind'],
-    imageUrl: healthsyncImg,
+    src: healthsyncImg,
     href: 'https://health-sync.org',
   },
   {
@@ -413,7 +414,7 @@ export const projectsData = [
       'Stripe',
       'SendGrid',
     ],
-    imageUrl: nationalleaguegamingImg,
+    src: nationalleaguegamingImg,
     href: 'https://nationalleaguegaming.com',
   },
   {
@@ -421,7 +422,7 @@ export const projectsData = [
     description:
       'StandardCBD is an e-commerce platform, specializing in the retail of a comprehensive array of CBD, delta-8, and delta-9 products. The product range spans vapes, creams, edibles, and tinctures, catering to a discerning clientele seeking high-quality solutions in the realm of wellness and alternative remedies.',
     tags: ['Wordpress', 'WooCommerce', 'ShipStation'],
-    imageUrl: standardcbdImg,
+    src: standardcbdImg,
     href: 'https://standardcbd.com',
   },
   {
@@ -429,7 +430,7 @@ export const projectsData = [
     description:
       'CapForge offers a comprehensive online platform catering to a diverse range of business needs, encompassing areas such as bookkeeping, taxation, payroll administration, strategic consulting, Amazon and e-commerce facilitation, as well as startup support.',
     tags: ['Wordpress'],
-    imageUrl: capforgeImg,
+    src: capforgeImg,
     href: 'https://capforge.com',
   },
   {
@@ -437,7 +438,7 @@ export const projectsData = [
     description:
       'Sahu Studio is the online home of a talented friend who brings interior design dreams to life. This platform serves as both her creative playground and a showcase of her remarkable skills, featuring a captivating array of interior design projects, personalized paintings, and enchanting resin art pieces.',
     tags: ['Wordpress'],
-    imageUrl: sahustudioImg,
+    src: sahustudioImg,
     href: 'https://sahustudio.me',
   },
 ] as const;
