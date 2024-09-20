@@ -5,8 +5,10 @@ import React from 'react';
 import { Card, Carousel } from '@/components/ui/apple-cards-carousel';
 
 import capforgeImg from '@/images/capforge.png';
-import healthsyncImg from '@/images/healthsync.png';
-import nationalleaguegamingImg from '@/images/nationalleaguegaming.png';
+import healthsyncImg from '@/images/healthsync/healthsync.png';
+import healthsyncThumbnailImg from '@/images/healthsync/healthsync-thumbnail.webp';
+import nlgImg from '@/images/nlg/nlg.png';
+import nlgThumbnailImg from '@/images/nlg/nlg-thumbnail.webp';
 import sahustudioImg from '@/images/sahustudio.png';
 import standardcbdImg from '@/images/standardcbd.png';
 
@@ -64,7 +66,7 @@ const projectData = [
   {
     category: 'App Landing Page',
     title: 'Health Sync',
-    src: healthsyncImg,
+    src: healthsyncThumbnailImg,
     content: (
       <ProjectContent
         description='Health Sync introduces a wellness app designed to enhance productivity, focus, and overall well-being. It features bodyweight exercises, yoga, guided meditation, and breathwork, all accessible from home. The app is noted for its simple interface, daily fresh content, and health insurance-approved fitness programs. It also provides resources for incorporating well-being practices into family life. The platform is available on macOS and Windows.'
@@ -77,11 +79,11 @@ const projectData = [
   {
     category: 'Esports League',
     title: 'National League Gaming',
-    src: nationalleaguegamingImg,
+    src: nlgThumbnailImg,
     content: (
       <ProjectContent
         description='National League Gaming stands as an integrated platform tailored to meet the requirements of individual gamers aspiring to compete at a high level. This encompassing platform provides a spectrum of offerings including skill development through training modules, engagement in both complimentary and fee-based leagues, all of which present opportunities for participants to compete for substantial monetary rewards across the entirety of these competitive arenas.'
-        src={nationalleaguegamingImg}
+        src={nlgImg}
         tags={[
           'React',
           'Next.js',
