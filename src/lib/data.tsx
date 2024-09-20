@@ -9,7 +9,6 @@ import nationalleaguegamingImg from '@/images/nationalleaguegaming.png';
 import sahustudioImg from '@/images/sahustudio.png';
 import standardcbdImg from '@/images/standardcbd.png';
 import Syapse from '@/images/syapse.png';
-import Image from 'next/image';
 
 export const links = [
   { id: 'about', label: 'About', href: '/about' },
