@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import Link from '@/components/link';
+import Link from '@/components/Link';
 
 export const metadata: Metadata = {
   title: '404',
