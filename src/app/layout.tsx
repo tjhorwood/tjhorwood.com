@@ -5,7 +5,7 @@ import { Suspense } from 'react';
 
 import '@/styles/globals.css';
 
-import Header from '@/components/header';
+import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/theme-provider';
 
 const MatomoAnalytics = dynamic(() => import('@/components/matomo-analytics'), {
