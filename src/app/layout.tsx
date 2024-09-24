@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
-
 import '@/styles/globals.css';
 
 import Header from '@/components/Header';
@@ -30,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${inter.className} width-full no-scrollbar bg-primary text-primary antialiased`}
+        className={`${inter.className} no-scrollbar w-full bg-primary text-primary antialiased`}
       >
         <ThemeProvider
           attribute='class'

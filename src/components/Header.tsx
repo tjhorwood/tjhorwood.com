@@ -20,7 +20,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className='relative top-0 z-20 bg-primary md:sticky'>
+    <header className='relative top-0 z-20 mx-auto max-w-screen-3xl bg-primary md:sticky'>
       <nav className='mx-auto flex items-center justify-between gap-3 px-4 py-3'>
         <Link href='/' className='shrink-0 cursor-pointer text-secondary'>
           <Logo />

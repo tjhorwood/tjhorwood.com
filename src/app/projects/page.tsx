@@ -37,24 +37,60 @@ export default function Projects() {
     setSelectedProject(null);
   };
 
+  // Animation Variants
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.1, // Adjust the delay between animations
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 }, // Start state
+    show: {
+      opacity: 1,
+      y: 0, // End state
+      transition: {
+        ease: 'easeOut',
+        duration: 0.4, // Animation duration
+      },
+    },
+  };
+
   return (
-    <div className='flex flex-col'>
-      <div>
+    <motion.div
+      className='flex flex-col'
+      variants={containerVariants}
+      initial='hidden'
+      animate='show'
+    >
+      {/* Header Section */}
+      <motion.div variants={itemVariants}>
         <h1 className='text-3xl font-bold tracking-tight'>Projects</h1>
         <p className='text-secondary'>
           Here are a few of the projects I have worked on.
         </p>
-      </div>
-      <div>
+      </motion.div>
+
+      {/* Projects Grid */}
+      <motion.div variants={itemVariants}>
         <div className='mx-auto py-4'>
-          <motion.div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+          <motion.div
+            className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'
+            variants={containerVariants}
+            initial='hidden'
+            animate='show'
+          >
             {projectsData.map((project, index) => (
               <motion.div
                 key={index}
-                layoutId={`card-${index}`} // Assign a unique layoutId for each card
+                variants={itemVariants}
+                layoutId={`card-${index}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => handleCardClick(project)} // On card click, open the dialog
+                onClick={() => handleCardClick(project)}
               >
                 <Card className='flex h-full cursor-pointer flex-col border-primary bg-tertiary'>
                   <CardHeader className='space-y-0.5'>
@@ -85,6 +121,7 @@ export default function Projects() {
             ))}
           </motion.div>
 
+          {/* Modal for Selected Project */}
           <AnimatePresence>
             {selectedProject && (
               <motion.div
@@ -96,7 +133,9 @@ export default function Projects() {
               >
                 {/* Apply layoutId to the dialog container for background growth animation */}
                 <motion.div
-                  layoutId={`card-${projectsData.findIndex((p) => p.title === selectedProject.title)}`}
+                  layoutId={`card-${projectsData.findIndex(
+                    (p) => p.title === selectedProject.title,
+                  )}`}
                   className='relative flex max-h-[85vh] max-w-[95vw] flex-col overflow-auto rounded-lg border border-primary bg-tertiary p-4 sm:max-w-3xl sm:p-6 md:p-8'
                   onClick={(e) => e.stopPropagation()}
                 >
@@ -110,7 +149,9 @@ export default function Projects() {
 
                   <motion.div className='space-y-4'>
                     <motion.div
-                      layoutId={`title-${projectsData.findIndex((p) => p.title === selectedProject.title)}`}
+                      layoutId={`title-${projectsData.findIndex(
+                        (p) => p.title === selectedProject.title,
+                      )}`}
                       className='text-left text-xl font-bold text-primary'
                     >
                       {selectedProject.title}
@@ -137,7 +178,9 @@ export default function Projects() {
                     </div>
 
                     <motion.div
-                      layoutId={`image-${projectsData.findIndex((p) => p.title === selectedProject.title)}`}
+                      layoutId={`image-${projectsData.findIndex(
+                        (p) => p.title === selectedProject.title,
+                      )}`}
                       className='relative w-full'
                     >
                       <Image
@@ -172,7 +215,7 @@ export default function Projects() {
             )}
           </AnimatePresence>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
