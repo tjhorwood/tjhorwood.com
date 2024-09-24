@@ -2,7 +2,7 @@ import cn from 'clsx';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 
-import Link from '@/components/link';
+import Link from '@/components/Link';
 
 type NavLinkProps = {
   href: string;
@@ -16,7 +16,7 @@ export default function NavLink({ href, children }: NavLinkProps) {
   return (
     <Link
       className={cn(
-        'cursor-pointer rounded-lg px-4 py-2 hover:text-primary',
+        'cursor-pointer rounded-lg px-4 py-2 hover:bg-tertiary hover:text-primary',
         active ? 'bg-tertiary text-primary' : 'text-secondary',
       )}
       href={href}

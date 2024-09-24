@@ -1,8 +1,9 @@
 'use client';
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 
-import ConnectLinks from '@/components/connect-links';
-import Link from '@/components/link';
+import { connectLinks } from '@/lib/data';
+
+import Link from '@/components/Link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -140,7 +141,7 @@ export default function Contact() {
             More ways to connect
           </p>
           <ul className='grid w-full flex-grow grid-cols-1 gap-4'>
-            {ConnectLinks.map(({ label, href, icon }) => (
+            {connectLinks.map(({ label, href, icon }) => (
               <li
                 key={label}
                 className='col-span-1 transition-all hover:scale-[1.02]'

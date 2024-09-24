@@ -1,14 +1,21 @@
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
-import Amtrak from '@/images/amtrak.png';
-import capforgeImg from '@/images/capforge.png';
-import Citi from '@/images/citi.png';
-import CRFHealth from '@/images/crfhealth.jpg';
-import healthsyncImg from '@/images/healthsync.png';
-import nationalleaguegamingImg from '@/images/nationalleaguegaming.png';
-import sahustudioImg from '@/images/sahustudio.png';
-import standardcbdImg from '@/images/standardcbd.png';
-import Syapse from '@/images/syapse.png';
+import Amtrak from '@/assets/images/amtrak.png';
+import capforgeImg from '@/assets/images/capforge.png';
+import Citi from '@/assets/images/citi.png';
+import CRFHealth from '@/assets/images/crfhealth.jpg';
+import healthsyncImg from '@/assets/images/healthsync/healthsync.png';
+import nlgImg from '@/assets/images/nlg/nlg.png';
+import sahustudioImg from '@/assets/images/sahustudio.png';
+import standardcbdImg from '@/assets/images/standardcbd.png';
+import Syapse from '@/assets/images/syapse.png';
+
+interface ConnectLink {
+  label: string;
+  href: string;
+  icon: React.ReactNode;
+}
 
 export const links = [
   { id: 'about', label: 'About', href: '/about' },
@@ -393,15 +400,19 @@ export const workplacesData = [
 
 export const projectsData = [
   {
+    category: 'App Landing Page',
     title: 'Health Sync',
+    src: healthsyncImg,
     description:
       'Health Sync introduces a wellness app designed to enhance productivity, focus, and overall well-being. It features bodyweight exercises, yoga, guided meditation, and breathwork, all accessible from home. The app is noted for its simple interface, daily fresh content, and health insurance-approved fitness programs. It also provides resources for incorporating well-being practices into family life. The platform is available on macOS and Windows.',
     tags: ['React', 'Next.js', 'Tailwind'],
-    src: healthsyncImg,
     href: 'https://health-sync.org',
+    sourceCode: 'https://github.com/tjhorwood/health-sync',
   },
   {
+    category: 'Esports League',
     title: 'National League Gaming',
+    src: nlgImg,
     description:
       'National League Gaming stands as an integrated platform tailored to meet the requirements of individual gamers aspiring to compete at a high level. This encompassing platform provides a spectrum of offerings including skill development through training modules, engagement in both complimentary and fee-based leagues, all of which present opportunities for participants to compete for substantial monetary rewards across the entirety of these competitive arenas.',
     tags: [
@@ -413,31 +424,66 @@ export const projectsData = [
       'Stripe',
       'SendGrid',
     ],
-    src: nationalleaguegamingImg,
     href: 'https://nationalleaguegaming.com',
   },
   {
+    category: 'Ecommerce',
     title: 'StandardCBD',
+    src: standardcbdImg,
     description:
       'StandardCBD is an e-commerce platform, specializing in the retail of a comprehensive array of CBD, delta-8, and delta-9 products. The product range spans vapes, creams, edibles, and tinctures, catering to a discerning clientele seeking high-quality solutions in the realm of wellness and alternative remedies.',
     tags: ['Wordpress', 'WooCommerce', 'ShipStation'],
-    src: standardcbdImg,
     href: 'https://standardcbd.com',
   },
   {
+    category: 'Financal / Bookkeeping',
     title: 'CapForge',
+    src: capforgeImg,
     description:
       'CapForge offers a comprehensive online platform catering to a diverse range of business needs, encompassing areas such as bookkeeping, taxation, payroll administration, strategic consulting, Amazon and e-commerce facilitation, as well as startup support.',
     tags: ['Wordpress'],
-    src: capforgeImg,
     href: 'https://capforge.com',
   },
   {
+    category: 'Portfolio',
     title: 'Sahu Studio',
+    src: sahustudioImg,
     description:
       'Sahu Studio is the online home of a talented friend who brings interior design dreams to life. This platform serves as both her creative playground and a showcase of her remarkable skills, featuring a captivating array of interior design projects, personalized paintings, and enchanting resin art pieces.',
     tags: ['Wordpress'],
-    src: sahustudioImg,
     href: 'https://sahustudio.me',
+  },
+];
+
+export const connectLinks: ConnectLink[] = [
+  {
+    label: 'Email',
+    href: 'mailto:contact@tjhorwood.com',
+    icon: (
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 20 20'
+        fill='currentColor'
+        className='h-5 w-5'
+      >
+        <path d='M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z' />
+        <path d='M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z' />
+      </svg>
+    ),
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/tjhorwood',
+    icon: <FaGithub />,
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/tjhorwood/',
+    icon: <FaLinkedin />,
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/taylorhorwood/',
+    icon: <FaInstagram />,
   },
 ] as const;

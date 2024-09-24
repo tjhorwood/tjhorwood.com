@@ -3,9 +3,9 @@ import { FiArrowUpRight, FiDownload } from 'react-icons/fi';
 
 import { socialsData } from '@/lib/data';
 
-import Link from '@/components/link';
+import Link from '@/components/Link';
 
-import ProfilePic from '@/images/profile.png';
+import ProfilePic from '@/assets/images/profile.png';
 
 const SocialLinks = ({ className }: { className: string }) => (
   <ul className={className}>

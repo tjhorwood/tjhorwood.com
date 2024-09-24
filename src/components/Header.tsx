@@ -4,10 +4,10 @@ import { useState } from 'react';
 
 import { links } from '@/lib/data';
 
-import Link from '@/components/link';
-import Logo from '@/components/logo';
-import NavLink from '@/components/nav-link';
-import { ThemeSwitcher } from '@/components/theme-switcher';
+import Link from '@/components/Link';
+import Logo from '@/components/Logo';
+import NavLink from '@/components/NavLink';
+import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,

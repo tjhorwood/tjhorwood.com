@@ -5,10 +5,10 @@ import { Suspense } from 'react';
 
 import '@/styles/globals.css';
 
-import Header from '@/components/header';
-import { ThemeProvider } from '@/components/theme-provider';
+import Header from '@/components/Header';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
-const MatomoAnalytics = dynamic(() => import('@/components/matomo-analytics'), {
+const MatomoAnalytics = dynamic(() => import('@/components/MatomoAnalytics'), {
   ssr: false,
 });
 
@@ -39,7 +39,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          {children}
+          <div className='mx-auto max-w-screen-2xl px-6 pb-24 pt-10 md:px-6 md:pb-44 md:pt-16'>
+            <main className='grow'>{children}</main>
+          </div>
         </ThemeProvider>
         <Suspense fallback={null}>
           <MatomoAnalytics />

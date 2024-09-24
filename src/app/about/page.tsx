@@ -1,3 +1,5 @@
+'use client';
+import Image from 'next/image';
 import { FiDownload } from 'react-icons/fi';
 
 import {
@@ -7,9 +9,16 @@ import {
   workplacesData,
 } from '@/lib/data';
 
-import Section from '@/components/section';
+import Section from '@/components/Section';
 import { Button } from '@/components/ui/button';
-import Workplaces from '@/components/workplaces';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const ListSection = ({
   heading,
@@ -23,7 +32,7 @@ const ListSection = ({
       {data.map((item, index) => (
         <li
           key={index}
-          className='rounded-xl bg-tertiary px-4 py-2 dark:text-primary'
+          className='rounded-xl bg-tertiary px-4 py-2 shadow dark:text-primary'
         >
           {item}
         </li>
@@ -102,7 +111,7 @@ export default function About() {
         <ListSection heading='Databases' data={databaseData as string[]} />
 
         <Section heading='Work' headingAlignment='left'>
-          <div className='flex w-full flex-col gap-8'>
+          <div className='flex w-full flex-col space-y-6'>
             <p>
               {new Date().getFullYear() - 2011}+ years of diverse professional
               experience.
@@ -116,14 +125,68 @@ export default function About() {
               science. I am very passionate about using technology to solve
               real-world problems and make a positive impact on the world.
             </p>
-            <Workplaces
-              items={workplacesData.map((item) => ({
-                ...item,
-                imageSrc: item.imageSrc.src,
-              }))}
-            />
+            <ul className='flex flex-col space-y-4'>
+              {workplacesData.map((item, index) => (
+                <li key={index}>
+                  <Sheet>
+                    <SheetTrigger className='flex w-full justify-between rounded-lg bg-tertiary p-4 no-underline shadow transition-all duration-200 hover:scale-[1.02]'>
+                      <>
+                        <div className='flex items-center gap-4'>
+                          <Image
+                            src={item.imageSrc}
+                            alt={item.company}
+                            width={48}
+                            height={48}
+                            className='rounded-full'
+                          />
+                          <div className='flex flex-col gap-px text-left'>
+                            <p className={item.link ? 'external-arrow' : ''}>
+                              {item.title}
+                            </p>
+                            <p className='text-secondary'>{item.company}</p>
+                          </div>
+                        </div>
+                        {item.time && (
+                          <p className='ml-3 text-right text-secondary'>
+                            {item.time}
+                          </p>
+                        )}
+                      </>
+                    </SheetTrigger>
+                    <AnimatePresence>
+                      <SheetContent className='border-none p-0 shadow-none'>
+                        <motion.div
+                          initial={{ x: '100%' }}
+                          animate={{ x: 0 }}
+                          transition={{
+                            type: 'spring',
+                            stiffness: 100,
+                            damping: 20,
+                            duration: 0.3,
+                          }}
+                          className='h-full w-full overflow-scroll bg-tertiary p-8'
+                        >
+                          <SheetHeader className='text-left'>
+                            <SheetTitle>{item.title}</SheetTitle>
+                            <p className='text-secondary'>{item.company}</p>
+                          </SheetHeader>
+                          <p className='py-4 text-secondary'>
+                            Key responsibilities:
+                          </p>
+                          <ul className='ml-4 list-disc space-y-3'>
+                            {item.description?.map(({ content }, index) => (
+                              <li key={index}>{content}</li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      </SheetContent>
+                    </AnimatePresence>
+                  </Sheet>
+                </li>
+              ))}
+            </ul>
             <Button
-              className='bg-secondary text-center'
+              className='h-12 bg-gray-900 text-base text-white transition-all hover:scale-[1.02] hover:bg-gray-900/90 dark:bg-white/80 dark:text-gray-900'
               variant='default'
               size='lg'
             >
