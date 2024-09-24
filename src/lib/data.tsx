@@ -1,5 +1,51 @@
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import {
+  SiKubernetes,
+  SiTerraform,
+  SiDocker,
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiGit,
+  SiTailwindcss,
+  SiGo,
+  SiAngular,
+  SiWebflow,
+  SiWordpress,
+  SiFramer,
+  SiDjango,
+  SiRedux,
+  SiApollographql,
+  SiExpress,
+  SiPython,
+  SiPostgresql,
+  SiMysql,
+  SiMariadb,
+  SiMongodb,
+  SiSqlite,
+  SiGraphql,
+  SiRedis,
+  SiPrisma,
+  SiVisualstudiocode,
+  SiVim,
+  SiGnubash,
+  SiZsh,
+  SiGithub,
+  SiGitlab,
+  SiJenkins,
+  SiCircleci,
+  SiPrometheus,
+  SiGrafana,
+  SiJira,
+  SiConfluence,
+  SiSalesforce,
+  SiAmazonwebservices,
+} from 'react-icons/si';
 
 import Amtrak from '@/assets/images/amtrak.png';
 import capforgeImg from '@/assets/images/capforge.png';
@@ -17,13 +63,46 @@ interface ConnectLink {
   icon: React.ReactNode;
 }
 
+export const connectLinks: ConnectLink[] = [
+  {
+    label: 'Email',
+    href: 'mailto:contact@tjhorwood.com',
+    icon: (
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox='0 0 20 20'
+        fill='currentColor'
+        className='h-5 w-5'
+      >
+        <path d='M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z' />
+        <path d='M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z' />
+      </svg>
+    ),
+  },
+  {
+    label: 'GitHub',
+    href: 'https://github.com/tjhorwood',
+    icon: <FaGithub />,
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/tjhorwood/',
+    icon: <FaLinkedin />,
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/taylorhorwood/',
+    icon: <FaInstagram />,
+  },
+];
+
 export const links = [
   { id: 'about', label: 'About', href: '/about' },
   { id: 'projects', label: 'Projects', href: '/projects' },
   { id: 'blog', label: 'Blog', href: '/blog' },
   { id: 'gear', label: 'Gear', href: '/gear' },
   { id: 'contact', label: 'Contact', href: '/contact' },
-] as const;
+];
 
 export const socialsData = [
   {
@@ -36,66 +115,6 @@ export const socialsData = [
     href: 'https://github.com/tjhorwood',
     icon: BsGithub,
   },
-] as const;
-
-export const skillsData = [
-  'Kubernetes',
-  'Terraform',
-  'Docker',
-  'HTML',
-  'CSS',
-  'JavaScript',
-  'TypeScript',
-  'React',
-  'Next.js',
-  'Node.js',
-  'Git',
-  'Tailwind',
-  'Prisma',
-  'MongoDB',
-  'Redux',
-  'GraphQL',
-  'Apollo',
-  'Express',
-  'PostgreSQL',
-  'MySQL',
-  'Python',
-  'Django',
-  'Framer Motion',
-  'Wordpress',
-  'Webflow',
-  'Angular',
-  'Go',
-] as const;
-
-export const platformData = [
-  'Visual Studio Code',
-  'Vim',
-  'Bash/ZSH',
-  'Git',
-  'GitHub',
-  'GitLab',
-  'Docker',
-  'Kubernetes',
-  'Terraform',
-  'AWS',
-  'Jenkins',
-  'CircleCi',
-  'Prometheus',
-  'Grafana',
-  'Django',
-  'Jira',
-  'Confluence',
-  'Salesforce',
-] as const;
-
-export const databaseData = [
-  'PostgreSQL',
-  'MySQL',
-  'SQLite',
-  'MariaDB',
-  'MongoDB',
-  'Redis',
 ];
 
 export const workplacesData = [
@@ -455,35 +474,231 @@ export const projectsData = [
   },
 ];
 
-export const connectLinks: ConnectLink[] = [
+export const skillsData = [
   {
-    label: 'Email',
-    href: 'mailto:contact@tjhorwood.com',
-    icon: (
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        viewBox='0 0 20 20'
-        fill='currentColor'
-        className='h-5 w-5'
-      >
-        <path d='M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z' />
-        <path d='M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z' />
-      </svg>
-    ),
+    name: 'Kubernetes',
+    icon: SiKubernetes,
+    css: 'text-[#326CE5]',
   },
   {
-    label: 'GitHub',
-    href: 'https://github.com/tjhorwood',
-    icon: <FaGithub />,
+    name: 'Terraform',
+    icon: SiTerraform,
+    css: 'text-[#844FBA]',
   },
   {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/tjhorwood/',
-    icon: <FaLinkedin />,
+    name: 'Docker',
+    icon: SiDocker,
+    css: 'text-[#2496ED]',
   },
   {
-    label: 'Instagram',
-    href: 'https://www.instagram.com/taylorhorwood/',
-    icon: <FaInstagram />,
+    name: 'HTML5',
+    icon: SiHtml5,
+    css: 'text-[#E34F26]',
   },
-] as const;
+  {
+    name: 'CSS3',
+    icon: SiCss3,
+    css: 'text-[#1572B6]',
+  },
+  {
+    name: 'JavaScript',
+    icon: SiJavascript,
+    css: 'text-[#F7DF1E]',
+  },
+  {
+    name: 'TypeScript',
+    icon: SiTypescript,
+    css: 'text-[#3178C6]',
+  },
+  {
+    name: 'React',
+    icon: SiReact,
+    css: 'text-[#61DAFB]',
+  },
+  {
+    name: 'Next.js',
+    icon: SiNextdotjs,
+    css: 'text-primary',
+  },
+  {
+    name: 'Node.js',
+    icon: SiNodedotjs,
+    css: 'text-[#5FA04E]',
+  },
+  {
+    name: 'Git',
+    icon: SiGit,
+    css: 'text-[#F05032]',
+  },
+  {
+    name: 'Tailwind',
+    icon: SiTailwindcss,
+    css: 'text-[#06B6D4]',
+  },
+  {
+    name: 'Redux',
+    icon: SiRedux,
+    css: 'text-[#764ABC]',
+  },
+  {
+    name: 'Express',
+    icon: SiExpress,
+    css: 'text-primary',
+  },
+  {
+    name: 'Python',
+    icon: SiPython,
+    css: 'text-[#3776AB]',
+  },
+  {
+    name: 'Django',
+    icon: SiDjango,
+    css: 'text-[#092E20]',
+  },
+  {
+    name: 'Framer Motion',
+    icon: SiFramer,
+    css: 'text-[#0055FF]',
+  },
+  {
+    name: 'Wordpress',
+    icon: SiWordpress,
+    css: 'text-[#21759B]',
+  },
+  {
+    name: 'Webflow',
+    icon: SiWebflow,
+    css: 'text-[#146EF5]',
+  },
+  {
+    name: 'Angular',
+    icon: SiAngular,
+    css: 'text-primary',
+  },
+  {
+    name: 'Go',
+    icon: SiGo,
+    css: 'text-[#00ADD8]',
+  },
+];
+
+export const databaseData = [
+  {
+    name: 'PostgreSQL',
+    icon: SiPostgresql,
+    css: 'text-[#4169E1]',
+  },
+  {
+    name: 'MySQL',
+    icon: SiMysql,
+    css: 'text-[#4479A1]',
+  },
+  {
+    name: 'MariaDB',
+    icon: SiMariadb,
+    css: 'text-[#003545]',
+  },
+  {
+    name: 'MongoDB',
+    icon: SiMongodb,
+    css: 'text-[#47A248]',
+  },
+  {
+    name: 'SQLite',
+    icon: SiSqlite,
+    css: 'text-[#003B57]',
+  },
+  {
+    name: 'GraphQL',
+    icon: SiGraphql,
+    css: 'text-[#E10098]',
+  },
+  {
+    name: 'Apollo GraphQL',
+    icon: SiApollographql,
+    css: 'text-[#311C87]',
+  },
+  {
+    name: 'Redis',
+    icon: SiRedis,
+    css: 'text-[#FF4438]',
+  },
+  {
+    name: 'Prisma',
+    icon: SiPrisma,
+    css: 'text-[#2D3748]',
+  },
+];
+
+export const platformData = [
+  {
+    name: 'Visual Studio Code',
+    icon: SiVisualstudiocode,
+    css: 'text-[#2F80ED]',
+  },
+  {
+    name: 'Vim',
+    icon: SiVim,
+    css: 'text-[#019733]',
+  },
+  {
+    name: 'Bash',
+    icon: SiGnubash,
+    css: 'text-[#4EAA25]',
+  },
+  {
+    name: 'ZSH',
+    icon: SiZsh,
+    css: 'text-[#F15A24]',
+  },
+  {
+    name: 'Github',
+    icon: SiGithub,
+    css: 'text-primary',
+  },
+  {
+    name: 'Gitlab',
+    icon: SiGitlab,
+    css: 'text-[#FC6D26]',
+  },
+  {
+    name: 'AWS',
+    icon: SiAmazonwebservices,
+    css: 'text-[#232F3E]',
+  },
+  {
+    name: 'Jenkins',
+    icon: SiJenkins,
+    css: 'text-[#D24939]',
+  },
+  {
+    name: 'CircleCI',
+    icon: SiCircleci,
+    css: 'text-primary',
+  },
+  {
+    name: 'Prometheus',
+    icon: SiPrometheus,
+    css: 'text-[#E6522C]',
+  },
+  {
+    name: 'Grafana',
+    icon: SiGrafana,
+    css: 'text-[#F46800]',
+  },
+  {
+    name: 'Jira',
+    icon: SiJira,
+    css: 'text-[#0052CC]',
+  },
+  {
+    name: 'Confluence',
+    icon: SiConfluence,
+    css: 'text-[#172B4D]',
+  },
+  {
+    name: 'Salesforce',
+    icon: SiSalesforce,
+    css: 'text-[#00A1E0]',
+  },
+];

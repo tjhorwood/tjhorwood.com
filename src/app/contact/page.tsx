@@ -2,11 +2,34 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 
 import { connectLinks } from '@/lib/data';
+import { motion } from 'framer-motion';
 
 import Link from '@/components/Link';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+
+// Animation Variants
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.1, // Adjust the delay between animations
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 }, // Start state
+  show: {
+    opacity: 1,
+    y: 0, // End state
+    transition: {
+      ease: 'easeOut',
+      duration: 0.4, // Animation duration
+    },
+  },
+};
 
 const initialFormData = {
   firstname: '',
@@ -65,8 +88,11 @@ export default function Contact() {
     type = 'text',
     as: any = Input,
   ) => (
-    <div
-      className={`w-full px-3 ${['firstname', 'lastname'].includes(name) ? 'sm:w-1/2' : ''}`}
+    <motion.div
+      className={`w-full px-3 ${
+        ['firstname', 'lastname'].includes(name) ? 'sm:w-1/2' : ''
+      }`}
+      variants={itemVariants}
     >
       <label
         className='mb-1 block text-sm font-medium text-primary'
@@ -84,7 +110,7 @@ export default function Contact() {
         placeholder: `Enter your ${name === 'subject' ? 'subject' : name}`,
         ...(name === 'message' ? { rows: 4 } : {}),
       })}
-    </div>
+    </motion.div>
   );
 
   const buttonClassName = `w-full text-lg transition-all hover:scale-[1.02] ${
@@ -98,8 +124,14 @@ export default function Contact() {
   }`;
 
   return (
-    <div className='flex flex-col gap-10'>
-      <div>
+    <motion.div
+      className='flex flex-col gap-10'
+      variants={containerVariants}
+      initial='hidden'
+      animate='show'
+    >
+      {/* Header Section */}
+      <motion.div variants={itemVariants}>
         <h1 className='text-3xl font-bold tracking-tight'>Contact Me</h1>
         <p className='text-secondary'>
           I&apos;m always open to new opportunities, collaborations, and
@@ -107,12 +139,18 @@ export default function Contact() {
           question, or just want to say hello, feel free to reach out. I&apos;d
           love to hear from you!
         </p>
-      </div>
+      </motion.div>
+
+      {/* Main Content */}
       <div className='flex flex-col gap-12 md:flex-row lg:px-4'>
+        {/* Contact Form */}
         <div className='w-full md:w-2/3'>
-          <form
+          <motion.form
             className='mx-auto max-w-full space-y-4'
             onSubmit={handleSubmit}
+            variants={containerVariants}
+            initial='hidden'
+            animate='show'
           >
             <div className='-mx-3 flex flex-wrap space-y-4 sm:space-y-0'>
               {renderField('firstname', 'First Name')}
@@ -128,23 +166,34 @@ export default function Contact() {
               {renderField('message', 'Message', 'text', Textarea)}
             </div>
             <div className='-mx-3 flex flex-wrap'>
-              <div className='w-full px-3'>
+              <motion.div className='w-full px-3' variants={itemVariants}>
                 <Button type='submit' size='lg' className={buttonClassName}>
                   {status.message || 'Send'}
                 </Button>
-              </div>
+              </motion.div>
             </div>
-          </form>
+          </motion.form>
         </div>
+
+        {/* Connect Links */}
         <div className='w-full md:w-1/3'>
-          <p className='mb-1 block text-sm font-medium text-primary'>
+          <motion.p
+            className='mb-1 block text-sm font-medium text-primary'
+            variants={itemVariants}
+          >
             More ways to connect
-          </p>
-          <ul className='grid w-full flex-grow grid-cols-1 gap-4'>
+          </motion.p>
+          <motion.ul
+            className='grid w-full flex-grow grid-cols-1 gap-4'
+            variants={containerVariants}
+            initial='hidden'
+            animate='show'
+          >
             {connectLinks.map(({ label, href, icon }) => (
-              <li
+              <motion.li
                 key={label}
-                className='col-span-1 transition-all hover:scale-[1.02]'
+                className='col-span-1'
+                variants={itemVariants}
               >
                 <Link
                   href={href}
@@ -167,11 +216,11 @@ export default function Contact() {
                     </svg>
                   </div>
                 </Link>
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
