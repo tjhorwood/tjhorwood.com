@@ -53,7 +53,7 @@ export default function Projects() {
       opacity: 1,
       y: 0, // End state
       transition: {
-        ease: 'easeOut',
+        ease: 'easeInOut',
         duration: 0.4, // Animation duration
       },
     },

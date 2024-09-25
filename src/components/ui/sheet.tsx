@@ -51,7 +51,7 @@ const sheetVariants = cva(
 
 interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
-    VariantProps<typeof sheetVariants> {}
+  VariantProps<typeof sheetVariants> { }
 
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
@@ -65,7 +65,7 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className='absolute right-2 top-2 rounded-full bg-primary p-2 text-primary shadow-md md:right-4 md:top-4'>
+      <SheetPrimitive.Close className='absolute right-4 top-4 rounded-full bg-primary p-2 text-primary shadow-md'>
         <XIcon className='h-5 w-5' />
         <span className='sr-only'>Close</span>
       </SheetPrimitive.Close>
