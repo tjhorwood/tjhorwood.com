@@ -2,7 +2,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { XIcon } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 
 import { projectsData } from '@/lib/data';
@@ -26,6 +26,64 @@ interface Project {
   sourceCode?: string;
 }
 
+// Animation Variants
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.1, // Adjust the delay between animations
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 }, // Start state
+  show: {
+    opacity: 1,
+    y: 0, // End state
+    transition: {
+      ease: 'easeInOut',
+      duration: 0.4, // Animation duration
+    },
+  },
+};
+
+const ProjectCardComponent = ({ project, index, handleCardClick }: any) => (
+  <motion.div
+    key={index}
+    variants={itemVariants}
+    layoutId={`card-${index}`}
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    onClick={() => handleCardClick(project)}
+  >
+    <Card className="flex h-full cursor-pointer flex-col border-primary bg-tertiary">
+      <CardHeader className="space-y-0.5">
+        <CardTitle className="text-xl font-bold">{project.title}</CardTitle>
+        <CardDescription className="text-sm text-gray-500">
+          {project.category}
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="flex-grow">
+        <div className="relative mb-4 h-52 w-full">
+          <Image
+            src={project.src}
+            alt={project.title}
+            className="h-full overflow-hidden rounded-md object-cover object-top shadow-md"
+            loading="lazy"
+            placeholder="blur"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        </div>
+        <p className="line-clamp-2 text-sm">{project.description}</p>
+      </CardContent>
+    </Card>
+  </motion.div>
+);
+
+const ProjectCard = React.memo(ProjectCardComponent);
+
+
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -33,30 +91,10 @@ export default function Projects() {
     setSelectedProject(project);
   };
 
+  const memoizedProjectsData = useMemo(() => projectsData, []);
+
   const handleDialogClose = () => {
     setSelectedProject(null);
-  };
-
-  // Animation Variants
-  const containerVariants = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.1, // Adjust the delay between animations
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 }, // Start state
-    show: {
-      opacity: 1,
-      y: 0, // End state
-      transition: {
-        ease: 'easeInOut',
-        duration: 0.4, // Animation duration
-      },
-    },
   };
 
   return (
@@ -83,41 +121,13 @@ export default function Projects() {
             initial='hidden'
             animate='show'
           >
-            {projectsData.map((project, index) => (
-              <motion.div
+            {memoizedProjectsData.map((project, index) => (
+              <ProjectCard
                 key={index}
-                variants={itemVariants}
-                layoutId={`card-${index}`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => handleCardClick(project)}
-              >
-                <Card className='flex h-full cursor-pointer flex-col border-primary bg-tertiary'>
-                  <CardHeader className='space-y-0.5'>
-                    <CardTitle className='text-xl font-bold'>
-                      {project.title}
-                    </CardTitle>
-                    <CardDescription className='text-sm text-gray-500'>
-                      {project.category}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className='flex-grow'>
-                    <motion.div
-                      layoutId={`image-${index}`}
-                      className='relative mb-4 h-52 w-full'
-                    >
-                      <Image
-                        src={project.src}
-                        alt={project.title}
-                        className='h-full overflow-hidden rounded-md object-cover object-top shadow-md'
-                      />
-                    </motion.div>
-                    <p className='line-clamp-2 text-sm'>
-                      {project.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                project={project}
+                index={index}
+                handleCardClick={handleCardClick}
+              />
             ))}
           </motion.div>
 
@@ -148,19 +158,13 @@ export default function Projects() {
                   </button>
 
                   <motion.div className='space-y-4'>
-                    <motion.div
-                      layoutId={`title-${projectsData.findIndex(
-                        (p) => p.title === selectedProject.title,
-                      )}`}
+                    <div
                       className='text-left text-xl font-bold text-primary'
                     >
                       {selectedProject.title}
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 20 }}
+                    <div
                       className='flex flex-wrap gap-2'
                     >
                       {selectedProject.tags.map((tag, index) => (
@@ -171,24 +175,24 @@ export default function Projects() {
                           {tag}
                         </span>
                       ))}
-                    </motion.div>
+                    </div>
 
                     <div className='rounded-lg bg-primary p-4 shadow-md md:p-6'>
                       <p>{selectedProject.description}</p>
                     </div>
 
-                    <motion.div
-                      layoutId={`image-${projectsData.findIndex(
-                        (p) => p.title === selectedProject.title,
-                      )}`}
+                    <div
                       className='relative w-full'
                     >
                       <Image
                         src={selectedProject.src}
                         alt={selectedProject.title}
                         className='h-full rounded-md object-cover object-top shadow-md'
+                        loading="lazy"
+                        placeholder="blur"
+                        sizes="(max-width: 768px) 100vw, 33vw"
                       />
-                    </motion.div>
+                    </div>
 
                     <div className='flex gap-2'>
                       {selectedProject.href && (
