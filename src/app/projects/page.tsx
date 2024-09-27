@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { AnimatePresence, motion } from 'framer-motion';
 import { XIcon } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
@@ -57,25 +57,25 @@ const ProjectCardComponent = ({ project, index, handleCardClick }: any) => (
     whileTap={{ scale: 0.95 }}
     onClick={() => handleCardClick(project)}
   >
-    <Card className="flex h-full cursor-pointer flex-col border-primary bg-tertiary">
-      <CardHeader className="space-y-0.5">
-        <CardTitle className="text-xl font-bold">{project.title}</CardTitle>
-        <CardDescription className="text-sm text-gray-500">
+    <Card className='flex h-full cursor-pointer flex-col border-primary bg-tertiary'>
+      <CardHeader className='space-y-0.5'>
+        <CardTitle className='text-xl font-bold'>{project.title}</CardTitle>
+        <CardDescription className='text-sm text-gray-500'>
           {project.category}
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex-grow">
-        <div className="relative mb-4 h-52 w-full">
+      <CardContent className='flex-grow'>
+        <div className='relative mb-4 h-52 w-full'>
           <Image
             src={project.src}
             alt={project.title}
-            className="h-full overflow-hidden rounded-md object-cover object-top shadow-md"
-            loading="lazy"
-            placeholder="blur"
-            sizes="(max-width: 768px) 100vw, 33vw"
+            className='h-full overflow-hidden rounded-md object-cover object-top shadow-md'
+            loading='lazy'
+            placeholder='blur'
+            sizes='(max-width: 768px) 100vw, 33vw'
           />
         </div>
-        <p className="line-clamp-2 text-sm">{project.description}</p>
+        <p className='line-clamp-2 text-sm'>{project.description}</p>
       </CardContent>
     </Card>
   </motion.div>
@@ -146,12 +146,12 @@ export default function Projects() {
               layoutId={`card-${memoizedProjectsData.findIndex(
                 (p) => p.title === selectedProject.title,
               )}`}
-              className='relative flex max-h-[92%] my-auto mx-auto max-w-[95vw] flex-col overflow-auto rounded-lg border border-primary bg-tertiary p-4 sm:max-w-3xl sm:p-6 md:p-8'
+              className='relative mx-auto my-auto flex max-h-[92%] max-w-[95vw] flex-col overflow-auto rounded-lg border border-primary bg-tertiary p-4 sm:max-w-3xl sm:p-6 md:p-8'
               onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
             >
               {/* Close button */}
               <button
-                className='absolute right-2 top-2 rounded-full bg-gray-800 text-white dark:bg-gray-200 dark:text-gray-800 p-2 text-primary shadow-md md:right-4 md:top-4'
+                className='absolute right-2 top-2 rounded-full bg-gray-800 p-2 text-primary text-white shadow-md dark:bg-gray-200 dark:text-gray-800 md:right-4 md:top-4'
                 onClick={handleDialogClose}
               >
                 <XIcon className='h-5 w-5' />
@@ -182,9 +182,9 @@ export default function Projects() {
                     src={selectedProject.src}
                     alt={selectedProject.title}
                     className='h-full rounded-md object-cover object-top shadow-md'
-                    loading="lazy"
-                    placeholder="blur"
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    loading='lazy'
+                    placeholder='blur'
+                    sizes='(max-width: 768px) 100vw, 33vw'
                   />
                 </div>
 

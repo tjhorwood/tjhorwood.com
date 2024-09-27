@@ -56,7 +56,7 @@ const ListSection = ({ heading, data }: { heading: string; data: any }) => {
           ({ name, css, icon: Icon }: any, index: Key | null | undefined) => (
             <motion.li
               key={index}
-              className='flex gap-2 rounded-xl bg-tertiary px-4 py-2 text-primary shadow text-sm md:text-base'
+              className='flex gap-2 rounded-xl bg-tertiary px-4 py-2 text-sm text-primary shadow md:text-base'
               variants={itemVariants}
             >
               <Icon className={cn('h-6 w-6', css)} />
@@ -215,7 +215,7 @@ export default function About() {
                               alt={item.company}
                               width={48}
                               height={48}
-                              className='rounded-full hidden sm:block'
+                              className='hidden rounded-full sm:block'
                             />
                             <div className='flex flex-col gap-px text-left'>
                               <p className={item.link ? 'external-arrow' : ''}>
@@ -232,7 +232,7 @@ export default function About() {
                         </>
                       </SheetTrigger>
                       <AnimatePresence>
-                        <SheetContent className='border-none p-0 shadow-none '>
+                        <SheetContent className='border-none p-0 shadow-none'>
                           <motion.div
                             initial={{ x: '100%' }}
                             animate={{ x: 0 }}
@@ -242,7 +242,7 @@ export default function About() {
                               damping: 20,
                               duration: 0.2,
                             }}
-                            className='h-full max-w-[95vw] ml-auto overflow-scroll bg-tertiary p-8 rounded-l-xl'
+                            className='ml-auto h-full max-w-[95vw] overflow-scroll rounded-l-xl bg-tertiary p-8'
                           >
                             <SheetHeader className='text-left'>
                               <SheetTitle>{item.title}</SheetTitle>
