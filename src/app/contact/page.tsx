@@ -89,8 +89,9 @@ export default function Contact() {
     as: any = Input,
   ) => (
     <motion.div
-      className={`w-full px-3 ${['firstname', 'lastname'].includes(name) ? 'sm:w-1/2' : ''
-        }`}
+      className={`w-full px-3 ${
+        ['firstname', 'lastname'].includes(name) ? 'sm:w-1/2' : ''
+      }`}
       variants={itemVariants}
     >
       <label
@@ -112,14 +113,15 @@ export default function Contact() {
     </motion.div>
   );
 
-  const buttonClassName = `w-full text-lg transition-all hover:scale-[1.02] ${status.type === 'success'
-    ? 'button-animate-success font-semibold text-green-700'
-    : status.type === 'error'
-      ? 'button-animate-error font-semibold text-red-700'
-      : status.type === 'sending'
-        ? 'bg-gray-900 hover:bg-gray-900/90 text-white dark:bg-white/80 dark:text-gray-900'
-        : 'bg-gray-900 hover:bg-gray-900/90 text-white dark:bg-white/80 dark:text-gray-900'
-    }`;
+  const buttonClassName = `w-full text-lg transition-all hover:scale-[1.02] ${
+    status.type === 'success'
+      ? 'button-animate-success font-semibold text-green-700'
+      : status.type === 'error'
+        ? 'button-animate-error font-semibold text-red-700'
+        : status.type === 'sending'
+          ? 'bg-gray-900 hover:bg-gray-900/90 text-white dark:bg-white/80 dark:text-gray-900'
+          : 'bg-gray-900 hover:bg-gray-900/90 text-white dark:bg-white/80 dark:text-gray-900'
+  }`;
 
   return (
     <motion.div
@@ -188,13 +190,10 @@ export default function Contact() {
             animate='show'
           >
             {connectLinks.map(({ label, href, icon }, index) => (
-              <motion.li
-                key={index}
-                variants={itemVariants}
-              >
+              <motion.li key={index} variants={itemVariants}>
                 <Link
                   href={href}
-                  className='inline-grid w-full rounded-lg bg-tertiary p-4 no-underline hover:scale-[1.03] transition-all duration-200'
+                  className='inline-grid w-full rounded-lg bg-tertiary p-4 no-underline transition-all duration-200 hover:scale-[1.03]'
                 >
                   <div className='flex items-center gap-3'>
                     <span className='text-xl'>{icon}</span>
