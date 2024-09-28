@@ -38,7 +38,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <div className='mx-auto max-w-screen-2xl px-6 pb-24 pt-10 md:px-6 md:pb-44 md:pt-16'>
+          <div className='mx-auto max-w-screen-2xl px-6 pb-24 pt-8 md:px-6 md:pb-44 md:pt-12'>
             <main className='grow'>{children}</main>
           </div>
         </ThemeProvider>
