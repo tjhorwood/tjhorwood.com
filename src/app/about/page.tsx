@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import { FiDownload } from 'react-icons/fi';
 
 import {
   databaseData,
@@ -21,6 +20,7 @@ import {
 import { AnimatePresence, motion } from 'framer-motion';
 import { Key } from 'react';
 import { cn } from '@/lib/utils';
+import { LuDownload } from 'react-icons/lu';
 
 const ListSection = ({ heading, data }: { heading: string; data: any }) => {
   const containerVariants = {
@@ -272,11 +272,11 @@ export default function About() {
                   size='lg'
                 >
                   <a
-                    className='flex w-full cursor-pointer items-center gap-2 rounded-lg outline-none'
+                    className='flex w-full cursor-pointer items-center gap-3 rounded-lg outline-none'
                     href='/resume.pdf'
                     download
                   >
-                    Download Resume <FiDownload className='h-4 w-4' />
+                    Download Resume <LuDownload className='size-5' />
                   </a>
                 </Button>
               </motion.div>

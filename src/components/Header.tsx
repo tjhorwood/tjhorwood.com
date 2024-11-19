@@ -1,9 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-
-import { links } from '@/lib/data';
-
 import Link from '@/components/Link';
 import Logo from '@/components/Logo';
 import NavLink from '@/components/NavLink';
@@ -16,11 +13,18 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
+export const links = [
+  { id: 'about', label: 'About', href: '/about' },
+  { id: 'projects', label: 'Projects', href: '/projects' },
+  { id: 'blog', label: 'Blog', href: '/blog' },
+  { id: 'gear', label: 'Gear', href: '/gear' },
+];
+
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className='relative top-0 z-20 mx-auto h-20 max-w-screen-3xl bg-primary md:sticky'>
+    <header className='h-18 relative top-0 z-20 mx-auto max-w-screen-3xl bg-primary md:sticky'>
       <nav className='mx-auto flex h-full items-center justify-between gap-3 px-4 py-3'>
         <Link href='/' className='shrink-0 cursor-pointer text-secondary'>
           <Logo />
