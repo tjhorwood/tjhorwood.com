@@ -1,13 +1,10 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { FiArrowUpRight, FiDownload } from 'react-icons/fi';
-
-import { socialsData } from '@/lib/data';
-
+import { LuDownload, LuMail } from 'react-icons/lu';
 import Link from '@/components/Link';
-
 import ProfilePic from '@/assets/images/profile.png';
+import { BsGithub, BsInstagram, BsLinkedin } from 'react-icons/bs';
 
 // Animation Variants (defined outside to be accessible in both components)
 const containerVariants = {
@@ -31,26 +28,23 @@ const itemVariants = {
   },
 };
 
-const SocialLinks = ({ className }: { className: string }) => (
-  <motion.ul
-    className={className}
-    variants={containerVariants}
-    initial='hidden'
-    animate='show'
-  >
-    {socialsData.map(({ name, href, icon: Icon }) => (
-      <motion.li key={name} variants={itemVariants}>
-        <Link
-          className='flex items-center gap-x-2 no-underline hover:text-primary'
-          href={href}
-        >
-          <Icon className='h-6 w-6' />
-          <span>{name}</span>
-        </Link>
-      </motion.li>
-    ))}
-  </motion.ul>
-);
+const socialsData = [
+  {
+    name: 'GitHub',
+    href: 'https://github.com/tjhorwood/',
+    icon: BsGithub,
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://linkedin.com/in/tjhorwood/',
+    icon: BsLinkedin,
+  },
+  {
+    name: 'Instagram',
+    href: 'https://www.instagram.com/taylorhorwood/',
+    icon: BsInstagram,
+  },
+];
 
 export default function Home() {
   return (
@@ -77,7 +71,24 @@ export default function Home() {
               Taylor Horwood
             </h1>
             <p className='text-secondary'>Developer, tinkerer, indie hacker</p>
-            <SocialLinks className='hidden space-x-6 pt-4 text-secondary md:flex md:justify-start' />
+            <motion.ul
+              className='hidden space-x-6 pt-4 text-secondary md:flex md:justify-start'
+              variants={containerVariants}
+              initial='hidden'
+              animate='show'
+            >
+              {socialsData.map(({ name, href, icon: Icon }) => (
+                <motion.li key={name} variants={itemVariants}>
+                  <Link
+                    className='flex items-center gap-x-2 no-underline hover:text-primary'
+                    href={href}
+                  >
+                    <Icon className='h-6 w-6' />
+                    <span>{name}</span>
+                  </Link>
+                </motion.li>
+              ))}
+            </motion.ul>
           </div>
         </motion.div>
         <motion.p className='text-primary' variants={itemVariants}>
@@ -87,7 +98,24 @@ export default function Home() {
           systems. Let&apos;s collaborate to transform your dream into digital
           magic, shaping a future where innovation meets unwavering reliability!
         </motion.p>
-        <SocialLinks className='flex justify-start space-x-6 py-2 md:hidden' />
+        <motion.ul
+          className='flex justify-start space-x-6 py-2 md:hidden'
+          variants={containerVariants}
+          initial='hidden'
+          animate='show'
+        >
+          {socialsData.map(({ name, href, icon: Icon }) => (
+            <motion.li key={name} variants={itemVariants}>
+              <Link
+                className='flex items-center gap-x-2 no-underline hover:text-primary'
+                href={href}
+              >
+                <Icon className='h-6 w-6' />
+                <span>{name}</span>
+              </Link>
+            </motion.li>
+          ))}
+        </motion.ul>
         <motion.ul
           className='flex flex-col gap-2 text-secondary md:flex-row md:gap-6'
           variants={containerVariants}
@@ -96,11 +124,11 @@ export default function Home() {
         >
           {[
             {
-              href: '/contact',
-              text: 'Contact me',
-              icon: FiArrowUpRight,
+              href: 'mailto:contact@tjhorwood.com',
+              text: 'Email me',
+              icon: LuMail,
             },
-            { href: '/resume.pdf', text: 'Download Resume', icon: FiDownload },
+            { href: '/resume.pdf', text: 'Download resume', icon: LuDownload },
           ].map(({ href, text, icon: Icon }) => (
             <motion.li
               key={text}

@@ -1,5 +1,3 @@
-import { BsGithub, BsLinkedin } from 'react-icons/bs';
-import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import {
   SiKubernetes,
   SiTerraform,
@@ -56,66 +54,6 @@ import nlgImg from '@/assets/images/nlg/nlg.png';
 import sahustudioImg from '@/assets/images/sahustudio.png';
 import standardcbdImg from '@/assets/images/standardcbd.png';
 import Syapse from '@/assets/images/syapse.png';
-
-interface ConnectLink {
-  label: string;
-  href: string;
-  icon: React.ReactNode;
-}
-
-export const connectLinks: ConnectLink[] = [
-  {
-    label: 'Email',
-    href: 'mailto:contact@tjhorwood.com',
-    icon: (
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        viewBox='0 0 20 20'
-        fill='currentColor'
-        className='h-5 w-5'
-      >
-        <path d='M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z' />
-        <path d='M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z' />
-      </svg>
-    ),
-  },
-  {
-    label: 'GitHub',
-    href: 'https://github.com/tjhorwood',
-    icon: <FaGithub />,
-  },
-  {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/tjhorwood/',
-    icon: <FaLinkedin />,
-  },
-  {
-    label: 'Instagram',
-    href: 'https://www.instagram.com/taylorhorwood/',
-    icon: <FaInstagram />,
-  },
-];
-
-export const links = [
-  { id: 'about', label: 'About', href: '/about' },
-  { id: 'projects', label: 'Projects', href: '/projects' },
-  { id: 'blog', label: 'Blog', href: '/blog' },
-  { id: 'gear', label: 'Gear', href: '/gear' },
-  { id: 'contact', label: 'Contact', href: '/contact' },
-];
-
-export const socialsData = [
-  {
-    name: 'LinkedIn',
-    href: 'https://linkedin.com/in/tjhorwood',
-    icon: BsLinkedin,
-  },
-  {
-    name: 'GitHub',
-    href: 'https://github.com/tjhorwood',
-    icon: BsGithub,
-  },
-];
 
 export const workplacesData = [
   {

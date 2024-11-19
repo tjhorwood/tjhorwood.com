@@ -1,15 +1,9 @@
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
-import { Suspense } from 'react';
 import '@/styles/globals.css';
 
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/ThemeProvider';
-
-const MatomoAnalytics = dynamic(() => import('@/components/MatomoAnalytics'), {
-  ssr: false,
-});
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -42,9 +36,6 @@ export default function RootLayout({
             <main className='grow'>{children}</main>
           </div>
         </ThemeProvider>
-        <Suspense fallback={null}>
-          <MatomoAnalytics />
-        </Suspense>
       </body>
     </html>
   );
