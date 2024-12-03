@@ -29,7 +29,6 @@ import {
   SiGraphql,
   SiRedis,
   SiPrisma,
-  SiVisualstudiocode,
   SiVim,
   SiGnubash,
   SiZsh,
@@ -45,15 +44,89 @@ import {
   SiAmazonwebservices,
 } from 'react-icons/si';
 
+import { VscVscode } from 'react-icons/vsc';
+
 import Amtrak from '@/assets/images/amtrak.png';
 import capforgeImg from '@/assets/images/capforge.png';
+import capforgeImgShort from '@/assets/images/capforge-short.png';
 import Citi from '@/assets/images/citi.png';
 import CRFHealth from '@/assets/images/crfhealth.jpg';
 import healthsyncImg from '@/assets/images/healthsync/healthsync.png';
+import healthsyncImgShort from '@/assets/images/healthsync/healthsync-short.png';
 import nlgImg from '@/assets/images/nlg/nlg.png';
+import nlgImgShort from '@/assets/images/nlg/nlg-short.png';
 import sahustudioImg from '@/assets/images/sahustudio.png';
+import sahustudioImgShort from '@/assets/images/sahustudio-short.png';
 import standardcbdImg from '@/assets/images/standardcbd.png';
+import standardcbdImgShort from '@/assets/images/standardcbd-short.png';
 import Syapse from '@/assets/images/syapse.png';
+
+export const projectsData = [
+  {
+    slug: 'health-sync',
+    category: 'App Landing Page',
+    title: 'Health Sync',
+    src: healthsyncImg,
+    srcShort: healthsyncImgShort,
+    description:
+      'Health Sync introduces a wellness app designed to enhance productivity, focus, and overall well-being. It features bodyweight exercises, yoga, guided meditation, and breathwork, all accessible from home. The app is noted for its simple interface, daily fresh content, and health insurance-approved fitness programs. It also provides resources for incorporating well-being practices into family life. The platform is available on macOS and Windows.',
+    tags: ['React', 'Next.js', 'Tailwind'],
+    href: 'https://health-sync.org',
+    sourceCode: 'https://github.com/tjhorwood/health-sync',
+  },
+  {
+    slug: 'national-league-gaming',
+    category: 'Esports League',
+    title: 'National League Gaming',
+    src: nlgImg,
+    srcShort: nlgImgShort,
+    description:
+      'National League Gaming stands as an integrated platform tailored to meet the requirements of individual gamers aspiring to compete at a high level. This encompassing platform provides a spectrum of offerings including skill development through training modules, engagement in both complimentary and fee-based leagues, all of which present opportunities for participants to compete for substantial monetary rewards across the entirety of these competitive arenas.',
+    tags: [
+      'React',
+      'Next.js',
+      'Tailwind',
+      'Prisma',
+      'PostgreSQL',
+      'Stripe',
+      'SendGrid',
+    ],
+    href: 'https://nationalleaguegaming.com',
+  },
+  {
+    slug: 'standardcbd',
+    category: 'Ecommerce',
+    title: 'StandardCBD',
+    src: standardcbdImg,
+    srcShort: standardcbdImgShort,
+    description:
+      'StandardCBD is an e-commerce platform, specializing in the retail of a comprehensive array of CBD, delta-8, and delta-9 products. The product range spans vapes, creams, edibles, and tinctures, catering to a discerning clientele seeking high-quality solutions in the realm of wellness and alternative remedies.',
+    tags: ['Wordpress', 'WooCommerce', 'ShipStation'],
+    href: 'https://standardcbd.com',
+  },
+  {
+    slug: 'capforge',
+    category: 'Financal / Bookkeeping',
+    title: 'CapForge',
+    src: capforgeImg,
+    srcShort: capforgeImgShort,
+    description:
+      'CapForge offers a comprehensive online platform catering to a diverse range of business needs, encompassing areas such as bookkeeping, taxation, payroll administration, strategic consulting, Amazon and e-commerce facilitation, as well as startup support.',
+    tags: ['Wordpress'],
+    href: 'https://capforge.com',
+  },
+  {
+    slug: 'sahu-studio',
+    category: 'Portfolio',
+    title: 'Sahu Studio',
+    src: sahustudioImg,
+    srcShort: sahustudioImgShort,
+    description:
+      'Sahu Studio is the online home of a talented friend who brings interior design dreams to life. This platform serves as both her creative playground and a showcase of her remarkable skills, featuring a captivating array of interior design projects, personalized paintings, and enchanting resin art pieces.',
+    tags: ['Wordpress'],
+    href: 'https://sahustudio.me',
+  },
+];
 
 export const workplacesData = [
   {
@@ -355,63 +428,6 @@ export const workplacesData = [
   },
 ];
 
-export const projectsData = [
-  {
-    category: 'App Landing Page',
-    title: 'Health Sync',
-    src: healthsyncImg,
-    description:
-      'Health Sync introduces a wellness app designed to enhance productivity, focus, and overall well-being. It features bodyweight exercises, yoga, guided meditation, and breathwork, all accessible from home. The app is noted for its simple interface, daily fresh content, and health insurance-approved fitness programs. It also provides resources for incorporating well-being practices into family life. The platform is available on macOS and Windows.',
-    tags: ['React', 'Next.js', 'Tailwind'],
-    href: 'https://health-sync.org',
-    sourceCode: 'https://github.com/tjhorwood/health-sync',
-  },
-  {
-    category: 'Esports League',
-    title: 'National League Gaming',
-    src: nlgImg,
-    description:
-      'National League Gaming stands as an integrated platform tailored to meet the requirements of individual gamers aspiring to compete at a high level. This encompassing platform provides a spectrum of offerings including skill development through training modules, engagement in both complimentary and fee-based leagues, all of which present opportunities for participants to compete for substantial monetary rewards across the entirety of these competitive arenas.',
-    tags: [
-      'React',
-      'Next.js',
-      'Tailwind',
-      'Prisma',
-      'PostgreSQL',
-      'Stripe',
-      'SendGrid',
-    ],
-    href: 'https://nationalleaguegaming.com',
-  },
-  {
-    category: 'Ecommerce',
-    title: 'StandardCBD',
-    src: standardcbdImg,
-    description:
-      'StandardCBD is an e-commerce platform, specializing in the retail of a comprehensive array of CBD, delta-8, and delta-9 products. The product range spans vapes, creams, edibles, and tinctures, catering to a discerning clientele seeking high-quality solutions in the realm of wellness and alternative remedies.',
-    tags: ['Wordpress', 'WooCommerce', 'ShipStation'],
-    href: 'https://standardcbd.com',
-  },
-  {
-    category: 'Financal / Bookkeeping',
-    title: 'CapForge',
-    src: capforgeImg,
-    description:
-      'CapForge offers a comprehensive online platform catering to a diverse range of business needs, encompassing areas such as bookkeeping, taxation, payroll administration, strategic consulting, Amazon and e-commerce facilitation, as well as startup support.',
-    tags: ['Wordpress'],
-    href: 'https://capforge.com',
-  },
-  {
-    category: 'Portfolio',
-    title: 'Sahu Studio',
-    src: sahustudioImg,
-    description:
-      'Sahu Studio is the online home of a talented friend who brings interior design dreams to life. This platform serves as both her creative playground and a showcase of her remarkable skills, featuring a captivating array of interior design projects, personalized paintings, and enchanting resin art pieces.',
-    tags: ['Wordpress'],
-    href: 'https://sahustudio.me',
-  },
-];
-
 export const skillsData = [
   {
     name: 'Kubernetes',
@@ -571,7 +587,7 @@ export const databaseData = [
 export const platformData = [
   {
     name: 'Visual Studio Code',
-    icon: SiVisualstudiocode,
+    icon: VscVscode,
     css: 'text-[#2F80ED]',
   },
   {

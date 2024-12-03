@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 
 import Header from '@/components/Header';
-import { ThemeProvider } from '@/components/ThemeProvider';
+import { ThemeProvider } from 'next-themes';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,9 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <body
-        className={`${inter.className} no-scrollbar w-full bg-primary text-primary antialiased`}
+        className={`${inter.className} w-full bg-primary text-primary antialiased`}
       >
         <ThemeProvider
           attribute='class'

@@ -1,5 +1,4 @@
-'use client';
-import { motion } from 'framer-motion';
+import { MotionDiv, MotionText, MotionUl, MotionLi } from '@/lib/framer';
 import Image from 'next/image';
 import { LuDownload, LuMail } from 'react-icons/lu';
 import Link from '@/components/Link';
@@ -48,14 +47,14 @@ const socialsData = [
 
 export default function Home() {
   return (
-    <motion.div
+    <MotionDiv
       className='mx-auto flex max-w-4xl flex-col gap-16'
       variants={containerVariants}
       initial='hidden'
       animate='show'
     >
-      <motion.div className='flex flex-col gap-8' variants={containerVariants}>
-        <motion.div
+      <MotionDiv className='flex flex-col gap-8' variants={containerVariants}>
+        <MotionDiv
           className='flex flex-col-reverse gap-6 text-secondary md:flex-row md:items-center'
           variants={itemVariants}
         >
@@ -71,14 +70,14 @@ export default function Home() {
               Taylor Horwood
             </h1>
             <p className='text-secondary'>Developer, tinkerer, indie hacker</p>
-            <motion.ul
+            <MotionUl
               className='hidden space-x-6 pt-4 text-secondary md:flex md:justify-start'
               variants={containerVariants}
               initial='hidden'
               animate='show'
             >
               {socialsData.map(({ name, href, icon: Icon }) => (
-                <motion.li key={name} variants={itemVariants}>
+                <MotionLi key={name} variants={itemVariants}>
                   <Link
                     className='flex items-center gap-x-2 no-underline hover:text-primary'
                     href={href}
@@ -86,26 +85,26 @@ export default function Home() {
                     <Icon className='h-6 w-6' />
                     <span>{name}</span>
                   </Link>
-                </motion.li>
+                </MotionLi>
               ))}
-            </motion.ul>
+            </MotionUl>
           </div>
-        </motion.div>
-        <motion.p className='text-primary' variants={itemVariants}>
+        </MotionDiv>
+        <MotionText className='text-primary' variants={itemVariants}>
           Hello world, I&apos;m Taylor Horwood a site reliability engineer by
           day and full stack developer by night. I create flawless front-end
           experiences while taming DevOps challenges for seamless, dependable
           systems. Let&apos;s collaborate to transform your dream into digital
           magic, shaping a future where innovation meets unwavering reliability!
-        </motion.p>
-        <motion.ul
+        </MotionText>
+        <MotionUl
           className='flex justify-start space-x-6 py-2 md:hidden'
           variants={containerVariants}
           initial='hidden'
           animate='show'
         >
           {socialsData.map(({ name, href, icon: Icon }) => (
-            <motion.li key={name} variants={itemVariants}>
+            <MotionLi key={name} variants={itemVariants}>
               <Link
                 className='flex items-center gap-x-2 no-underline hover:text-primary'
                 href={href}
@@ -113,10 +112,10 @@ export default function Home() {
                 <Icon className='h-6 w-6' />
                 <span>{name}</span>
               </Link>
-            </motion.li>
+            </MotionLi>
           ))}
-        </motion.ul>
-        <motion.ul
+        </MotionUl>
+        <MotionUl
           className='flex flex-col gap-2 text-secondary md:flex-row md:gap-6'
           variants={containerVariants}
           initial='hidden'
@@ -130,7 +129,7 @@ export default function Home() {
             },
             { href: '/resume.pdf', text: 'Download resume', icon: LuDownload },
           ].map(({ href, text, icon: Icon }) => (
-            <motion.li
+            <MotionLi
               key={text}
               className='transition-opacity hover:text-primary'
               variants={itemVariants}
@@ -142,10 +141,10 @@ export default function Home() {
                 <Icon className='h-5 w-5' />
                 <span>{text}</span>
               </Link>
-            </motion.li>
+            </MotionLi>
           ))}
-        </motion.ul>
-      </motion.div>
-    </motion.div>
+        </MotionUl>
+      </MotionDiv>
+    </MotionDiv>
   );
 }
