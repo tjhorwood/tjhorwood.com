@@ -1,10 +1,8 @@
 'use client';
 
-import React, { useMemo } from 'react';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-
+import React from 'react';
 import { projectsData } from '@/lib/data';
+import { useRouter } from 'next/navigation';
 import {
   Card,
   CardContent,
@@ -13,12 +11,12 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Projects() {
   const router = useRouter();
-  const memoizedProjectsData = useMemo(() => projectsData, []);
 
-  const handleCardClick = (slug: string) => {
+  const handleClick = (slug: any) => {
     router.push(`/projects/${slug}`);
   };
 
@@ -46,7 +44,7 @@ export default function Projects() {
 
   return (
     <motion.div
-      className='flex flex-col'
+      className='flex flex-col gap-4'
       variants={containerVariants}
       initial='hidden'
       animate='show'
@@ -60,44 +58,43 @@ export default function Projects() {
       </motion.div>
 
       {/* Projects Grid */}
-      <div className="mx-auto py-4">
+      <motion.div className='mx-auto py-4' variants={containerVariants}>
         <motion.div
-          variants={containerVariants}
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+          className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'
+          variants={itemVariants}
         >
-          {memoizedProjectsData.map((project) => (
-            <motion.div
-              variants={itemVariants}
+          {projectsData.map((project) => (
+            <div
               key={project.slug}
-              onClick={() => handleCardClick(project.slug)}
-              className="cursor-pointer transition-transform hover:scale-105 active:scale-95"
+              onClick={() => handleClick(project.slug)}
+              className='cursor-pointer transition-transform hover:scale-[1.02] active:scale-[0.95]'
             >
-              <Card className="flex h-full flex-col border-primary bg-tertiary">
-                <CardHeader className="space-y-0.5">
-                  <CardTitle className="text-xl font-bold">
+              <Card className='flex h-full flex-col border-primary bg-tertiary'>
+                <CardHeader className='space-y-0.5'>
+                  <CardTitle className='text-xl font-bold'>
                     {project.title}
                   </CardTitle>
-                  <CardDescription className="text-sm text-gray-500">
+                  <CardDescription className='text-sm text-gray-500'>
                     {project.category}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="flex-grow">
-                  <div className="relative mb-4 h-52 w-full">
+                <CardContent className='flex-grow'>
+                  <div className='relative mb-4 h-52 w-full'>
                     <Image
                       src={project.srcShort}
                       alt={project.title}
-                      className="h-full overflow-hidden rounded-md object-cover object-top shadow-md"
-                      loading="lazy"
-                      placeholder="blur"
+                      className='h-full overflow-hidden rounded-md object-cover object-top shadow-md'
+                      loading='lazy'
+                      placeholder='blur'
                     />
                   </div>
-                  <p className="line-clamp-2 text-sm">{project.description}</p>
+                  <p className='line-clamp-2 text-sm'>{project.description}</p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

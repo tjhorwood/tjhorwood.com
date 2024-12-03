@@ -29,7 +29,6 @@ import {
   SiGraphql,
   SiRedis,
   SiPrisma,
-  SiVisualstudiocode,
   SiVim,
   SiGnubash,
   SiZsh,
@@ -44,6 +43,8 @@ import {
   SiSalesforce,
   SiAmazonwebservices,
 } from 'react-icons/si';
+
+import { VscVscode } from 'react-icons/vsc';
 
 import Amtrak from '@/assets/images/amtrak.png';
 import capforgeImg from '@/assets/images/capforge.png';
@@ -586,7 +587,7 @@ export const databaseData = [
 export const platformData = [
   {
     name: 'Visual Studio Code',
-    icon: SiVisualstudiocode,
+    icon: VscVscode,
     css: 'text-[#2F80ED]',
   },
   {

@@ -1,17 +1,4 @@
 {
-  "name": "tjhorwood",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "lint:fix": "eslint src --fix && yarn format",
-    "lint:strict": "eslint --max-warnings=0 src",
-    "format": "prettier -w .",
-    "format:check": "prettier -c ."
-  },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
     "@radix-ui/colors": "^3.0.0",
@@ -62,5 +49,18 @@
     "globals": "^15.13.0",
     "prettier": "^3.4.1",
     "prettier-plugin-tailwindcss": "^0.6.9"
-  }
+  },
+  "name": "tjhorwood",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "format": "prettier -w .",
+    "format:check": "prettier -c .",
+    "lint": "next lint",
+    "lint:fix": "eslint src --fix && npm run format",
+    "lint:strict": "eslint --max-warnings=0 src",
+    "start": "next start"
+  },
+  "version": "0.1.0"
 }
