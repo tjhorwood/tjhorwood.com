@@ -174,11 +174,6 @@ input:-webkit-autofill:focus {
   animation: sending-animation 0.6s ease-in-out forwards;
 }
 
-.overflow-x-scroll.snap-x::-webkit-scrollbar {
-  /* hide scrollbars with webkit scrollbar */
-  display: none;
-}
-
 .prose hr {
   @apply border-primary;
 }
@@ -218,5 +213,15 @@ pre[class*='language-'] {
   .hardware-accelerated {
     @apply will-change-transform;
     transform: translateZ(0);
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
