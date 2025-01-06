@@ -4,6 +4,7 @@
     "@radix-ui/colors": "^3.0.0",
     "@radix-ui/react-dialog": "^1.1.4",
     "@radix-ui/react-dropdown-menu": "^2.1.4",
+    "@radix-ui/react-popover": "^1.1.4",
     "@radix-ui/react-slot": "^1.1.1",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "22.10.5",
@@ -65,5 +66,6 @@
     "lint:strict": "eslint --max-warnings=0 src",
     "start": "next start"
   },
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.15.3+sha512.1f79bc245a66eb0b07c5d4d83131240774642caaa86ef7d0434ab47c0d16f66b04e21e0c086eb61e62c77efc4d7f7ec071afad3796af64892fae66509173893a"
 }
