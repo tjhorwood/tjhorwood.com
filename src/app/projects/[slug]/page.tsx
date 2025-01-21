@@ -6,7 +6,6 @@ import { FaGithub } from 'react-icons/fa';
 import AnimatedSection from '@/components/AnimatedSection';
 import Link from '@/components/Link';
 import { HiChevronRight } from 'react-icons/hi';
-import { Metadata } from 'next';
 
 interface PageProps {
   params: { slug: string };
