@@ -6,10 +6,10 @@ import { FaGithub } from 'react-icons/fa';
 import AnimatedSection from '@/components/AnimatedSection';
 import Link from '@/components/Link';
 import { HiChevronRight } from 'react-icons/hi';
+import { Metadata } from 'next';
 
-type Props = {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
+interface PageProps {
+  params: { slug: string };
 }
 
 interface ProjectButtonProps {
@@ -50,7 +50,7 @@ const Breadcrumbs: React.FC<{ title: string }> = ({ title }) => (
   </nav>
 );
 
-export default function ProjectPage({ params }: Props) {
+export default async function ProjectPage({ params }: PageProps) {
   const project = projectsData.find((p) => p.slug === params.slug);
 
   if (!project) {
