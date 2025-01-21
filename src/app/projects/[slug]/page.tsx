@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { projectsData } from '@/lib/data';
-import { ProjectType } from '@/lib/types';
 import { FaGithub } from 'react-icons/fa';
 import AnimatedSection from '@/components/AnimatedSection';
 import Link from '@/components/Link';
