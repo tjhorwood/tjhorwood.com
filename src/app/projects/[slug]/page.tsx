@@ -7,9 +7,9 @@ import AnimatedSection from '@/components/AnimatedSection';
 import Link from '@/components/Link';
 import { HiChevronRight } from 'react-icons/hi';
 
-interface PageProps {
-  params: { slug: string };
-}
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
 
 interface ProjectButtonProps {
   href: string;
@@ -50,7 +50,8 @@ const Breadcrumbs: React.FC<{ title: string }> = ({ title }) => (
 );
 
 export default async function ProjectPage({ params }: PageProps) {
-  const project = projectsData.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const project = projectsData.find((p) => p.slug === slug);
 
   if (!project) {
     return notFound();
