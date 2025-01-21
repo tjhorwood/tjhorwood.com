@@ -7,10 +7,9 @@ import AnimatedSection from '@/components/AnimatedSection';
 import Link from '@/components/Link';
 import { HiChevronRight } from 'react-icons/hi';
 
-interface ProjectPageProps {
-  params: {
-    slug: string;
-  };
+type Props = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 interface ProjectButtonProps {
@@ -51,7 +50,7 @@ const Breadcrumbs: React.FC<{ title: string }> = ({ title }) => (
   </nav>
 );
 
-export default function ProjectPage({ params }: ProjectPageProps) {
+export default function ProjectPage({ params }: Props) {
   const project = projectsData.find((p) => p.slug === params.slug);
 
   if (!project) {
