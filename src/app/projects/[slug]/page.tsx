@@ -51,9 +51,8 @@ const Breadcrumbs: React.FC<{ title: string }> = ({ title }) => (
   </nav>
 );
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
-  const { slug } = await params;
-  const project = projectsData.find((p) => p.slug === slug);
+export default function ProjectPage({ params }: ProjectPageProps) {
+  const project = projectsData.find((p) => p.slug === params.slug);
 
   if (!project) {
     return notFound();
