@@ -241,7 +241,7 @@ export default function About() {
                               damping: 20,
                               duration: 0.2,
                             }}
-                            className='ml-auto h-full max-w-[95vw] overflow-scroll rounded-l-xl bg-tertiary p-8'
+                            className='ml-auto h-full max-w-[95vw] overflow-scroll rounded-l-xl bg-tertiary p-8 hide-scrollbar'
                           >
                             <SheetHeader className='text-left'>
                               <SheetTitle>{item.title}</SheetTitle>

@@ -55,13 +55,30 @@ import healthsyncImg from '@/assets/images/healthsync/healthsync.png';
 import healthsyncImgShort from '@/assets/images/healthsync/healthsync-short.png';
 import nlgImg from '@/assets/images/nlg/nlg.png';
 import nlgImgShort from '@/assets/images/nlg/nlg-short.png';
-import sahustudioImg from '@/assets/images/sahustudio.png';
-import sahustudioImgShort from '@/assets/images/sahustudio-short.png';
+import sahustudioImg from '@/assets/images/sahustudio/sahustudio.png';
+import sahustudioImgShort from '@/assets/images/sahustudio/sahustudio-short.png';
 import standardcbdImg from '@/assets/images/standardcbd.png';
 import standardcbdImgShort from '@/assets/images/standardcbd-short.png';
 import Syapse from '@/assets/images/syapse.png';
 
 export const projectsData = [
+  {
+    slug: 'sahu-studio',
+    category: 'Artistic Portfolio',
+    title: 'Sahu Studio',
+    src: sahustudioImg,
+    srcShort: sahustudioImgShort,
+    description:
+      'Sahu Studio is the online home of a talented friend who brings interior design dreams to life. This platform serves as both her creative playground and a showcase of her remarkable skills, featuring a captivating array of interior design projects, personalized paintings, and enchanting resin art pieces.',
+    tags: [
+      'React',
+      'Next.js',
+      'Tailwind',
+      'PayloadCMS',
+      'PostgreSQL',
+    ],
+    href: 'https://sahustudio.me',
+  },
   {
     slug: 'health-sync',
     category: 'App Landing Page',
@@ -114,17 +131,6 @@ export const projectsData = [
       'CapForge offers a comprehensive online platform catering to a diverse range of business needs, encompassing areas such as bookkeeping, taxation, payroll administration, strategic consulting, Amazon and e-commerce facilitation, as well as startup support.',
     tags: ['Wordpress'],
     href: 'https://capforge.com',
-  },
-  {
-    slug: 'sahu-studio',
-    category: 'Portfolio',
-    title: 'Sahu Studio',
-    src: sahustudioImg,
-    srcShort: sahustudioImgShort,
-    description:
-      'Sahu Studio is the online home of a talented friend who brings interior design dreams to life. This platform serves as both her creative playground and a showcase of her remarkable skills, featuring a captivating array of interior design projects, personalized paintings, and enchanting resin art pieces.',
-    tags: ['Wordpress'],
-    href: 'https://sahustudio.me',
   },
 ];
 
