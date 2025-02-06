@@ -21,9 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className='scrollbar-hide' suppressHydrationWarning>
+    <html lang='en' className='dark scrollbar-hide' suppressHydrationWarning>
       <body
-        className={`${inter.className} w-full bg-primary text-primary antialiased`}
+        className={`${inter.className} w-full bg-neutral-50 text-neutral-900 antialiased dark:bg-neutral-900 dark:text-white`}
       >
         <ThemeProvider
           attribute='class'
@@ -32,7 +32,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <div className='mx-auto max-w-screen-2xl px-6 pb-24 pt-8 md:px-6 md:pb-44 md:pt-12'>
+          <div className='mx-auto max-w-(--breakpoint-2xl) px-6 pt-8 pb-24 md:px-6 md:pt-12 md:pb-44'>
             <main className='grow'>{children}</main>
           </div>
         </ThemeProvider>

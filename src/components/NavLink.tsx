@@ -16,8 +16,10 @@ export default function NavLink({ href, children }: NavLinkProps) {
   return (
     <Link
       className={cn(
-        'cursor-pointer rounded-lg px-4 py-2 hover:bg-tertiary hover:text-primary',
-        active ? 'bg-tertiary text-primary' : 'text-secondary',
+        'cursor-pointer rounded-lg px-4 py-2 hover:bg-neutral-200/50 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-white',
+        active
+          ? 'bg-neutral-200/50 text-neutral-900 dark:bg-neutral-800 dark:text-white'
+          : 'text-neutral-900 dark:text-neutral-300',
       )}
       href={href}
     >

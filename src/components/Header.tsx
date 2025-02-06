@@ -24,9 +24,12 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className='h-18 relative top-0 z-20 mx-auto max-w-screen-3xl bg-primary md:sticky'>
+    <header className='relative top-0 z-20 mx-auto h-18 max-w-(--breakpoint-3xl) bg-neutral-50 md:sticky dark:bg-neutral-900'>
       <nav className='mx-auto flex h-full items-center justify-between gap-3 px-4 py-3'>
-        <Link href='/' className='shrink-0 cursor-pointer text-secondary'>
+        <Link
+          href='/'
+          className='shrink-0 cursor-pointer text-neutral-900 dark:text-neutral-300'
+        >
           <Logo />
         </Link>
         <ul className='hidden items-center gap-1 md:flex'>
@@ -38,7 +41,7 @@ export default function Header() {
         </ul>
         <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
           <DropdownMenuTrigger asChild className='relative ml-auto md:hidden'>
-            <Button className='flex items-center gap-1 rounded-lg border-none p-1 text-secondary outline-none focus-visible:ring-0'>
+            <Button className='flex items-center gap-1 rounded-lg border-none px-3 py-1 text-neutral-900 outline-hidden hover:bg-neutral-200/50 focus-visible:ring-0 dark:text-white dark:hover:bg-neutral-800'>
               Menu
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -52,13 +55,13 @@ export default function Header() {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align='end'
-            className='space-y-1 border-none bg-white p-2 text-base shadow-lg backdrop-blur-lg dark:bg-black'
+            className='space-y-1 border-none bg-neutral-50 p-2 text-base shadow-lg backdrop-blur-lg dark:bg-black'
           >
             {links.map(({ href, label }, index) => (
               <DropdownMenuItem
                 key={index}
                 onClick={() => setIsOpen(false)}
-                className='cursor-pointer rounded-md px-4 py-2 hover:bg-neutral-200/50 hover:dark:bg-neutral-900'
+                className='cursor-pointer rounded-md px-4 py-2 hover:bg-neutral-200/50 dark:bg-black dark:hover:bg-neutral-800'
               >
                 <Link href={href} className='w-full'>
                   {label}

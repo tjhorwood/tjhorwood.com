@@ -14,10 +14,7 @@ export default function Link(props: LinkProps) {
   return (
     <NextLink
       {...rest}
-      className={cn(
-        (isExternal || underline) && 'underline underline-offset-4',
-        props.className,
-      )}
+      className={cn(props.className)}
       target={isExternal ? '_blank' : undefined}
       rel='noopener noreferrer'
     >

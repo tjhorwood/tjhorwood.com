@@ -34,10 +34,16 @@ export default function Gear() {
       {/* Header Section */}
       <motion.div variants={itemVariants}>
         <h1 className='text-3xl font-bold tracking-tight'>Gear</h1>
-        <motion.p className='text-secondary' variants={itemVariants}>
+        <motion.p
+          className='text-neutral-600 dark:text-neutral-400'
+          variants={itemVariants}
+        >
           This is all gear I actually own and like.
         </motion.p>
-        <motion.p className='text-secondary' variants={itemVariants}>
+        <motion.p
+          className='text-neutral-600 dark:text-neutral-400'
+          variants={itemVariants}
+        >
           Using the affiliate links help support my work.
         </motion.p>
       </motion.div>

@@ -46,20 +46,20 @@ import {
 
 import { VscVscode } from 'react-icons/vsc';
 
-import Amtrak from '@/assets/images/amtrak.png';
-import capforgeImg from '@/assets/images/capforge.png';
-import capforgeImgShort from '@/assets/images/capforge-short.png';
-import Citi from '@/assets/images/citi.png';
-import CRFHealth from '@/assets/images/crfhealth.jpg';
-import healthsyncImg from '@/assets/images/healthsync/healthsync.png';
-import healthsyncImgShort from '@/assets/images/healthsync/healthsync-short.png';
-import nlgImg from '@/assets/images/nlg/nlg.png';
-import nlgImgShort from '@/assets/images/nlg/nlg-short.png';
-import sahustudioImg from '@/assets/images/sahustudio/sahustudio.png';
-import sahustudioImgShort from '@/assets/images/sahustudio/sahustudio-short.png';
-import standardcbdImg from '@/assets/images/standardcbd.png';
-import standardcbdImgShort from '@/assets/images/standardcbd-short.png';
-import Syapse from '@/assets/images/syapse.png';
+import Amtrak from '@/assets/images/amtrak.webp';
+import capforgeImg from '@/assets/images/capforge.webp';
+import capforgeImgShort from '@/assets/images/capforge-short.webp';
+import Citi from '@/assets/images/citi.webp';
+import CRFHealth from '@/assets/images/crfhealth.webp';
+import healthsyncImg from '@/assets/images/healthsync/healthsync.webp';
+import healthsyncImgShort from '@/assets/images/healthsync/healthsync-short.webp';
+import nlgImg from '@/assets/images/nlg/nlg.webp';
+import nlgImgShort from '@/assets/images/nlg/nlg-short.webp';
+import sahustudioImg from '@/assets/images/sahustudio/sahustudio.webp';
+import sahustudioImgShort from '@/assets/images/sahustudio/sahustudio-short.webp';
+import standardcbdImg from '@/assets/images/standardcbd.webp';
+import standardcbdImgShort from '@/assets/images/standardcbd-short.webp';
+import Syapse from '@/assets/images/syapse.webp';
 
 export const projectsData = [
   {
@@ -70,13 +70,7 @@ export const projectsData = [
     srcShort: sahustudioImgShort,
     description:
       'Sahu Studio is the online home of a talented friend who brings interior design dreams to life. This platform serves as both her creative playground and a showcase of her remarkable skills, featuring a captivating array of interior design projects, personalized paintings, and enchanting resin art pieces.',
-    tags: [
-      'React',
-      'Next.js',
-      'Tailwind',
-      'PayloadCMS',
-      'PostgreSQL',
-    ],
+    tags: ['React', 'Next.js', 'Tailwind', 'PayloadCMS', 'PostgreSQL'],
     href: 'https://sahustudio.me',
   },
   {
@@ -478,7 +472,7 @@ export const skillsData = [
   {
     name: 'Next.js',
     icon: SiNextdotjs,
-    css: 'text-primary',
+    css: 'text-neutral-900 dark:text-white',
   },
   {
     name: 'Node.js',
@@ -503,7 +497,7 @@ export const skillsData = [
   {
     name: 'Express',
     icon: SiExpress,
-    css: 'text-primary',
+    css: 'text-neutral-900 dark:text-white',
   },
   {
     name: 'Python',
@@ -533,7 +527,7 @@ export const skillsData = [
   {
     name: 'Angular',
     icon: SiAngular,
-    css: 'text-primary',
+    css: 'text-neutral-900 dark:text-white',
   },
   {
     name: 'Go',
@@ -614,7 +608,7 @@ export const platformData = [
   {
     name: 'Github',
     icon: SiGithub,
-    css: 'text-primary',
+    css: 'text-neutral-900 dark:text-white',
   },
   {
     name: 'Gitlab',
@@ -634,7 +628,7 @@ export const platformData = [
   {
     name: 'CircleCI',
     icon: SiCircleci,
-    css: 'text-primary',
+    css: 'text-neutral-900 dark:text-white',
   },
   {
     name: 'Prometheus',

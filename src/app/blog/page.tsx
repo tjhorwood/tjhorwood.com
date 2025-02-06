@@ -34,7 +34,9 @@ export default function Blog() {
       {/* Header Section */}
       <motion.div variants={itemVariants}>
         <h1 className='text-3xl font-bold tracking-tight'>Blog</h1>
-        <p className='text-secondary'>0 posts so far. Stay tuned for more!</p>
+        <p className='text-neutral-600 dark:text-neutral-400'>
+          0 posts so far. Stay tuned for more!
+        </p>
       </motion.div>
     </motion.div>
   );

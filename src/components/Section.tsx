@@ -25,7 +25,7 @@ export default function Section({
     >
       <h2
         className={cn(
-          'shrink-0 text-secondary md:w-28',
+          'shrink-0 text-neutral-600 md:w-28 dark:text-neutral-400',
           headingClass,
           headingAlignment === 'right' && 'md:text-right',
         )}
