@@ -52,7 +52,7 @@ export default function Projects() {
       {/* Header Section */}
       <motion.div variants={itemVariants}>
         <h1 className='text-3xl font-bold tracking-tight'>Projects</h1>
-        <p className='text-secondary'>
+        <p className='text-neutral-600 dark:text-neutral-400'>
           Here are a few of the projects I have worked on.
         </p>
       </motion.div>
@@ -69,7 +69,7 @@ export default function Projects() {
               onClick={() => handleClick(project.slug)}
               className='cursor-pointer transition-transform hover:scale-[1.02] active:scale-[0.95]'
             >
-              <Card className='flex h-full flex-col border-primary bg-tertiary'>
+              <Card className='flex h-full flex-col border-neutral-200 bg-neutral-200/50 shadow-md dark:border-neutral-700 dark:bg-neutral-800'>
                 <CardHeader className='space-y-0.5'>
                   <CardTitle className='text-xl font-bold'>
                     {project.title}
@@ -78,7 +78,7 @@ export default function Projects() {
                     {project.category}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className='flex-grow'>
+                <CardContent className='grow'>
                   <div className='relative mb-4 h-52 w-full'>
                     <Image
                       src={project.srcShort}

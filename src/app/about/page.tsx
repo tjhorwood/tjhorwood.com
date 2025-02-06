@@ -55,7 +55,7 @@ const ListSection = ({ heading, data }: { heading: string; data: any }) => {
           ({ name, css, icon: Icon }: any, index: Key | null | undefined) => (
             <motion.li
               key={index}
-              className='flex gap-2 rounded-xl bg-tertiary px-4 py-2 text-sm text-primary shadow md:text-base'
+              className='flex gap-2 rounded-xl bg-neutral-200/50 px-4 py-2 text-sm text-neutral-900 shadow-sm md:text-base dark:bg-neutral-800 dark:text-white'
               variants={itemVariants}
             >
               <Icon className={cn('h-6 w-6', css)} />
@@ -101,7 +101,9 @@ export default function About() {
       {/* Header Section */}
       <motion.div variants={itemVariants}>
         <h1 className='text-3xl font-bold tracking-tight'>About Me</h1>
-        <p className='text-secondary'>Just a quick glimpse.</p>
+        <p className='text-neutral-600 dark:text-neutral-400'>
+          Just a quick glimpse.
+        </p>
       </motion.div>
 
       <motion.div
@@ -206,7 +208,7 @@ export default function About() {
                 {workplacesData.map((item, index) => (
                   <motion.li key={index} variants={itemVariants}>
                     <Sheet>
-                      <SheetTrigger className='flex w-full justify-between rounded-lg bg-tertiary p-4 no-underline shadow transition-all duration-200 hover:scale-[1.02]'>
+                      <SheetTrigger className='flex w-full justify-between rounded-lg bg-neutral-200/50 p-4 no-underline shadow-sm transition-all duration-200 hover:scale-[1.02] dark:bg-neutral-800'>
                         <>
                           <div className='flex items-center gap-4'>
                             <Image
@@ -220,11 +222,13 @@ export default function About() {
                               <p className={item.link ? 'external-arrow' : ''}>
                                 {item.title}
                               </p>
-                              <p className='text-secondary'>{item.company}</p>
+                              <p className='text-neutral-900 dark:text-white'>
+                                {item.company}
+                              </p>
                             </div>
                           </div>
                           {item.time && (
-                            <p className='ml-3 text-right text-secondary'>
+                            <p className='ml-3 text-right text-neutral-900 dark:text-white'>
                               {item.time}
                             </p>
                           )}
@@ -241,13 +245,15 @@ export default function About() {
                               damping: 20,
                               duration: 0.2,
                             }}
-                            className='ml-auto h-full max-w-[95vw] overflow-scroll rounded-l-xl bg-tertiary p-8 hide-scrollbar'
+                            className='hide-scrollbar ml-auto h-full max-w-[95vw] overflow-scroll rounded-l-xl bg-neutral-200 p-8 dark:bg-neutral-800'
                           >
                             <SheetHeader className='text-left'>
                               <SheetTitle>{item.title}</SheetTitle>
-                              <p className='text-secondary'>{item.company}</p>
+                              <p className='text-neutral-900 dark:text-white'>
+                                {item.company}
+                              </p>
                             </SheetHeader>
-                            <p className='py-4 text-secondary'>
+                            <p className='py-4 text-neutral-900 dark:text-white'>
                               Key responsibilities:
                             </p>
                             <ul className='ml-4 list-disc space-y-3'>
@@ -266,12 +272,12 @@ export default function About() {
               {/* Download Resume Button */}
               <motion.div variants={itemVariants}>
                 <Button
-                  className='h-12 bg-gray-900 text-base text-white transition-all hover:scale-[1.02] hover:bg-gray-900/90 dark:bg-white/80 dark:text-gray-900'
+                  className='h-12 bg-neutral-900 text-base text-white transition-all hover:scale-[1.02] hover:bg-neutral-800 dark:bg-neutral-50 dark:text-gray-900 dark:hover:bg-neutral-100'
                   variant='default'
                   size='lg'
                 >
                   <a
-                    className='flex w-full cursor-pointer items-center gap-3 rounded-lg outline-none'
+                    className='flex w-full cursor-pointer items-center gap-3 rounded-lg outline-hidden'
                     href='/resume.pdf'
                     download
                   >

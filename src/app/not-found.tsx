@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 const Custom404 = (): JSX.Element => (
   <div className='mx-auto flex max-w-4xl flex-col gap-2'>
     <h1>404 - Page not found</h1>
-    <p className='text-secondary'>
+    <p className='text-neutral-900 dark:text-white'>
       Uh oh! This page does not exists, maybe you clicked an old link or
       misspelled. Please try again…
     </p>
     <div className='h-2' />
-    <Link href='/' underline>
+    <Link href='/'>
       Return home
     </Link>
   </div>

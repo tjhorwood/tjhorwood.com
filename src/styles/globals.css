@@ -1,99 +1,130 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin 'tailwindcss-animate';
+@plugin '@tailwindcss/typography';
 
-@import '@radix-ui/colors/gray.css';
-@import '@radix-ui/colors/gray-alpha.css';
-@import '@radix-ui/colors/gray-dark.css';
-@import '@radix-ui/colors/gray-dark-alpha.css';
-@import '@radix-ui/colors/blue.css';
-@import '@radix-ui/colors/blue-alpha.css';
+@custom-variant dark (&:where(.dark, .dark *));
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-  }
-}
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
 
 @layer base {
-  .light-theme .prose {
-    --tw-prose-headings: var(--gray-12);
-    --tw-prose-body: var(--gray-12);
-    --tw-prose-bold: var(--gray-12);
-    --tw-prose-links: var(--gray-12);
-    --tw-prose-code: var(--gray-12);
-    --tw-prose-quotes: var(--gray-12);
-  }
-
-  .dark-theme {
-    --blurBackground: rgb(0 0 0 / 95%);
-    /* --gray1: #101010; */
-  }
-
-  .dark-theme .prose {
-    --tw-prose-headings: var(--gray-12);
-    --tw-prose-body: var(--gray-11);
-    --tw-prose-bold: var(--gray-11);
-    --tw-prose-links: var(--gray-11);
-    --tw-prose-code: var(--gray-11);
-    --tw-prose-quotes: var(--gray-11);
-  }
-
-  body {
-    overflow-x: hidden;
-    background-color: var(--bg);
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
   }
 }
 
-input[type='search']::-webkit-search-cancel-button {
-  display: none;
+@theme {
+  --breakpoint-xs: 380px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+  --breakpoint-3xl: 1536px;
+
+  --animation-in: in 0.6s both;
+  --animation-in-reverse: in-reverse 0.6s both;
+  --animation-in-from-right: in-from-right 0.3s both;
+  --animation-out-from-right: out-from-right 0.3s both;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-  transition: background-color 5000s ease-in-out 0s;
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+@utility hardware-accelerated {
+  @apply will-change-transform;
+  transform: translateZ(0);
+}
+
+@utility scrollbar-hide {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@layer utilities {
+  input[type='search']::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  .button-animate-success {
+    animation: success-animation 0.6s ease-in-out forwards;
+  }
+
+  .button-animate-error {
+    animation: error-animation 0.6s ease-in-out forwards;
+  }
+
+  .button-animate-sending {
+    animation: sending-animation 0.6s ease-in-out forwards;
+  }
+}
+
+@keyframes in {
+  '0%': {
+    transform: 'translateY(18px)';
+    opacity: 0;
+  }
+  ,
+  '100%': {
+    transform: 'translateY(0)';
+    opacity: 1;
+  }
+}
+
+@keyframes in-reverse {
+  '0%': {
+    transform: 'translateY(-18px)';
+    opacity: 0;
+  }
+  , 
+  '100%': {
+    transform: 'translateY(0px)';
+    opacity: 1;
+  }
+}
+
+@keyframes in-from-right {
+  '0%': {
+    transform: 'translateX(100%)';
+    opacity: 0;
+  }
+  , 
+  '100%': {
+    transform: 'translateX(0)';
+    opacity: 1;
+  }
+}
+
+@keyframes out-from-right {
+  '0%': {
+    transform: 'translateX(0)';
+    opacity: 0;
+  }
+  , 
+  '100%': {
+    transform: 'translateX(100%)';
+    opacity: 1;
+  }
 }
 
 @keyframes pulse {
@@ -159,69 +190,5 @@ input:-webkit-autofill:focus {
   100% {
     background-color: #bbf7d0;
     transform: scale(1);
-  }
-}
-
-.button-animate-success {
-  animation: success-animation 0.6s ease-in-out forwards;
-}
-
-.button-animate-error {
-  animation: error-animation 0.6s ease-in-out forwards;
-}
-
-.button-animate-sending {
-  animation: sending-animation 0.6s ease-in-out forwards;
-}
-
-.prose hr {
-  @apply border-primary;
-}
-
-.prose.project img {
-  @apply rounded-[10px] border border-secondary bg-tertiary;
-}
-
-.prose blockquote {
-  @apply mx-auto border-0 px-6 text-center text-xl font-semibold not-italic text-primary opacity-90 md:px-20;
-}
-
-.prose figcaption {
-  @apply mx-auto mb-8 mt-2 max-w-md text-center text-sm font-normal leading-tight text-tertiary;
-}
-
-.prose mark {
-  background-color: var(--blue-a4);
-  color: inherit;
-  padding: 2px 0;
-}
-
-.prose h2 {
-  @apply mb-4 text-xl md:text-2xl;
-}
-
-.prose h3 {
-  @apply mb-2 mt-[48px] text-lg;
-}
-
-/* syntax highlighting */
-pre[class*='language-'] {
-  @apply rounded-md bg-[#1c1c1c] text-[13px] text-xs;
-}
-
-@layer utilities {
-  .hardware-accelerated {
-    @apply will-change-transform;
-    transform: translateZ(0);
-  }
-}
-
-@layer utilities {
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
   }
 }

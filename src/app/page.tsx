@@ -2,7 +2,7 @@ import { MotionDiv, MotionText, MotionUl, MotionLi } from '@/lib/framer';
 import Image from 'next/image';
 import { LuDownload, LuMail } from 'react-icons/lu';
 import Link from '@/components/Link';
-import ProfilePic from '@/assets/images/profile.png';
+import ProfilePic from '@/assets/images/profile.webp';
 import { BsGithub, BsInstagram, BsLinkedin } from 'react-icons/bs';
 
 // Animation Variants (defined outside to be accessible in both components)
@@ -55,7 +55,7 @@ export default function Home() {
     >
       <MotionDiv className='flex flex-col gap-8' variants={containerVariants}>
         <MotionDiv
-          className='flex flex-col-reverse gap-6 text-secondary md:flex-row md:items-center'
+          className='flex flex-col-reverse gap-6 text-neutral-900 md:flex-row md:items-center dark:text-white'
           variants={itemVariants}
         >
           <Image
@@ -63,15 +63,17 @@ export default function Home() {
             alt='avatar'
             width={150}
             height={150}
-            className='rounded-full bg-tertiary'
+            className='rounded-full bg-neutral-200/50 dark:bg-neutral-800'
           />
           <div className='ml-2 space-y-1'>
-            <h1 className='text-3xl font-bold tracking-tight text-primary'>
+            <h1 className='text-3xl font-bold tracking-tight text-neutral-900 dark:text-white'>
               Taylor Horwood
             </h1>
-            <p className='text-secondary'>Developer, tinkerer, indie hacker</p>
+            <p className='text-neutral-600 dark:text-neutral-400'>
+              Developer, tinkerer, indie hacker
+            </p>
             <MotionUl
-              className='hidden space-x-6 pt-4 text-secondary md:flex md:justify-start'
+              className='hidden space-x-6 pt-4 text-neutral-900 md:flex md:justify-start dark:text-white'
               variants={containerVariants}
               initial='hidden'
               animate='show'
@@ -79,7 +81,7 @@ export default function Home() {
               {socialsData.map(({ name, href, icon: Icon }) => (
                 <MotionLi key={name} variants={itemVariants}>
                   <Link
-                    className='flex items-center gap-x-2 no-underline hover:text-primary'
+                    className='flex items-center gap-x-2 text-neutral-600 no-underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'
                     href={href}
                   >
                     <Icon className='h-6 w-6' />
@@ -90,7 +92,10 @@ export default function Home() {
             </MotionUl>
           </div>
         </MotionDiv>
-        <MotionText className='text-primary' variants={itemVariants}>
+        <MotionText
+          className='text-neutral-900 dark:text-white'
+          variants={itemVariants}
+        >
           Hello world, I&apos;m Taylor Horwood a site reliability engineer by
           day and full stack developer by night. I create flawless front-end
           experiences while taming DevOps challenges for seamless, dependable
@@ -106,7 +111,7 @@ export default function Home() {
           {socialsData.map(({ name, href, icon: Icon }) => (
             <MotionLi key={name} variants={itemVariants}>
               <Link
-                className='flex items-center gap-x-2 no-underline hover:text-primary'
+                className='flex items-center gap-x-2 text-neutral-600 no-underline hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'
                 href={href}
               >
                 <Icon className='h-6 w-6' />
@@ -116,7 +121,7 @@ export default function Home() {
           ))}
         </MotionUl>
         <MotionUl
-          className='flex flex-col gap-2 text-secondary md:flex-row md:gap-6'
+          className='flex flex-col gap-2 text-neutral-900 md:flex-row md:gap-6 dark:text-white'
           variants={containerVariants}
           initial='hidden'
           animate='show'
@@ -131,7 +136,7 @@ export default function Home() {
           ].map(({ href, text, icon: Icon }) => (
             <MotionLi
               key={text}
-              className='transition-opacity hover:text-primary'
+              className='text-neutral-600 transition-opacity hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'
               variants={itemVariants}
             >
               <Link
