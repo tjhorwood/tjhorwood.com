@@ -1,13 +1,14 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
+
+import { Inter } from 'next/font/google';
 
 import Header from '@/components/Header';
 import { ThemeProvider } from 'next-themes';
+import { AOSInitializer } from '@/components/AOSInitializer';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: {
     template: `%s | Taylor Horwood`,
     default: 'Taylor Horwood',
@@ -15,16 +16,13 @@ export const metadata: Metadata = {
   description: 'Personal Portfolio',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang='en' className='dark scrollbar-hide' suppressHydrationWarning>
       <body
         className={`${inter.className} w-full bg-neutral-50 text-neutral-900 antialiased dark:bg-neutral-900 dark:text-white`}
       >
+        <AOSInitializer />
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
