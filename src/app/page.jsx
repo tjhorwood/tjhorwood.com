@@ -57,7 +57,7 @@ export default function Home() {
           magic, shaping a future where innovation meets unwavering reliability!
         </p>
         <ul
-          className='flex justify-start space-x-6 py-2 md:hidden'
+          className='flex max-w-full flex-wrap justify-start gap-6 py-2 md:hidden'
           data-aos={aosAnimationType}
           data-aos-delay={(baseDelay + 2 * delayIncrement).toString()}
         >
