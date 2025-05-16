@@ -44,8 +44,12 @@ export default function About() {
           heading='Databases'
           data={databaseData}
           data_aos={aosAnimationType}
+          data_aos_delay={(baseDelay + 4 * delayIncrement).toString()}
         />
-        <Work data_aos={aosAnimationType} />
+        <Work
+          data_aos={aosAnimationType}
+          data_aos_delay={(baseDelay + 5 * delayIncrement).toString()}
+        />
       </div>
     </div>
   );
