@@ -17,24 +17,41 @@ export default async function ProjectPage({ params }) {
     return notFound();
   }
 
+  const baseDelay = 0;
+  const delayIncrement = 100;
+  const aosAnimationType = 'fade-up';
+
   return (
     <div className='mx-auto max-w-(--breakpoint-xl) space-y-8'>
       <Breadcrumbs title={project.title} />
       <div className='space-y-8'>
-        <div>
+        <div data-aos={aosAnimationType}>
           <h1 className='text-3xl font-bold tracking-tight'>{project.title}</h1>
           <p className='text-neutral-600 dark:text-neutral-400'>
             {project.category}
           </p>
         </div>
 
-        <Tags tags={project.tags} />
+        <div
+          data-aos={aosAnimationType}
+          data-aos-delay={(baseDelay + 1 * delayIncrement).toString()}
+        >
+          <Tags tags={project.tags} />
+        </div>
 
-        <div className='rounded-md bg-neutral-200/50 p-4 shadow-md dark:bg-neutral-800'>
+        <div
+          className='rounded-md bg-neutral-200/50 p-4 shadow-md dark:bg-neutral-800'
+          data-aos={aosAnimationType}
+          data-aos-delay={(baseDelay + 2 * delayIncrement).toString()}
+        >
           <p>{project.description}</p>
         </div>
 
-        <div className='mb-6 flex gap-2'>
+        <div
+          className='mb-6 flex gap-2'
+          data-aos={aosAnimationType}
+          data-aos-delay={(baseDelay + 3 * delayIncrement).toString()}
+        >
           {project.href && (
             <Link
               href={project.href}
@@ -54,7 +71,11 @@ export default async function ProjectPage({ params }) {
           )}
         </div>
 
-        <div className='space-y-4'>
+        <div
+          className='space-y-4'
+          data-aos={aosAnimationType}
+          data-aos-delay={(baseDelay + 4 * delayIncrement).toString()}
+        >
           <h2 className='text-2xl font-semibold'>Screenshots</h2>
           <div className='relative w-full'>
             <Image
