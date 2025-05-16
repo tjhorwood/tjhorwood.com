@@ -1,15 +1,9 @@
 import cn from 'clsx';
 import { usePathname } from 'next/navigation';
-import { ReactNode } from 'react';
 
 import Link from '@/components/Link';
 
-type NavLinkProps = {
-  href: string;
-  children: ReactNode;
-};
-
-export default function NavLink({ href, children }: NavLinkProps) {
+export default function NavLink({ href, children }) {
   const pathname = `/${usePathname().split('/')[1]}`; // active paths on dynamic subpages
   const active = pathname === href;
 

@@ -60,6 +60,30 @@ import sahustudioImgShort from '@/assets/images/sahustudio/sahustudio-short.webp
 import standardcbdImg from '@/assets/images/standardcbd.webp';
 import standardcbdImgShort from '@/assets/images/standardcbd-short.webp';
 import Syapse from '@/assets/images/syapse.webp';
+import { BsGithub, BsGitlab, BsInstagram, BsLinkedin } from 'react-icons/bs';
+
+export const socialsData = [
+  {
+    name: 'GitHub',
+    href: 'https://github.com/tjhorwood/',
+    icon: BsGithub,
+  },
+  {
+    name: 'GitLab',
+    href: 'https://gitlab.com/tjhorwood/',
+    icon: BsGitlab,
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://linkedin.com/in/tjhorwood/',
+    icon: BsLinkedin,
+  },
+  {
+    name: 'Instagram',
+    href: 'https://www.instagram.com/taylorhorwood/',
+    icon: BsInstagram,
+  },
+];
 
 export const projectsData = [
   {
