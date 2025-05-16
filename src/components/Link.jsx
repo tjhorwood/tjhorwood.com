@@ -1,13 +1,7 @@
 import cn from 'clsx';
-import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-import { ReactNode } from 'react';
+import NextLink from 'next/link';
 
-type LinkProps = {
-  children: ReactNode;
-  className?: string;
-} & NextLinkProps;
-
-export default function Link(props: LinkProps) {
+export default function Link(props) {
   const isExternal = !props.href.toString().startsWith('/');
   const { ...rest } = props;
   return (

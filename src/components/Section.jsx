@@ -1,13 +1,4 @@
 import cn from 'clsx';
-import { ReactNode } from 'react';
-
-type SectionProps = {
-  sectionClass?: string;
-  heading: string;
-  headingAlignment?: 'right' | 'left';
-  headingClass?: string;
-  children: ReactNode;
-};
 
 export default function Section({
   sectionClass,
@@ -15,7 +6,7 @@ export default function Section({
   headingAlignment,
   headingClass,
   children,
-}: SectionProps) {
+}) {
   return (
     <section
       className={cn(
