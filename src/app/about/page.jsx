@@ -16,7 +16,7 @@ export default function About() {
 
   return (
     <div className='flex flex-col gap-12'>
-      <div data-aos='fade-up'>
+      <div data-aos={aosAnimationType}>
         <h1 className='text-3xl font-bold tracking-tight'>About Me</h1>
         <p className='text-neutral-600 dark:text-neutral-400'>
           Just a quick glimpse.
@@ -44,11 +44,11 @@ export default function About() {
           heading='Databases'
           data={databaseData}
           data_aos={aosAnimationType}
-          data_aos_delay={(baseDelay + 4 * delayIncrement).toString()}
+          data_aos_delay={(baseDelay + 0 * delayIncrement).toString()}
         />
         <Work
           data_aos={aosAnimationType}
-          data_aos_delay={(baseDelay + 5 * delayIncrement).toString()}
+          data_aos_delay={(baseDelay + 0 * delayIncrement).toString()}
         />
       </div>
     </div>

@@ -17,7 +17,6 @@ const WorkplaceItem = ({ item }) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        {/* Use asChild to make the custom div the trigger */}
         <div className='flex w-full cursor-pointer items-center justify-between rounded-lg bg-neutral-200/50 p-4 text-left no-underline shadow-sm transition-all duration-200 hover:scale-[1.02] dark:bg-neutral-800'>
           <div className='flex flex-1 items-center gap-4'>
             <Image
