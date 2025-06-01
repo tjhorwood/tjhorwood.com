@@ -2,9 +2,9 @@ import '@/styles/globals.css';
 
 import { Inter } from 'next/font/google';
 
+import { AOSInitializer } from '@/components/AOSInitializer';
 import Header from '@/components/Header';
 import { ThemeProvider } from 'next-themes';
-import { AOSInitializer } from '@/components/AOSInitializer';
 
 const inter = Inter({ subsets: ['latin'] });
 

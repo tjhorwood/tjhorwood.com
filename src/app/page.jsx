@@ -1,8 +1,8 @@
+import ProfilePic from '@/assets/images/profile.webp';
+import Link from '@/components/Link';
+import { socialsData } from '@/lib/data';
 import Image from 'next/image';
 import { LuDownload, LuMail } from 'react-icons/lu';
-import Link from '@/components/Link';
-import ProfilePic from '@/assets/images/profile.webp';
-import { socialsData } from '@/lib/data';
 
 export default function Home() {
   const baseDelay = 0;

@@ -1,64 +1,64 @@
 import {
-  SiKubernetes,
-  SiTerraform,
-  SiDocker,
-  SiHtml5,
-  SiCss3,
-  SiJavascript,
-  SiTypescript,
-  SiReact,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiGit,
-  SiTailwindcss,
-  SiGo,
+  SiAmazonwebservices,
   SiAngular,
-  SiWebflow,
-  SiWordpress,
-  SiFramer,
-  SiDjango,
-  SiRedux,
   SiApollographql,
+  SiCircleci,
+  SiConfluence,
+  SiCss3,
+  SiDjango,
+  SiDocker,
   SiExpress,
-  SiPython,
-  SiPostgresql,
-  SiMysql,
-  SiMariadb,
-  SiMongodb,
-  SiSqlite,
-  SiGraphql,
-  SiRedis,
-  SiPrisma,
-  SiVim,
-  SiGnubash,
-  SiZsh,
+  SiFramer,
+  SiGit,
   SiGithub,
   SiGitlab,
-  SiJenkins,
-  SiCircleci,
-  SiPrometheus,
+  SiGnubash,
+  SiGo,
   SiGrafana,
+  SiGraphql,
+  SiHtml5,
+  SiJavascript,
+  SiJenkins,
   SiJira,
-  SiConfluence,
+  SiKubernetes,
+  SiMariadb,
+  SiMongodb,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPrisma,
+  SiPrometheus,
+  SiPython,
+  SiReact,
+  SiRedis,
+  SiRedux,
   SiSalesforce,
-  SiAmazonwebservices,
+  SiSqlite,
+  SiTailwindcss,
+  SiTerraform,
+  SiTypescript,
+  SiVim,
+  SiWebflow,
+  SiWordpress,
+  SiZsh,
 } from 'react-icons/si';
 
 import { VscVscode } from 'react-icons/vsc';
 
 import Amtrak from '@/assets/images/amtrak.webp';
-import capforgeImg from '@/assets/images/capforge.webp';
 import capforgeImgShort from '@/assets/images/capforge-short.webp';
+import capforgeImg from '@/assets/images/capforge.webp';
 import Citi from '@/assets/images/citi.webp';
 import CRFHealth from '@/assets/images/crfhealth.webp';
-import healthsyncImg from '@/assets/images/healthsync/healthsync.webp';
 import healthsyncImgShort from '@/assets/images/healthsync/healthsync-short.webp';
-import nlgImg from '@/assets/images/nlg/nlg.webp';
+import healthsyncImg from '@/assets/images/healthsync/healthsync.webp';
 import nlgImgShort from '@/assets/images/nlg/nlg-short.webp';
-import sahustudioImg from '@/assets/images/sahustudio/sahustudio.webp';
+import nlgImg from '@/assets/images/nlg/nlg.webp';
 import sahustudioImgShort from '@/assets/images/sahustudio/sahustudio-short.webp';
-import standardcbdImg from '@/assets/images/standardcbd.webp';
+import sahustudioImg from '@/assets/images/sahustudio/sahustudio.webp';
 import standardcbdImgShort from '@/assets/images/standardcbd-short.webp';
+import standardcbdImg from '@/assets/images/standardcbd.webp';
 import Syapse from '@/assets/images/syapse.webp';
 import { BsGithub, BsGitlab, BsInstagram, BsLinkedin } from 'react-icons/bs';
 
