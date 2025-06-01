@@ -1,5 +1,5 @@
-import cn from 'clsx';
 import Section from '@/components/Section';
+import cn from 'clsx';
 
 export default function ListSection({
   heading,

@@ -1,7 +1,6 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import * as React from 'react';
 import { LuMoon, LuSun } from 'react-icons/lu';
 
 import { Button } from '@/components/ui/button';

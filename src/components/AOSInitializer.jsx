@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 import AOS from 'aos';
+import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 import 'aos/dist/aos.css';
 
 export const AOSInitializer = () => {

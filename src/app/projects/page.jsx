@@ -1,6 +1,3 @@
-import React from 'react';
-import Link from 'next/link';
-import { projectsData } from '@/lib/data';
 import {
   Card,
   CardContent,
@@ -8,7 +5,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { projectsData } from '@/lib/data';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Projects() {
   const baseDelay = 0;

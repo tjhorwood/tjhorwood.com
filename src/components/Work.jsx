@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import { workplacesData } from '@/lib/data';
-import React, { useMemo } from 'react';
+import Image from 'next/image';
+import { useMemo } from 'react';
 
 import Section from '@/components/Section';
 import { Button } from '@/components/ui/button';
