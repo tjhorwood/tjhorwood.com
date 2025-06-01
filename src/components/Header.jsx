@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Link from '@/components/Link';
 import Logo from '@/components/Logo';
 import NavLink from '@/components/NavLink';
@@ -12,6 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useState } from 'react';
 
 export const links = [
   { id: 'about', label: 'About', href: '/about' },

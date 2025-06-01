@@ -1,10 +1,9 @@
-import React from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { FaGithub } from 'react-icons/fa';
 
-import Link from '@/components/Link';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import Link from '@/components/Link';
 import Tags from '@/components/Tags';
 
 import { projectsData } from '@/lib/data';

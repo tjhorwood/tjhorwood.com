@@ -1,5 +1,4 @@
 import Link from '@/components/Link';
-import { JSX } from 'react';
 
 export const metadata = {
   title: '404',
