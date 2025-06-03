@@ -107,7 +107,7 @@ export const projectsData = [
       'Health Sync introduces a wellness app designed to enhance productivity, focus, and overall well-being. It features bodyweight exercises, yoga, guided meditation, and breathwork, all accessible from home. The app is noted for its simple interface, daily fresh content, and health insurance-approved fitness programs. It also provides resources for incorporating well-being practices into family life. The platform is available on macOS and Windows.',
     tags: ['React', 'Next.js', 'Tailwind'],
     href: 'https://health-sync.org',
-    sourceCode: 'https://github.com/tjhorwood/health-sync',
+    sourceCode: 'https://gitlab.com/tjhorwood/healthsync',
   },
   {
     slug: 'national-league-gaming',
