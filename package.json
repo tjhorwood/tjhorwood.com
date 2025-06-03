@@ -48,7 +48,12 @@
   "name": "tjhorwood",
   "packageManager": "pnpm@10.2.0",
   "pnpm": {
-    "onlyBuiltDependencies": ["@tailwindcss/oxide", "sharp", "unrs-resolver"]
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "@tailwindcss/oxide",
+      "sharp",
+      "unrs-resolver"
+    ]
   },
   "private": true,
   "scripts": {
