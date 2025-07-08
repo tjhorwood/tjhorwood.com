@@ -10,15 +10,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Projects() {
-  const baseDelay = 0;
-  const delayIncrement = 100;
-  const aosAnimationType = 'fade-up';
-
   return (
     <div className='flex flex-col gap-4'>
-      <div data-aos='fade-up'>
+      <div>
         <h1 className='text-3xl font-bold tracking-tight'>Projects</h1>
-        <p className='text-neutral-600 dark:text-neutral-400'>
+        <p className='text-primary/60'>
           Here are a few of the projects I have worked on.
         </p>
       </div>
@@ -30,15 +26,13 @@ export default function Projects() {
               key={project.slug}
               href={`/projects/${project.slug}`}
               className='group block cursor-pointer transition-transform hover:scale-[1.02] active:scale-[0.95]'
-              data-aos={aosAnimationType}
-              data-aos-delay={(baseDelay + index * delayIncrement).toString()}
             >
-              <Card className='flex h-full flex-col border-neutral-200 bg-neutral-200/50 shadow-md dark:border-neutral-700 dark:bg-neutral-800'>
+              <Card className='flex h-full flex-col border-border bg-secondary shadow-md'>
                 <CardHeader className='space-y-0.5'>
                   <CardTitle className='text-xl font-bold'>
                     {project.title}
                   </CardTitle>
-                  <CardDescription className='text-sm text-gray-500'>
+                  <CardDescription className='text-sm text-primary/60'>
                     {project.category}
                   </CardDescription>
                 </CardHeader>

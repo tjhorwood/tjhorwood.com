@@ -4,14 +4,9 @@ import Link from '@/components/Link';
 import Logo from '@/components/Logo';
 import NavLink from '@/components/NavLink';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
+import { LuAlignJustify, LuX } from 'react-icons/lu';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { useState } from 'react';
 
 export const links = [
   { id: 'about', label: 'About', href: '/about' },
@@ -22,16 +17,46 @@ export const links = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef(null); // Create a ref for the header element
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // Close the menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (headerRef.current && !headerRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    // Add event listener when the menu is open
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Cleanup the event listener
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]); // Re-run effect when isOpen changes
 
   return (
-    <header className='relative top-0 z-20 mx-auto h-18 max-w-(--breakpoint-3xl) bg-neutral-50 md:sticky dark:bg-neutral-900'>
+    <header
+      ref={headerRef}
+      className='relative top-0 z-20 mx-auto h-18 max-w-screen-3xl bg-background md:sticky'
+    >
       <nav className='mx-auto flex h-full items-center justify-between gap-3 px-4 py-3'>
         <Link
           href='/'
-          className='shrink-0 cursor-pointer text-neutral-900 dark:text-neutral-300'
+          className='shrink-0 cursor-pointer text-primary'
+          onClick={() => setIsOpen(false)}
         >
           <Logo />
         </Link>
+
+        {/* Desktop Navigation */}
         <ul className='hidden items-center gap-1 md:flex'>
           {links.map(({ id, href, label }) => (
             <li key={id}>
@@ -39,41 +64,44 @@ export default function Header() {
             </li>
           ))}
         </ul>
-        <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-          <DropdownMenuTrigger asChild className='relative ml-auto md:hidden'>
-            <Button className='flex items-center gap-1 rounded-lg border-none px-3 py-1 text-neutral-900 outline-hidden hover:bg-neutral-200/50 focus-visible:ring-0 dark:text-white dark:hover:bg-neutral-800'>
-              Menu
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 20 20'
-                fill='currentColor'
-                className='h-5 w-5'
-              >
-                <path d='M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z' />
-              </svg>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align='end'
-            className='space-y-1 border-none bg-neutral-50 p-2 text-base shadow-lg backdrop-blur-lg dark:bg-black'
-          >
-            {links.map(({ href, label }, index) => (
-              <DropdownMenuItem
-                key={index}
-                onClick={() => setIsOpen(false)}
-                className='cursor-pointer rounded-md px-4 py-2 hover:bg-neutral-200/50 dark:bg-black dark:hover:bg-neutral-800'
-              >
-                <Link href={href} className='w-full'>
-                  {label}
-                </Link>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <div className='flex h-8 w-8 items-center justify-center'>
+
+        <div className='flex h-8 w-8 items-center justify-center ml-auto md:ml-0'>
           <ThemeSwitcher />
         </div>
+        <div className='relative md:hidden'>
+          <Button variant='ghost' onClick={toggleMenu} className='z-50'>
+            {isOpen ? (
+              <LuX className='size-6' />
+            ) : (
+              <LuAlignJustify className='size-6' />
+            )}
+            <span className='sr-only'>Toggle Menu</span>
+          </Button>
+        </div>
       </nav>
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className='absolute right-0 w-1/2 bg-background md:hidden rounded-b-md shadow-lg'>
+          <div className='flex flex-col items-center gap-2 p-4'>
+            {links.map(({ id, href, label }) => (
+              <Link
+                key={id}
+                href={href}
+                className='w-full'
+                onClick={() => setIsOpen(false)}
+              >
+                <Button
+                  variant='secondary'
+                  size='lg'
+                  className='justify-start w-full cursor-pointer'
+                >
+                  {label}
+                </Button>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }
