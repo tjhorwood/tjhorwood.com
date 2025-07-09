@@ -78,11 +78,6 @@ export const socialsData = [
     href: 'https://linkedin.com/in/tjhorwood/',
     icon: BsLinkedin,
   },
-  {
-    name: 'Instagram',
-    href: 'https://www.instagram.com/taylorhorwood/',
-    icon: BsInstagram,
-  },
 ];
 
 export const projectsData = [
