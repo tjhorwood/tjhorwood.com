@@ -1,9 +1,17 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.0.0/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedKeys": "on"
+      }
+    },
+    "enabled": true
+  },
   "files": {
-    "ignore": [],
     "ignoreUnknown": false,
-    "include": [
+    "includes": [
       "next-env.d.ts",
       "**/*.ts",
       "**/*.tsx",
@@ -18,26 +26,33 @@
     "bracketSpacing": true,
     "enabled": true,
     "formatWithErrors": false,
-    "ignore": [
-      "./node_modules",
-      "./.pnp",
-      "**/.pnp.js",
-      "./coverage",
-      "**/.next",
-      "./.next/",
-      "./out/",
-      "./build",
-      "**/.DS_Store",
-      "**/*.pem",
-      "**/npm-debug.log*",
-      "**/yarn-debug.log*",
-      "**/yarn-error.log*",
-      "**/.env.local",
-      "**/.env.development.local",
-      "**/.env.test.local",
-      "**/.env.production.local",
-      "**/.vercel",
-      "**/CHANGELOG.md"
+    "includes": [
+      "!./node_modules",
+      "!./.pnp",
+      "!**/.pnp.js",
+      "!./coverage",
+      "!**/.next",
+      "!./.next/",
+      "!./out/",
+      "!./build",
+      "!**/.DS_Store",
+      "!**/*.pem",
+      "!**/npm-debug.log*",
+      "!**/yarn-debug.log*",
+      "!**/yarn-error.log*",
+      "!**/.env.local",
+      "!**/.env.development.local",
+      "!**/.env.test.local",
+      "!**/.env.production.local",
+      "!**/.vercel",
+      "!**/CHANGELOG.md",
+      "next-env.d.ts",
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.jsx",
+      "**/*.json",
+      ".next/types/**/*.ts"
     ],
     "indentStyle": "space",
     "indentWidth": 2,
@@ -71,9 +86,6 @@
         "noExplicitAny": "off"
       }
     }
-  },
-  "organizeImports": {
-    "enabled": true
   },
   "vcs": {
     "clientKind": "git",

@@ -1,8 +1,8 @@
 import Section from '@/components/Section';
 
-export default function Info({ data_aos, data_aos_delay = '' }) {
+export default function Info() {
   return (
-    <div data-aos={data_aos} data-aos-delay={data_aos_delay}>
+    <div>
       <Section heading='About' headingAlignment='left'>
         <div className='flex flex-col gap-6'>
           <p>Hello world, I&apos;m Taylor Horwood!</p>

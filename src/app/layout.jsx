@@ -1,12 +1,14 @@
-import '@/styles/globals.css';
-
-import { Inter } from 'next/font/google';
-
-import { AOSInitializer } from '@/components/AOSInitializer';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import Header from '@/components/Header';
-import { ThemeProvider } from 'next-themes';
+import '@/styles/globals.css';
+import { Poppins } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700', '800', '900'], // Example weights
+  subsets: ['latin'],
+  display: 'swap', // Ensures text visibility during loading
+  variable: '--font-poppins', // Optional: for CSS variables
+});
 
 export const metadata = {
   title: {
@@ -18,11 +20,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en' className='dark scrollbar-hide' suppressHydrationWarning>
-      <body
-        className={`${inter.className} w-full bg-neutral-50 text-neutral-900 antialiased dark:bg-neutral-900 dark:text-white`}
-      >
-        <AOSInitializer />
+    <html lang='en' className='scrollbar-hide'>
+      <body className={`${poppins.className} w-full bg-background antialiased`}>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
