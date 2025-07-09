@@ -1,14 +1,10 @@
 import Section from '@/components/Section';
 import cn from 'clsx';
+import AnimatedContent from '@/components/animations/AnimatedContent';
 
-export default function ListSection({
-  heading,
-  data,
-  data_aos,
-  data_aos_delay = '',
-}) {
+export default function ListSection({ heading, data }) {
   return (
-    <div data-aos={data_aos} data-aos-delay={data_aos_delay}>
+    <div>
       <Section heading={heading} headingAlignment='left'>
         <ul
           className='flex flex-wrap justify-start gap-2'
@@ -16,13 +12,27 @@ export default function ListSection({
           animate='show'
         >
           {data.map(({ name, css, icon: Icon }, index) => (
-            <li
+            <AnimatedContent
               key={index}
-              className='flex gap-2 rounded-xl bg-neutral-200/50 px-4 py-2 text-sm text-neutral-900 shadow-sm md:text-base dark:bg-neutral-800 dark:text-white'
+              distance={50}
+              direction='vertical'
+              reverse={false}
+              duration={0.2}
+              ease='power3.out'
+              initialOpacity={0}
+              animateOpacity
+              scale={1}
+              threshold={0}
+              delay={index * 0.05}
             >
-              <Icon className={cn('h-6 w-6', css)} />
-              {name}
-            </li>
+              <li
+                key={index}
+                className='flex gap-2 rounded-xl bg-secondary px-4 py-2 text-primary shadow-sm'
+              >
+                <Icon className={cn('h-6 w-6', css)} />
+                {name}
+              </li>
+            </AnimatedContent>
           ))}
         </ul>
       </Section>
