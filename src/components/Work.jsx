@@ -12,12 +12,13 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { LuDownload } from 'react-icons/lu';
+import AnimatedContent from './animations/AnimatedContent';
 
 const WorkplaceItem = ({ item }) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <div className='flex w-full cursor-pointer items-center justify-between rounded-lg bg-secondary p-4 text-left no-underline shadow-sm transition-all duration-200 hover:scale-[1.02]'>
+        <div className='flex w-full cursor-pointer items-center justify-between rounded-lg bg-secondary hover:bg-secondary/80 p-4 text-left no-underline shadow border-border border'>
           <div className='flex flex-1 items-center gap-4'>
             <Image
               src={item.imageSrc}
@@ -79,27 +80,29 @@ export default function Work() {
           </p>
           <ul className='flex flex-col space-y-4'>
             {workplacesData.map((item, index) => (
-              <li key={item.id || index}>
-                <WorkplaceItem item={item} />
-              </li>
+              <AnimatedContent delay={0.1} key={index}>
+                <li key={item.id || index}>
+                  <WorkplaceItem item={item} />
+                </li>
+              </AnimatedContent>
             ))}
           </ul>
 
           <div className='w-full md:w-1/2 lg:w-1/3 xl:w-1/4'>
             <Button
-              asChild
-              className='transition-all hover:scale-[1.02]'
-              variant='default'
-              size='lg'
-            >
-              <a
-                className='flex w-full items-center justify-center gap-3'
-                href='/resume.pdf'
-                download
+                variant='default'
+                size='lg'
+                className='w-full cursor-pointer shadow border-border border text-background'
               >
-                Download Resume <LuDownload className='size-5' />
-              </a>
-            </Button>
+                <a
+                  className='flex w-full items-center justify-center gap-3'
+                  href='/resume.pdf'
+                  download
+                >
+                  <LuDownload className='size-5' />
+                  <span>Download Resume</span>
+                </a>
+              </Button>
           </div>
         </div>
       </Section>
