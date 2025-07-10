@@ -15,9 +15,9 @@ export default function ListSection({ heading, data }) {
             <AnimatedContent
               key={index}
               distance={50}
-              direction='horizontal'
+              direction='vertical'
               reverse={false}
-              duration={0.1}
+              duration={0.2}
               ease='power3.out'
               initialOpacity={0}
               animateOpacity
