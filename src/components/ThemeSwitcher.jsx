@@ -28,7 +28,7 @@ export function ThemeSwitcher() {
       onClick={toggleTheme}
       variant='secondary'
       size='icon'
-      className='cursor-pointer border-transparent border hover:border-border bg-background hover:bg-secondary'
+      className='cursor-pointer border-transparent border hover:border-border bg-background hover:bg-secondary shadow-none'
     >
       <CgDarkMode className='size-6' />
       <span className='sr-only'>Toggle theme</span>
