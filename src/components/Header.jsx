@@ -91,9 +91,9 @@ export default function Header() {
                 onClick={() => setIsOpen(false)}
               >
                 <Button
-                  variant='secondary'
+                  variant='default'
                   size='lg'
-                  className='justify-start w-full cursor-pointer'
+                  className='justify-start w-full bg-secondary hover:bg-secondary/80 text-primary cursor-pointer border-border border'
                 >
                   {label}
                 </Button>

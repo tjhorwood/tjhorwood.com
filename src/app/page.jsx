@@ -17,7 +17,7 @@ export default function Home() {
             alt='avatar'
             width={200}
             height={200}
-            className='size-40 rounded-full bg-secondary' // Use fixed h/w for consistency
+            className='size-40 rounded-full bg-secondary hover:bg-secondary/80 shadow border-border border' // Use fixed h/w for consistency
           />
           <div className='space-y-2'>
             <div className='flex flex-col items-center gap-4 md:flex-row md:gap-4'>
@@ -26,7 +26,7 @@ export default function Home() {
               </h1>
               <RotatingText
                 texts={['Developer', 'Engineer', 'Tinkerer', 'Indie Hacker']}
-                mainClassName='text-2xl px-3 bg-secondary overflow-hidden py-2 justify-center rounded-lg shadow'
+                mainClassName='text-2xl px-3 bg-secondary hover:bg-secondary/80 overflow-hidden py-2 justify-center rounded-lg shadow border-border border'
                 staggerFrom={'last'}
                 initial={{ y: '100%' }}
                 animate={{ y: 0 }}
@@ -41,29 +41,15 @@ export default function Home() {
             {/* This list remains hidden on mobile as per your original code */}
             <ul className='space-x-6 pt-6 md:pt-4 flex justify-center md:justify-start'>
               {socialsData.map(({ name, href, icon: Icon }, index) => (
-                <AnimatedContent
-                  key={index}
-                  distance={50}
-                  direction='veritcal'
-                  reverse={false}
-                  duration={0.6}
-                  ease='power3.out'
-                  initialOpacity={0}
-                  animateOpacity
-                  scale={1}
-                  threshold={0}
-                  delay={index * 0.1}
-                >
-                  <li>
-                    <Link
-                      className='flex items-center gap-x-2 text-primary/60 no-underline hover:text-primary'
-                      href={href}
-                    >
-                      <Icon className='h-6 w-6' />
-                      <span>{name}</span>
-                    </Link>
-                  </li>
-                </AnimatedContent>
+                <li>
+                  <Link
+                    className='flex items-center gap-x-2 text-primary/60 no-underline hover:text-primary'
+                    href={href}
+                  >
+                    <Icon className='h-6 w-6' />
+                    <span>{name}</span>
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -94,7 +80,7 @@ export default function Home() {
               <Button
                 variant='secondary'
                 size='lg'
-                className='w-full cursor-pointer shadow'
+                className='w-full cursor-pointer shadow border-border border'
               >
                 <div className='flex items-center justify-center gap-2'>
                   <Icon className='size-5' />

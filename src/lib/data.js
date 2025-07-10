@@ -69,11 +69,6 @@ export const socialsData = [
     icon: BsGithub,
   },
   {
-    name: 'GitLab',
-    href: 'https://gitlab.com/tjhorwood/',
-    icon: BsGitlab,
-  },
-  {
     name: 'LinkedIn',
     href: 'https://linkedin.com/in/tjhorwood/',
     icon: BsLinkedin,
@@ -89,7 +84,7 @@ export const projectsData = [
     srcShort: sahustudioImgShort,
     description:
       'Sahu Studio is the online home of a talented friend who brings interior design dreams to life. This platform serves as both her creative playground and a showcase of her remarkable skills, featuring a captivating array of interior design projects, personalized paintings, and enchanting resin art pieces.',
-    tags: ['React', 'Next.js', 'Tailwind', 'PayloadCMS', 'PostgreSQL'],
+    tags: ['React', 'Next.js', 'Tailwind CSS', 'Directus CMS', 'PostgreSQL'],
     href: 'https://sahustudio.me',
   },
   {
@@ -100,7 +95,7 @@ export const projectsData = [
     srcShort: healthsyncImgShort,
     description:
       'Health Sync introduces a wellness app designed to enhance productivity, focus, and overall well-being. It features bodyweight exercises, yoga, guided meditation, and breathwork, all accessible from home. The app is noted for its simple interface, daily fresh content, and health insurance-approved fitness programs. It also provides resources for incorporating well-being practices into family life. The platform is available on macOS and Windows.',
-    tags: ['React', 'Next.js', 'Tailwind'],
+    tags: ['React', 'Next.js', 'Tailwind CSS'],
     href: 'https://health-sync.org',
     sourceCode: 'https://gitlab.com/tjhorwood/healthsync',
   },
@@ -115,7 +110,7 @@ export const projectsData = [
     tags: [
       'React',
       'Next.js',
-      'Tailwind',
+      'Tailwind CSS',
       'Prisma',
       'PostgreSQL',
       'Stripe',

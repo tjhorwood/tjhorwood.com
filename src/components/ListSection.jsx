@@ -15,9 +15,9 @@ export default function ListSection({ heading, data }) {
             <AnimatedContent
               key={index}
               distance={50}
-              direction='vertical'
+              direction='horizontal'
               reverse={false}
-              duration={0.2}
+              duration={0.1}
               ease='power3.out'
               initialOpacity={0}
               animateOpacity
@@ -27,7 +27,7 @@ export default function ListSection({ heading, data }) {
             >
               <li
                 key={index}
-                className='flex gap-2 rounded-xl bg-secondary px-4 py-2 text-primary shadow-sm'
+                className='flex gap-2 rounded-xl bg-secondary hover:bg-secondary/80 px-4 py-2 text-primary shadow border-border border'
               >
                 <Icon className={cn('h-6 w-6', css)} />
                 {name}

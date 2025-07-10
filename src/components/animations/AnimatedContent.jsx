@@ -8,15 +8,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AnimatedContent = ({
   children,
-  distance = 100,
+  className = '',
+  distance = 50,
   direction = 'vertical',
   reverse = false,
-  duration = 0.8,
+  duration = 0.6,
   ease = 'power3.out',
   initialOpacity = 0,
   animateOpacity = true,
   scale = 1,
-  threshold = 0.1,
+  threshold = 0,
   delay = 0,
   onComplete,
 }) => {
@@ -70,7 +71,7 @@ const AnimatedContent = ({
     onComplete,
   ]);
 
-  return <div ref={ref}>{children}</div>;
+  return <div ref={ref} className={className}>{children}</div>;
 };
 
 export default AnimatedContent;
