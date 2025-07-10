@@ -60,7 +60,7 @@ import sahustudioImg from '@/assets/images/sahustudio/sahustudio.webp';
 import standardcbdImgShort from '@/assets/images/standardcbd-short.webp';
 import standardcbdImg from '@/assets/images/standardcbd.webp';
 import Syapse from '@/assets/images/syapse.webp';
-import { BsGithub, BsGitlab, BsInstagram, BsLinkedin } from 'react-icons/bs';
+import { BsGithub, BsLinkedin } from 'react-icons/bs';
 
 export const socialsData = [
   {
@@ -97,7 +97,7 @@ export const projectsData = [
       'Health Sync introduces a wellness app designed to enhance productivity, focus, and overall well-being. It features bodyweight exercises, yoga, guided meditation, and breathwork, all accessible from home. The app is noted for its simple interface, daily fresh content, and health insurance-approved fitness programs. It also provides resources for incorporating well-being practices into family life. The platform is available on macOS and Windows.',
     tags: ['React', 'Next.js', 'Tailwind CSS'],
     href: 'https://health-sync.org',
-    sourceCode: 'https://gitlab.com/tjhorwood/healthsync',
+    sourceCode: 'https://github.com/tjhorwood/healthsync',
   },
   {
     slug: 'national-league-gaming',
