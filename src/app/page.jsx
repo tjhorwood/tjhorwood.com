@@ -41,7 +41,7 @@ export default function Home() {
             {/* This list remains hidden on mobile as per your original code */}
             <ul className='space-x-6 pt-6 md:pt-4 flex justify-center md:justify-start'>
               {socialsData.map(({ name, href, icon: Icon }, index) => (
-                <li>
+                <li key={index}>
                   <Link
                     className='flex items-center gap-x-2 text-primary/60 no-underline hover:text-primary'
                     href={href}
@@ -73,7 +73,7 @@ export default function Home() {
             <Link
               key={text}
               href={href}
-              className='flex-grow sm:flex-grow-0'
+              className='grow sm:grow-0'
               target='_blank'
               rel='noopener noreferrer'
             >
