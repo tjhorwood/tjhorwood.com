@@ -1,102 +1,10 @@
-x-logging: &logging
-  driver: 'json-file'
-  options:
-    max-size: '10m'
-    max-file: '3'
-
 services:
-  app:
-    container_name: app
-    image: tjhorwood
-    restart: unless-stopped
+  frontend:
+    container_name: frontend
     build:
       context: .
       dockerfile: Dockerfile
+    image: tjhorwood
+    restart: unless-stopped
     ports:
-      - '3001:3001'
-    env_file:
-      - .env
-    networks:
-      - proxy
-    logging: *logging
-
-  directus-db:
-    image: postgis/postgis:17-master
-    container_name: directus-db
-    restart: always
-    volumes:
-      - $HOME/configs/postgis/data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: "${DIRECTUS_DB_USER:-directus}"
-      POSTGRES_PASSWORD: "${DIRECTUS_DB_PASSWORD:-password123}"
-      POSTGRES_DB: "${DIRECTUS_DB:-directus}"
-    ports:
-      - "${DIRECTUS_DB_PORT:-5432}:5432"
-    healthcheck:
-      test: ["CMD", "pg_isready", "--host=localhost", "--username=${DIRECTUS_DB_USER:-directus}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_interval: 5s
-      start_period: 30s
-    networks:
-      - proxy
-    logging: *logging
-
-  directus-cache:
-    image: redis:8
-    container_name: directus-cache
-    restart: always
-    healthcheck:
-      test: ["CMD-SHELL", "[ $$(redis-cli ping) = 'PONG' ]"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_interval: 5s
-      start_period: 30s
-    networks:
-      - proxy
-    logging: *logging
-
-  directus:
-    image: directus/directus:11.9.2
-    container_name: directus
-    restart: always
-    ports:
-      - "${DIRECTUS_PORT:-8055}:8055"
-    volumes:
-      - $HOME/configs/directus/uploads:/directus/uploads
-      - $HOME/configs/directus/extensions:/directus/extensions
-    depends_on:
-      directus-db:
-        condition: service_healthy
-      directus-cache:
-        condition: service_healthy
-    environment:
-      SECRET: "${DIRECTUS_SECRET:-supersecretpasswordkey}"
-      DB_CLIENT: "pg"
-      DB_HOST: "directus-db"
-      DB_PORT: "${DIRECTUS_DB_PORT:-5432}"
-      DB_DATABASE: "${DIRECTUS_DB:-directus}"
-      DB_USER: "${DIRECTUS_DB_USER:-directus}"
-      DB_PASSWORD: "${DIRECTUS_DB_PASSWORD:-password123}"
-      CORS_ENABLED: "true"
-      CORS_ORIGIN: "*"
-      CORS_METHODS: "GET,POST,PATCH,DELETE"
-      CORS_ALLOWED_HEADERS: "Content-Type,Authorization"
-      CORS_EXPOSED_HEADERS: "Content-Range"
-      CACHE_ENABLED: "true"
-      CACHE_AUTO_PURGE: "true"
-      CACHE_STORE: "redis"
-      REDIS: "redis://directus-cache:6379"
-      ADMIN_EMAIL: "${DIRECTUS_ADMIN_EMAIL:-admin@example.com}"
-      ADMIN_PASSWORD: "${DIRECTUS_ADMIN_PASSWORD:-password123}"
-      PUBLIC_URL: "${DIRECTUS_URL:-http://localhost:${DIRECTUS_PORT:-8055}}"
-    networks:
-      - proxy
-    logging: *logging
-
-networks:
-  proxy:
-    external: true
-
+      - '3000:3000'
