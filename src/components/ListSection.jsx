@@ -17,13 +17,13 @@ export default function ListSection({ heading, data }) {
               distance={50}
               direction='vertical'
               reverse={false}
-              duration={0.2}
+              duration={0.1}
               ease='power3.out'
               initialOpacity={0}
               animateOpacity
               scale={1}
               threshold={0}
-              delay={index * 0.05}
+              delay={index * 0.04}
             >
               <li
                 key={index}
