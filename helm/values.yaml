@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: thorwood/tjhorwood
+  tag: v1.0.2
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3000
+
+ingress:
+  enabled: true
+  className: traefik
+  hosts:
+    - host: tjhorwood.local
+      path: /
+  tls: []
