@@ -24,10 +24,18 @@ export default function About() {
         </AnimatedContent>
       </div>
       <div className='flex flex-col gap-16 md:gap-24'>
-        <Info />
-        <ListSection heading='Skills' data={skillsData} />
-        <ListSection heading='Tools & Platforms' data={platformData} />
-        <ListSection heading='Databases' data={databaseData} />
+        <AnimatedContent delay={0.2}>
+          <Info />
+        </AnimatedContent>
+        <AnimatedContent delay={0.2}>
+          <ListSection heading='Skills' data={skillsData} />
+        </AnimatedContent>
+        <AnimatedContent delay={0.2}>
+          <ListSection heading='Tools & Platforms' data={platformData} />
+        </AnimatedContent>
+        <AnimatedContent delay={0.2}>
+          <ListSection heading='Databases' data={databaseData} />
+        </AnimatedContent>
         <Work />
       </div>
     </div>

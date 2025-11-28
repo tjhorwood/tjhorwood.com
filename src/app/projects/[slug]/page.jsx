@@ -29,46 +29,46 @@ export default async function ProjectPage({ params }) {
             <p className='text-primary/60'>{project.category}</p>
           </div>
         </AnimatedContent>
-
-        <div className='flex flex-wrap gap-2'>
-          {project.tags.map((tag, index) => (
-            <AnimatedContent key={index} delay={(index + 1) * 0.1} className='flex flex-wrap'>
-              <span className='rounded-md bg-secondary px-4 py-2 font-medium shadow border border-border' >
+        <AnimatedContent delay={0.3}>
+          <div className='flex flex-wrap gap-2'>
+            {project.tags.map((tag, index) => (
+              <span key={index} className='rounded-md bg-secondary px-4 py-2 font-medium shadow border border-border' >
                 {tag}
               </span>
-            </AnimatedContent>
-          ))}
-        </div>
-        <AnimatedContent delay={0.2}>
+            ))}
+          </div>
+        </AnimatedContent>
+        <AnimatedContent delay={0.4}>
           <div className='rounded-md bg-secondary p-4 shadow border border-border'>
             <p>{project.description}</p>
           </div>
         </AnimatedContent>
 
-        <div className='mb-6 flex gap-2'>
-          {project.href && (
-            <AnimatedContent delay={0.3}>
+        <AnimatedContent delay={0.5}>
+          <div className='mb-6 flex gap-2'>
+            {project.href && (
               <Link
+                key={project.index}
                 href={project.href}
                 className='inline-block rounded-md bg-blue-600 px-4 py-2 font-bold text-white no-underline hover:bg-blue-600/90'
               >
                 Visit Site
               </Link>
-            </AnimatedContent>
-          )}
-          {project.sourceCode && (
-            <AnimatedContent delay={0.4}>
+            )}
+            {project.sourceCode && (
               <Link
+                key={project.index}
                 href={project.sourceCode}
                 className='flex items-center gap-2 rounded-md bg-[#2b3137] px-4 py-2 font-bold text-white no-underline hover:bg-[#2b3137]/90'
               >
                 <FaGithub className='h-6 w-6' />
                 Source Code
               </Link>
-            </AnimatedContent>
-          )}
-        </div>
-        <AnimatedContent delay={0.4}>
+            )}
+          </div>
+        </AnimatedContent>
+
+        <AnimatedContent delay={0.6}>
           <div className='space-y-4'>
             <h2 className='text-2xl font-semibold'>Screenshots</h2>
             <div className='relative w-full'>
