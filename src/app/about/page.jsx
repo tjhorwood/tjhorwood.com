@@ -17,7 +17,7 @@ export default function About() {
         <AnimatedContent>
           <h1 className='text-3xl font-bold tracking-tight'>About Me</h1>
         </AnimatedContent>
-        <AnimatedContent delay={0.1} >
+        <AnimatedContent delay={0.1}>
           <p className='text-neutral-600 dark:text-neutral-400'>
             Just a quick glimpse.
           </p>

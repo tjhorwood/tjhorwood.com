@@ -2,6 +2,7 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import Header from '@/components/Header';
 import '@/styles/globals.css';
 import { Poppins } from 'next/font/google';
+import Script from 'next/script';
 
 const poppins = Poppins({
   weight: ['400', '500', '600', '700', '800', '900'], // Example weights
@@ -21,7 +22,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en' className='scrollbar-hide'>
-      <script defer src="https://umami.tjhorwood.com/script.js" data-website-id="c76f34d7-e416-4bc5-b7db-c8050da3a9ad"></script>
+      <Script
+        defer
+        src='https://umami.tjhorwood.com/script.js'
+        data-website-id='c76f34d7-e416-4bc5-b7db-c8050da3a9ad'
+      ></Script>
       <body className={`${poppins.className} w-full bg-background antialiased`}>
         <ThemeProvider
           attribute='class'
@@ -30,7 +35,7 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <Header />
-          <div className='mx-auto max-w-(--breakpoint-2xl) px-6 pt-8 pb-24 md:px-6 md:pt-12 md:pb-44'>
+          <div className='mx-auto max-w-(--breakpoint-2xl) px-4 pt-8 pb-24 md:px-6 md:pt-12 md:pb-44'>
             <main className='grow'>{children}</main>
           </div>
         </ThemeProvider>

@@ -1,7 +1,7 @@
 services:
   frontend:
     container_name: frontend
-    image: thorwood/tjhorwood:v1.0.3
+    image: thorwood/tjhorwood:v1.0.4
     restart: unless-stopped
     ports:
       - '3000:3000'
