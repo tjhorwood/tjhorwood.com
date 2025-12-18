@@ -1,4 +1,4 @@
-import AnimatedContent from "@/components/animations/AnimatedContent";
+import AnimatedContent from '@/components/animations/AnimatedContent';
 
 export const metadata = {
   title: 'Blog',
@@ -13,7 +13,9 @@ export default function Blog() {
           <h1 className='text-3xl font-bold tracking-tight'>Blog</h1>
         </AnimatedContent>
         <AnimatedContent delay={0.1}>
-          <p className='text-primary/60'>0 posts so far. Stay tuned for more!</p>
+          <p className='text-primary/60'>
+            0 posts so far. Stay tuned for more!
+          </p>
         </AnimatedContent>
       </div>
     </div>

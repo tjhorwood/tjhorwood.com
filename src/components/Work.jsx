@@ -90,19 +90,19 @@ export default function Work() {
 
           <div className='w-full md:w-1/2 lg:w-1/3 xl:w-1/4'>
             <Button
-                variant='default'
-                size='lg'
-                className='w-full cursor-pointer shadow border-border border text-background'
+              variant='default'
+              size='lg'
+              className='w-full cursor-pointer shadow border-border border text-background'
+            >
+              <a
+                className='flex w-full items-center justify-center gap-3'
+                href='/resume.pdf'
+                download
               >
-                <a
-                  className='flex w-full items-center justify-center gap-3'
-                  href='/resume.pdf'
-                  download
-                >
-                  <LuDownload className='size-5' />
-                  <span>Download Resume</span>
-                </a>
-              </Button>
+                <LuDownload className='size-5' />
+                <span>Download Resume</span>
+              </a>
+            </Button>
           </div>
         </div>
       </Section>

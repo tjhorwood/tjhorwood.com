@@ -12,7 +12,9 @@ export default function Projects() {
           <h1 className='text-3xl font-bold tracking-tight'>Projects</h1>
         </AnimatedContent>
         <AnimatedContent delay={0.1}>
-          <p className='text-primary/60'>Here are a few of the projects I have worked on.</p>
+          <p className='text-primary/60'>
+            Here are a few of the projects I have worked on.
+          </p>
         </AnimatedContent>
       </div>
 
@@ -28,7 +30,9 @@ export default function Projects() {
                 <SpotlightCard className='shadow'>
                   <div className='space-y-0.5 mb-4'>
                     <h1 className='text-xl font-bold'>{project.title}</h1>
-                    <p className='text-sm text-primary/60'>{project.category}</p>
+                    <p className='text-sm text-primary/60'>
+                      {project.category}
+                    </p>
                   </div>
                   <div>
                     <div className='relative mb-4 h-52 w-full'>
@@ -41,7 +45,9 @@ export default function Projects() {
                         blurDataURL={project.blurDataURL}
                       />
                     </div>
-                    <p className='line-clamp-2 text-sm'>{project.description}</p>
+                    <p className='line-clamp-2 text-sm'>
+                      {project.description}
+                    </p>
                   </div>
                 </SpotlightCard>
               </Link>

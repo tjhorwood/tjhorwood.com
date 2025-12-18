@@ -1,4 +1,4 @@
-import AnimatedContent from "@/components/animations/AnimatedContent";
+import AnimatedContent from '@/components/animations/AnimatedContent';
 
 export const metadata = {
   title: 'Gear',
