@@ -2,14 +2,12 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { FaGithub } from 'react-icons/fa';
 import { LuExternalLink } from 'react-icons/lu';
-
+import AnimatedContent from '@/components/animations/AnimatedContent';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Link from '@/components/Link';
-import AnimatedContent from '@/components/animations/AnimatedContent';
-import { projectsData } from '@/lib/data';
-
 // Component that handles client-side state/iframe
 import ProjectPreviewWrapper from '@/components/ProjectPreviewWrapper';
+import { projectsData } from '@/lib/data';
 
 export default async function ProjectPage({ params }) {
   const { slug } = await params;

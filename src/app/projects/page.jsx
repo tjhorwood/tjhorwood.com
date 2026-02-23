@@ -1,35 +1,29 @@
-import { projectsData } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
 import AnimatedContent from '@/components/animations/AnimatedContent';
 import SpotlightCard from '@/components/animations/SpotlightCard';
+import PageIntro from '@/components/PageIntro';
+import { projectsData } from '@/lib/data';
 
 export default function Projects() {
   return (
     <div className='flex flex-col gap-4'>
-      <div>
-        <AnimatedContent>
-          <h1 className='text-3xl font-bold tracking-tight'>Projects</h1>
-        </AnimatedContent>
-        <AnimatedContent delay={0.1}>
-          <p className='text-primary/60'>
-            Here are a few of the projects I have worked on.
-          </p>
-        </AnimatedContent>
-      </div>
+      <PageIntro
+        title='Projects'
+        descriptions='Here are a few of the projects I have worked on.'
+      />
 
       <div className='mx-auto py-4'>
         <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
           {projectsData.map((project, index) => (
-            <AnimatedContent key={index} delay={(index + 1) * 0.1}>
+            <AnimatedContent key={project.slug} delay={(index + 1) * 0.1}>
               <Link
-                key={project.slug}
                 href={`/projects/${project.slug}`}
                 className='group block cursor-pointer'
               >
                 <SpotlightCard className='shadow'>
                   <div className='space-y-0.5 mb-4'>
-                    <h1 className='text-xl font-bold'>{project.title}</h1>
+                    <h2 className='text-xl font-bold'>{project.title}</h2>
                     <p className='text-sm text-primary/60'>
                       {project.category}
                     </p>

@@ -1,5 +1,6 @@
 'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   forwardRef,
   useCallback,
@@ -8,7 +9,6 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 function cn(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -17,10 +17,10 @@ function cn(...classes) {
 const RotatingText = forwardRef((props, ref) => {
   const {
     texts,
-    transition = { type: 'spring', damping: 25, stiffness: 300 },
-    initial = { y: '100%', opacity: 0 },
-    animate = { y: 0, opacity: 1 },
-    exit = { y: '-120%', opacity: 0 },
+    transition = { damping: 25, stiffness: 300, type: 'spring' },
+    initial = { opacity: 0, y: '100%' },
+    animate = { opacity: 1, y: 0 },
+    exit = { opacity: 0, y: '-120%' },
     animatePresenceMode = 'wait',
     animatePresenceInitial = false,
     rotationInterval = 2000,
@@ -143,9 +143,9 @@ const RotatingText = forwardRef((props, ref) => {
   useImperativeHandle(
     ref,
     () => ({
+      jumpTo,
       next,
       previous,
-      jumpTo,
       reset,
     }),
     [next, previous, jumpTo, reset],

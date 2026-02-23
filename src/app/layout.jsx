@@ -1,22 +1,22 @@
-import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import Header from '@/components/Header';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import '@/styles/globals.css';
 import { Poppins } from 'next/font/google';
 import Script from 'next/script';
 
 const poppins = Poppins({
-  weight: ['400', '500', '600', '700', '800', '900'], // Example weights
-  subsets: ['latin'],
   display: 'swap', // Ensures text visibility during loading
+  subsets: ['latin'],
   variable: '--font-poppins', // Optional: for CSS variables
+  weight: ['400', '500', '600', '700', '800', '900'], // Example weights
 });
 
 export const metadata = {
-  title: {
-    template: `%s | Taylor Horwood`,
-    default: 'Taylor Horwood',
-  },
   description: 'Personal Portfolio',
+  title: {
+    default: 'Taylor Horwood',
+    template: `%s | Taylor Horwood`,
+  },
 };
 
 export default function RootLayout({ children }) {

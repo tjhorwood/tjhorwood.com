@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,23 +33,23 @@ const AnimatedContent = ({
 
     gsap.set(el, {
       [axis]: offset,
-      scale,
       opacity: animateOpacity ? initialOpacity : 1,
+      scale,
     });
 
     gsap.to(el, {
       [axis]: 0,
-      scale: 1,
-      opacity: 1,
+      delay,
       duration,
       ease,
-      delay,
       onComplete,
+      opacity: 1,
+      scale: 1,
       scrollTrigger: {
-        trigger: el,
+        once: true,
         start: `top ${startPct}%`,
         toggleActions: 'play none none none',
-        once: true,
+        trigger: el,
       },
     });
 

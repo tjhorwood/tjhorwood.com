@@ -1,5 +1,5 @@
-import Link from '@/components/Link';
 import { HiChevronRight } from 'react-icons/hi';
+import Link from '@/components/Link';
 
 export default function Breadcrumbs({ title }) {
   return (

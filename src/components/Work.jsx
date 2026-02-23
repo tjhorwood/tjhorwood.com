@@ -1,6 +1,6 @@
-import { workplacesData } from '@/lib/data';
 import Image from 'next/image';
 import { useMemo } from 'react';
+import { LuDownload } from 'react-icons/lu';
 
 import Section from '@/components/Section';
 import { Button } from '@/components/ui/button';
@@ -11,14 +11,24 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { LuDownload } from 'react-icons/lu';
+import { workplacesData } from '@/lib/data';
+import { buttonSurfaceClass, cardSurfaceClass } from '@/lib/styles';
+import { cn } from '@/lib/utils';
 import AnimatedContent from './animations/AnimatedContent';
+
+const SHEET_CONTENT_CLASS =
+  'min-w-11/12 border-none sm:min-w-2/3 lg:min-w-1/2 xl:min-w-1/3 2xl:min-w-1/4 [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:rounded-sm [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:opacity-70 [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:hover:opacity-100 [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:focus:opacity-100 [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:focus:ring-0 [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:focus:ring-offset-0';
 
 const WorkplaceItem = ({ item }) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <div className='flex w-full cursor-pointer items-center justify-between rounded-lg bg-secondary hover:bg-secondary/80 p-4 text-left no-underline shadow border-border border'>
+        <div
+          className={cn(
+            'flex w-full items-center justify-between p-4 text-left no-underline',
+            cardSurfaceClass,
+          )}
+        >
           <div className='flex flex-1 items-center gap-4'>
             <Image
               src={item.imageSrc}
@@ -39,9 +49,7 @@ const WorkplaceItem = ({ item }) => {
           )}
         </div>
       </SheetTrigger>
-      <SheetContent
-        className={`min-w-11/12 sm:min-w-2/3 lg:min-w-1/2 xl:min-w-1/3 2xl:min-w-1/4 border-none [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:rounded-sm [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:opacity-70 [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:hover:opacity-100 [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:focus:opacity-100 [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:focus:ring-0 [&>button[class*="absolute"][class*="right-4"][class*="top-4"]]:focus:ring-offset-0`}
-      >
+      <SheetContent className={SHEET_CONTENT_CLASS}>
         <div className='hide-scrollbar ml-auto h-full w-full overflow-y-auto rounded-l-xl bg-secondary p-6 md:p-8'>
           <SheetHeader className='text-left pl-0'>
             <SheetTitle className='text-2xl font-semibold'>
@@ -52,7 +60,9 @@ const WorkplaceItem = ({ item }) => {
           <p className='py-2 text-sm md:text-base'>Key responsibilities:</p>
           <ul className='ml-4 list-disc space-y-2 text-sm md:text-base'>
             {item.description?.map((descItem, index) => (
-              <li key={index}>{descItem.content}</li>
+              <li key={`${item.company}-${item.title}-${index}`}>
+                {descItem.content}
+              </li>
             ))}
           </ul>
         </div>
@@ -79,9 +89,12 @@ export default function Work() {
             and make a positive impact on the world.
           </p>
           <ul className='flex flex-col space-y-4'>
-            {workplacesData.map((item, index) => (
-              <AnimatedContent delay={0.1} key={index}>
-                <li key={item.id || index}>
+            {workplacesData.map((item) => (
+              <AnimatedContent
+                delay={0.1}
+                key={`${item.company}-${item.title}-${item.time}`}
+              >
+                <li>
                   <WorkplaceItem item={item} />
                 </li>
               </AnimatedContent>
@@ -90,9 +103,10 @@ export default function Work() {
 
           <div className='w-full md:w-1/2 lg:w-1/3 xl:w-1/4'>
             <Button
+              asChild
               variant='default'
               size='lg'
-              className='w-full cursor-pointer shadow border-border border text-background'
+              className={cn('w-full', buttonSurfaceClass, 'text-background')}
             >
               <a
                 className='flex w-full items-center justify-center gap-3'

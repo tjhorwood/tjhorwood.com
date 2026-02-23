@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useMemo, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,16 +43,16 @@ const ScrollReveal = ({
 
     gsap.fromTo(
       el,
-      { transformOrigin: '0% 50%', rotate: baseRotation },
+      { rotate: baseRotation, transformOrigin: '0% 50%' },
       {
         ease: 'none',
         rotate: 0,
         scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: 'top bottom',
           end: rotationEnd,
+          scroller,
           scrub: true,
+          start: 'top bottom',
+          trigger: el,
         },
       },
     );
@@ -65,14 +65,14 @@ const ScrollReveal = ({
       {
         ease: 'none',
         opacity: 1,
-        stagger: 0.05,
         scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: 'top bottom-=20%',
           end: wordAnimationEnd,
+          scroller,
           scrub: true,
+          start: 'top bottom-=20%',
+          trigger: el,
         },
+        stagger: 0.05,
       },
     );
 
@@ -83,14 +83,14 @@ const ScrollReveal = ({
         {
           ease: 'none',
           filter: 'blur(0px)',
-          stagger: 0.05,
           scrollTrigger: {
-            trigger: el,
-            scroller,
-            start: 'top bottom-=20%',
             end: wordAnimationEnd,
+            scroller,
             scrub: true,
+            start: 'top bottom-=20%',
+            trigger: el,
           },
+          stagger: 0.05,
         },
       );
     }

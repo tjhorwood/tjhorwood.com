@@ -1,9 +1,9 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText as GSAPSplitText } from 'gsap/SplitText';
+import { useEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger, GSAPSplitText);
 
@@ -38,9 +38,9 @@ const SplitText = ({
     let splitter;
     try {
       splitter = new GSAPSplitText(el, {
-        type: splitType,
         absolute: absoluteLines,
         linesClass: 'split-line',
+        type: splitType,
       });
     } catch (error) {
       console.error('Failed to create SplitText:', error);
@@ -83,16 +83,6 @@ const SplitText = ({
     const start = `top ${startPct}%${sign}`;
 
     const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: el,
-        start,
-        toggleActions: 'play none none none',
-        once: true,
-        onToggle: (self) => {
-          scrollTriggerRef.current = self;
-        },
-      },
-      smoothChildTiming: true,
       onComplete: () => {
         animationCompletedRef.current = true;
         gsap.set(targets, {
@@ -102,15 +92,25 @@ const SplitText = ({
         });
         onLetterAnimationComplete?.();
       },
+      scrollTrigger: {
+        once: true,
+        onToggle: (self) => {
+          scrollTriggerRef.current = self;
+        },
+        start,
+        toggleActions: 'play none none none',
+        trigger: el,
+      },
+      smoothChildTiming: true,
     });
 
-    tl.set(targets, { ...from, immediateRender: false, force3D: true });
+    tl.set(targets, { ...from, force3D: true, immediateRender: false });
     tl.to(targets, {
       ...to,
       duration,
       ease,
-      stagger: delay / 1000,
       force3D: true,
+      stagger: delay / 1000,
     });
 
     return () => {
