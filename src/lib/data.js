@@ -1,3 +1,4 @@
+import { BsGithub, BsLinkedin } from 'react-icons/bs';
 import {
   SiAmazonwebservices,
   SiAngular,
@@ -43,70 +44,67 @@ import {
   SiWordpress,
   SiZsh,
 } from 'react-icons/si';
-
 import { VscVscode } from 'react-icons/vsc';
-
 import Amtrak from '@/assets/images/amtrak.webp';
-import capforgeImgShort from '@/assets/images/capforge-short.webp';
 import capforgeImg from '@/assets/images/capforge.webp';
+import capforgeImgShort from '@/assets/images/capforge-short.webp';
 import Citi from '@/assets/images/citi.webp';
 import CRFHealth from '@/assets/images/crfhealth.webp';
-import healthsyncImgShort from '@/assets/images/healthsync/healthsync-short.webp';
 import healthsyncImg from '@/assets/images/healthsync/healthsync.webp';
-import nlgImgShort from '@/assets/images/nlg/nlg-short.webp';
+import healthsyncImgShort from '@/assets/images/healthsync/healthsync-short.webp';
 import nlgImg from '@/assets/images/nlg/nlg.webp';
-import sahustudioImgShort from '@/assets/images/sahustudio/sahustudio-short.webp';
+import nlgImgShort from '@/assets/images/nlg/nlg-short.webp';
 import sahustudioImg from '@/assets/images/sahustudio/sahustudio.webp';
-import standardcbdImgShort from '@/assets/images/standardcbd-short.webp';
+import sahustudioImgShort from '@/assets/images/sahustudio/sahustudio-short.webp';
 import standardcbdImg from '@/assets/images/standardcbd.webp';
+import standardcbdImgShort from '@/assets/images/standardcbd-short.webp';
 import Syapse from '@/assets/images/syapse.webp';
-import { BsGithub, BsLinkedin } from 'react-icons/bs';
 
 export const socialsData = [
   {
-    name: 'GitHub',
     href: 'https://github.com/tjhorwood/',
     icon: BsGithub,
+    name: 'GitHub',
   },
   {
-    name: 'LinkedIn',
     href: 'https://linkedin.com/in/tjhorwood/',
     icon: BsLinkedin,
+    name: 'LinkedIn',
   },
 ];
 
 export const projectsData = [
   {
-    slug: 'sahu-studio',
     category: 'Artistic Portfolio',
-    title: 'Sahu Studio',
-    src: sahustudioImg,
-    srcShort: sahustudioImgShort,
     description:
       'Sahu Studio is the online home of a talented friend who brings interior design dreams to life. This platform serves as both her creative playground and a showcase of her remarkable skills, featuring a captivating array of interior design projects, personalized paintings, and enchanting resin art pieces.',
-    tags: ['React', 'Next.js', 'Tailwind CSS', 'Directus CMS', 'PostgreSQL'],
     href: 'https://sahustudio.me',
+    slug: 'sahu-studio',
+    src: sahustudioImg,
+    srcShort: sahustudioImgShort,
+    tags: ['React', 'Next.js', 'Tailwind CSS', 'Directus CMS', 'PostgreSQL'],
+    title: 'Sahu Studio',
   },
   {
-    slug: 'health-sync',
     category: 'App Landing Page',
-    title: 'Health Sync',
-    src: healthsyncImg,
-    srcShort: healthsyncImgShort,
     description:
       'Health Sync introduces a wellness app designed to enhance productivity, focus, and overall well-being. It features bodyweight exercises, yoga, guided meditation, and breathwork, all accessible from home. The app is noted for its simple interface, daily fresh content, and health insurance-approved fitness programs. It also provides resources for incorporating well-being practices into family life. The platform is available on macOS and Windows.',
-    tags: ['React', 'Next.js', 'Tailwind CSS'],
     href: 'https://health-sync.org',
+    slug: 'health-sync',
     sourceCode: 'https://github.com/tjhorwood/healthsync',
+    src: healthsyncImg,
+    srcShort: healthsyncImgShort,
+    tags: ['React', 'Next.js', 'Tailwind CSS'],
+    title: 'Health Sync',
   },
   {
-    slug: 'national-league-gaming',
     category: 'Esports League',
-    title: 'National League Gaming',
-    src: nlgImg,
-    srcShort: nlgImgShort,
     description:
       'National League Gaming stands as an integrated platform tailored to meet the requirements of individual gamers aspiring to compete at a high level. This encompassing platform provides a spectrum of offerings including skill development through training modules, engagement in both complimentary and fee-based leagues, all of which present opportunities for participants to compete for substantial monetary rewards across the entirety of these competitive arenas.',
+    href: 'https://nationalleaguegaming.com',
+    slug: 'national-league-gaming',
+    src: nlgImg,
+    srcShort: nlgImgShort,
     tags: [
       'React',
       'Next.js',
@@ -116,39 +114,35 @@ export const projectsData = [
       'Stripe',
       'SendGrid',
     ],
-    href: 'https://nationalleaguegaming.com',
+    title: 'National League Gaming',
   },
   {
-    slug: 'standardcbd',
     category: 'Ecommerce',
-    title: 'StandardCBD',
-    src: standardcbdImg,
-    srcShort: standardcbdImgShort,
     description:
       'StandardCBD is an e-commerce platform, specializing in the retail of a comprehensive array of CBD, delta-8, and delta-9 products. The product range spans vapes, creams, edibles, and tinctures, catering to a discerning clientele seeking high-quality solutions in the realm of wellness and alternative remedies.',
-    tags: ['Wordpress', 'WooCommerce', 'ShipStation'],
     href: 'https://standardcbd.com',
+    slug: 'standardcbd',
+    src: standardcbdImg,
+    srcShort: standardcbdImgShort,
+    tags: ['Wordpress', 'WooCommerce', 'ShipStation'],
+    title: 'StandardCBD',
   },
   {
-    slug: 'capforge',
     category: 'Financal / Bookkeeping',
-    title: 'CapForge',
-    src: capforgeImg,
-    srcShort: capforgeImgShort,
     description:
       'CapForge offers a comprehensive online platform catering to a diverse range of business needs, encompassing areas such as bookkeeping, taxation, payroll administration, strategic consulting, Amazon and e-commerce facilitation, as well as startup support.',
-    tags: ['Wordpress'],
     href: 'https://capforge.com',
+    slug: 'capforge',
+    src: capforgeImg,
+    srcShort: capforgeImgShort,
+    tags: ['Wordpress'],
+    title: 'CapForge',
   },
 ];
 
 export const workplacesData = [
   {
-    title: 'Sr. Site Reliability Engineer',
     company: 'Citi',
-    time: '2024 - Present',
-    imageSrc: Citi,
-    link: 'https://citi.com',
     description: [
       {
         content:
@@ -189,13 +183,13 @@ export const workplacesData = [
         content: 'Present technical strategies and improvements to leadership',
       },
     ],
+    imageSrc: Citi,
+    link: 'https://citi.com',
+    time: '2024 - 2026',
+    title: 'Sr. Site Reliability Engineer',
   },
   {
-    title: 'Team Lead, Service Ops Engineering',
     company: 'Syapse',
-    time: '2022 - 2023',
-    imageSrc: Syapse,
-    link: 'https://syapse.com',
     description: [
       {
         content:
@@ -222,13 +216,13 @@ export const workplacesData = [
           'Conducted regular performance assessments, set clear goals, and provided constructive feedback, contributing to the continuous improvement of team capabilities.',
       },
     ],
-  },
-  {
-    title: 'Sr. Service Ops Engineer',
-    company: 'Syapse',
-    time: '2022 - 2022',
     imageSrc: Syapse,
     link: 'https://syapse.com',
+    time: '2022 - 2023',
+    title: 'Team Lead, Service Ops Engineering',
+  },
+  {
+    company: 'Syapse',
     description: [
       {
         content:
@@ -286,13 +280,13 @@ export const workplacesData = [
           'Fostered learning through internal workshops, cross-team collaboration.',
       },
     ],
-  },
-  {
-    title: 'Site Reliability Engineer',
-    company: 'Syapse',
-    time: '2018 - 2022',
     imageSrc: Syapse,
     link: 'https://syapse.com',
+    time: '2022 - 2022',
+    title: 'Sr. Service Ops Engineer',
+  },
+  {
+    company: 'Syapse',
     description: [
       {
         content:
@@ -335,13 +329,13 @@ export const workplacesData = [
           'Provide training and maintain documentation for internal resources.',
       },
     ],
-  },
-  {
-    title: 'Sr. Customer Success Engineer',
-    company: 'Syapse',
-    time: '2015 - 2018',
     imageSrc: Syapse,
     link: 'https://syapse.com',
+    time: '2018 - 2022',
+    title: 'Site Reliability Engineer',
+  },
+  {
+    company: 'Syapse',
     description: [
       {
         content:
@@ -368,13 +362,13 @@ export const workplacesData = [
           'Maintain a detailed understanding of product architecture, technical components, and application functionality, e.g., by configuring the Syapse application and integrating external systems using Python and JavaScript.',
       },
     ],
+    imageSrc: Syapse,
+    link: 'https://syapse.com',
+    time: '2015 - 2018',
+    title: 'Sr. Customer Success Engineer',
   },
   {
-    title: 'Application Specialist',
     company: 'CRF Health',
-    time: '2015 - 2015',
-    imageSrc: CRFHealth,
-    link: 'https://signanthealth.com/',
     description: [
       {
         content:
@@ -393,13 +387,13 @@ export const workplacesData = [
           'Ensure that the Project Team maintains a high quality service and on time delivery of project outputs for the client. Ensure knowledge and understanding remains up-to-date with software releases and updates. Supported the on-boarding and training/mentoring of new hires.',
       },
     ],
-  },
-  {
-    title: 'Tier II, Technical Support',
-    company: 'CRF Health',
-    time: '2013 - 2015',
     imageSrc: CRFHealth,
     link: 'https://signanthealth.com/',
+    time: '2015 - 2015',
+    title: 'Application Specialist',
+  },
+  {
+    company: 'CRF Health',
     description: [
       {
         content:
@@ -414,13 +408,13 @@ export const workplacesData = [
           'Perform local testing and validation of the wireless carrier and landline network infrastructure in various countries world-wide.',
       },
     ],
+    imageSrc: CRFHealth,
+    link: 'https://signanthealth.com/',
+    time: '2013 - 2015',
+    title: 'Tier II, Technical Support',
   },
   {
-    title: 'Application Support Analyst',
     company: 'Amtrak',
-    time: '2011 - 2013',
-    imageSrc: Amtrak,
-    link: 'https://amtrak.com',
     description: [
       {
         content:
@@ -439,234 +433,238 @@ export const workplacesData = [
           'Maximo – Monitor, update and troubleshoot over 70 TEDs (Time Entry Devices, used by engineering employees to swipe in and out). Also assist employees with issues being experienced with time entry and inspections they are performing on both a computer and on a mobile device.',
       },
     ],
+    imageSrc: Amtrak,
+    link: 'https://amtrak.com',
+    time: '2011 - 2013',
+    title: 'Application Support Analyst',
   },
 ];
 
 export const skillsData = [
   {
-    name: 'Kubernetes',
-    icon: SiKubernetes,
     css: 'text-[#326CE5]',
+    icon: SiKubernetes,
+    name: 'Kubernetes',
   },
   {
-    name: 'Terraform',
-    icon: SiTerraform,
     css: 'text-[#844FBA]',
+    icon: SiTerraform,
+    name: 'Terraform',
   },
   {
-    name: 'Docker',
-    icon: SiDocker,
     css: 'text-[#2496ED]',
+    icon: SiDocker,
+    name: 'Docker',
   },
   {
-    name: 'HTML5',
-    icon: SiHtml5,
     css: 'text-[#E34F26]',
+    icon: SiHtml5,
+    name: 'HTML5',
   },
   {
-    name: 'CSS3',
-    icon: SiCss3,
     css: 'text-[#1572B6]',
+    icon: SiCss3,
+    name: 'CSS3',
   },
   {
-    name: 'JavaScript',
-    icon: SiJavascript,
     css: 'text-[#F7DF1E]',
+    icon: SiJavascript,
+    name: 'JavaScript',
   },
   {
-    name: 'TypeScript',
-    icon: SiTypescript,
     css: 'text-[#3178C6]',
+    icon: SiTypescript,
+    name: 'TypeScript',
   },
   {
-    name: 'React',
-    icon: SiReact,
     css: 'text-[#61DAFB]',
+    icon: SiReact,
+    name: 'React',
   },
   {
-    name: 'Next.js',
+    css: 'text-neutral-900 dark:text-white',
     icon: SiNextdotjs,
-    css: 'text-neutral-900 dark:text-white',
+    name: 'Next.js',
   },
   {
-    name: 'Node.js',
-    icon: SiNodedotjs,
     css: 'text-[#5FA04E]',
+    icon: SiNodedotjs,
+    name: 'Node.js',
   },
   {
-    name: 'Git',
-    icon: SiGit,
     css: 'text-[#F05032]',
+    icon: SiGit,
+    name: 'Git',
   },
   {
-    name: 'Tailwind',
-    icon: SiTailwindcss,
     css: 'text-[#06B6D4]',
+    icon: SiTailwindcss,
+    name: 'Tailwind',
   },
   {
-    name: 'Redux',
-    icon: SiRedux,
     css: 'text-[#764ABC]',
+    icon: SiRedux,
+    name: 'Redux',
   },
   {
-    name: 'Express',
+    css: 'text-neutral-900 dark:text-white',
     icon: SiExpress,
-    css: 'text-neutral-900 dark:text-white',
+    name: 'Express',
   },
   {
-    name: 'Python',
-    icon: SiPython,
     css: 'text-[#3776AB]',
+    icon: SiPython,
+    name: 'Python',
   },
   {
-    name: 'Django',
-    icon: SiDjango,
     css: 'text-[#092E20]',
+    icon: SiDjango,
+    name: 'Django',
   },
   {
-    name: 'Framer Motion',
-    icon: SiFramer,
     css: 'text-[#0055FF]',
+    icon: SiFramer,
+    name: 'Framer Motion',
   },
   {
-    name: 'Wordpress',
-    icon: SiWordpress,
     css: 'text-[#21759B]',
+    icon: SiWordpress,
+    name: 'Wordpress',
   },
   {
-    name: 'Webflow',
-    icon: SiWebflow,
     css: 'text-[#146EF5]',
+    icon: SiWebflow,
+    name: 'Webflow',
   },
   {
-    name: 'Angular',
-    icon: SiAngular,
     css: 'text-neutral-900 dark:text-white',
+    icon: SiAngular,
+    name: 'Angular',
   },
   {
-    name: 'Go',
-    icon: SiGo,
     css: 'text-[#00ADD8]',
+    icon: SiGo,
+    name: 'Go',
   },
 ];
 
 export const databaseData = [
   {
-    name: 'PostgreSQL',
-    icon: SiPostgresql,
     css: 'text-[#4169E1]',
+    icon: SiPostgresql,
+    name: 'PostgreSQL',
   },
   {
-    name: 'MySQL',
-    icon: SiMysql,
     css: 'text-[#4479A1]',
+    icon: SiMysql,
+    name: 'MySQL',
   },
   {
-    name: 'MariaDB',
-    icon: SiMariadb,
     css: 'text-[#003545]',
+    icon: SiMariadb,
+    name: 'MariaDB',
   },
   {
-    name: 'MongoDB',
-    icon: SiMongodb,
     css: 'text-[#47A248]',
+    icon: SiMongodb,
+    name: 'MongoDB',
   },
   {
-    name: 'SQLite',
-    icon: SiSqlite,
     css: 'text-[#003B57]',
+    icon: SiSqlite,
+    name: 'SQLite',
   },
   {
-    name: 'GraphQL',
-    icon: SiGraphql,
     css: 'text-[#E10098]',
+    icon: SiGraphql,
+    name: 'GraphQL',
   },
   {
-    name: 'Apollo GraphQL',
-    icon: SiApollographql,
     css: 'text-[#311C87]',
+    icon: SiApollographql,
+    name: 'Apollo GraphQL',
   },
   {
-    name: 'Redis',
-    icon: SiRedis,
     css: 'text-[#FF4438]',
+    icon: SiRedis,
+    name: 'Redis',
   },
   {
-    name: 'Prisma',
-    icon: SiPrisma,
     css: 'text-[#2D3748]',
+    icon: SiPrisma,
+    name: 'Prisma',
   },
 ];
 
 export const platformData = [
   {
-    name: 'Visual Studio Code',
-    icon: VscVscode,
     css: 'text-[#2F80ED]',
+    icon: VscVscode,
+    name: 'Visual Studio Code',
   },
   {
-    name: 'Vim',
-    icon: SiVim,
     css: 'text-[#019733]',
+    icon: SiVim,
+    name: 'Vim',
   },
   {
-    name: 'Bash',
-    icon: SiGnubash,
     css: 'text-[#4EAA25]',
+    icon: SiGnubash,
+    name: 'Bash',
   },
   {
-    name: 'ZSH',
-    icon: SiZsh,
     css: 'text-[#F15A24]',
+    icon: SiZsh,
+    name: 'ZSH',
   },
   {
-    name: 'Github',
+    css: 'text-neutral-900 dark:text-white',
     icon: SiGithub,
-    css: 'text-neutral-900 dark:text-white',
+    name: 'Github',
   },
   {
-    name: 'Gitlab',
-    icon: SiGitlab,
     css: 'text-[#FC6D26]',
+    icon: SiGitlab,
+    name: 'Gitlab',
   },
   {
-    name: 'AWS',
-    icon: SiAmazonwebservices,
     css: 'text-[#232F3E]',
+    icon: SiAmazonwebservices,
+    name: 'AWS',
   },
   {
-    name: 'Jenkins',
-    icon: SiJenkins,
     css: 'text-[#D24939]',
+    icon: SiJenkins,
+    name: 'Jenkins',
   },
   {
-    name: 'CircleCI',
-    icon: SiCircleci,
     css: 'text-neutral-900 dark:text-white',
+    icon: SiCircleci,
+    name: 'CircleCI',
   },
   {
-    name: 'Prometheus',
-    icon: SiPrometheus,
     css: 'text-[#E6522C]',
+    icon: SiPrometheus,
+    name: 'Prometheus',
   },
   {
-    name: 'Grafana',
-    icon: SiGrafana,
     css: 'text-[#F46800]',
+    icon: SiGrafana,
+    name: 'Grafana',
   },
   {
-    name: 'Jira',
-    icon: SiJira,
     css: 'text-[#0052CC]',
+    icon: SiJira,
+    name: 'Jira',
   },
   {
-    name: 'Confluence',
-    icon: SiConfluence,
     css: 'text-[#172B4D]',
+    icon: SiConfluence,
+    name: 'Confluence',
   },
   {
-    name: 'Salesforce',
-    icon: SiSalesforce,
     css: 'text-[#00A1E0]',
+    icon: SiSalesforce,
+    name: 'Salesforce',
   },
 ];

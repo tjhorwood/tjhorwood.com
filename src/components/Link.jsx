@@ -1,5 +1,6 @@
-import cn from 'clsx';
 import NextLink from 'next/link';
+
+import { cn } from '@/lib/utils';
 
 export default function Link(props) {
   const isExternal = !props.href.toString().startsWith('/');
@@ -8,8 +9,8 @@ export default function Link(props) {
     <NextLink
       {...rest}
       className={cn(props.className)}
-      target={isExternal ? '_blank' : undefined}
-      rel='noopener noreferrer'
+      target={props.target ?? (isExternal ? '_blank' : undefined)}
+      rel={props.rel ?? (isExternal ? 'noopener noreferrer' : undefined)}
     >
       {props.children}
     </NextLink>

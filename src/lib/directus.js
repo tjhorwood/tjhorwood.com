@@ -1,11 +1,5 @@
 // lib/directus.js
-import {
-  createDirectus,
-  rest,
-  readItems,
-  readItem,
-  createItem,
-} from '@directus/sdk';
+import { createDirectus, readItems, rest } from '@directus/sdk';
 
 export const directus = createDirectus(
   process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055',
@@ -21,85 +15,28 @@ export const directusUtils = {
     return `${baseUrl}/assets/${assetId}${transformParam}`;
   },
 
-  // Get optimized image URL with transformations
-  getOptimizedImageUrl(assetId, options = {}) {
-    const params = new URLSearchParams();
-
-    if (options.width) params.append('width', options.width.toString());
-    if (options.height) params.append('height', options.height.toString());
-    if (options.quality) params.append('quality', options.quality.toString());
-    if (options.format) params.append('format', options.format);
-    if (options.fit) params.append('fit', options.fit);
-
-    return this.getAssetUrl(assetId, params.toString());
-  },
-
-  // Get thumbnail URL
-  getThumbnailUrl(assetId, size = 300) {
-    return this.getOptimizedImageUrl(assetId, {
-      width: size,
-      height: size,
-      fit: 'cover',
-      format: 'webp',
-      quality: 80,
-    });
-  },
-
   async getHomePage() {
     try {
       const page = await directus.request(
         readItems('pages', {
+          fields: [
+            '*',
+            'seo.*',
+            'title',
+            'permalink',
+            'heading',
+            'width',
+            'blocks.id',
+            'blocks.collection',
+            'blocks.item.*',
+            'blocks.item.button_group.*',
+            'blocks.item.button_group.buttons.*',
+            'blocks.item.card_group.*',
+            'blocks.item.card_group.cards.*',
+          ],
           filter: {
             permalink: { _eq: `/` },
           },
-          fields: [
-            '*',
-            'seo.*',
-            'title',
-            'permalink',
-            'heading',
-            'width',
-            'blocks.id',
-            'blocks.collection',
-            'blocks.item.*',
-            'blocks.item.button_group.*',
-            'blocks.item.button_group.buttons.*',
-            'blocks.item.card_group.*',
-            'blocks.item.card_group.cards.*',
-          ],
-          limit: 1,
-        }),
-      );
-      return page;
-    } catch (error) {
-      console.error('Error fetching page:', error);
-      return null;
-    }
-  },
-
-  async getPageWithSEO(slug) {
-    try {
-      const page = await directus.request(
-        readItems('pages', {
-          filter: {
-            permalink: { _eq: `/${slug}` },
-            status: { _eq: 'published' },
-          },
-          fields: [
-            '*',
-            'seo.*',
-            'title',
-            'permalink',
-            'heading',
-            'width',
-            'blocks.id',
-            'blocks.collection',
-            'blocks.item.*',
-            'blocks.item.button_group.*',
-            'blocks.item.button_group.buttons.*',
-            'blocks.item.card_group.*',
-            'blocks.item.card_group.cards.*',
-          ],
           limit: 1,
         }),
       );
@@ -138,5 +75,62 @@ export const directusUtils = {
       console.error('Error fetching navigation:', error);
       return null;
     }
+  },
+
+  // Get optimized image URL with transformations
+  getOptimizedImageUrl(assetId, options = {}) {
+    const params = new URLSearchParams();
+
+    if (options.width) params.append('width', options.width.toString());
+    if (options.height) params.append('height', options.height.toString());
+    if (options.quality) params.append('quality', options.quality.toString());
+    if (options.format) params.append('format', options.format);
+    if (options.fit) params.append('fit', options.fit);
+
+    return this.getAssetUrl(assetId, params.toString());
+  },
+
+  async getPageWithSEO(slug) {
+    try {
+      const page = await directus.request(
+        readItems('pages', {
+          fields: [
+            '*',
+            'seo.*',
+            'title',
+            'permalink',
+            'heading',
+            'width',
+            'blocks.id',
+            'blocks.collection',
+            'blocks.item.*',
+            'blocks.item.button_group.*',
+            'blocks.item.button_group.buttons.*',
+            'blocks.item.card_group.*',
+            'blocks.item.card_group.cards.*',
+          ],
+          filter: {
+            permalink: { _eq: `/${slug}` },
+            status: { _eq: 'published' },
+          },
+          limit: 1,
+        }),
+      );
+      return page;
+    } catch (error) {
+      console.error('Error fetching page:', error);
+      return null;
+    }
+  },
+
+  // Get thumbnail URL
+  getThumbnailUrl(assetId, size = 300) {
+    return this.getOptimizedImageUrl(assetId, {
+      fit: 'cover',
+      format: 'webp',
+      height: size,
+      quality: 80,
+      width: size,
+    });
   },
 };

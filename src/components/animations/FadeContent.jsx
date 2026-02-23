@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const FadeContent = ({
   children,
@@ -40,9 +40,9 @@ const FadeContent = ({
       ref={ref}
       className={className}
       style={{
+        filter: blur ? (inView ? 'blur(0px)' : 'blur(10px)') : 'none',
         opacity: inView ? 1 : initialOpacity,
         transition: `opacity ${duration}ms ${easing}, filter ${duration}ms ${easing}`,
-        filter: blur ? (inView ? 'blur(0px)' : 'blur(10px)') : 'none',
       }}
     >
       {children}

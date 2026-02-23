@@ -1,11 +1,12 @@
-import ProfilePic from '@/assets/images/profile.webp';
-import Link from '@/components/Link';
-import { socialsData } from '@/lib/data';
 import Image from 'next/image';
 import { LuDownload, LuMail } from 'react-icons/lu';
-import AnimatedContent from '@/components/animations/AnimatedContent';
+import ProfilePic from '@/assets/images/profile.webp';
 import RotatingText from '@/components/animations/RotatingText';
+import Link from '@/components/Link';
 import { Button } from '@/components/ui/button';
+import { socialsData } from '@/lib/data';
+import { buttonSurfaceClass, interactiveSurfaceClass } from '@/lib/styles';
+import { cn } from '@/lib/utils';
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
             alt='avatar'
             width={200}
             height={200}
-            className='size-40 rounded-full bg-secondary hover:bg-secondary/80 shadow border-border border' // Use fixed h/w for consistency
+            className={cn('size-40 rounded-full', interactiveSurfaceClass)}
           />
           <div className='space-y-2'>
             <div className='flex flex-col items-center gap-4 md:flex-row md:gap-4'>
@@ -33,15 +34,15 @@ export default function Home() {
                 exit={{ y: '-120%' }}
                 staggerDuration={0.025}
                 splitLevelClassName='overflow-hidden'
-                transition={{ type: 'spring', damping: 30, stiffness: 400 }}
+                transition={{ damping: 30, stiffness: 400, type: 'spring' }}
                 rotationInterval={2000}
               />
             </div>
 
             {/* This list remains hidden on mobile as per your original code */}
             <ul className='space-x-6 pt-6 md:pt-4 flex justify-center md:justify-start'>
-              {socialsData.map(({ name, href, icon: Icon }, index) => (
-                <li key={index}>
+              {socialsData.map(({ name, href, icon: Icon }) => (
+                <li key={name}>
                   <Link
                     className='flex items-center gap-x-2 text-primary/60 no-underline hover:text-primary'
                     href={href}
@@ -61,33 +62,32 @@ export default function Home() {
           systems. Let&apos;s collaborate to transform your dream into digital
           magic, shaping a future where innovation meets unwavering reliability!
         </p>
-        <div className='flex w-full flex-row space-x-2 sm:space-x-4 sm:w-auto'>
+        <div className='flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:gap-4'>
           {[
             {
               href: 'mailto:contact@tjhorwood.com',
-              text: 'Email me',
               icon: LuMail,
+              text: 'Email me',
             },
-            { href: '/resume.pdf', text: 'Download resume', icon: LuDownload },
+            { href: '/resume.pdf', icon: LuDownload, text: 'Download resume' },
           ].map(({ href, text, icon: Icon }) => (
-            <Link
+            <Button
               key={text}
-              href={href}
-              className='grow sm:grow-0'
-              target='_blank'
-              rel='noopener noreferrer'
+              asChild
+              variant='secondary'
+              size='lg'
+              className={cn(
+                'w-full grow sm:w-auto sm:grow-0',
+                buttonSurfaceClass,
+              )}
             >
-              <Button
-                variant='secondary'
-                size='lg'
-                className='w-full cursor-pointer shadow border-border border'
-              >
+              <Link href={href} target='_blank' rel='noopener noreferrer'>
                 <div className='flex items-center justify-center gap-2'>
                   <Icon className='size-5' />
                   <span>{text}</span>
                 </div>
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           ))}
         </div>
       </div>

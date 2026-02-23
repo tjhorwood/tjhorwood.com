@@ -1,19 +1,16 @@
-import Section from '@/components/Section';
-import cn from 'clsx';
 import AnimatedContent from '@/components/animations/AnimatedContent';
+import Section from '@/components/Section';
+import { pillSurfaceClass } from '@/lib/styles';
+import { cn } from '@/lib/utils';
 
 export default function ListSection({ heading, data }) {
   return (
     <div>
       <Section heading={heading} headingAlignment='left'>
-        <ul
-          className='flex flex-wrap justify-start gap-2'
-          initial='hidden'
-          animate='show'
-        >
+        <ul className='flex flex-wrap justify-start gap-2'>
           {data.map(({ name, css, icon: Icon }, index) => (
             <AnimatedContent
-              key={index}
+              key={name}
               distance={50}
               direction='vertical'
               reverse={false}
@@ -26,8 +23,10 @@ export default function ListSection({ heading, data }) {
               delay={index * 0.04}
             >
               <li
-                key={index}
-                className='flex gap-2 rounded-xl bg-secondary hover:bg-secondary/80 px-4 py-2 text-primary shadow border-border border'
+                className={cn(
+                  'flex gap-2 px-4 py-2 text-primary',
+                  pillSurfaceClass,
+                )}
               >
                 <Icon className={cn('h-6 w-6', css)} />
                 {name}

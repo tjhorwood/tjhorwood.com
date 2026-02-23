@@ -1,8 +1,8 @@
 import Link from '@/components/Link';
 
 export const metadata = {
-  title: '404',
   description: 'Uh oh! This page does not exist',
+  title: '404',
 };
 
 const Custom404 = () => (

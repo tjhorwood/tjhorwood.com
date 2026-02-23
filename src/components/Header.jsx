@@ -1,18 +1,20 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
+import { LuAlignJustify, LuX } from 'react-icons/lu';
 import Link from '@/components/Link';
 import Logo from '@/components/Logo';
 import NavLink from '@/components/NavLink';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
-import { LuAlignJustify, LuX } from 'react-icons/lu';
-import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { interactiveSurfaceClass } from '@/lib/styles';
+import { cn } from '@/lib/utils';
 
 export const links = [
-  { id: 'about', label: 'About', href: '/about' },
-  { id: 'projects', label: 'Projects', href: '/projects' },
-  { id: 'blog', label: 'Blog', href: '/blog' },
-  { id: 'gear', label: 'Gear', href: '/gear' },
+  { href: '/about', id: 'about', label: 'About' },
+  { href: '/projects', id: 'projects', label: 'Projects' },
+  { href: '/blog', id: 'blog', label: 'Blog' },
+  { href: '/gear', id: 'gear', label: 'Gear' },
 ];
 
 export default function Header() {
@@ -20,7 +22,7 @@ export default function Header() {
   const headerRef = useRef(null); // Create a ref for the header element
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prev) => !prev);
   };
 
   // Close the menu on outside click
@@ -84,20 +86,24 @@ export default function Header() {
         <div className='absolute right-0 w-1/2 bg-background md:hidden rounded-b-md shadow-lg'>
           <div className='flex flex-col items-center gap-2 p-4'>
             {links.map(({ id, href, label }) => (
-              <Link
+              <Button
                 key={id}
-                href={href}
-                className='w-full'
-                onClick={() => setIsOpen(false)}
+                asChild
+                variant='default'
+                size='lg'
+                className={cn(
+                  'w-full justify-start text-primary',
+                  interactiveSurfaceClass,
+                )}
               >
-                <Button
-                  variant='default'
-                  size='lg'
-                  className='justify-start w-full bg-secondary hover:bg-secondary/80 text-primary cursor-pointer border-border border'
+                <Link
+                  href={href}
+                  className='w-full'
+                  onClick={() => setIsOpen(false)}
                 >
                   {label}
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             ))}
           </div>
         </div>

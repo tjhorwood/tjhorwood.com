@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 const vertexShader = `
@@ -281,9 +281,9 @@ class CanvAscii {
 
   setMesh() {
     this.textCanvas = new CanvasTxt(this.textString, {
-      fontSize: this.textFontSize,
-      fontFamily: 'IBM Plex Mono',
       color: this.textColor,
+      fontFamily: 'IBM Plex Mono',
+      fontSize: this.textFontSize,
     });
     this.textCanvas.resize();
     this.textCanvas.render();
@@ -298,15 +298,15 @@ class CanvAscii {
 
     this.geometry = new THREE.PlaneGeometry(planeW, planeH, 36, 36);
     this.material = new THREE.ShaderMaterial({
-      vertexShader,
       fragmentShader,
       transparent: true,
       uniforms: {
-        uTime: { value: 0 },
         mouse: { value: 1.0 },
-        uTexture: { value: this.texture },
         uEnableWaves: { value: this.enableWaves ? 1.0 : 0.0 },
+        uTexture: { value: this.texture },
+        uTime: { value: 0 },
       },
+      vertexShader,
     });
 
     this.mesh = new THREE.Mesh(this.geometry, this.material);
@@ -314,7 +314,7 @@ class CanvAscii {
   }
 
   setRenderer() {
-    this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+    this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
     this.renderer.setPixelRatio(1);
     this.renderer.setClearColor(0x000000, 0);
 
@@ -446,12 +446,12 @@ export default function ASCIIText({
 
             asciiRef.current = new CanvAscii(
               {
-                text,
                 asciiFontSize,
-                textFontSize,
-                textColor,
-                planeBaseHeight,
                 enableWaves,
+                planeBaseHeight,
+                text,
+                textColor,
+                textFontSize,
               },
               containerRef.current,
               w,
@@ -477,12 +477,12 @@ export default function ASCIIText({
 
     asciiRef.current = new CanvAscii(
       {
-        text,
         asciiFontSize,
-        textFontSize,
-        textColor,
-        planeBaseHeight,
         enableWaves,
+        planeBaseHeight,
+        text,
+        textColor,
+        textFontSize,
       },
       containerRef.current,
       width,
@@ -519,9 +519,9 @@ export default function ASCIIText({
       ref={containerRef}
       className='ascii-text-container'
       style={{
+        height: '100%',
         position: 'absolute',
         width: '100%',
-        height: '100%',
       }}
     >
       <style>{`

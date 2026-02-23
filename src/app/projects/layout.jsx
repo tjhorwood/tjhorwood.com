@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'Projects',
   description: 'My Projects',
+  title: 'Projects',
 };
 
 export default function ProjectsLayout({ children }) {

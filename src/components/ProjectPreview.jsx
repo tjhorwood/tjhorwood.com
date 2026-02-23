@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { LuMonitor, LuSmartphone, LuRotateCcw } from 'react-icons/lu';
+import { LuMonitor, LuRotateCcw, LuSmartphone } from 'react-icons/lu';
 import { cn } from '@/lib/utils';
 
 export default function ProjectPreview({ src, title, viewMode, setViewMode }) {
