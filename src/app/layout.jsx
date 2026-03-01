@@ -22,11 +22,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en' className='scrollbar-hide'>
-      <Script
-        defer
-        src='https://umami.tjhorwood.com/script.js'
-        data-website-id='c76f34d7-e416-4bc5-b7db-c8050da3a9ad'
-      ></Script>
       <body className={`${poppins.className} w-full bg-background antialiased`}>
         <ThemeProvider
           attribute='class'
