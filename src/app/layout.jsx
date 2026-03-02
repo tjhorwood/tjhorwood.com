@@ -1,7 +1,6 @@
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import '@/styles/globals.css';
-import Script from 'next/script';
 
 export const metadata = {
   description: 'Personal Portfolio',
@@ -30,4 +29,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-e
