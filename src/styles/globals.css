@@ -1,5 +1,11 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/poppins/700.css';
+@import '@fontsource/poppins/800.css';
+@import '@fontsource/poppins/900.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -127,3 +133,6 @@
   scrollbar-width: none; /* Firefox */
 }
 
+body {
+  font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+}

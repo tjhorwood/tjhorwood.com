@@ -1,15 +1,7 @@
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import '@/styles/globals.css';
-import { Poppins } from 'next/font/google';
 import Script from 'next/script';
-
-const poppins = Poppins({
-  display: 'swap', // Ensures text visibility during loading
-  subsets: ['latin'],
-  variable: '--font-poppins', // Optional: for CSS variables
-  weight: ['400', '500', '600', '700', '800', '900'], // Example weights
-});
 
 export const metadata = {
   description: 'Personal Portfolio',
@@ -22,7 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en' className='scrollbar-hide'>
-      <body className={`${poppins.className} w-full bg-background antialiased`}>
+      <body className='w-full bg-background antialiased'>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
@@ -38,3 +30,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+e
