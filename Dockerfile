@@ -25,6 +25,7 @@ RUN apk add --no-cache curl
 RUN pnpm i
 
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_DISABLE_SWC_NATIVE=1
 
 RUN pnpm build
 
