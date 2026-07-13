@@ -107,3 +107,6 @@ build/**
 dist/**
 .next/**
 /.next/
+
+# TypeScript incremental cache
+tsconfig.tsbuildinfo

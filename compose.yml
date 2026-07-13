@@ -1,7 +1,41 @@
 services:
+  postgres:
+    container_name: tjhorwood-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-tjhorwood_payload}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_USER: ${POSTGRES_USER:-payload}
+    healthcheck:
+      interval: 10s
+      retries: 10
+      start_period: 20s
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"
+      timeout: 5s
+    image: postgres:17-alpine
+    restart: unless-stopped
+    volumes:
+      - payload_postgres_data:/var/lib/postgresql/data
+
   frontend:
     container_name: frontend
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URI: postgres://${POSTGRES_USER:-payload}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-tjhorwood_payload}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://tjhorwood.com}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET:?set PAYLOAD_SECRET in .env}
+      PREVIEW_SECRET: ${PREVIEW_SECRET:-}
+      REVALIDATION_SECRET: ${REVALIDATION_SECRET:-}
     image: thorwood/tjhorwood:latest
-    restart: unless-stopped
     ports:
       - '3000:3000'
+    restart: unless-stopped
+    volumes:
+      - payload_media:/app/public/media
+
+volumes:
+  payload_media:
+  payload_postgres_data:
