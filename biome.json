@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.3/schema.json",
   "assist": {
     "actions": {
       "source": {
@@ -85,7 +85,7 @@
         "noUnusedImports": "warn",
         "noUnusedVariables": "warn"
       },
-      "recommended": false,
+      "preset": "none",
       "suspicious": {
         "noConsole": "off",
         "noExplicitAny": "off"

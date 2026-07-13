@@ -1,20 +1,16 @@
 # Base image with Node.js
-FROM node:25-alpine AS base
-# Install pnpm directly instead of using corepack
-RUN npm install -g pnpm
+FROM node:22-alpine AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable && corepack prepare pnpm@10.30.3 --activate
 
 # 1. Dependencies Stage: Install dependencies
 FROM base AS deps
 RUN apk add --no-cache libc6-compat curl
 WORKDIR /app
 
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-RUN \
-    if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-    elif [ -f package-lock.json ]; then npm i; \
-    elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
-    else echo "Lockfile not found." && exit 1; \
-    fi
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
 # 2. Builder Stage: Build the Next.js application
 FROM base AS builder
@@ -22,8 +18,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN apk add --no-cache curl
-RUN pnpm i
-
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NEXT_DISABLE_SWC_NATIVE=1
 

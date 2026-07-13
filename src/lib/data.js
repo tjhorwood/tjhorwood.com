@@ -1,11 +1,11 @@
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
+import { FaAws, FaSalesforce } from 'react-icons/fa';
 import {
-  SiAmazonwebservices,
   SiAngular,
   SiApollographql,
   SiCircleci,
   SiConfluence,
-  SiCss3,
+  SiCss,
   SiDjango,
   SiDocker,
   SiExpress,
@@ -34,7 +34,6 @@ import {
   SiReact,
   SiRedis,
   SiRedux,
-  SiSalesforce,
   SiSqlite,
   SiTailwindcss,
   SiTerraform,
@@ -463,7 +462,7 @@ export const skillsData = [
   },
   {
     css: 'text-[#1572B6]',
-    icon: SiCss3,
+    icon: SiCss,
     name: 'CSS3',
   },
   {
@@ -629,7 +628,7 @@ export const platformData = [
   },
   {
     css: 'text-[#232F3E]',
-    icon: SiAmazonwebservices,
+    icon: FaAws,
     name: 'AWS',
   },
   {
@@ -664,7 +663,7 @@ export const platformData = [
   },
   {
     css: 'text-[#00A1E0]',
-    icon: SiSalesforce,
+    icon: FaSalesforce,
     name: 'Salesforce',
   },
 ];
