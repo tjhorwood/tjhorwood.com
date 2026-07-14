@@ -72,6 +72,9 @@ export interface Config {
     categories: Category;
     technologies: Technology;
     projects: Project;
+    'work-experience': WorkExperience;
+    posts: Post;
+    'gear-items': GearItem;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +87,9 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     technologies: TechnologiesSelect<false> | TechnologiesSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    'work-experience': WorkExperienceSelect<false> | WorkExperienceSelect<true>;
+    posts: PostsSelect<false> | PostsSelect<true>;
+    'gear-items': GearItemsSelect<false> | GearItemsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents':
       | PayloadLockedDocumentsSelect<false>
@@ -99,8 +105,18 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'site-settings': SiteSetting;
+    profile: Profile;
+    'about-page': AboutPage;
+    'gear-page': GearPage;
+  };
+  globalsSelect: {
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    profile: ProfileSelect<false> | ProfileSelect<true>;
+    'about-page': AboutPageSelect<false> | AboutPageSelect<true>;
+    'gear-page': GearPageSelect<false> | GearPageSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -273,6 +289,10 @@ export interface Technology {
    * Optional icon identifier used by frontend icon mapping, e.g. SiNextdotjs.
    */
   icon?: string | null;
+  /**
+   * Frontend Tailwind color class for the icon.
+   */
+  colorClass?: string | null;
   category:
     | 'frontend'
     | 'backend'
@@ -282,6 +302,7 @@ export interface Technology {
     | 'cms'
     | 'tooling'
     | 'other';
+  displayGroup?: ('skills' | 'platforms' | 'databases' | 'other') | null;
   proficiency?: ('learning' | 'working' | 'advanced' | 'expert') | null;
   featured?: boolean | null;
   sortOrder?: number | null;
@@ -359,6 +380,97 @@ export interface Project {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "work-experience".
+ */
+export interface WorkExperience {
+  id: number;
+  title: string;
+  company: string;
+  time?: string | null;
+  link?: string | null;
+  logo?: (number | null) | Media;
+  responsibilities?:
+    | {
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  sortOrder?: number | null;
+  externalId?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  title: string;
+  slug: string;
+  excerpt?: string | null;
+  coverImage?: (number | null) | Media;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  categories?: (number | Category)[] | null;
+  tags?: (number | Technology)[] | null;
+  visibility: 'public' | 'unlisted' | 'private';
+  publishedAt?: string | null;
+  seo?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  externalId?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gear-items".
+ */
+export interface GearItem {
+  id: number;
+  name: string;
+  slug: string;
+  description?: string | null;
+  image?: (number | null) | Media;
+  categories?: (number | Category)[] | null;
+  category:
+    | 'desk'
+    | 'homelab'
+    | 'development'
+    | 'audio'
+    | 'camera'
+    | 'fitness'
+    | 'edc'
+    | 'other';
+  affiliateUrl?: string | null;
+  productUrl?: string | null;
+  notes?: string | null;
+  owned?: boolean | null;
+  recommended?: boolean | null;
+  sortOrder?: number | null;
+  externalId?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -400,6 +512,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'projects';
         value: number | Project;
+      } | null)
+    | ({
+        relationTo: 'work-experience';
+        value: number | WorkExperience;
+      } | null)
+    | ({
+        relationTo: 'posts';
+        value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'gear-items';
+        value: number | GearItem;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -573,7 +697,9 @@ export interface TechnologiesSelect<T extends boolean = true> {
   documentationUrl?: T;
   logo?: T;
   icon?: T;
+  colorClass?: T;
   category?: T;
+  displayGroup?: T;
   proficiency?: T;
   featured?: T;
   sortOrder?: T;
@@ -629,6 +755,74 @@ export interface ProjectsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "work-experience_select".
+ */
+export interface WorkExperienceSelect<T extends boolean = true> {
+  title?: T;
+  company?: T;
+  time?: T;
+  link?: T;
+  logo?: T;
+  responsibilities?:
+    | T
+    | {
+        content?: T;
+        id?: T;
+      };
+  sortOrder?: T;
+  externalId?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts_select".
+ */
+export interface PostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  coverImage?: T;
+  content?: T;
+  categories?: T;
+  tags?: T;
+  visibility?: T;
+  publishedAt?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  externalId?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gear-items_select".
+ */
+export interface GearItemsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  description?: T;
+  image?: T;
+  categories?: T;
+  category?: T;
+  affiliateUrl?: T;
+  productUrl?: T;
+  notes?: T;
+  owned?: T;
+  recommended?: T;
+  sortOrder?: T;
+  externalId?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -666,6 +860,225 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  siteName: string;
+  defaultTitle: string;
+  titleTemplate?: string | null;
+  defaultDescription: string;
+  siteUrl: string;
+  contactEmail?: string | null;
+  favicon?: (number | null) | Media;
+  defaultOgImage?: (number | null) | Media;
+  navLinks?:
+    | {
+        label: string;
+        href: string;
+        sortOrder?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  footerText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "profile".
+ */
+export interface Profile {
+  id: number;
+  name: string;
+  headline?: string | null;
+  rotatingTitles?:
+    | {
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  intro: string;
+  profileImage?: (number | null) | Media;
+  resume?: (number | null) | Media;
+  email?: string | null;
+  socialLinks?:
+    | {
+        name: string;
+        href: string;
+        /**
+         * Frontend icon key, e.g. GitHub or LinkedIn.
+         */
+        icon?: string | null;
+        sortOrder?: number | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-page".
+ */
+export interface AboutPage {
+  id: number;
+  title: string;
+  intro?: string | null;
+  paragraphs?:
+    | {
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  strengths?:
+    | {
+        label: string;
+        description: string;
+        id?: string | null;
+      }[]
+    | null;
+  seo?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gear-page".
+ */
+export interface GearPage {
+  id: number;
+  title: string;
+  introLines?:
+    | {
+        content: string;
+        id?: string | null;
+      }[]
+    | null;
+  seo?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  siteName?: T;
+  defaultTitle?: T;
+  titleTemplate?: T;
+  defaultDescription?: T;
+  siteUrl?: T;
+  contactEmail?: T;
+  favicon?: T;
+  defaultOgImage?: T;
+  navLinks?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        sortOrder?: T;
+        id?: T;
+      };
+  footerText?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "profile_select".
+ */
+export interface ProfileSelect<T extends boolean = true> {
+  name?: T;
+  headline?: T;
+  rotatingTitles?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  intro?: T;
+  profileImage?: T;
+  resume?: T;
+  email?: T;
+  socialLinks?:
+    | T
+    | {
+        name?: T;
+        href?: T;
+        icon?: T;
+        sortOrder?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "about-page_select".
+ */
+export interface AboutPageSelect<T extends boolean = true> {
+  title?: T;
+  intro?: T;
+  paragraphs?:
+    | T
+    | {
+        content?: T;
+        id?: T;
+      };
+  strengths?:
+    | T
+    | {
+        label?: T;
+        description?: T;
+        id?: T;
+      };
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gear-page_select".
+ */
+export interface GearPageSelect<T extends boolean = true> {
+  title?: T;
+  introLines?:
+    | T
+    | {
+        content?: T;
+        id?: T;
+      };
+  seo?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

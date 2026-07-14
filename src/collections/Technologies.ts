@@ -57,6 +57,13 @@ export const Technologies: CollectionConfig = {
       type: 'text',
     },
     {
+      admin: {
+        description: 'Frontend Tailwind color class for the icon.',
+      },
+      name: 'colorClass',
+      type: 'text',
+    },
+    {
       defaultValue: 'frontend',
       name: 'category',
       options: [
@@ -70,6 +77,17 @@ export const Technologies: CollectionConfig = {
         { label: 'Other', value: 'other' },
       ],
       required: true,
+      type: 'select',
+    },
+    {
+      defaultValue: 'skills',
+      name: 'displayGroup',
+      options: [
+        { label: 'Skills', value: 'skills' },
+        { label: 'Tools & Platforms', value: 'platforms' },
+        { label: 'Databases', value: 'databases' },
+        { label: 'Other', value: 'other' },
+      ],
       type: 'select',
     },
     {

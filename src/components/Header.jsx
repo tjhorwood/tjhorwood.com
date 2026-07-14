@@ -10,14 +10,14 @@ import { Button } from '@/components/ui/button';
 import { interactiveSurfaceClass } from '@/lib/styles';
 import { cn } from '@/lib/utils';
 
-export const links = [
+export const defaultLinks = [
   { href: '/about', id: 'about', label: 'About' },
   { href: '/projects', id: 'projects', label: 'Projects' },
   { href: '/blog', id: 'blog', label: 'Blog' },
   { href: '/gear', id: 'gear', label: 'Gear' },
 ];
 
-export default function Header() {
+export default function Header({ links = defaultLinks }) {
   const [isOpen, setIsOpen] = useState(false);
   const headerRef = useRef(null); // Create a ref for the header element
 

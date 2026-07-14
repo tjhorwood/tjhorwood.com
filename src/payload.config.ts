@@ -7,10 +7,17 @@ import { buildConfig } from 'payload';
 import sharp from 'sharp';
 
 import { Categories } from './collections/Categories.ts';
+import { GearItems } from './collections/GearItems.ts';
 import { Media } from './collections/Media.ts';
+import { Posts } from './collections/Posts.ts';
 import { Projects } from './collections/Projects.ts';
 import { Technologies } from './collections/Technologies.ts';
 import { Users } from './collections/Users.ts';
+import { WorkExperience } from './collections/WorkExperience.ts';
+import { AboutPage } from './globals/AboutPage.ts';
+import { GearPage } from './globals/GearPage.ts';
+import { Profile } from './globals/Profile.ts';
+import { SiteSettings } from './globals/SiteSettings.ts';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -47,13 +54,23 @@ export default buildConfig({
     },
     user: Users.slug,
   },
-  collections: [Users, Media, Categories, Technologies, Projects],
+  collections: [
+    Users,
+    Media,
+    Categories,
+    Technologies,
+    Projects,
+    WorkExperience,
+    Posts,
+    GearItems,
+  ],
   db: postgresAdapter({
     pool: {
       connectionString: databaseUri,
     },
   }),
   editor: lexicalEditor({}),
+  globals: [SiteSettings, Profile, AboutPage, GearPage],
   plugins: [
     s3Storage({
       bucket: s3Bucket,

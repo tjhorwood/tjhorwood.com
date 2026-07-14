@@ -3,18 +3,37 @@ import { LuDownload, LuMail } from 'react-icons/lu';
 import RotatingText from '@/components/animations/RotatingText';
 import Link from '@/components/Link';
 import { Button } from '@/components/ui/button';
-import { socialsData } from '@/lib/data';
+import { getIcon } from '@/lib/iconMap';
+import { getMediaAlt, getMediaUrl } from '@/lib/media';
 import { buttonSurfaceClass, interactiveSurfaceClass } from '@/lib/styles';
 import { cn } from '@/lib/utils';
+import { getProfile } from '@/payload/queries/getGlobals';
 
-export default function Home() {
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+  const profile = await getProfile();
+  const profileImageUrl = getMediaUrl(
+    profile.profileImage,
+    '/api/payload/media/file/profile.webp',
+  );
+  const resumeUrl = getMediaUrl(
+    profile.resume,
+    '/api/payload/media/file/resume.pdf',
+  );
+  const rotatingTitles = profile.rotatingTitles?.map(({ label }) => label) ?? [
+    'Developer',
+    'Engineer',
+    'Tinkerer',
+    'Indie Hacker',
+  ];
   return (
     <div className='mx-auto flex max-w-4xl flex-col gap-16'>
       <div className='flex flex-col gap-8'>
         <div className='flex flex-col items-center gap-4 text-center md:flex-row md:gap-6 md:text-left'>
           <Image
-            src='/api/payload/media/file/profile.webp'
-            alt='avatar'
+            src={profileImageUrl}
+            alt={getMediaAlt(profile.profileImage, 'avatar')}
             width={200}
             height={200}
             className={cn('size-40 rounded-full', interactiveSurfaceClass)}
@@ -22,10 +41,10 @@ export default function Home() {
           <div className='space-y-2'>
             <div className='flex flex-col items-center gap-4 md:flex-row md:gap-4'>
               <h1 className='text-3xl font-bold tracking-tight'>
-                Taylor Horwood
+                {profile.name ?? 'Taylor Horwood'}
               </h1>
               <RotatingText
-                texts={['Developer', 'Engineer', 'Tinkerer', 'Indie Hacker']}
+                texts={rotatingTitles}
                 mainClassName='text-2xl px-3 bg-secondary hover:bg-secondary/80 overflow-hidden py-2 justify-center rounded-lg shadow border-border border'
                 staggerFrom={'last'}
                 initial={{ y: '100%' }}
@@ -37,42 +56,33 @@ export default function Home() {
                 rotationInterval={2000}
               />
             </div>
-
-            {/* This list remains hidden on mobile as per your original code */}
             <ul className='space-x-6 pt-6 md:pt-4 flex justify-center md:justify-start'>
-              {socialsData.map(({ name, href, icon: Icon }) => (
-                <li key={name}>
-                  <Link
-                    className='flex items-center gap-x-2 text-primary/60 no-underline hover:text-primary'
-                    href={href}
-                  >
-                    <Icon className='h-6 w-6' />
-                    <span>{name}</span>
-                  </Link>
-                </li>
-              ))}
+              {profile.socialLinks?.map(({ name, href, icon }) => {
+                const Icon = getIcon(icon || name);
+                return (
+                  <li key={name}>
+                    <Link
+                      className='flex items-center gap-x-2 text-primary/60 no-underline hover:text-primary'
+                      href={href}
+                    >
+                      <Icon className='h-6 w-6' />
+                      <span>{name}</span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
-        <p>
-          Hello world, my name is Taylor. I am a Site Reliability Engineer by
-          day and full stack developer by night. I create flawless front-end
-          experiences while taming DevOps challenges for seamless, dependable
-          systems. Let&apos;s collaborate to transform your dream into digital
-          magic, shaping a future where innovation meets unwavering reliability!
-        </p>
+        <p>{profile.intro}</p>
         <div className='flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:gap-4'>
           {[
             {
-              href: 'mailto:contact@tjhorwood.com',
+              href: `mailto:${profile.email ?? 'contact@tjhorwood.com'}`,
               icon: LuMail,
               text: 'Email me',
             },
-            {
-              href: '/api/payload/media/file/resume.pdf',
-              icon: LuDownload,
-              text: 'Download resume',
-            },
+            { href: resumeUrl, icon: LuDownload, text: 'Download resume' },
           ].map(({ href, text, icon: Icon }) => (
             <Button
               key={text}
