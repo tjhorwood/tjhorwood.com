@@ -1,44 +1,37 @@
-import { unstable_cache } from 'next/cache';
 import { draftMode } from 'next/headers';
 
 import { getPayload } from '../getPayload';
 
-const getPublishedProject = unstable_cache(
-  async (slug: string) => {
-    const payload = await getPayload();
+async function getPublishedProject(slug: string) {
+  const payload = await getPayload();
 
-    const result = await payload.find({
-      collection: 'projects',
-      depth: 2,
-      limit: 1,
-      where: {
-        and: [
-          {
-            slug: {
-              equals: slug,
-            },
+  const result = await payload.find({
+    collection: 'projects',
+    depth: 2,
+    limit: 1,
+    where: {
+      and: [
+        {
+          slug: {
+            equals: slug,
           },
-          {
-            _status: {
-              equals: 'published',
-            },
+        },
+        {
+          _status: {
+            equals: 'published',
           },
-          {
-            visibility: {
-              not_equals: 'private',
-            },
+        },
+        {
+          visibility: {
+            not_equals: 'private',
           },
-        ],
-      },
-    });
+        },
+      ],
+    },
+  });
 
-    return result.docs[0] ?? null;
-  },
-  ['project-by-slug'],
-  {
-    tags: ['projects'],
-  },
-);
+  return result.docs[0] ?? null;
+}
 
 export async function getProject(slug: string) {
   const { isEnabled } = await draftMode();

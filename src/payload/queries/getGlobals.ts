@@ -1,39 +1,21 @@
-import { unstable_cache } from 'next/cache';
-
 import { getPayload } from '../getPayload';
 
-export const getSiteSettings = unstable_cache(
-  async () => {
-    const payload = await getPayload();
-    return payload.findGlobal({ depth: 2, slug: 'site-settings' });
-  },
-  ['site-settings'],
-  { tags: ['site-settings'] },
-);
+export async function getSiteSettings() {
+  const payload = await getPayload();
+  return payload.findGlobal({ depth: 2, slug: 'site-settings' });
+}
 
-export const getProfile = unstable_cache(
-  async () => {
-    const payload = await getPayload();
-    return payload.findGlobal({ depth: 2, slug: 'profile' });
-  },
-  ['profile'],
-  { tags: ['profile'] },
-);
+export async function getProfile() {
+  const payload = await getPayload();
+  return payload.findGlobal({ depth: 2, slug: 'profile' });
+}
 
-export const getAboutPage = unstable_cache(
-  async () => {
-    const payload = await getPayload();
-    return payload.findGlobal({ depth: 2, slug: 'about-page' });
-  },
-  ['about-page'],
-  { tags: ['about-page'] },
-);
+export async function getAboutPage() {
+  const payload = await getPayload();
+  return payload.findGlobal({ depth: 2, slug: 'about-page' });
+}
 
-export const getGearPage = unstable_cache(
-  async () => {
-    const payload = await getPayload();
-    return payload.findGlobal({ depth: 2, slug: 'gear-page' });
-  },
-  ['gear-page'],
-  { tags: ['gear-page'] },
-);
+export async function getGearPage() {
+  const payload = await getPayload();
+  return payload.findGlobal({ depth: 2, slug: 'gear-page' });
+}
