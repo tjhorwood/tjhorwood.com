@@ -44,20 +44,6 @@ import {
   SiZsh,
 } from 'react-icons/si';
 import { VscVscode } from 'react-icons/vsc';
-import Amtrak from '@/assets/images/amtrak.webp';
-import capforgeImg from '@/assets/images/capforge.webp';
-import capforgeImgShort from '@/assets/images/capforge-short.webp';
-import Citi from '@/assets/images/citi.webp';
-import CRFHealth from '@/assets/images/crfhealth.webp';
-import healthsyncImg from '@/assets/images/healthsync/healthsync.webp';
-import healthsyncImgShort from '@/assets/images/healthsync/healthsync-short.webp';
-import nlgImg from '@/assets/images/nlg/nlg.webp';
-import nlgImgShort from '@/assets/images/nlg/nlg-short.webp';
-import sahustudioImg from '@/assets/images/sahustudio/sahustudio.webp';
-import sahustudioImgShort from '@/assets/images/sahustudio/sahustudio-short.webp';
-import standardcbdImg from '@/assets/images/standardcbd.webp';
-import standardcbdImgShort from '@/assets/images/standardcbd-short.webp';
-import Syapse from '@/assets/images/syapse.webp';
 
 export const socialsData = [
   {
@@ -77,33 +63,32 @@ export const projectsData = [
     category: 'Artistic Portfolio',
     description:
       'Sahu Studio is the online home of a talented friend who brings interior design dreams to life. This platform serves as both her creative playground and a showcase of her remarkable skills, featuring a captivating array of interior design projects, personalized paintings, and enchanting resin art pieces.',
+    heroImagePath: 'src/assets/images/sahustudio/sahustudio.webp',
     href: 'https://sahustudio.me',
     slug: 'sahu-studio',
-    src: sahustudioImg,
-    srcShort: sahustudioImgShort,
     tags: ['React', 'Next.js', 'Tailwind CSS', 'Directus CMS', 'PostgreSQL'],
+    thumbnailImagePath: 'src/assets/images/sahustudio/sahustudio-short.webp',
     title: 'Sahu Studio',
   },
   {
     category: 'App Landing Page',
     description:
       'Health Sync introduces a wellness app designed to enhance productivity, focus, and overall well-being. It features bodyweight exercises, yoga, guided meditation, and breathwork, all accessible from home. The app is noted for its simple interface, daily fresh content, and health insurance-approved fitness programs. It also provides resources for incorporating well-being practices into family life. The platform is available on macOS and Windows.',
+    heroImagePath: 'src/assets/images/healthsync/healthsync.webp',
     href: 'https://health-sync.org',
     slug: 'health-sync',
     sourceCode: 'https://github.com/tjhorwood/healthsync',
-    src: healthsyncImg,
-    srcShort: healthsyncImgShort,
     tags: ['React', 'Next.js', 'Tailwind CSS'],
+    thumbnailImagePath: 'src/assets/images/healthsync/healthsync-short.webp',
     title: 'Health Sync',
   },
   {
     category: 'Esports League',
     description:
       'National League Gaming stands as an integrated platform tailored to meet the requirements of individual gamers aspiring to compete at a high level. This encompassing platform provides a spectrum of offerings including skill development through training modules, engagement in both complimentary and fee-based leagues, all of which present opportunities for participants to compete for substantial monetary rewards across the entirety of these competitive arenas.',
+    heroImagePath: 'src/assets/images/nlg/nlg.webp',
     href: 'https://nationalleaguegaming.com',
     slug: 'national-league-gaming',
-    src: nlgImg,
-    srcShort: nlgImgShort,
     tags: [
       'React',
       'Next.js',
@@ -113,28 +98,29 @@ export const projectsData = [
       'Stripe',
       'SendGrid',
     ],
+    thumbnailImagePath: 'src/assets/images/nlg/nlg-short.webp',
     title: 'National League Gaming',
   },
   {
     category: 'Ecommerce',
     description:
       'StandardCBD is an e-commerce platform, specializing in the retail of a comprehensive array of CBD, delta-8, and delta-9 products. The product range spans vapes, creams, edibles, and tinctures, catering to a discerning clientele seeking high-quality solutions in the realm of wellness and alternative remedies.',
+    heroImagePath: 'src/assets/images/standardcbd.webp',
     href: 'https://standardcbd.com',
     slug: 'standardcbd',
-    src: standardcbdImg,
-    srcShort: standardcbdImgShort,
     tags: ['Wordpress', 'WooCommerce', 'ShipStation'],
+    thumbnailImagePath: 'src/assets/images/standardcbd-short.webp',
     title: 'StandardCBD',
   },
   {
     category: 'Financal / Bookkeeping',
     description:
       'CapForge offers a comprehensive online platform catering to a diverse range of business needs, encompassing areas such as bookkeeping, taxation, payroll administration, strategic consulting, Amazon and e-commerce facilitation, as well as startup support.',
+    heroImagePath: 'src/assets/images/capforge.webp',
     href: 'https://capforge.com',
     slug: 'capforge',
-    src: capforgeImg,
-    srcShort: capforgeImgShort,
     tags: ['Wordpress'],
+    thumbnailImagePath: 'src/assets/images/capforge-short.webp',
     title: 'CapForge',
   },
 ];
@@ -182,7 +168,7 @@ export const workplacesData = [
         content: 'Present technical strategies and improvements to leadership',
       },
     ],
-    imageSrc: Citi,
+    imageSrc: '/api/payload/media/file/citi.webp',
     link: 'https://citi.com',
     time: '2024 - 2026',
     title: 'Sr. Site Reliability Engineer',
@@ -215,7 +201,7 @@ export const workplacesData = [
           'Conducted regular performance assessments, set clear goals, and provided constructive feedback, contributing to the continuous improvement of team capabilities.',
       },
     ],
-    imageSrc: Syapse,
+    imageSrc: '/api/payload/media/file/syapse.webp',
     link: 'https://syapse.com',
     time: '2022 - 2023',
     title: 'Team Lead, Service Ops Engineering',
@@ -279,7 +265,7 @@ export const workplacesData = [
           'Fostered learning through internal workshops, cross-team collaboration.',
       },
     ],
-    imageSrc: Syapse,
+    imageSrc: '/api/payload/media/file/syapse.webp',
     link: 'https://syapse.com',
     time: '2022 - 2022',
     title: 'Sr. Service Ops Engineer',
@@ -328,7 +314,7 @@ export const workplacesData = [
           'Provide training and maintain documentation for internal resources.',
       },
     ],
-    imageSrc: Syapse,
+    imageSrc: '/api/payload/media/file/syapse.webp',
     link: 'https://syapse.com',
     time: '2018 - 2022',
     title: 'Site Reliability Engineer',
@@ -361,7 +347,7 @@ export const workplacesData = [
           'Maintain a detailed understanding of product architecture, technical components, and application functionality, e.g., by configuring the Syapse application and integrating external systems using Python and JavaScript.',
       },
     ],
-    imageSrc: Syapse,
+    imageSrc: '/api/payload/media/file/syapse.webp',
     link: 'https://syapse.com',
     time: '2015 - 2018',
     title: 'Sr. Customer Success Engineer',
@@ -386,7 +372,7 @@ export const workplacesData = [
           'Ensure that the Project Team maintains a high quality service and on time delivery of project outputs for the client. Ensure knowledge and understanding remains up-to-date with software releases and updates. Supported the on-boarding and training/mentoring of new hires.',
       },
     ],
-    imageSrc: CRFHealth,
+    imageSrc: '/api/payload/media/file/crfhealth.webp',
     link: 'https://signanthealth.com/',
     time: '2015 - 2015',
     title: 'Application Specialist',
@@ -407,7 +393,7 @@ export const workplacesData = [
           'Perform local testing and validation of the wireless carrier and landline network infrastructure in various countries world-wide.',
       },
     ],
-    imageSrc: CRFHealth,
+    imageSrc: '/api/payload/media/file/crfhealth.webp',
     link: 'https://signanthealth.com/',
     time: '2013 - 2015',
     title: 'Tier II, Technical Support',
@@ -432,7 +418,7 @@ export const workplacesData = [
           'Maximo – Monitor, update and troubleshoot over 70 TEDs (Time Entry Devices, used by engineering employees to swipe in and out). Also assist employees with issues being experienced with time entry and inspections they are performing on both a computer and on a mobile device.',
       },
     ],
-    imageSrc: Amtrak,
+    imageSrc: '/api/payload/media/file/amtrak.webp',
     link: 'https://amtrak.com',
     time: '2011 - 2013',
     title: 'Application Support Analyst',

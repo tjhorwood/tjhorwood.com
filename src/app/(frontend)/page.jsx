@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { LuDownload, LuMail } from 'react-icons/lu';
-import ProfilePic from '@/assets/images/profile.webp';
 import RotatingText from '@/components/animations/RotatingText';
 import Link from '@/components/Link';
 import { Button } from '@/components/ui/button';
@@ -14,7 +13,7 @@ export default function Home() {
       <div className='flex flex-col gap-8'>
         <div className='flex flex-col items-center gap-4 text-center md:flex-row md:gap-6 md:text-left'>
           <Image
-            src={ProfilePic}
+            src='/api/payload/media/file/profile.webp'
             alt='avatar'
             width={200}
             height={200}
@@ -69,7 +68,11 @@ export default function Home() {
               icon: LuMail,
               text: 'Email me',
             },
-            { href: '/resume.pdf', icon: LuDownload, text: 'Download resume' },
+            {
+              href: '/api/payload/media/file/resume.pdf',
+              icon: LuDownload,
+              text: 'Download resume',
+            },
           ].map(({ href, text, icon: Icon }) => (
             <Button
               key={text}

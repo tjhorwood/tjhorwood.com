@@ -11,6 +11,14 @@ const nextConfig = {
     ],
   },
   output: 'standalone',
+  async rewrites() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/api/payload/media/file/favicon.ico',
+      },
+    ];
+  },
   reactStrictMode: true,
   trailingSlash: true,
 };

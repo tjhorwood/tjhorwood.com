@@ -110,7 +110,7 @@ export default function Work() {
             >
               <a
                 className='flex w-full items-center justify-center gap-3'
-                href='/resume.pdf'
+                href='/api/payload/media/file/resume.pdf'
                 download
               >
                 <LuDownload className='size-5' />

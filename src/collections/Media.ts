@@ -88,6 +88,8 @@ export const Media: CollectionConfig = {
       'image/jpeg',
       'image/png',
       'image/webp',
+      'image/x-icon',
+      'image/vnd.microsoft.icon',
       'application/pdf',
     ],
     staticDir: 'public/media',

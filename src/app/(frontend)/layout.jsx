@@ -4,6 +4,7 @@ import '@/styles/globals.css';
 
 export const metadata = {
   description: 'Personal Portfolio',
+  icons: { icon: '/api/payload/media/file/favicon.ico' },
   title: {
     default: 'Taylor Horwood',
     template: `%s | Taylor Horwood`,

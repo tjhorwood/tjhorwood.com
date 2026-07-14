@@ -86,18 +86,6 @@ function inferProjectType(category?: string) {
   return 'web';
 }
 
-function parseImageImports(source: string) {
-  const imports = new Map<string, string>();
-  const importPattern =
-    /import\s+([A-Za-z0-9_]+)\s+from\s+['"]@\/([^'"]+)['"];?/g;
-
-  for (const match of source.matchAll(importPattern)) {
-    imports.set(match[1], path.join('src', match[2]));
-  }
-
-  return imports;
-}
-
 function extractProjectObjects(source: string): RepositoryProjectSource[] {
   const match = source.match(/export const projectsData = \[([\s\S]*?)\n\];/);
 
@@ -105,7 +93,6 @@ function extractProjectObjects(source: string): RepositoryProjectSource[] {
     throw new Error('Unable to locate projectsData export in src/lib/data.js');
   }
 
-  const imageImports = parseImageImports(source);
   const body = match[1];
   const objects = body.match(/\{[\s\S]*?\n  \}/g) ?? [];
 
@@ -113,13 +100,6 @@ function extractProjectObjects(source: string): RepositoryProjectSource[] {
     const readString = (field: string) => {
       const value = objectSource.match(
         new RegExp(`${field}:\\s*(?:\\n\\s*)?['\\"]([^'\\"]+)['\\"]`),
-      );
-      return value?.[1];
-    };
-
-    const readIdentifier = (field: string) => {
-      const value = objectSource.match(
-        new RegExp(`${field}:\\s*([A-Za-z0-9_]+)`),
       );
       return value?.[1];
     };
@@ -132,8 +112,9 @@ function extractProjectObjects(source: string): RepositoryProjectSource[] {
     const title = readString('title');
     const slug = readString('slug');
     const description = readString('description');
-    const heroIdentifier = readIdentifier('src');
-    const thumbnailIdentifier = readIdentifier('srcShort');
+    const heroImagePath = readString('heroImagePath') ?? readString('src');
+    const thumbnailImagePath =
+      readString('thumbnailImagePath') ?? readString('srcShort');
 
     if (!(title && slug && description)) {
       throw new Error(
@@ -144,16 +125,12 @@ function extractProjectObjects(source: string): RepositoryProjectSource[] {
     return {
       category: readString('category'),
       description,
-      heroImagePath: heroIdentifier
-        ? imageImports.get(heroIdentifier)
-        : undefined,
+      heroImagePath,
       href: readString('href'),
       slug,
       sourceCode: readString('sourceCode'),
       tags,
-      thumbnailImagePath: thumbnailIdentifier
-        ? imageImports.get(thumbnailIdentifier)
-        : undefined,
+      thumbnailImagePath,
       title,
     };
   });
