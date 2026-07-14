@@ -57,7 +57,12 @@
       "@tailwindcss/oxide",
       "sharp",
       "unrs-resolver"
-    ]
+    ],
+    "overrides": {
+      "dompurify": "^3.4.11",
+      "esbuild": "^0.25.12",
+      "postcss": "^8.5.19"
+    }
   },
   "private": true,
   "scripts": {

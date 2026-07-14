@@ -54,7 +54,9 @@ const AnimatedContent = ({
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      ScrollTrigger.getAll().forEach((t) => {
+        t.kill();
+      });
       gsap.killTweensOf(el);
     };
   }, [

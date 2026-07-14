@@ -96,7 +96,9 @@ const ScrollReveal = ({
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => {
+        trigger.kill();
+      });
     };
   }, [
     scrollContainerRef,

@@ -94,7 +94,7 @@ function extractProjectObjects(source: string): RepositoryProjectSource[] {
   }
 
   const body = match[1];
-  const objects = body.match(/\{[\s\S]*?\n  \}/g) ?? [];
+  const objects = body.match(/\{[\s\S]*?\n {2}\}/g) ?? [];
 
   return objects.map((objectSource) => {
     const readString = (field: string) => {

@@ -38,7 +38,9 @@ const SpotlightCard = ({
   };
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: decorative mouse spotlight tracks pointer position without adding an interactive control.
     <div
+      role='presentation'
       ref={divRef}
       onMouseMove={handleMouseMove}
       onFocus={handleFocus}

@@ -12,6 +12,8 @@
   "files": {
     "ignoreUnknown": false,
     "includes": [
+      "**",
+      "!**/*.css",
       "!./node_modules",
       "!./.next",
       "!./.next/",
@@ -85,7 +87,6 @@
         "noUnusedImports": "warn",
         "noUnusedVariables": "warn"
       },
-      "preset": "none",
       "suspicious": {
         "noConsole": "off",
         "noExplicitAny": "off"

@@ -44,9 +44,8 @@ void main() {
 }
 `;
 
-Math.map = function (n, start, stop, start2, stop2) {
-  return ((n - start) / (stop - start)) * (stop2 - start2) + start2;
-};
+Math.map = (n, start, stop, start2, stop2) =>
+  ((n - start) / (stop - start)) * (stop2 - start2) + start2;
 
 const PX_RATIO = typeof window !== 'undefined' ? window.devicePixelRatio : 1;
 
@@ -169,14 +168,14 @@ class AsciiFilter {
             continue;
           }
 
-          let gray = (0.3 * r + 0.6 * g + 0.1 * b) / 255;
+          const gray = (0.3 * r + 0.6 * g + 0.1 * b) / 255;
           let idx = Math.floor((1 - gray) * (this.charset.length - 1));
           if (this.invert) idx = this.charset.length - idx - 1;
           str += this.charset[idx];
         }
         str += '\n';
       }
-      this.pre.innerHTML = str;
+      this.pre.textContent = str;
     }
   }
 

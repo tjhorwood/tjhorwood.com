@@ -24,10 +24,14 @@ const dirname = path.dirname(filename);
 
 const databaseUri =
   process.env.DATABASE_URI ??
-  'postgres://payload:dev-only@localhost:5432/tjhorwood_payload';
+  'postgres://payload:payload_dev_password@localhost:5432/tjhorwood_payload';
 
 const payloadSecret =
   process.env.PAYLOAD_SECRET ?? 'dev-only-change-me-before-production';
+
+if (process.env.NODE_ENV === 'production' && !process.env.PAYLOAD_SECRET) {
+  throw new Error('PAYLOAD_SECRET is required in production.');
+}
 
 const s3Enabled =
   process.env.S3_ENABLED !== 'false' &&

@@ -19,6 +19,7 @@ export default function ProjectPreview({ src, title, viewMode, setViewMode }) {
         {/* Viewport Toggle Buttons */}
         <div className='flex items-center gap-1 bg-secondary/50 p-1 rounded-lg border border-border'>
           <button
+            type='button'
             onClick={() => setViewMode('desktop')}
             className={cn(
               'p-1.5 rounded-md transition-all duration-200',
@@ -30,6 +31,7 @@ export default function ProjectPreview({ src, title, viewMode, setViewMode }) {
             <LuMonitor className='h-4 w-4' />
           </button>
           <button
+            type='button'
             onClick={() => setViewMode('mobile')}
             className={cn(
               'p-1.5 rounded-md transition-all duration-200',
@@ -59,6 +61,7 @@ export default function ProjectPreview({ src, title, viewMode, setViewMode }) {
           </div>
           <div className='w-16 flex justify-end'>
             <button
+              type='button'
               onClick={handleRefresh}
               className='hover:rotate-180 transition-transform duration-500'
             >

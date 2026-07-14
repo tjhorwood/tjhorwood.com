@@ -36,9 +36,9 @@ The site introduces Taylor as a Site Reliability Engineer and full stack develop
 - Tailwind CSS v4
 - Framer Motion + custom animation components
 - Radix UI primitives
-- Directus SDK integration for content-driven pages
+- Payload CMS for content-driven pages and media
 - Biome for formatting and linting
-- Docker + Helm manifests for deployment
+- Docker Compose + Helm manifests for deployment
 
 ## Local Development
 
@@ -63,9 +63,14 @@ pnpm docker:deploy # docker compose up -d
 
 ## Environment
 
-The Directus client reads:
+Copy `.env.example` to `.env` and replace every placeholder before running a production build or deployment. Production startup fails closed when `PAYLOAD_SECRET` is missing.
 
-- `NEXT_PUBLIC_DIRECTUS_URL` (defaults to `http://localhost:8055`)
+Key settings:
+
+- `DATABASE_URI` / `POSTGRES_*` for Payload's Postgres database
+- `PAYLOAD_SECRET` for Payload auth/session signing
+- `NEXT_PUBLIC_SITE_URL` for public canonical URLs
+- `S3_*` and `GARAGE_*` for Garage-backed Payload media storage
 
 ## Deployment
 
