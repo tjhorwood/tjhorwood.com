@@ -5,5 +5,4 @@ export const cardSurfaceClass = `rounded-lg ${interactiveSurfaceClass}`;
 
 export const pillSurfaceClass = `rounded-xl ${interactiveSurfaceClass}`;
 
-export const buttonSurfaceClass =
-  'cursor-pointer border border-border shadow';
+export const buttonSurfaceClass = 'cursor-pointer border border-border shadow';

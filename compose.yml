@@ -1,7 +1,82 @@
 services:
+  postgres:
+    container_name: tjhorwood-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-tjhorwood_payload}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_USER: ${POSTGRES_USER:-payload}
+    healthcheck:
+      interval: 10s
+      retries: 10
+      start_period: 20s
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$${POSTGRES_USER}" -d "$${POSTGRES_DB}"
+      timeout: 5s
+    image: postgres:17-alpine
+    restart: unless-stopped
+    volumes:
+      - payload_postgres_data:/var/lib/postgresql/data
+
+  garage:
+    command: /garage server --single-node --default-bucket
+    container_name: tjhorwood-garage
+    environment:
+      GARAGE_ADMIN_TOKEN: ${GARAGE_ADMIN_TOKEN:?set GARAGE_ADMIN_TOKEN in .env}
+      GARAGE_CONFIG_FILE: /etc/garage.toml
+      GARAGE_DEFAULT_ACCESS_KEY: ${S3_ACCESS_KEY_ID:?set S3_ACCESS_KEY_ID in .env}
+      GARAGE_DEFAULT_BUCKET: ${S3_BUCKET:-tjhorwood-media}
+      GARAGE_DEFAULT_SECRET_KEY: ${S3_SECRET_ACCESS_KEY:?set S3_SECRET_ACCESS_KEY in .env}
+      GARAGE_METRICS_TOKEN: ${GARAGE_METRICS_TOKEN:?set GARAGE_METRICS_TOKEN in .env}
+      GARAGE_RPC_SECRET: ${GARAGE_RPC_SECRET:?set GARAGE_RPC_SECRET in .env}
+    expose:
+      - '3900'
+      - '3901'
+      - '3903'
+    healthcheck:
+      interval: 60s
+      retries: 5
+      start_period: 20s
+      test:
+        - CMD
+        - /garage
+        - status
+      timeout: 5s
+    image: dxflrs/garage:v2.3.0
+    restart: unless-stopped
+    volumes:
+      - garage_meta:/var/lib/garage/meta
+      - garage_data:/var/lib/garage/data
+      - ./garage.toml:/etc/garage.toml:ro
+
   frontend:
     container_name: frontend
+    depends_on:
+      garage:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URI: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-tjhorwood_payload}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://tjhorwood.com}
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET:?set PAYLOAD_SECRET in .env}
+      PREVIEW_SECRET: ${PREVIEW_SECRET:-}
+      REVALIDATION_SECRET: ${REVALIDATION_SECRET:-}
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:?set S3_ACCESS_KEY_ID in .env}
+      S3_BUCKET: ${S3_BUCKET:-tjhorwood-media}
+      S3_ENABLED: ${S3_ENABLED:-true}
+      S3_ENDPOINT: ${S3_ENDPOINT:-http://garage:3900}
+      S3_REGION: ${S3_REGION:-garage}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:?set S3_SECRET_ACCESS_KEY in .env}
     image: thorwood/tjhorwood:latest
-    restart: unless-stopped
     ports:
       - '3000:3000'
+    restart: unless-stopped
+    volumes:
+      - payload_media:/app/public/media
+
+volumes:
+  garage_data:
+  garage_meta:
+  payload_media:
+  payload_postgres_data:
