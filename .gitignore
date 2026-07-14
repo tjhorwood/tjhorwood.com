@@ -110,3 +110,5 @@ dist/**
 
 # TypeScript incremental cache
 tsconfig.tsbuildinfo
+/media/
+/public/media/

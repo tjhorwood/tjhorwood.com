@@ -90,6 +90,6 @@ export const Media: CollectionConfig = {
       'image/webp',
       'application/pdf',
     ],
-    staticDir: 'media',
+    staticDir: 'public/media',
   },
 };
