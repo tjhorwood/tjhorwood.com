@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { getMediaUrl } from '@/lib/media';
@@ -28,6 +29,12 @@ export default async function RootLayout({ children }) {
   return (
     <html lang='en' className='scrollbar-hide'>
       <body className='w-full bg-background antialiased'>
+        <Script
+          src='https://tjhorwood.com/umami/script.js'
+          data-website-id='650e4420-e452-4e9f-9fd2-d1bea2a318e8'
+          data-host-url='https://tjhorwood.com/umami'
+          strategy='afterInteractive'
+        />
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
