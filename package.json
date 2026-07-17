@@ -74,6 +74,7 @@
     "format": "biome format --write .",
     "generate:importmap": "payload generate:importmap && biome check --write src/app/\\(payload\\)/admin/importMap.js",
     "generate:types": "payload generate:types && biome check --write src/payload-types.ts",
+    "import:blog": "tsx scripts/import/importBlogPost.ts",
     "import:projects": "tsx scripts/import/importProjects.ts",
     "lint": "biome check src scripts biome.json components.json package.json tsconfig.json next.config.mjs postcss.config.mjs",
     "migrate": "payload migrate",

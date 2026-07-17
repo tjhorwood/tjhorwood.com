@@ -1,10 +1,11 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { postgresAdapter } from '@payloadcms/db-postgres';
-import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { BlocksFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
 import { s3Storage } from '@payloadcms/storage-s3';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
+import { CodeSnippet } from './blocks/CodeSnippet.ts';
 
 import { Categories } from './collections/Categories.ts';
 import { GearItems } from './collections/GearItems.ts';
@@ -73,7 +74,12 @@ export default buildConfig({
       connectionString: databaseUri,
     },
   }),
-  editor: lexicalEditor({}),
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      BlocksFeature({ blocks: [CodeSnippet] }),
+    ],
+  }),
   globals: [SiteSettings, Profile, AboutPage, GearPage],
   plugins: [
     s3Storage({
