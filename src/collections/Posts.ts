@@ -1,7 +1,8 @@
+import { BlocksFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
 import type { CollectionConfig } from 'payload';
-
 import { editorsOrAdmins } from '../access/editors.ts';
 import { publishedOrEditors } from '../access/publishedOrEditors.ts';
+import { CodeSnippet } from '../blocks/CodeSnippet.ts';
 
 export const Posts: CollectionConfig = {
   access: {
@@ -20,7 +21,16 @@ export const Posts: CollectionConfig = {
     { index: true, name: 'slug', required: true, type: 'text', unique: true },
     { name: 'excerpt', type: 'textarea' },
     { name: 'coverImage', relationTo: 'media', type: 'upload' },
-    { name: 'content', type: 'richText' },
+    {
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          BlocksFeature({ blocks: [CodeSnippet] }),
+        ],
+      }),
+      name: 'content',
+      type: 'richText',
+    },
     {
       hasMany: true,
       name: 'categories',
