@@ -29,6 +29,45 @@ function CodeSnippetBlock({ fields }) {
   );
 }
 
+function MarkdownTableBlock({ fields }) {
+  const headers = Array.isArray(fields?.headers) ? fields.headers : [];
+  const rows = Array.isArray(fields?.rows) ? fields.rows : [];
+  if (!headers.length || !rows.length) return null;
+
+  return (
+    <div className='not-prose my-6 overflow-x-auto rounded-xl border border-primary/10'>
+      <table className='min-w-full border-collapse text-left text-sm'>
+        <thead className='bg-primary/5 text-primary/80'>
+          <tr>
+            {headers.map((header, index) => (
+              <th
+                className='border-primary/10 border-b px-4 py-3 font-semibold'
+                key={index}
+              >
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, rowIndex) => (
+            <tr className='odd:bg-primary/[0.02]' key={rowIndex}>
+              {headers.map((_, cellIndex) => (
+                <td
+                  className='border-primary/10 border-b px-4 py-3 align-top last:border-b-0'
+                  key={cellIndex}
+                >
+                  {row?.[cellIndex] ?? ''}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function renderNode(node, key) {
   if (!node) return null;
   if (node.type === 'text') return renderTextNode(node, key);
@@ -53,7 +92,10 @@ function renderNode(node, key) {
       return <br key={key} />;
     case 'block': {
       if (node.fields?.blockType === 'CodeSnippet') {
-        return <CodeSnippetBlock key={key} fields={node.fields} />;
+        return <CodeSnippetBlock fields={node.fields} key={key} />;
+      }
+      if (node.fields?.blockType === 'MarkdownTable') {
+        return <MarkdownTableBlock fields={node.fields} key={key} />;
       }
       return null;
     }

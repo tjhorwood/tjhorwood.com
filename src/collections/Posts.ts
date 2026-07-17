@@ -3,6 +3,7 @@ import type { CollectionConfig } from 'payload';
 import { editorsOrAdmins } from '../access/editors.ts';
 import { publishedOrEditors } from '../access/publishedOrEditors.ts';
 import { CodeSnippet } from '../blocks/CodeSnippet.ts';
+import { MarkdownTable } from '../blocks/MarkdownTable.ts';
 
 export const Posts: CollectionConfig = {
   access: {
@@ -25,7 +26,7 @@ export const Posts: CollectionConfig = {
       editor: lexicalEditor({
         features: ({ defaultFeatures }) => [
           ...defaultFeatures,
-          BlocksFeature({ blocks: [CodeSnippet] }),
+          BlocksFeature({ blocks: [CodeSnippet, MarkdownTable] }),
         ],
       }),
       name: 'content',

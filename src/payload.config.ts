@@ -6,6 +6,7 @@ import { s3Storage } from '@payloadcms/storage-s3';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
 import { CodeSnippet } from './blocks/CodeSnippet.ts';
+import { MarkdownTable } from './blocks/MarkdownTable.ts';
 
 import { Categories } from './collections/Categories.ts';
 import { GearItems } from './collections/GearItems.ts';
@@ -77,7 +78,7 @@ export default buildConfig({
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures,
-      BlocksFeature({ blocks: [CodeSnippet] }),
+      BlocksFeature({ blocks: [CodeSnippet, MarkdownTable] }),
     ],
   }),
   globals: [SiteSettings, Profile, AboutPage, GearPage],
