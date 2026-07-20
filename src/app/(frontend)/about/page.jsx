@@ -481,7 +481,7 @@ function CrossLinks() {
     <section className='grid gap-4 md:grid-cols-3'>
       {[
         { href: '/projects', label: 'See the systems', title: 'Projects' },
-        { href: '/blog', label: 'Read the notes', title: 'Blog' },
+        { href: '/blog', label: 'Read the blog', title: 'Blog' },
         { href: '/gear', label: 'Browse the setup', title: 'Gear' },
       ].map((item) => (
         <Link

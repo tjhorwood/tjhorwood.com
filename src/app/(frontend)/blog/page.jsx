@@ -50,7 +50,7 @@ export default async function Blog() {
         <div className='pointer-events-none absolute -top-24 right-0 h-64 w-64 rounded-full bg-primary/10 blur-3xl' />
         <div className='relative max-w-4xl space-y-6'>
           <PageIntro
-            title='Field Notes'
+            title='Blog'
             descriptions={
               posts.totalDocs > 0
                 ? 'Practical writeups on reliable systems, homelab infrastructure, automation, self-hosting, and things I am learning by building.'

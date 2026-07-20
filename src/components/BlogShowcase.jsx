@@ -43,7 +43,7 @@ function getTaxonomyNames(post) {
 
 function TopicArtwork({ featured = false, post }) {
   const taxonomy = getTaxonomyNames(post);
-  const topic = taxonomy[0] ?? 'Field notes';
+  const topic = taxonomy[0] ?? 'Blog';
 
   return (
     <div className='relative flex h-full min-h-64 overflow-hidden bg-linear-to-br from-secondary via-background to-primary/10 p-6'>
@@ -208,7 +208,7 @@ export default function BlogShowcase({ posts }) {
       <div className='flex flex-col gap-4 rounded-3xl border border-border bg-secondary/40 p-4 md:flex-row md:items-center md:justify-between'>
         <div>
           <p className='text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground'>
-            Field notes
+            Blog
           </p>
           <p className='mt-1 text-sm text-muted-foreground'>
             Browse practical writeups by topic and jump into the newest guide.

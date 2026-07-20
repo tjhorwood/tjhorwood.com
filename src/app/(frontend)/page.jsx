@@ -149,7 +149,7 @@ function PostPreview({ post }) {
         <LuArrowUpRight className='h-5 w-5 text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1' />
       </div>
       <p className='mt-6 text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
-        Latest note
+        Latest post
       </p>
       <h2 className='mt-3 text-2xl font-bold tracking-tight'>{post.title}</h2>
       {publishedDate && (
@@ -272,7 +272,7 @@ export default async function Home() {
                 href='/blog'
                 className='inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary'
               >
-                Read field notes <LuBookOpen className='h-4 w-4' />
+                Read blog <LuBookOpen className='h-4 w-4' />
               </Link>
               <Link
                 href='/about'
@@ -342,8 +342,8 @@ export default async function Home() {
           href='/blog'
           icon={LuNewspaper}
           label='Writing'
-          title='Field Notes'
-          description='Practical notes on reliability, self-hosting, automation, and technical tradeoffs.'
+          title='Blog'
+          description='Practical posts on reliability, self-hosting, automation, and technical tradeoffs.'
         />
         <SectionCard
           href='/gear'
@@ -377,8 +377,8 @@ export default async function Home() {
             </h2>
             <p className='mt-3 max-w-3xl leading-7 text-muted-foreground'>
               Home is now the launchpad. About is the deep biography. Projects
-              show the work. Blog captures the lessons. Gear documents the
-              setup.
+              show the work. Blog captures the posts and lessons. Gear documents
+              the setup.
             </p>
           </div>
           <div className='flex flex-wrap gap-3'>
