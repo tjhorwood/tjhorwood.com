@@ -21,10 +21,8 @@ import {
 } from 'react-icons/lu';
 import AnimatedContent from '@/components/animations/AnimatedContent';
 import Link from '@/components/Link';
-import { Button } from '@/components/ui/button';
 import { getIcon } from '@/lib/iconMap';
 import { getMediaUrl } from '@/lib/media';
-import { buttonSurfaceClass } from '@/lib/styles';
 import { cn } from '@/lib/utils';
 import { getAboutPage, getProfile } from '@/payload/queries/getGlobals';
 import { getTechnologiesByCategory } from '@/payload/queries/getTechnologiesByCategory';
@@ -224,30 +222,27 @@ function AboutHero({ aboutPage, profile, resumeUrl, workCount }) {
             </p>
           </div>
 
-          <div className='flex flex-wrap gap-3'>
+          <div className='flex flex-wrap items-center gap-3'>
             <Link
               href='/projects'
-              className='inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90'
+              className='inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90'
             >
               View projects <LuArrowUpRight className='h-4 w-4' />
             </Link>
             <Link
               href='/blog'
-              className='inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 font-semibold transition hover:bg-secondary'
+              className='inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary'
             >
               Read blog <LuArrowUpRight className='h-4 w-4' />
             </Link>
             {resumeUrl && (
-              <Button
-                asChild
-                variant='default'
-                size='lg'
-                className={cn(buttonSurfaceClass, 'text-background')}
+              <a
+                href={resumeUrl}
+                download
+                className='inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90'
               >
-                <a href={resumeUrl} download className='inline-flex gap-2'>
-                  <LuDownload className='h-4 w-4' /> Resume
-                </a>
-              </Button>
+                <LuDownload className='h-4 w-4' /> Resume
+              </a>
             )}
           </div>
         </div>
