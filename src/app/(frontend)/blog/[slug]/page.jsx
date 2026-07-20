@@ -100,7 +100,7 @@ export default async function BlogPost({ params }) {
   return (
     <>
       <BlogReadingProgress />
-      <article className='mx-auto flex max-w-5xl flex-col gap-10'>
+      <article className='mx-auto flex max-w-6xl flex-col gap-10'>
         <div>
           <Breadcrumbs
             parentHref='/blog'
@@ -134,7 +134,7 @@ export default async function BlogPost({ params }) {
           </div>
         )}
 
-        <div className='mx-auto w-full max-w-4xl'>
+        <div className='mx-auto w-full max-w-6xl'>
           <RichText content={post.content} />
         </div>
       </article>
