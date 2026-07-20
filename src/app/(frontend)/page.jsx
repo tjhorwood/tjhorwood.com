@@ -10,6 +10,7 @@ import {
   LuNewspaper,
   LuServerCog,
 } from 'react-icons/lu';
+import RotatingText from '@/components/animations/RotatingText';
 import Link from '@/components/Link';
 import { getIcon } from '@/lib/iconMap';
 import { getMediaAlt, getMediaUrl } from '@/lib/media';
@@ -204,6 +205,12 @@ export default async function Home() {
   const featuredProject =
     projects.docs.find((project) => project.featured) ?? projects.docs[0];
   const latestPost = posts.docs[0];
+  const rotatingTitles = profile.rotatingTitles?.map(({ label }) => label) ?? [
+    'Developer',
+    'Engineer',
+    'Tinkerer',
+    'Homelabber',
+  ];
 
   return (
     <div className='mx-auto flex max-w-7xl flex-col gap-12'>
@@ -222,13 +229,32 @@ export default async function Home() {
               </span>
             </div>
 
-            <div className='space-y-4'>
+            <div className='space-y-5'>
               <p className='text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground'>
                 Taylor Horwood
               </p>
-              <h1 className='text-5xl font-bold tracking-tightest md:text-7xl'>
-                Reliable systems, useful tools, and a home-production homelab.
-              </h1>
+              <div className='flex flex-col gap-4'>
+                <h1 className='text-4xl font-bold tracking-tightest md:text-6xl'>
+                  Hi, I&apos;m Taylor.
+                </h1>
+                <div className='flex flex-col gap-3 sm:flex-row sm:items-center'>
+                  <span className='text-3xl font-bold tracking-tight md:text-5xl'>
+                    I&apos;m a
+                  </span>
+                  <RotatingText
+                    texts={rotatingTitles}
+                    mainClassName='inline-flex w-fit justify-center overflow-hidden rounded-2xl border border-border bg-background px-4 py-2 text-3xl font-bold tracking-tight shadow-sm md:text-5xl'
+                    staggerFrom='last'
+                    initial={{ y: '100%' }}
+                    animate={{ y: 0 }}
+                    exit={{ y: '-120%' }}
+                    staggerDuration={0.025}
+                    splitLevelClassName='overflow-hidden'
+                    transition={{ damping: 30, stiffness: 400, type: 'spring' }}
+                    rotationInterval={2000}
+                  />
+                </div>
+              </div>
               <p className='max-w-3xl text-xl leading-9 text-muted-foreground'>
                 {profile.headline ??
                   'DevOps/SRE engineer building reliable systems, self-hosted infrastructure, and practical web tools.'}
