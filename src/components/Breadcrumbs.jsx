@@ -1,14 +1,18 @@
 import { HiChevronRight } from 'react-icons/hi';
 import Link from '@/components/Link';
 
-export default function Breadcrumbs({ title }) {
+export default function Breadcrumbs({
+  parentHref = '/projects',
+  parentLabel = 'Projects',
+  title,
+}) {
   return (
     <nav className='mb-8 flex items-center space-x-1 text-sm text-neutral-900 dark:text-white'>
       <Link
-        href='/projects'
+        href={parentHref}
         className='text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white'
       >
-        Projects
+        {parentLabel}
       </Link>
       <HiChevronRight className='h-4 w-4' />
       <span className='font-medium text-neutral-900 dark:text-white'>

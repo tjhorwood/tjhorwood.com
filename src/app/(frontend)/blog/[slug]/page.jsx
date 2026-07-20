@@ -2,6 +2,7 @@ import { convertLexicalToPlaintext } from '@payloadcms/richtext-lexical/plaintex
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import BlogReadingProgress from '@/components/BlogReadingProgress';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import PageIntro from '@/components/PageIntro';
 import RichText from '@/components/RichText';
 import { mediaAbsoluteUrl, normalizeSiteUrl } from '@/lib/seo';
@@ -100,17 +101,24 @@ export default async function BlogPost({ params }) {
     <>
       <BlogReadingProgress />
       <article className='mx-auto flex max-w-5xl flex-col gap-10'>
-        <div className='rounded-3xl border border-border bg-secondary/40 p-5 shadow-sm md:p-8'>
-          <div className='flex flex-wrap items-center gap-3 pb-6 text-sm font-medium text-muted-foreground'>
-            <span>{readingTime} min read</span>
-            {publishedDate && (
-              <>
-                <span aria-hidden='true'>•</span>
-                <time dateTime={post.publishedAt}>{publishedDate}</time>
-              </>
-            )}
+        <div>
+          <Breadcrumbs
+            parentHref='/blog'
+            parentLabel='Blog'
+            title={post.title}
+          />
+          <div className='rounded-3xl border border-border bg-secondary/40 p-5 shadow-sm md:p-8'>
+            <div className='flex flex-wrap items-center gap-3 pb-6 text-sm font-medium text-muted-foreground'>
+              <span>{readingTime} min read</span>
+              {publishedDate && (
+                <>
+                  <span aria-hidden='true'>•</span>
+                  <time dateTime={post.publishedAt}>{publishedDate}</time>
+                </>
+              )}
+            </div>
+            <PageIntro title={post.title} descriptions={post.excerpt} />
           </div>
-          <PageIntro title={post.title} descriptions={post.excerpt} />
         </div>
 
         {coverImageUrl && (
