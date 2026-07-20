@@ -18,9 +18,10 @@ function CodeSnippetBlock({ fields }) {
   const language = fields?.language || 'text';
   const code = fields?.code || '';
   return (
-    <figure className='not-prose my-6 overflow-hidden rounded-xl border border-primary/10 bg-primary/5'>
-      <figcaption className='border-primary/10 border-b px-4 py-2 font-medium text-primary/60 text-xs uppercase tracking-[0.2em]'>
-        {language}
+    <figure className='not-prose my-8 overflow-hidden rounded-2xl border border-border bg-foreground text-background shadow-xl dark:bg-secondary dark:text-foreground'>
+      <figcaption className='flex items-center justify-between border-border border-b px-4 py-2 font-semibold text-background/70 text-xs uppercase tracking-[0.2em] dark:text-muted-foreground'>
+        <span>Code snippet</span>
+        <span>{language}</span>
       </figcaption>
       <pre className='overflow-x-auto p-4 text-sm leading-6'>
         <code>{code}</code>
@@ -110,7 +111,7 @@ export default function RichText({ content }) {
   const nodes = content?.root?.children;
   if (!Array.isArray(nodes) || nodes.length === 0) return null;
   return (
-    <div className='prose prose-neutral dark:prose-invert max-w-none'>
+    <div className='prose prose-lg prose-neutral max-w-none dark:prose-invert prose-a:font-semibold prose-img:rounded-2xl prose-img:border prose-img:border-border prose-img:shadow-xl prose-code:rounded prose-code:bg-secondary prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:font-semibold prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none'>
       {renderChildren(nodes)}
     </div>
   );

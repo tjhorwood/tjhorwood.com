@@ -8,6 +8,7 @@ import {
   CodeBlockBlockComponent as CodeBlockBlockComponent_e70f5e05f09f93e00b997edb1ef0c864,
   CodeComponent as CodeComponent_e70f5e05f09f93e00b997edb1ef0c864,
   codeConverterClient as codeConverterClient_e70f5e05f09f93e00b997edb1ef0c864,
+  FixedToolbarFeatureClient as FixedToolbarFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   HeadingFeatureClient as HeadingFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   HorizontalRuleFeatureClient as HorizontalRuleFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   IndentFeatureClient as IndentFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
@@ -52,6 +53,8 @@ export const importMap = {
     CodeComponent_e70f5e05f09f93e00b997edb1ef0c864,
   '@payloadcms/richtext-lexical/client#codeConverterClient':
     codeConverterClient_e70f5e05f09f93e00b997edb1ef0c864,
+  '@payloadcms/richtext-lexical/client#FixedToolbarFeatureClient':
+    FixedToolbarFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   '@payloadcms/richtext-lexical/client#HeadingFeatureClient':
     HeadingFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   '@payloadcms/richtext-lexical/client#HorizontalRuleFeatureClient':

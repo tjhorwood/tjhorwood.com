@@ -1,7 +1,11 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { postgresAdapter } from '@payloadcms/db-postgres';
-import { BlocksFeature, lexicalEditor } from '@payloadcms/richtext-lexical';
+import {
+  BlocksFeature,
+  FixedToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical';
 import { s3Storage } from '@payloadcms/storage-s3';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
@@ -26,7 +30,7 @@ const dirname = path.dirname(filename);
 
 const databaseUri =
   process.env.DATABASE_URI ??
-  'postgres://payload:payload_dev_password@localhost:5432/tjhorwood_payload';
+  'postgres://payload:***@localhost:5432/tjhorwood_payload';
 
 const payloadSecret =
   process.env.PAYLOAD_SECRET ?? 'dev-only-change-me-before-production';
@@ -78,6 +82,7 @@ export default buildConfig({
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
       ...defaultFeatures,
+      FixedToolbarFeature(),
       BlocksFeature({ blocks: [CodeSnippet, MarkdownTable] }),
     ],
   }),
