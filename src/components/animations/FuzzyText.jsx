@@ -183,7 +183,7 @@ const FuzzyText = ({
     return () => {
       isCancelled = true;
       window.cancelAnimationFrame(animationFrameId);
-      if (canvas && canvas.cleanupFuzzyText) {
+      if (canvas?.cleanupFuzzyText) {
         canvas.cleanupFuzzyText();
       }
     };

@@ -11,6 +11,10 @@ import { getProfile } from '@/payload/queries/getGlobals';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  alternates: { canonical: '/' },
+};
+
 export default async function Home() {
   const profile = await getProfile();
   const profileImageUrl = getMediaUrl(

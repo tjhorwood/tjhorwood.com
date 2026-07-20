@@ -60,22 +60,36 @@ export const socialsData = [
 
 export const projectsData = [
   {
+    approach:
+      'Built a clean content-driven site with a modern frontend, reusable visual sections, and CMS-backed project content so portfolio updates can happen without code changes.',
     category: 'Artistic Portfolio',
     description:
       'Sahu Studio is the online home of a talented friend who brings interior design dreams to life. This platform serves as both her creative playground and a showcase of her remarkable skills, featuring a captivating array of interior design projects, personalized paintings, and enchanting resin art pieces.',
     heroImagePath: 'src/assets/images/sahustudio/sahustudio.webp',
     href: 'https://sahustudio.me',
+    problem:
+      'Create a focused portfolio experience that lets an interior design and art practice show visual work clearly without burying visitors in heavy navigation.',
+    results:
+      'Delivered a dedicated web presence that supports interior design, painting, and resin art showcases in one cohesive experience.',
+    role: 'Frontend development and CMS implementation',
     slug: 'sahu-studio',
     tags: ['React', 'Next.js', 'Tailwind CSS', 'Directus CMS', 'PostgreSQL'],
     thumbnailImagePath: 'src/assets/images/sahustudio/sahustudio-short.webp',
     title: 'Sahu Studio',
   },
   {
+    approach:
+      'Built a responsive marketing experience with clear sections, app-focused messaging, and a lightweight stack optimized for fast iteration.',
     category: 'App Landing Page',
     description:
       'Health Sync introduces a wellness app designed to enhance productivity, focus, and overall well-being. It features bodyweight exercises, yoga, guided meditation, and breathwork, all accessible from home. The app is noted for its simple interface, daily fresh content, and health insurance-approved fitness programs. It also provides resources for incorporating well-being practices into family life. The platform is available on macOS and Windows.',
     heroImagePath: 'src/assets/images/healthsync/healthsync.webp',
     href: 'https://health-sync.org',
+    problem:
+      'Present a wellness app concept in a way that quickly communicates the value of at-home fitness, mindfulness, and productivity routines.',
+    results:
+      'Created a polished landing page that explains the product, supported platforms, and wellness use cases in a concise flow.',
+    role: 'Frontend development and product landing page implementation',
     slug: 'health-sync',
     sourceCode: 'https://github.com/tjhorwood/healthsync',
     tags: ['React', 'Next.js', 'Tailwind CSS'],
@@ -83,11 +97,18 @@ export const projectsData = [
     title: 'Health Sync',
   },
   {
+    approach:
+      'Combined a React/Next.js frontend with application-oriented backend integrations for accounts, payments, email, and data persistence.',
     category: 'Esports League',
     description:
       'National League Gaming stands as an integrated platform tailored to meet the requirements of individual gamers aspiring to compete at a high level. This encompassing platform provides a spectrum of offerings including skill development through training modules, engagement in both complimentary and fee-based leagues, all of which present opportunities for participants to compete for substantial monetary rewards across the entirety of these competitive arenas.',
     heroImagePath: 'src/assets/images/nlg/nlg.webp',
     href: 'https://nationalleaguegaming.com',
+    problem:
+      'Support a competitive gaming platform with league information, participant onboarding, and monetized competition workflows.',
+    results:
+      'Produced an esports platform foundation that can present leagues, training resources, and competitive opportunities to players.',
+    role: 'Full-stack application development',
     slug: 'national-league-gaming',
     tags: [
       'React',
@@ -102,22 +123,36 @@ export const projectsData = [
     title: 'National League Gaming',
   },
   {
+    approach:
+      'Used a WordPress/WooCommerce foundation with fulfillment-oriented tooling to support product management and order operations.',
     category: 'Ecommerce',
     description:
       'StandardCBD is an e-commerce platform, specializing in the retail of a comprehensive array of CBD, delta-8, and delta-9 products. The product range spans vapes, creams, edibles, and tinctures, catering to a discerning clientele seeking high-quality solutions in the realm of wellness and alternative remedies.',
     heroImagePath: 'src/assets/images/standardcbd.webp',
     href: 'https://standardcbd.com',
+    problem:
+      'Give a specialty wellness retailer an ecommerce presence that can organize a broad CBD, delta-8, and delta-9 product catalog.',
+    results:
+      'Created an online storefront structure for browsing products and supporting ecommerce workflows.',
+    role: 'Ecommerce implementation and platform support',
     slug: 'standardcbd',
     tags: ['Wordpress', 'WooCommerce', 'ShipStation'],
     thumbnailImagePath: 'src/assets/images/standardcbd-short.webp',
     title: 'StandardCBD',
   },
   {
+    approach:
+      'Structured a WordPress site around clear service categories and conversion paths for business owners evaluating financial operations support.',
     category: 'Financal / Bookkeeping',
     description:
       'CapForge offers a comprehensive online platform catering to a diverse range of business needs, encompassing areas such as bookkeeping, taxation, payroll administration, strategic consulting, Amazon and e-commerce facilitation, as well as startup support.',
     heroImagePath: 'src/assets/images/capforge.webp',
     href: 'https://capforge.com',
+    problem:
+      'Explain a broad bookkeeping, tax, payroll, and consulting offering without making the service mix feel fragmented.',
+    results:
+      'Delivered a service-focused web presence that can communicate CapForge offerings across multiple business needs.',
+    role: 'Website implementation and content structure support',
     slug: 'capforge',
     tags: ['Wordpress'],
     thumbnailImagePath: 'src/assets/images/capforge-short.webp',

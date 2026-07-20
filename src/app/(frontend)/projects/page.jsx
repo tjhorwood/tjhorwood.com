@@ -7,6 +7,13 @@ import { getProjects } from '@/payload/queries/getProjects';
 
 export const dynamic = 'force-dynamic';
 
+export const metadata = {
+  alternates: { canonical: '/projects/' },
+  description:
+    'Selected projects, case studies, and technical work by Taylor Horwood.',
+  title: 'Projects',
+};
+
 function getImageUrl(image, size = 'card') {
   if (!image || typeof image === 'number') return null;
   return image.sizes?.[size]?.url ?? image.url ?? null;

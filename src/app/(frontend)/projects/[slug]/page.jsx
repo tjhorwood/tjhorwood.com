@@ -6,9 +6,51 @@ import AnimatedContent from '@/components/animations/AnimatedContent';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Link from '@/components/Link';
 import ProjectPreviewWrapper from '@/components/ProjectPreviewWrapper';
+import RichText from '@/components/RichText';
+import { mediaAbsoluteUrl, normalizeSiteUrl } from '@/lib/seo';
+import { getSiteSettings } from '@/payload/queries/getGlobals';
 import { getProject } from '@/payload/queries/getProject';
 
 export const dynamic = 'force-dynamic';
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const [project, settings] = await Promise.all([
+    getProject(slug),
+    getSiteSettings(),
+  ]);
+
+  if (!project) return { title: 'Project not found' };
+
+  const siteUrl = normalizeSiteUrl(settings.siteUrl);
+  const title = project.seo?.title ?? project.title;
+  const description = project.seo?.description ?? project.summary;
+  const image = mediaAbsoluteUrl(
+    project.seo?.image ?? project.heroImage ?? project.thumbnailImage,
+    undefined,
+    siteUrl,
+  );
+  const canonical = `/projects/${project.slug}/`;
+
+  return {
+    alternates: { canonical },
+    description,
+    openGraph: {
+      description,
+      images: image ? [{ url: image }] : undefined,
+      title,
+      type: 'article',
+      url: canonical,
+    },
+    title,
+    twitter: {
+      card: 'summary_large_image',
+      description,
+      images: image ? [image] : undefined,
+      title,
+    },
+  };
+}
 
 function getImageUrl(image, size = 'hero') {
   if (!image || typeof image === 'number') return null;
@@ -39,6 +81,23 @@ function getTechnologyName(technology) {
   if (!technology || typeof technology === 'number') return null;
 
   return technology.name;
+}
+
+function hasText(value) {
+  return typeof value === 'string' && value.trim().length > 0;
+}
+
+function CaseStudySection({ title, children }) {
+  if (!children) return null;
+
+  return (
+    <section className='rounded-2xl border border-border bg-card/50 p-6 shadow-sm'>
+      <h2 className='mb-3 text-sm font-bold uppercase tracking-tightest text-muted-foreground/60'>
+        {title}
+      </h2>
+      <div className='leading-relaxed text-muted-foreground'>{children}</div>
+    </section>
+  );
 }
 
 export default async function ProjectPage({ params }) {
@@ -99,27 +158,89 @@ export default async function ProjectPage({ params }) {
                   {project.summary}
                 </p>
               </div>
-              {technologies?.length > 0 && (
-                <div className='space-y-3'>
-                  <h2 className='text-sm font-bold uppercase tracking-tightest text-muted-foreground/60'>
-                    Stack
-                  </h2>
-                  <div className='flex flex-wrap gap-2'>
-                    {technologies.map((technology) => (
-                      <span
-                        key={technology}
-                        className='rounded-md bg-secondary px-2.5 py-1 text-sm font-medium border border-border'
-                      >
-                        {technology}
-                      </span>
-                    ))}
+              <aside className='space-y-6'>
+                {technologies?.length > 0 && (
+                  <div className='space-y-3'>
+                    <h2 className='text-sm font-bold uppercase tracking-tightest text-muted-foreground/60'>
+                      Stack
+                    </h2>
+                    <div className='flex flex-wrap gap-2'>
+                      {technologies.map((technology) => (
+                        <span
+                          key={technology}
+                          className='rounded-md bg-secondary px-2.5 py-1 text-sm font-medium border border-border'
+                        >
+                          {technology}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+
+                {(project.role ||
+                  project.lifecycle ||
+                  project.documentationUrl) && (
+                  <div className='space-y-3'>
+                    <h2 className='text-sm font-bold uppercase tracking-tightest text-muted-foreground/60'>
+                      Project Details
+                    </h2>
+                    <dl className='space-y-2 text-sm text-muted-foreground'>
+                      {project.role && (
+                        <div>
+                          <dt className='font-semibold text-primary'>Role</dt>
+                          <dd>{project.role}</dd>
+                        </div>
+                      )}
+                      {project.lifecycle && (
+                        <div>
+                          <dt className='font-semibold text-primary'>Status</dt>
+                          <dd className='capitalize'>{project.lifecycle}</dd>
+                        </div>
+                      )}
+                      {project.documentationUrl && (
+                        <div>
+                          <dt className='font-semibold text-primary'>Docs</dt>
+                          <dd>
+                            <Link href={project.documentationUrl}>
+                              Documentation
+                            </Link>
+                          </dd>
+                        </div>
+                      )}
+                    </dl>
+                  </div>
+                )}
+              </aside>
             </div>
           </div>
         </AnimatedContent>
       </div>
+
+      {(hasText(project.problem) ||
+        hasText(project.approach) ||
+        hasText(project.results)) && (
+        <AnimatedContent delay={0.2}>
+          <div className='grid gap-4 md:grid-cols-3'>
+            <CaseStudySection title='Problem'>
+              {hasText(project.problem) ? project.problem : null}
+            </CaseStudySection>
+            <CaseStudySection title='Approach'>
+              {hasText(project.approach) ? project.approach : null}
+            </CaseStudySection>
+            <CaseStudySection title='Result'>
+              {hasText(project.results) ? project.results : null}
+            </CaseStudySection>
+          </div>
+        </AnimatedContent>
+      )}
+
+      {project.richContent && (
+        <AnimatedContent delay={0.25}>
+          <section className='mx-auto max-w-3xl'>
+            <RichText content={project.richContent} />
+          </section>
+        </AnimatedContent>
+      )}
 
       {project.liveUrl && (
         <AnimatedContent delay={0.2}>
@@ -147,6 +268,45 @@ export default async function ProjectPage({ params }) {
                 className='w-full object-cover'
                 priority
               />
+            </div>
+          </div>
+        </AnimatedContent>
+      )}
+
+      {project.screenshots?.length > 0 && (
+        <AnimatedContent delay={0.45}>
+          <div className='space-y-6'>
+            <h2 className='text-sm font-bold uppercase tracking-tightest text-muted-foreground/60'>
+              Additional Screenshots
+            </h2>
+            <div className='grid gap-6 md:grid-cols-2'>
+              {project.screenshots.map((screenshot) => {
+                const image = screenshot.image;
+                const imageUrl = getImageUrl(image, 'hero');
+                const imageDimensions = getImageDimensions(image, 'hero');
+                if (!imageUrl) return null;
+
+                return (
+                  <figure
+                    key={screenshot.id ?? imageUrl}
+                    className='overflow-hidden rounded-2xl border border-border bg-muted/20 shadow-lg'
+                  >
+                    <Image
+                      src={imageUrl}
+                      alt={image?.alt || screenshot.caption || project.title}
+                      width={imageDimensions.width}
+                      height={imageDimensions.height}
+                      className='w-full object-cover'
+                      loading='lazy'
+                    />
+                    {screenshot.caption && (
+                      <figcaption className='px-4 py-3 text-sm text-muted-foreground'>
+                        {screenshot.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                );
+              })}
             </div>
           </div>
         </AnimatedContent>

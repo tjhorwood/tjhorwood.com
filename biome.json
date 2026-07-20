@@ -19,6 +19,8 @@
       "!./.next/",
       "!./out/",
       "!./build",
+      "!./src/migrations",
+      "!./src/payload-types.ts",
       "next-env.d.ts",
       "**/*.ts",
       "**/*.tsx",
@@ -42,6 +44,8 @@
       "!./.next/",
       "!./out/",
       "!./build",
+      "!./src/migrations/**",
+      "!./src/payload-types.ts",
       "!**/.DS_Store",
       "!**/*.pem",
       "!**/npm-debug.log*",
@@ -93,6 +97,17 @@
       }
     }
   },
+  "overrides": [
+    {
+      "formatter": {
+        "enabled": false
+      },
+      "includes": ["src/migrations/**/*.ts", "src/payload-types.ts"],
+      "linter": {
+        "enabled": false
+      }
+    }
+  ],
   "vcs": {
     "clientKind": "git",
     "enabled": false,

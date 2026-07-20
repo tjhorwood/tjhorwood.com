@@ -123,10 +123,14 @@ function extractProjectObjects(source: string): RepositoryProjectSource[] {
     }
 
     return {
+      approach: readString('approach'),
       category: readString('category'),
       description,
       heroImagePath,
       href: readString('href'),
+      problem: readString('problem'),
+      results: readString('results'),
+      role: readString('role'),
       slug,
       sourceCode: readString('sourceCode'),
       tags,
@@ -144,14 +148,18 @@ function toImportPlan(
 
   return {
     action: 'create-or-update',
+    approach: project.approach,
     category,
     categorySlug: category ? slugify(category) : undefined,
     externalId: project.slug,
     featuredOrder: index + 1,
     heroImagePath: project.heroImagePath,
     liveUrl: project.href,
+    problem: project.problem,
     projectType: inferProjectType(category),
     repositoryUrl: project.sourceCode,
+    results: project.results,
+    role: project.role,
     slug: project.slug,
     sourcePath,
     summary: project.description,
@@ -297,6 +305,7 @@ async function upsertProject(
   const existing = await findByExternalId(payload, 'projects', plan.externalId);
   const data = {
     _status: 'published' as const,
+    approach: plan.approach,
     categories: categoryIds,
     externalId: plan.externalId,
     featured: true,
@@ -304,9 +313,12 @@ async function upsertProject(
     heroImage: heroImageId,
     lifecycle: 'completed' as const,
     liveUrl: plan.liveUrl,
+    problem: plan.problem,
     projectType: plan.projectType,
     publishedAt: new Date().toISOString(),
     repositoryUrl: plan.repositoryUrl,
+    results: plan.results,
+    role: plan.role,
     screenshots: heroImageId
       ? [
           {

@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Lint, typecheck, and build
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: tjhorwood_payload
+          POSTGRES_PASSWORD: payload
+          POSTGRES_USER: payload
+        options: >-
+          --health-cmd "pg_isready -U payload -d tjhorwood_payload"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+        ports:
+          - 5432:5432
+    env:
+      ALLOW_PRODUCTION_IMPORT: 'false'
+      DATABASE_URI: postgres://payload:payload@localhost:5432/tjhorwood_payload
+      NEXT_PUBLIC_SITE_URL: https://tjhorwood.com
+      NEXT_TELEMETRY_DISABLED: '1'
+      PAYLOAD_SECRET: ci-only-payload-secret
+      S3_ENABLED: 'false'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Payload migrations
+        run: pnpm migrate
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Build
+        run: pnpm build

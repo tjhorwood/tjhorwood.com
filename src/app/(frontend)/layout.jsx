@@ -2,23 +2,49 @@ import Script from 'next/script';
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
 import { getMediaUrl } from '@/lib/media';
+import { mediaAbsoluteUrl, normalizeSiteUrl } from '@/lib/seo';
 import { getSiteSettings } from '@/payload/queries/getGlobals';
 import '@/styles/globals.css';
 
 export async function generateMetadata() {
   const settings = await getSiteSettings();
 
+  const siteUrl = normalizeSiteUrl(settings.siteUrl);
+  const title = settings.defaultTitle ?? 'Taylor Horwood';
+  const description = settings.defaultDescription ?? 'Personal Portfolio';
+  const defaultOgImage = mediaAbsoluteUrl(
+    settings.defaultOgImage,
+    '/api/payload/media/file/profile.webp',
+    siteUrl,
+  );
+
   return {
-    description: settings.defaultDescription ?? 'Personal Portfolio',
+    alternates: { canonical: '/' },
+    description,
     icons: {
       icon: getMediaUrl(
         settings.favicon,
         '/api/payload/media/file/favicon.ico',
       ),
     },
+    metadataBase: new URL(siteUrl),
+    openGraph: {
+      description,
+      images: defaultOgImage ? [{ url: defaultOgImage }] : undefined,
+      siteName: settings.siteName ?? 'Taylor Horwood',
+      title,
+      type: 'website',
+      url: siteUrl,
+    },
     title: {
-      default: settings.defaultTitle ?? 'Taylor Horwood',
+      default: title,
       template: settings.titleTemplate ?? '%s | Taylor Horwood',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      description,
+      images: defaultOgImage ? [defaultOgImage] : undefined,
+      title,
     },
   };
 }

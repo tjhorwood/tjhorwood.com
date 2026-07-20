@@ -6,7 +6,12 @@ import { getPosts } from '@/payload/queries/getPosts';
 
 export const dynamic = 'force-dynamic';
 
-export const metadata = { description: 'My Blog', title: 'Blog' };
+export const metadata = {
+  alternates: { canonical: '/blog/' },
+  description:
+    'Practical notes on DevOps, SRE, homelab infrastructure, automation, and self-hosting.',
+  title: 'Blog',
+};
 
 export default async function Blog() {
   const posts = await getPosts();
