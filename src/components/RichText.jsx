@@ -23,7 +23,7 @@ function CodeSnippetBlock({ fields }) {
         <span>Code snippet</span>
         <span>{language}</span>
       </figcaption>
-      <pre className='overflow-x-auto p-4 text-sm leading-6'>
+      <pre className='overflow-x-auto p-4 text-xs leading-6 sm:text-sm'>
         <code>{code}</code>
       </pre>
     </figure>
@@ -111,7 +111,7 @@ export default function RichText({ content }) {
   const nodes = content?.root?.children;
   if (!Array.isArray(nodes) || nodes.length === 0) return null;
   return (
-    <div className='prose prose-lg prose-neutral max-w-none dark:prose-invert prose-a:font-semibold prose-img:rounded-2xl prose-img:border prose-img:border-border prose-img:shadow-xl prose-code:rounded prose-code:bg-secondary prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:font-semibold prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none'>
+    <div className='prose prose-neutral max-w-none overflow-hidden break-words prose-sm dark:prose-invert sm:prose-lg prose-a:font-semibold prose-img:rounded-2xl prose-img:border prose-img:border-border prose-img:shadow-xl prose-code:rounded prose-code:bg-secondary prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sm prose-code:font-semibold prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none'>
       {renderChildren(nodes)}
     </div>
   );

@@ -193,7 +193,7 @@ function ProfileImage({ profile }) {
 
 function AboutHero({ aboutPage, profile, resumeUrl, workCount }) {
   return (
-    <section className='grid gap-8 rounded-3xl border border-border bg-linear-to-br from-secondary/60 via-background to-background p-6 shadow-sm lg:grid-cols-[1.1fr_0.9fr] lg:p-8'>
+    <section className='grid gap-6 rounded-3xl border border-border bg-linear-to-br from-secondary/60 via-background to-background p-4 shadow-sm sm:p-6 lg:grid-cols-[1.1fr_0.9fr] lg:p-8'>
       <div className='flex flex-col justify-between gap-8'>
         <div className='space-y-6'>
           <div className='flex flex-wrap gap-2'>
@@ -209,10 +209,10 @@ function AboutHero({ aboutPage, profile, resumeUrl, workCount }) {
           </div>
 
           <div className='space-y-4'>
-            <h1 className='text-5xl font-bold tracking-tightest md:text-6xl'>
+            <h1 className='text-balance text-4xl font-bold tracking-tightest sm:text-5xl md:text-6xl'>
               {aboutPage.title ?? 'About Me'}
             </h1>
-            <p className='max-w-3xl text-xl leading-9 text-muted-foreground'>
+            <p className='max-w-3xl text-pretty text-lg leading-8 text-muted-foreground sm:text-xl sm:leading-9'>
               {profile.headline ??
                 'DevOps/SRE engineer building reliable systems, self-hosted infrastructure, and useful web tools.'}
             </p>
@@ -225,13 +225,13 @@ function AboutHero({ aboutPage, profile, resumeUrl, workCount }) {
           <div className='flex flex-wrap items-center gap-3'>
             <Link
               href='/projects'
-              className='inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90'
+              className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 sm:w-auto'
             >
               View projects <LuArrowUpRight className='h-4 w-4' />
             </Link>
             <Link
               href='/blog'
-              className='inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary'
+              className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary sm:w-auto'
             >
               Read blog <LuArrowUpRight className='h-4 w-4' />
             </Link>
@@ -239,7 +239,7 @@ function AboutHero({ aboutPage, profile, resumeUrl, workCount }) {
               <a
                 href={resumeUrl}
                 download
-                className='inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90'
+                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 sm:w-auto'
               >
                 <LuDownload className='h-4 w-4' /> Resume
               </a>
@@ -256,7 +256,7 @@ function AboutHero({ aboutPage, profile, resumeUrl, workCount }) {
 
       <div className='space-y-4'>
         <ProfileImage profile={profile} />
-        <div className='grid grid-cols-2 gap-2 sm:grid-cols-3'>
+        <div className='grid grid-cols-1 gap-2 xs:grid-cols-2 sm:grid-cols-3'>
           {PERSONAL_CHIPS.map(({ icon: Icon, label }) => (
             <span
               key={label}
@@ -278,10 +278,12 @@ function StorySection({ paragraphs, strengths }) {
         {STORY_CARDS.map(({ description, icon: Icon, title }) => (
           <article
             key={title}
-            className='rounded-3xl border border-border bg-card p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg'
+            className='rounded-3xl border border-border bg-card p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-6'
           >
             <Icon className='h-6 w-6 text-muted-foreground' />
-            <h2 className='mt-5 text-2xl font-bold tracking-tight'>{title}</h2>
+            <h2 className='mt-5 text-balance text-2xl font-bold tracking-tight'>
+              {title}
+            </h2>
             <p className='mt-3 leading-7 text-muted-foreground'>
               {description}
             </p>
@@ -290,7 +292,7 @@ function StorySection({ paragraphs, strengths }) {
       </div>
 
       <div className='grid gap-6 lg:grid-cols-[1.2fr_0.8fr]'>
-        <article className='rounded-3xl border border-border bg-card/70 p-6 shadow-sm md:p-8'>
+        <article className='rounded-3xl border border-border bg-card/70 p-5 shadow-sm sm:p-6 md:p-8'>
           <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
             The short version
           </p>
@@ -330,7 +332,7 @@ function CapabilityPanel({ capability, technologies }) {
   const Icon = capability.icon;
 
   return (
-    <article className='rounded-3xl border border-border bg-card p-6 shadow-sm'>
+    <article className='rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-6'>
       <div className='flex items-center gap-3'>
         <div className='rounded-2xl border border-border bg-secondary p-3'>
           <Icon className='h-5 w-5 text-muted-foreground' />
@@ -358,7 +360,7 @@ function CapabilitiesSection({ technologies }) {
         <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
           Capabilities
         </p>
-        <h2 className='mt-2 text-3xl font-bold tracking-tight'>
+        <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
           The stack behind the way I work
         </h2>
       </div>
@@ -377,12 +379,12 @@ function CapabilitiesSection({ technologies }) {
 
 function NowSection() {
   return (
-    <section className='grid gap-5 rounded-3xl border border-border bg-linear-to-br from-secondary via-background to-secondary/40 p-6 md:grid-cols-[0.8fr_1.2fr] md:p-8'>
+    <section className='grid gap-5 rounded-3xl border border-border bg-linear-to-br from-secondary via-background to-secondary/40 p-5 sm:p-6 md:grid-cols-[0.8fr_1.2fr] md:p-8'>
       <div>
         <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
           Now
         </p>
-        <h2 className='mt-2 text-3xl font-bold tracking-tight'>
+        <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
           What I am currently exploring
         </h2>
       </div>
@@ -408,7 +410,7 @@ function WorkTimeline({ items }) {
           <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
             Work
           </p>
-          <h2 className='mt-2 text-3xl font-bold tracking-tight'>
+          <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
             Experience timeline
           </h2>
         </div>
@@ -418,15 +420,15 @@ function WorkTimeline({ items }) {
         </p>
       </div>
 
-      <ol className='relative space-y-4 before:absolute before:top-4 before:bottom-4 before:left-5 before:w-px before:bg-border'>
+      <ol className='relative space-y-4 before:absolute before:top-4 before:bottom-4 before:left-4 before:w-px before:bg-border sm:before:left-5'>
         {items.map((item) => {
           const logoUrl = getMediaUrl(item.logo);
           return (
             <li
               key={`${item.company}-${item.title}-${item.time}`}
-              className='relative pl-14'
+              className='relative pl-11 sm:pl-14'
             >
-              <div className='absolute top-5 left-0 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background shadow-sm'>
+              <div className='absolute top-5 left-0 flex h-8 w-8 items-center sm:h-10 sm:w-10 justify-center rounded-full border border-border bg-background shadow-sm'>
                 {logoUrl ? (
                   <Image
                     src={logoUrl}
@@ -440,10 +442,12 @@ function WorkTimeline({ items }) {
                   <LuBriefcaseBusiness className='h-4 w-4 text-muted-foreground' />
                 )}
               </div>
-              <article className='rounded-3xl border border-border bg-card p-5 shadow-sm'>
+              <article className='rounded-3xl border border-border bg-card p-4 shadow-sm sm:p-5'>
                 <div className='flex flex-col gap-2 md:flex-row md:items-start md:justify-between'>
                   <div>
-                    <h3 className='text-xl font-bold'>{item.title}</h3>
+                    <h3 className='text-balance text-lg font-bold sm:text-xl'>
+                      {item.title}
+                    </h3>
                     <p className='text-muted-foreground'>{item.company}</p>
                   </div>
                   {item.time && (
@@ -487,7 +491,7 @@ function CrossLinks() {
         <Link
           key={item.href}
           href={item.href}
-          className='group rounded-3xl border border-border bg-card p-6 no-underline shadow-sm transition hover:-translate-y-1 hover:shadow-lg'
+          className='group rounded-3xl border border-border bg-card p-5 no-underline shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-6'
         >
           <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
             {item.label}
@@ -521,7 +525,7 @@ export default async function About() {
   ];
 
   return (
-    <div className='mx-auto flex max-w-7xl flex-col gap-14'>
+    <div className='mx-auto flex max-w-7xl flex-col gap-9 sm:gap-14'>
       <AnimatedContent>
         <AboutHero
           aboutPage={aboutPage}

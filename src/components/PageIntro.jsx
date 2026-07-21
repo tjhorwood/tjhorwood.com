@@ -13,11 +13,20 @@ export default function PageIntro({
   return (
     <div>
       <AnimatedContent>
-        <h1 className='text-3xl font-bold tracking-tight'>{title}</h1>
+        <h1 className='text-balance text-3xl font-bold tracking-tight sm:text-4xl'>
+          {title}
+        </h1>
       </AnimatedContent>
       {lines.map((line, index) => (
         <AnimatedContent delay={0.1 + index * 0.1} key={`${line}-${index}`}>
-          <p className={cn(descriptionClassName)}>{line}</p>
+          <p
+            className={cn(
+              'mt-3 text-pretty text-base leading-7 sm:text-lg',
+              descriptionClassName,
+            )}
+          >
+            {line}
+          </p>
         </AnimatedContent>
       ))}
     </div>

@@ -74,7 +74,7 @@ function CardLink({ children, className, href }) {
 
 function SectionCard({ description, href, icon: Icon, label, title }) {
   return (
-    <CardLink href={href} className='block p-6'>
+    <CardLink href={href} className='block p-5 sm:p-6'>
       <div className='flex items-start justify-between gap-4'>
         <div className='rounded-2xl border border-border bg-secondary p-3'>
           <Icon className='h-5 w-5 text-muted-foreground' />
@@ -84,7 +84,9 @@ function SectionCard({ description, href, icon: Icon, label, title }) {
       <p className='mt-6 text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
         {label}
       </p>
-      <h2 className='mt-3 text-2xl font-bold tracking-tight'>{title}</h2>
+      <h2 className='mt-3 text-balance text-2xl font-bold tracking-tight'>
+        {title}
+      </h2>
       <p className='mt-3 text-sm leading-6 text-muted-foreground'>
         {description}
       </p>
@@ -117,11 +119,11 @@ function ProjectPreview({ project }) {
           </div>
         )}
       </div>
-      <div className='p-6'>
+      <div className='p-5 sm:p-6'>
         <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
           Latest work
         </p>
-        <h2 className='mt-3 text-2xl font-bold tracking-tight'>
+        <h2 className='mt-3 text-balance text-2xl font-bold tracking-tight'>
           {project.title}
         </h2>
         <p className='mt-2 text-sm font-semibold text-muted-foreground'>
@@ -141,7 +143,7 @@ function PostPreview({ post }) {
   const publishedDate = formatDate(post.publishedAt);
 
   return (
-    <CardLink href={`/blog/${post.slug}`} className='block p-6'>
+    <CardLink href={`/blog/${post.slug}`} className='block p-5 sm:p-6'>
       <div className='flex items-start justify-between gap-4'>
         <div className='rounded-2xl border border-border bg-secondary p-3'>
           <LuNewspaper className='h-5 w-5 text-muted-foreground' />
@@ -151,7 +153,9 @@ function PostPreview({ post }) {
       <p className='mt-6 text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
         Latest post
       </p>
-      <h2 className='mt-3 text-2xl font-bold tracking-tight'>{post.title}</h2>
+      <h2 className='mt-3 text-balance text-2xl font-bold tracking-tight'>
+        {post.title}
+      </h2>
       {publishedDate && (
         <p className='mt-2 text-sm font-semibold text-muted-foreground'>
           {publishedDate}
@@ -213,8 +217,8 @@ export default async function Home() {
   ];
 
   return (
-    <div className='mx-auto flex max-w-7xl flex-col gap-12'>
-      <section className='grid gap-8 rounded-3xl border border-border bg-linear-to-br from-secondary/60 via-background to-background p-6 shadow-sm lg:grid-cols-[1.1fr_0.9fr] lg:p-8'>
+    <div className='mx-auto flex max-w-7xl flex-col gap-8 sm:gap-12'>
+      <section className='grid gap-6 rounded-3xl border border-border bg-linear-to-br from-secondary/60 via-background to-background p-4 shadow-sm sm:p-6 lg:grid-cols-[1.1fr_0.9fr] lg:p-8'>
         <div className='flex flex-col justify-between gap-8'>
           <div className='space-y-6'>
             <div className='flex flex-wrap gap-2'>
@@ -234,16 +238,16 @@ export default async function Home() {
                 Taylor Horwood
               </p>
               <div className='flex flex-col gap-4'>
-                <h1 className='text-4xl font-bold tracking-tightest md:text-6xl'>
+                <h1 className='text-balance text-4xl font-bold tracking-tightest sm:text-5xl md:text-6xl'>
                   Hi, I&apos;m Taylor.
                 </h1>
                 <div className='flex flex-col gap-3 sm:flex-row sm:items-center'>
-                  <span className='text-3xl font-bold tracking-tight md:text-5xl'>
+                  <span className='text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl'>
                     I&apos;m a
                   </span>
                   <RotatingText
                     texts={rotatingTitles}
-                    mainClassName='inline-flex w-fit justify-center overflow-hidden rounded-2xl border border-border bg-background px-4 py-2 text-3xl font-bold tracking-tight shadow-sm md:text-5xl'
+                    mainClassName='inline-flex max-w-full justify-center overflow-hidden rounded-2xl border border-border bg-background px-3 py-2 text-2xl font-bold tracking-tight shadow-sm sm:px-4 sm:text-3xl md:text-5xl'
                     staggerFrom='last'
                     initial={{ y: '100%' }}
                     animate={{ y: 0 }}
@@ -255,7 +259,7 @@ export default async function Home() {
                   />
                 </div>
               </div>
-              <p className='max-w-3xl text-xl leading-9 text-muted-foreground'>
+              <p className='max-w-3xl text-pretty text-lg leading-8 text-muted-foreground sm:text-xl sm:leading-9'>
                 {profile.headline ??
                   'DevOps/SRE engineer building reliable systems, self-hosted infrastructure, and practical web tools.'}
               </p>
@@ -264,19 +268,19 @@ export default async function Home() {
             <div className='flex flex-wrap items-center gap-3'>
               <Link
                 href='/projects'
-                className='inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90'
+                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 sm:w-auto'
               >
                 View projects <LuArrowUpRight className='h-4 w-4' />
               </Link>
               <Link
                 href='/blog'
-                className='inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary'
+                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary sm:w-auto'
               >
                 Read blog <LuBookOpen className='h-4 w-4' />
               </Link>
               <Link
                 href='/about'
-                className='inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary'
+                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary sm:w-auto'
               >
                 About me <LuArrowUpRight className='h-4 w-4' />
               </Link>
@@ -296,7 +300,7 @@ export default async function Home() {
               )}
               width={160}
               height={160}
-              className='size-28 rounded-2xl object-cover sm:size-36'
+              className='mx-auto size-28 rounded-2xl object-cover sm:mx-0 sm:size-36'
               priority
             />
             <div className='flex flex-col justify-center'>
@@ -316,13 +320,13 @@ export default async function Home() {
           <div className='grid gap-3 sm:grid-cols-2'>
             <Link
               href={`mailto:${profile.email ?? 'contact@tjhorwood.com'}`}
-              className='inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary'
+              className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary sm:w-auto'
             >
               <LuMail className='h-4 w-4' /> Email
             </Link>
             <Link
               href={resumeUrl}
-              className='inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary'
+              className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary sm:w-auto'
             >
               <LuDownload className='h-4 w-4' /> Resume
             </Link>
@@ -366,13 +370,13 @@ export default async function Home() {
         <PostPreview post={latestPost} />
       </section>
 
-      <section className='rounded-3xl border border-border bg-linear-to-br from-secondary via-background to-secondary/40 p-6 shadow-sm md:p-8'>
+      <section className='rounded-3xl border border-border bg-linear-to-br from-secondary via-background to-secondary/40 p-5 shadow-sm sm:p-6 md:p-8'>
         <div className='grid gap-6 md:grid-cols-[1fr_auto] md:items-center'>
           <div>
             <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
               What this site is for
             </p>
-            <h2 className='mt-2 text-3xl font-bold tracking-tight'>
+            <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
               A practical map of what I build, write, and run.
             </h2>
             <p className='mt-3 max-w-3xl leading-7 text-muted-foreground'>

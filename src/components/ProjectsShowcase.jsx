@@ -99,7 +99,9 @@ function ProjectCard({ featured = false, project, priority = false }) {
         <div
           className={cn(
             'relative overflow-hidden border-border border-b bg-muted',
-            featured ? 'h-80 lg:h-full lg:border-r lg:border-b-0' : 'h-56',
+            featured
+              ? 'h-64 sm:h-80 lg:h-full lg:border-r lg:border-b-0'
+              : 'h-52 sm:h-56',
           )}
         >
           <ProjectImage
@@ -108,7 +110,7 @@ function ProjectCard({ featured = false, project, priority = false }) {
             title={project.title}
           />
           <div className='absolute inset-x-0 bottom-0 bg-linear-to-t from-background/90 to-transparent p-4'>
-            <div className='flex flex-wrap gap-2'>
+            <div className='-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0'>
               <span className='rounded-full border border-border bg-background/90 px-3 py-1 text-xs font-semibold text-foreground shadow-sm backdrop-blur'>
                 {getCategoryName(project)}
               </span>
@@ -129,7 +131,7 @@ function ProjectCard({ featured = false, project, priority = false }) {
               <h2
                 className={cn(
                   'font-bold tracking-tight',
-                  featured ? 'text-3xl' : 'text-2xl',
+                  featured ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl',
                 )}
               >
                 {project.title}
@@ -147,7 +149,7 @@ function ProjectCard({ featured = false, project, priority = false }) {
           </div>
 
           {visibleTechnologies.length > 0 && (
-            <div className='flex flex-wrap gap-2'>
+            <div className='-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0'>
               {visibleTechnologies.map((technology) => (
                 <span
                   key={technology}
@@ -164,7 +166,7 @@ function ProjectCard({ featured = false, project, priority = false }) {
             </div>
           )}
 
-          <div className='mt-auto flex flex-wrap items-center justify-between gap-3 pt-2 text-sm font-semibold'>
+          <div className='mt-auto flex flex-col gap-3 pt-2 text-sm font-semibold sm:flex-row sm:items-center sm:justify-between'>
             <span className='inline-flex items-center gap-2 text-foreground'>
               View case study <LuArrowUpRight className='h-4 w-4' />
             </span>
@@ -215,14 +217,14 @@ export default function ProjectsShowcase({ projects }) {
             details.
           </p>
         </div>
-        <div className='flex flex-wrap gap-2'>
+        <div className='-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0'>
           {tabs.map((tab) => (
             <button
               key={tab.value}
               type='button'
               onClick={() => setActiveType(tab.value)}
               className={cn(
-                'rounded-full border px-4 py-2 text-sm font-semibold transition',
+                'shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition',
                 activeType === tab.value
                   ? 'border-primary bg-primary text-primary-foreground'
                   : 'border-border bg-background text-muted-foreground hover:text-foreground',

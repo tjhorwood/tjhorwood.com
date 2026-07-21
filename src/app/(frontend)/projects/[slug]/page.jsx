@@ -286,13 +286,13 @@ export default async function ProjectPage({ params }) {
     .slice(0, 3);
 
   return (
-    <div className='mx-auto max-w-7xl space-y-14'>
+    <div className='mx-auto max-w-7xl space-y-9 sm:space-y-14'>
       <AnimatedContent>
         <Breadcrumbs title={project.title} />
       </AnimatedContent>
 
       <AnimatedContent delay={0.1}>
-        <section className='grid gap-8 rounded-3xl border border-border bg-linear-to-br from-secondary/60 via-background to-background p-5 shadow-sm lg:grid-cols-[0.9fr_1.1fr] lg:p-8'>
+        <section className='grid gap-6 rounded-3xl border border-border bg-linear-to-br from-secondary/60 via-background to-background p-4 shadow-sm sm:p-5 lg:grid-cols-[0.9fr_1.1fr] lg:p-8'>
           <div className='flex flex-col justify-between gap-8'>
             <div className='space-y-6'>
               <div className='flex flex-wrap gap-2'>
@@ -302,7 +302,7 @@ export default async function ProjectPage({ params }) {
               </div>
 
               <div className='space-y-4'>
-                <h1 className='text-5xl font-bold tracking-tightest md:text-6xl'>
+                <h1 className='text-balance text-4xl font-bold tracking-tightest sm:text-5xl md:text-6xl'>
                   {project.title}
                 </h1>
                 <p className='max-w-3xl text-lg leading-8 text-muted-foreground'>
@@ -314,7 +314,7 @@ export default async function ProjectPage({ params }) {
                 {project.liveUrl && (
                   <Link
                     href={project.liveUrl}
-                    className='inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90'
+                    className='inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 sm:w-auto'
                   >
                     Visit live site <LuExternalLink className='h-4 w-4' />
                   </Link>
@@ -322,7 +322,7 @@ export default async function ProjectPage({ params }) {
                 {project.repositoryUrl && (
                   <Link
                     href={project.repositoryUrl}
-                    className='inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 font-semibold transition hover:bg-secondary'
+                    className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 py-3 font-semibold transition hover:bg-secondary sm:w-auto'
                   >
                     <FaGithub className='h-5 w-5' /> View code
                   </Link>
@@ -330,7 +330,7 @@ export default async function ProjectPage({ params }) {
                 {project.documentationUrl && (
                   <Link
                     href={project.documentationUrl}
-                    className='inline-flex items-center gap-2 rounded-xl border border-border bg-background px-5 py-3 font-semibold transition hover:bg-secondary'
+                    className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 py-3 font-semibold transition hover:bg-secondary sm:w-auto'
                   >
                     <LuBookOpen className='h-5 w-5' /> Docs
                   </Link>
@@ -345,7 +345,13 @@ export default async function ProjectPage({ params }) {
             </dl>
           </div>
 
-          <ProjectImageFrame image={heroImage} priority title={project.title} />
+          <div className='min-w-0'>
+            <ProjectImageFrame
+              image={heroImage}
+              priority
+              title={project.title}
+            />
+          </div>
         </section>
       </AnimatedContent>
 
@@ -384,7 +390,7 @@ export default async function ProjectPage({ params }) {
         hasText(project.approach) ||
         hasText(project.results)) && (
         <AnimatedContent delay={0.2}>
-          <div className='grid gap-5 md:grid-cols-3'>
+          <div className='grid gap-5 lg:grid-cols-3'>
             <CaseStudySection eyebrow='01' title='Problem'>
               {hasText(project.problem) ? project.problem : null}
             </CaseStudySection>
@@ -400,7 +406,7 @@ export default async function ProjectPage({ params }) {
 
       {project.richContent && (
         <AnimatedContent delay={0.25}>
-          <section className='mx-auto max-w-5xl rounded-3xl border border-border bg-card/40 p-6 shadow-sm md:p-8'>
+          <section className='mx-auto max-w-5xl overflow-hidden rounded-3xl border border-border bg-card/40 p-5 shadow-sm sm:p-6 md:p-8'>
             <RichText content={project.richContent} />
           </section>
         </AnimatedContent>
@@ -414,7 +420,7 @@ export default async function ProjectPage({ params }) {
                 <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
                   Interactive preview
                 </p>
-                <h2 className='mt-2 text-3xl font-bold tracking-tight'>
+                <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
                   Try the live experience
                 </h2>
               </div>
@@ -440,7 +446,7 @@ export default async function ProjectPage({ params }) {
               <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
                 Gallery
               </p>
-              <h2 className='mt-2 text-3xl font-bold tracking-tight'>
+              <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
                 Screenshots and visual notes
               </h2>
             </div>
@@ -492,7 +498,7 @@ export default async function ProjectPage({ params }) {
                 <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
                   Keep exploring
                 </p>
-                <h2 className='mt-2 text-3xl font-bold tracking-tight'>
+                <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
                   Related projects
                 </h2>
               </div>
@@ -503,7 +509,7 @@ export default async function ProjectPage({ params }) {
                 Back to all projects <LuArrowUpRight className='h-4 w-4' />
               </Link>
             </div>
-            <div className='grid gap-6 md:grid-cols-3'>
+            <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
               {relatedProjects.map((relatedProject) => (
                 <RelatedProjectCard
                   key={relatedProject.id ?? relatedProject.slug}

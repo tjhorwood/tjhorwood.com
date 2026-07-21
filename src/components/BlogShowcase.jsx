@@ -112,7 +112,7 @@ function TopicChips({ post, limit = 3 }) {
   if (topics.length === 0) return null;
 
   return (
-    <div className='flex flex-wrap gap-2'>
+    <div className='-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0'>
       {topics.map((topic) => (
         <span
           key={topic}
@@ -132,7 +132,7 @@ function FeaturedPost({ post }) {
     <article className='group overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-xl'>
       <Link
         href={`/blog/${post.slug}`}
-        className='grid min-h-[30rem] no-underline lg:grid-cols-[1.15fr_0.85fr]'
+        className='grid no-underline lg:min-h-[30rem] lg:grid-cols-[1.15fr_0.85fr]'
       >
         <div className='relative overflow-hidden border-border border-b bg-muted lg:border-r lg:border-b-0'>
           <PostVisual post={post} featured priority />
@@ -140,9 +140,11 @@ function FeaturedPost({ post }) {
         <div className='flex flex-col gap-6 p-6 md:p-8'>
           <div className='space-y-4'>
             <MetaRow post={post} />
-            <h2 className='text-4xl font-bold tracking-tight'>{post.title}</h2>
+            <h2 className='text-balance text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl'>
+              {post.title}
+            </h2>
             {post.excerpt && (
-              <p className='text-lg leading-8 text-muted-foreground'>
+              <p className='text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8'>
                 {post.excerpt}
               </p>
             )}
@@ -169,7 +171,9 @@ function PostCard({ post }) {
         </div>
         <div className='flex flex-1 flex-col gap-4 p-5'>
           <MetaRow post={post} />
-          <h2 className='text-2xl font-bold tracking-tight'>{post.title}</h2>
+          <h2 className='text-balance text-xl font-bold tracking-tight sm:text-2xl'>
+            {post.title}
+          </h2>
           {post.excerpt && (
             <p className='line-clamp-3 text-sm leading-6 text-muted-foreground'>
               {post.excerpt}
@@ -214,14 +218,14 @@ export default function BlogShowcase({ posts }) {
             Browse practical writeups by topic and jump into the newest guide.
           </p>
         </div>
-        <div className='flex flex-wrap gap-2'>
+        <div className='-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0'>
           {topics.map((topic) => (
             <button
               key={topic}
               type='button'
               onClick={() => setActiveTopic(topic)}
               className={cn(
-                'rounded-full border px-4 py-2 text-sm font-semibold transition',
+                'shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition',
                 activeTopic === topic
                   ? 'border-primary bg-primary text-primary-foreground'
                   : 'border-border bg-background text-muted-foreground hover:text-foreground',
@@ -258,7 +262,7 @@ export default function BlogShowcase({ posts }) {
         </div>
         <Link
           href='/sitemap.xml'
-          className='inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 py-3 font-semibold transition hover:bg-secondary'
+          className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 py-3 font-semibold transition hover:bg-secondary sm:w-auto'
         >
           Browse sitemap <LuRss className='h-4 w-4' />
         </Link>

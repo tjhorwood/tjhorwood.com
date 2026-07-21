@@ -100,14 +100,14 @@ export default async function BlogPost({ params }) {
   return (
     <>
       <BlogReadingProgress />
-      <article className='mx-auto flex max-w-6xl flex-col gap-10'>
+      <article className='mx-auto flex max-w-6xl flex-col gap-8 sm:gap-10'>
         <div>
           <Breadcrumbs
             parentHref='/blog'
             parentLabel='Blog'
             title={post.title}
           />
-          <div className='rounded-3xl border border-border bg-secondary/40 p-5 shadow-sm md:p-8'>
+          <div className='rounded-3xl border border-border bg-secondary/40 p-4 shadow-sm sm:p-5 md:p-8'>
             <div className='flex flex-wrap items-center gap-3 pb-6 text-sm font-medium text-muted-foreground'>
               <span>{readingTime} min read</span>
               {publishedDate && (
@@ -128,7 +128,7 @@ export default async function BlogPost({ params }) {
               alt={coverImage?.alt || post.title}
               width={coverImageDimensions.width}
               height={coverImageDimensions.height}
-              className='max-h-[34rem] w-full object-cover'
+              className='max-h-[34rem] min-h-56 w-full object-cover'
               priority
             />
           </div>

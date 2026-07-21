@@ -101,7 +101,9 @@ function GearCard({ item }) {
 
       <div className='flex flex-1 flex-col gap-4 p-5'>
         <div className='flex items-start justify-between gap-4'>
-          <h2 className='text-2xl font-bold tracking-tight'>{item.name}</h2>
+          <h2 className='text-balance text-xl font-bold tracking-tight sm:text-2xl'>
+            {item.name}
+          </h2>
           {href && (
             <LuArrowUpRight className='mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1' />
           )}
@@ -151,7 +153,7 @@ function EmptyGearState() {
           everyday-carry items.
         </p>
       </div>
-      <div className='grid gap-4 md:grid-cols-3'>
+      <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
         {SETUP_BUNDLES.map((bundle) => (
           <div
             key={bundle.label}
@@ -204,14 +206,14 @@ export default function GearShowcase({ gearItems }) {
             category.
           </p>
         </div>
-        <div className='flex flex-wrap gap-2'>
+        <div className='-mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0'>
           {categories.map((category) => (
             <button
               key={category}
               type='button'
               onClick={() => setActiveCategory(category)}
               className={cn(
-                'rounded-full border px-4 py-2 text-sm font-semibold transition',
+                'shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition',
                 activeCategory === category
                   ? 'border-primary bg-primary text-primary-foreground'
                   : 'border-border bg-background text-muted-foreground hover:text-foreground',

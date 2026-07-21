@@ -47,9 +47,9 @@ export default function Header({ links = defaultLinks }) {
   return (
     <header
       ref={headerRef}
-      className='relative top-0 z-20 mx-auto h-18 max-w-screen-3xl bg-background md:sticky'
+      className='sticky top-0 z-20 mx-auto h-16 max-w-screen-3xl border-border border-b bg-background/95 backdrop-blur md:h-18'
     >
-      <nav className='mx-auto flex h-full items-center justify-between gap-3 px-4 py-3'>
+      <nav className='mx-auto flex h-full items-center justify-between gap-2 px-3 py-2 sm:px-4 md:py-3'>
         <Link
           href='/'
           className='shrink-0 cursor-pointer text-primary'
@@ -83,8 +83,8 @@ export default function Header({ links = defaultLinks }) {
       </nav>
       {/* Mobile Menu */}
       {isOpen && (
-        <div className='absolute right-0 w-1/2 bg-background md:hidden rounded-b-md shadow-lg'>
-          <div className='flex flex-col items-center gap-2 p-4'>
+        <div className='absolute inset-x-3 top-full rounded-2xl border border-border bg-background p-2 shadow-xl md:hidden'>
+          <div className='flex flex-col items-stretch gap-2'>
             {links.map(({ id, href, label }) => (
               <Button
                 key={id}
@@ -92,7 +92,7 @@ export default function Header({ links = defaultLinks }) {
                 variant='default'
                 size='lg'
                 className={cn(
-                  'w-full justify-start text-primary',
+                  'h-12 w-full justify-start rounded-xl text-primary',
                   interactiveSurfaceClass,
                 )}
               >

@@ -54,7 +54,7 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang='en' className='scrollbar-hide'>
-      <body className='w-full bg-background antialiased'>
+      <body className='min-w-0 overflow-x-hidden bg-background antialiased'>
         <Script
           id='matomo-analytics'
           strategy='afterInteractive'
@@ -85,7 +85,7 @@ export default async function RootLayout({ children }) {
               .toSorted((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
               .filter(({ href }) => href !== '/')}
           />
-          <div className='mx-auto max-w-(--breakpoint-2xl) px-4 pt-8 pb-24 md:px-6 md:pt-12 md:pb-44'>
+          <div className='mx-auto max-w-(--breakpoint-2xl) px-3 pt-6 pb-20 sm:px-4 md:px-6 md:pt-12 md:pb-44'>
             <main className='grow'>{children}</main>
           </div>
         </ThemeProvider>
