@@ -217,37 +217,37 @@ export default async function Home() {
   ];
 
   return (
-    <div className='mx-auto flex max-w-7xl flex-col gap-8 sm:gap-12'>
-      <section className='grid gap-6 rounded-3xl border border-border bg-linear-to-br from-secondary/60 via-background to-background p-4 shadow-sm sm:p-6 lg:grid-cols-[1.1fr_0.9fr] lg:p-8'>
-        <div className='flex flex-col justify-between gap-8'>
-          <div className='space-y-6'>
-            <div className='flex flex-wrap gap-2'>
-              <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm backdrop-blur'>
+    <div className='mx-auto flex max-w-7xl flex-col gap-6 sm:gap-10'>
+      <section className='grid gap-5 rounded-[1.75rem] border border-border/80 bg-linear-to-br from-secondary/55 via-background to-background p-5 shadow-sm sm:p-6 lg:grid-cols-[1.1fr_0.9fr] lg:p-8'>
+        <div className='flex flex-col justify-between gap-6 sm:gap-8'>
+          <div className='space-y-5 sm:space-y-6'>
+            <div className='flex flex-wrap gap-1.5 sm:gap-2'>
+              <span className='rounded-full border border-border bg-background/80 px-2.5 py-1 text-[0.7rem] font-semibold text-muted-foreground shadow-sm backdrop-blur sm:px-3 sm:text-xs'>
                 DevOps / SRE
               </span>
-              <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm backdrop-blur'>
+              <span className='rounded-full border border-border bg-background/80 px-2.5 py-1 text-[0.7rem] font-semibold text-muted-foreground shadow-sm backdrop-blur sm:px-3 sm:text-xs'>
                 Homelab
               </span>
-              <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm backdrop-blur'>
+              <span className='rounded-full border border-border bg-background/80 px-2.5 py-1 text-[0.7rem] font-semibold text-muted-foreground shadow-sm backdrop-blur sm:px-3 sm:text-xs'>
                 Builder
               </span>
             </div>
 
-            <div className='space-y-5'>
-              <p className='text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground'>
+            <div className='space-y-4 sm:space-y-5'>
+              <p className='text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground sm:text-sm sm:tracking-[0.22em]'>
                 Taylor Horwood
               </p>
-              <div className='flex flex-col gap-4'>
-                <h1 className='text-balance text-4xl font-bold tracking-tightest sm:text-5xl md:text-6xl'>
+              <div className='flex flex-col gap-3 sm:gap-4'>
+                <h1 className='text-balance text-[2.55rem] font-bold leading-[1.05] tracking-[-0.055em] sm:text-[3rem] md:text-6xl'>
                   Hi, I&apos;m Taylor.
                 </h1>
-                <div className='flex flex-col gap-3 sm:flex-row sm:items-center'>
-                  <span className='text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl'>
+                <div className='flex flex-wrap items-center gap-x-3 gap-y-2'>
+                  <span className='text-[1.7rem] font-bold leading-none tracking-tight sm:text-3xl md:text-5xl'>
                     I&apos;m a
                   </span>
                   <RotatingText
                     texts={rotatingTitles}
-                    mainClassName='inline-flex max-w-full justify-center overflow-hidden rounded-2xl border border-border bg-background px-3 py-2 text-2xl font-bold tracking-tight shadow-sm sm:px-4 sm:text-3xl md:text-5xl'
+                    mainClassName='inline-flex max-w-full justify-center overflow-hidden rounded-2xl border border-border bg-background px-3 py-2 text-[1.7rem] font-bold leading-none tracking-tight shadow-sm sm:px-4 sm:text-3xl md:text-5xl'
                     staggerFrom='last'
                     initial={{ y: '100%' }}
                     animate={{ y: 0 }}
@@ -259,28 +259,28 @@ export default async function Home() {
                   />
                 </div>
               </div>
-              <p className='max-w-3xl text-pretty text-lg leading-8 text-muted-foreground sm:text-xl sm:leading-9'>
+              <p className='max-w-2xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8 md:max-w-3xl md:text-xl md:leading-9'>
                 {profile.headline ??
                   'DevOps/SRE engineer building reliable systems, self-hosted infrastructure, and practical web tools.'}
               </p>
             </div>
 
-            <div className='flex flex-wrap items-center gap-3'>
+            <div className='flex flex-wrap items-center gap-2.5 sm:gap-3'>
               <Link
                 href='/projects'
-                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 sm:w-auto'
+                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 md:w-auto'
               >
                 View projects <LuArrowUpRight className='h-4 w-4' />
               </Link>
               <Link
                 href='/blog'
-                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary sm:w-auto'
+                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary md:w-auto'
               >
                 Read blog <LuBookOpen className='h-4 w-4' />
               </Link>
               <Link
                 href='/about'
-                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary sm:w-auto'
+                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary md:w-auto'
               >
                 About me <LuArrowUpRight className='h-4 w-4' />
               </Link>
