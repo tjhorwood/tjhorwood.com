@@ -5,7 +5,6 @@ import {
   LuCode,
   LuDownload,
   LuFolder,
-  LuHouse,
   LuMail,
   LuNewspaper,
   LuServerCog,
@@ -72,25 +71,17 @@ function CardLink({ children, className, href }) {
   );
 }
 
-function SectionCard({ description, href, icon: Icon, label, title }) {
+function FocusItem({ description, icon: Icon, title }) {
   return (
-    <CardLink href={href} className='block p-5 sm:p-6'>
-      <div className='flex items-start justify-between gap-4'>
-        <div className='rounded-2xl border border-border bg-secondary p-3'>
-          <Icon className='h-5 w-5 text-muted-foreground' />
-        </div>
-        <LuArrowUpRight className='h-5 w-5 text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1' />
+    <div className='rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-6'>
+      <div className='mb-5 inline-flex rounded-2xl border border-border bg-secondary p-3'>
+        <Icon className='h-5 w-5 text-muted-foreground' />
       </div>
-      <p className='mt-6 text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
-        {label}
-      </p>
-      <h2 className='mt-3 text-balance text-2xl font-bold tracking-tight'>
-        {title}
-      </h2>
+      <h2 className='text-balance text-xl font-bold tracking-tight'>{title}</h2>
       <p className='mt-3 text-sm leading-6 text-muted-foreground'>
         {description}
       </p>
-    </CardLink>
+    </div>
   );
 }
 
@@ -270,19 +261,13 @@ export default async function Home() {
                 href='/projects'
                 className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 md:w-auto'
               >
-                View projects <LuArrowUpRight className='h-4 w-4' />
+                View selected work <LuArrowUpRight className='h-4 w-4' />
               </Link>
               <Link
-                href='/blog'
-                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary md:w-auto'
+                href={latestPost ? `/blog/${latestPost.slug}` : '/blog'}
+                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl px-5 font-semibold text-muted-foreground transition hover:bg-secondary hover:text-foreground md:w-auto'
               >
-                Read blog <LuBookOpen className='h-4 w-4' />
-              </Link>
-              <Link
-                href='/about'
-                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary md:w-auto'
-              >
-                About me <LuArrowUpRight className='h-4 w-4' />
+                Read latest note <LuBookOpen className='h-4 w-4' />
               </Link>
             </div>
           </div>
@@ -334,35 +319,38 @@ export default async function Home() {
         </aside>
       </section>
 
-      <section className='grid gap-5 md:grid-cols-2 lg:grid-cols-4'>
-        <SectionCard
-          href='/projects'
-          icon={LuFolder}
-          label='Case studies'
-          title='Projects'
-          description='Production websites, apps, homelab systems, and experiments I have built and operated.'
-        />
-        <SectionCard
-          href='/blog'
-          icon={LuNewspaper}
-          label='Writing'
-          title='Blog'
-          description='Practical posts on reliability, self-hosting, automation, and technical tradeoffs.'
-        />
-        <SectionCard
-          href='/gear'
-          icon={LuServerCog}
-          label='Setup'
-          title='Gear'
-          description='Hardware, software, desk gear, and homelab tools I use or recommend.'
-        />
-        <SectionCard
-          href='/about'
-          icon={LuHouse}
-          label='Background'
-          title='About'
-          description='The deeper story: work timeline, capabilities, strengths, hobbies, and current focus.'
-        />
+      <section className='rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-6 md:p-8'>
+        <div className='grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start'>
+          <div>
+            <p className='text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground'>
+              Currently
+            </p>
+            <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
+              The things I keep coming back to.
+            </h2>
+            <p className='mt-3 max-w-2xl leading-7 text-muted-foreground'>
+              Less directory, more front porch: a quick read on the systems,
+              experiments, and notes shaping what I build next.
+            </p>
+          </div>
+          <div className='grid gap-4 sm:grid-cols-3'>
+            <FocusItem
+              icon={LuServerCog}
+              title='Operating home production'
+              description='Self-hosted infrastructure, observability, networking, and the small reliability decisions that keep services boring.'
+            />
+            <FocusItem
+              icon={LuCode}
+              title='Building practical tools'
+              description='Web apps, automations, and CMS-backed projects that solve real problems without unnecessary ceremony.'
+            />
+            <FocusItem
+              icon={LuBookOpen}
+              title='Capturing lessons'
+              description='Notes from SRE work, homelab experiments, tradeoffs, and the occasional rabbit hole worth documenting.'
+            />
+          </div>
+        </div>
       </section>
 
       <section className='grid gap-6 lg:grid-cols-[1.15fr_0.85fr]'>
@@ -373,29 +361,23 @@ export default async function Home() {
       <section className='rounded-3xl border border-border bg-linear-to-br from-secondary via-background to-secondary/40 p-5 shadow-sm sm:p-6 md:p-8'>
         <div className='grid gap-6 md:grid-cols-[1fr_auto] md:items-center'>
           <div>
-            <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
-              What this site is for
+            <p className='text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground'>
+              Away from the keyboard
             </p>
             <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
-              A practical map of what I build, write, and run.
+              Family time, trails, games, projects, and the next thing to learn.
             </h2>
             <p className='mt-3 max-w-3xl leading-7 text-muted-foreground'>
-              Home is now the launchpad. About is the deep biography. Projects
-              show the work. Blog captures the posts and lessons. Gear documents
-              the setup.
+              The work matters, but it is not the whole story. The deeper bio,
+              timeline, hobbies, and current focus live on the About page.
             </p>
           </div>
-          <div className='flex flex-wrap gap-3'>
-            <span className='inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm font-semibold text-muted-foreground'>
-              <LuCode className='h-4 w-4' /> Build
-            </span>
-            <span className='inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm font-semibold text-muted-foreground'>
-              <LuServerCog className='h-4 w-4' /> Operate
-            </span>
-            <span className='inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm font-semibold text-muted-foreground'>
-              <LuBookOpen className='h-4 w-4' /> Document
-            </span>
-          </div>
+          <Link
+            href='/about'
+            className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold no-underline transition hover:bg-secondary md:w-auto'
+          >
+            Get the full story <LuArrowUpRight className='h-4 w-4' />
+          </Link>
         </div>
       </section>
     </div>
