@@ -56,10 +56,23 @@ export default async function RootLayout({ children }) {
     <html lang='en' className='scrollbar-hide'>
       <body className='w-full bg-background antialiased'>
         <Script
-          src='https://tjhorwood.com/umami/script.js'
-          data-website-id='650e4420-e452-4e9f-9fd2-d1bea2a318e8'
-          data-host-url='https://tjhorwood.com/umami'
+          id='matomo-analytics'
           strategy='afterInteractive'
+          dangerouslySetInnerHTML={{
+            __html: `
+              var _paq = window._paq = window._paq || [];
+              /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+              _paq.push(['trackPageView']);
+              _paq.push(['enableLinkTracking']);
+              (function() {
+                var u="//matomo.lab.tjhorwood.com/";
+                _paq.push(['setTrackerUrl', u+'matomo.php']);
+                _paq.push(['setSiteId', '1']);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+              })();
+            `,
+          }}
         />
         <ThemeProvider
           attribute='class'
