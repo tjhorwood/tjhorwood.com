@@ -80,10 +80,6 @@ Key settings:
 docker compose -f compose.yml up -d
 ```
 
-### Kubernetes (Helm)
-
-Helm chart is in [`helm/`](./helm) with defaults in [`helm/values.yaml`](./helm/values.yaml).
-
 ## Contact
 
 - Website: [tjhorwood.com](https://tjhorwood.com)
