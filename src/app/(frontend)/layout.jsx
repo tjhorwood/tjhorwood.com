@@ -65,7 +65,7 @@ export default async function RootLayout({ children }) {
               _paq.push(['trackPageView']);
               _paq.push(['enableLinkTracking']);
               (function() {
-                var u="https://matomo.tjhorwood.com/";
+                var u="//matomo.tjhorwood.com/";
                 _paq.push(['setTrackerUrl', u+'matomo.php']);
                 _paq.push(['setSiteId', '1']);
                 var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
