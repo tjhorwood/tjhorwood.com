@@ -91,15 +91,9 @@ export interface Config {
     posts: PostsSelect<false> | PostsSelect<true>;
     'gear-items': GearItemsSelect<false> | GearItemsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
-    'payload-locked-documents':
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences':
-      | PayloadPreferencesSelect<false>
-      | PayloadPreferencesSelect<true>;
-    'payload-migrations':
-      | PayloadMigrationsSelect<false>
-      | PayloadMigrationsSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: number;
@@ -293,15 +287,7 @@ export interface Technology {
    * Frontend Tailwind color class for the icon.
    */
   colorClass?: string | null;
-  category:
-    | 'frontend'
-    | 'backend'
-    | 'database'
-    | 'devops'
-    | 'cloud'
-    | 'cms'
-    | 'tooling'
-    | 'other';
+  category: 'frontend' | 'backend' | 'database' | 'devops' | 'cloud' | 'cms' | 'tooling' | 'other';
   displayGroup?: ('skills' | 'platforms' | 'databases' | 'other') | null;
   proficiency?: ('learning' | 'working' | 'advanced' | 'expert') | null;
   featured?: boolean | null;
@@ -450,15 +436,7 @@ export interface GearItem {
   description?: string | null;
   image?: (number | null) | Media;
   categories?: (number | Category)[] | null;
-  category:
-    | 'desk'
-    | 'homelab'
-    | 'development'
-    | 'audio'
-    | 'camera'
-    | 'fitness'
-    | 'edc'
-    | 'other';
+  category: 'desk' | 'homelab' | 'development' | 'audio' | 'camera' | 'fitness' | 'edc' | 'other';
   affiliateUrl?: string | null;
   productUrl?: string | null;
   notes?: string | null;
@@ -1097,6 +1075,7 @@ export interface CollectionsWidget {
 export interface Auth {
   [k: string]: unknown;
 }
+
 
 declare module 'payload' {
   export interface GeneratedTypes extends Config {}
