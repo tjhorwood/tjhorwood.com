@@ -198,6 +198,7 @@ export interface Media {
    * Stable migration/import identifier.
    */
   externalId?: string | null;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -590,6 +591,7 @@ export interface MediaSelect<T extends boolean = true> {
   mediaType?: T;
   sourcePath?: T;
   externalId?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
