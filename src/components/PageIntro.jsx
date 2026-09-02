@@ -1,10 +1,12 @@
 import AnimatedContent from '@/components/animations/AnimatedContent';
+import Eyebrow from '@/components/Eyebrow';
 import { cn } from '@/lib/utils';
 
 export default function PageIntro({
+  eyebrow,
   title,
   descriptions,
-  descriptionClassName = 'text-primary/60',
+  descriptionClassName = 'text-muted-foreground',
 }) {
   const lines = (
     Array.isArray(descriptions) ? descriptions : [descriptions]
@@ -12,8 +14,13 @@ export default function PageIntro({
 
   return (
     <div>
+      {eyebrow && (
+        <AnimatedContent>
+          <Eyebrow className='mb-4'>{eyebrow}</Eyebrow>
+        </AnimatedContent>
+      )}
       <AnimatedContent>
-        <h1 className='text-balance text-3xl font-bold tracking-tight sm:text-4xl'>
+        <h1 className='text-balance text-4xl font-semibold tracking-tightest sm:text-5xl md:text-6xl'>
           {title}
         </h1>
       </AnimatedContent>
@@ -21,7 +28,7 @@ export default function PageIntro({
         <AnimatedContent delay={0.1 + index * 0.1} key={`${line}-${index}`}>
           <p
             className={cn(
-              'mt-3 text-pretty text-base leading-7 sm:text-lg',
+              'mt-4 max-w-2xl text-pretty text-base leading-7 sm:text-lg',
               descriptionClassName,
             )}
           >

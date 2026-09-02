@@ -10,6 +10,7 @@ import {
   LuServerCog,
 } from 'react-icons/lu';
 import RotatingText from '@/components/animations/RotatingText';
+import Eyebrow from '@/components/Eyebrow';
 import Link from '@/components/Link';
 import { getIcon } from '@/lib/iconMap';
 import { getMediaAlt, getMediaUrl } from '@/lib/media';
@@ -62,7 +63,7 @@ function CardLink({ children, className, href }) {
     <Link
       href={href}
       className={cn(
-        'group rounded-3xl border border-border bg-card no-underline shadow-sm transition hover:-translate-y-1 hover:shadow-lg',
+        'group rounded-xl border border-border bg-card no-underline transition-colors hover:border-foreground/30',
         className,
       )}
     >
@@ -73,11 +74,13 @@ function CardLink({ children, className, href }) {
 
 function FocusItem({ description, icon: Icon, title }) {
   return (
-    <div className='rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-6'>
-      <div className='mb-5 inline-flex rounded-2xl border border-border bg-secondary p-3'>
-        <Icon className='h-5 w-5 text-muted-foreground' />
+    <div className='rounded-xl border border-border bg-card p-5 sm:p-6'>
+      <div className='mb-5 inline-flex rounded-lg border border-border bg-secondary p-2.5'>
+        <Icon className='h-5 w-5 text-foreground' />
       </div>
-      <h2 className='text-balance text-xl font-bold tracking-tight'>{title}</h2>
+      <h2 className='text-balance text-lg font-semibold tracking-tighter'>
+        {title}
+      </h2>
       <p className='mt-3 text-sm leading-6 text-muted-foreground'>
         {description}
       </p>
@@ -105,19 +108,17 @@ function ProjectPreview({ project }) {
             priority
           />
         ) : (
-          <div className='flex h-full items-center justify-center bg-linear-to-br from-secondary via-background to-primary/10'>
+          <div className='flex h-full items-center justify-center bg-blueprint'>
             <LuFolder className='h-8 w-8 text-muted-foreground' />
           </div>
         )}
       </div>
       <div className='p-5 sm:p-6'>
-        <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
-          Latest work
-        </p>
-        <h2 className='mt-3 text-balance text-2xl font-bold tracking-tight'>
+        <Eyebrow>Latest work</Eyebrow>
+        <h2 className='mt-3 text-balance text-2xl font-semibold tracking-tighter'>
           {project.title}
         </h2>
-        <p className='mt-2 text-sm font-semibold text-muted-foreground'>
+        <p className='mt-2 font-mono text-xs text-muted-foreground'>
           {getProjectCategory(project)}
         </p>
         <p className='mt-3 line-clamp-3 text-sm leading-6 text-muted-foreground'>
@@ -136,19 +137,17 @@ function PostPreview({ post }) {
   return (
     <CardLink href={`/blog/${post.slug}`} className='block p-5 sm:p-6'>
       <div className='flex items-start justify-between gap-4'>
-        <div className='rounded-2xl border border-border bg-secondary p-3'>
-          <LuNewspaper className='h-5 w-5 text-muted-foreground' />
+        <div className='rounded-lg border border-border bg-secondary p-2.5'>
+          <LuNewspaper className='h-5 w-5 text-foreground' />
         </div>
-        <LuArrowUpRight className='h-5 w-5 text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1' />
+        <LuArrowUpRight className='h-5 w-5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5' />
       </div>
-      <p className='mt-6 text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
-        Latest post
-      </p>
-      <h2 className='mt-3 text-balance text-2xl font-bold tracking-tight'>
+      <Eyebrow className='mt-6'>Latest post</Eyebrow>
+      <h2 className='mt-3 text-balance text-2xl font-semibold tracking-tighter'>
         {post.title}
       </h2>
       {publishedDate && (
-        <p className='mt-2 text-sm font-semibold text-muted-foreground'>
+        <p className='mt-2 font-mono text-xs text-muted-foreground'>
           {publishedDate}
         </p>
       )}
@@ -165,14 +164,14 @@ function SocialLinks({ links }) {
   if (!links?.length) return null;
 
   return (
-    <div className='flex flex-wrap gap-3'>
+    <div className='flex flex-wrap gap-2'>
       {links.map(({ href, icon, name }) => {
         const Icon = getIcon(icon || name);
         return (
           <Link
             key={name}
             href={href}
-            className='inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm font-semibold text-muted-foreground no-underline transition hover:text-foreground'
+            className='inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 font-mono text-xs text-muted-foreground no-underline transition-colors hover:border-foreground/30 hover:text-foreground'
           >
             <Icon className='h-4 w-4' /> {name}
           </Link>
@@ -200,45 +199,43 @@ export default async function Home() {
   const featuredProject =
     projects.docs.find((project) => project.featured) ?? projects.docs[0];
   const latestPost = posts.docs[0];
-  const rotatingTitles = profile.rotatingTitles?.map(({ label }) => label) ?? [
-    'Developer',
-    'Engineer',
-    'Tinkerer',
-    'Homelabber',
-  ];
+  const configuredTitles = (profile.rotatingTitles ?? [])
+    .map(({ label }) => label)
+    .filter(Boolean);
+  const rotatingTitles = configuredTitles.length
+    ? configuredTitles
+    : ['Developer', 'Engineer', 'Tinkerer', 'Homelabber'];
 
   return (
-    <div className='mx-auto flex max-w-7xl flex-col gap-6 sm:gap-10'>
-      <section className='grid gap-5 rounded-[1.75rem] border border-border/80 bg-linear-to-br from-secondary/55 via-background to-background p-5 shadow-sm sm:p-6 lg:grid-cols-[1.1fr_0.9fr] lg:p-8'>
-        <div className='flex flex-col justify-between gap-6 sm:gap-8'>
-          <div className='space-y-5 sm:space-y-6'>
-            <div className='flex flex-wrap gap-1.5 sm:gap-2'>
-              <span className='rounded-full border border-border bg-background/80 px-2.5 py-1 text-[0.7rem] font-semibold text-muted-foreground shadow-sm backdrop-blur sm:px-3 sm:text-xs'>
-                DevOps / SRE
-              </span>
-              <span className='rounded-full border border-border bg-background/80 px-2.5 py-1 text-[0.7rem] font-semibold text-muted-foreground shadow-sm backdrop-blur sm:px-3 sm:text-xs'>
-                Homelab
-              </span>
-              <span className='rounded-full border border-border bg-background/80 px-2.5 py-1 text-[0.7rem] font-semibold text-muted-foreground shadow-sm backdrop-blur sm:px-3 sm:text-xs'>
-                Builder
-              </span>
+    <div className='mx-auto flex max-w-6xl flex-col gap-12 sm:gap-20'>
+      <section className='relative grid gap-8 overflow-hidden rounded-xl border border-border bg-card p-5 sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-10'>
+        <div className='pointer-events-none absolute inset-0 bg-blueprint opacity-60' />
+        <div className='relative flex flex-col justify-between gap-8 sm:gap-10'>
+          <div className='space-y-6 sm:space-y-8'>
+            <div className='flex flex-wrap gap-2'>
+              {['DevOps / SRE', 'Homelab', 'Builder'].map((tag) => (
+                <span
+                  key={tag}
+                  className='rounded-full border border-border bg-background px-3 py-1 font-mono text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground'
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
 
-            <div className='space-y-4 sm:space-y-5'>
-              <p className='text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground sm:text-sm sm:tracking-[0.22em]'>
-                Taylor Horwood
-              </p>
-              <div className='flex flex-col gap-3 sm:gap-4'>
-                <h1 className='text-balance text-[2.55rem] font-bold leading-[1.05] tracking-[-0.055em] sm:text-[3rem] md:text-6xl'>
+            <div className='space-y-5'>
+              <Eyebrow>Taylor Horwood</Eyebrow>
+              <div className='flex flex-col gap-3'>
+                <h1 className='text-balance text-5xl font-semibold leading-[0.98] tracking-tightest sm:text-6xl md:text-7xl'>
                   Hi, I&apos;m Taylor.
                 </h1>
                 <div className='flex flex-wrap items-center gap-x-3 gap-y-2'>
-                  <span className='text-[1.7rem] font-bold leading-none tracking-tight sm:text-3xl md:text-5xl'>
+                  <span className='text-2xl font-semibold leading-none tracking-tighter sm:text-3xl md:text-4xl'>
                     I&apos;m a
                   </span>
                   <RotatingText
                     texts={rotatingTitles}
-                    mainClassName='inline-flex max-w-full justify-center overflow-hidden rounded-2xl border border-border bg-background px-3 py-2 text-[1.7rem] font-bold leading-none tracking-tight shadow-sm sm:px-4 sm:text-3xl md:text-5xl'
+                    mainClassName='inline-flex max-w-full justify-center overflow-hidden rounded-lg border border-brand bg-background px-3 py-2 text-2xl font-semibold leading-none tracking-tighter sm:px-4 sm:text-3xl md:text-4xl'
                     staggerFrom='last'
                     initial={{ y: '100%' }}
                     animate={{ y: 0 }}
@@ -246,11 +243,11 @@ export default async function Home() {
                     staggerDuration={0.025}
                     splitLevelClassName='overflow-hidden'
                     transition={{ damping: 30, stiffness: 400, type: 'spring' }}
-                    rotationInterval={2000}
+                    rotationInterval={2200}
                   />
                 </div>
               </div>
-              <p className='max-w-2xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8 md:max-w-3xl md:text-xl md:leading-9'>
+              <p className='max-w-2xl text-pretty text-base leading-7 text-muted-foreground sm:text-lg sm:leading-8'>
                 {profile.headline ??
                   'DevOps/SRE engineer building reliable systems, self-hosted infrastructure, and practical web tools.'}
               </p>
@@ -259,13 +256,13 @@ export default async function Home() {
             <div className='flex flex-wrap items-center gap-2.5 sm:gap-3'>
               <Link
                 href='/projects'
-                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 md:w-auto'
+                className='inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-brand px-5 text-sm font-medium text-brand-foreground transition hover:bg-brand/90 md:w-auto'
               >
                 View selected work <LuArrowUpRight className='h-4 w-4' />
               </Link>
               <Link
                 href={latestPost ? `/blog/${latestPost.slug}` : '/blog'}
-                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl px-5 font-semibold text-muted-foreground transition hover:bg-secondary hover:text-foreground md:w-auto'
+                className='inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-border px-5 text-sm font-medium text-muted-foreground transition-colors hover:border-foreground/30 hover:text-foreground md:w-auto'
               >
                 Read latest note <LuBookOpen className='h-4 w-4' />
               </Link>
@@ -275,8 +272,8 @@ export default async function Home() {
           <SocialLinks links={profile.socialLinks} />
         </div>
 
-        <aside className='space-y-4'>
-          <div className='grid gap-4 rounded-3xl border border-border bg-background/70 p-4 shadow-sm backdrop-blur sm:grid-cols-[auto_1fr]'>
+        <aside className='relative space-y-3'>
+          <div className='grid gap-4 rounded-xl border border-border bg-background p-4 sm:grid-cols-[auto_1fr]'>
             <Image
               src={profileImageUrl}
               alt={getMediaAlt(
@@ -285,14 +282,12 @@ export default async function Home() {
               )}
               width={160}
               height={160}
-              className='mx-auto size-28 rounded-2xl object-cover sm:mx-0 sm:size-36'
+              className='mx-auto size-28 rounded-lg object-cover sm:mx-0 sm:size-36'
               priority
             />
             <div className='flex flex-col justify-center'>
-              <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
-                Command center
-              </p>
-              <h2 className='mt-2 text-2xl font-bold'>
+              <Eyebrow>Command center</Eyebrow>
+              <h2 className='mt-2 text-xl font-semibold tracking-tighter'>
                 {profile.name ?? 'Taylor Horwood'}
               </h2>
               <p className='mt-2 text-sm leading-6 text-muted-foreground'>
@@ -305,13 +300,13 @@ export default async function Home() {
           <div className='grid gap-3 sm:grid-cols-2'>
             <Link
               href={`mailto:${profile.email ?? 'contact@tjhorwood.com'}`}
-              className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary sm:w-auto'
+              className='inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-5 text-sm font-medium transition-colors hover:border-foreground/30 hover:bg-secondary sm:w-auto'
             >
               <LuMail className='h-4 w-4' /> Email
             </Link>
             <Link
               href={resumeUrl}
-              className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold transition hover:bg-secondary sm:w-auto'
+              className='inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-border bg-background px-5 text-sm font-medium transition-colors hover:border-foreground/30 hover:bg-secondary sm:w-auto'
             >
               <LuDownload className='h-4 w-4' /> Resume
             </Link>
@@ -319,13 +314,11 @@ export default async function Home() {
         </aside>
       </section>
 
-      <section className='rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-6 md:p-8'>
-        <div className='grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start'>
+      <section>
+        <div className='grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start'>
           <div>
-            <p className='text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground'>
-              Currently
-            </p>
-            <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
+            <Eyebrow>Currently</Eyebrow>
+            <h2 className='mt-3 text-balance text-2xl font-semibold tracking-tighter sm:text-3xl'>
               The things I keep coming back to.
             </h2>
             <p className='mt-3 max-w-2xl leading-7 text-muted-foreground'>
@@ -358,13 +351,11 @@ export default async function Home() {
         <PostPreview post={latestPost} />
       </section>
 
-      <section className='rounded-3xl border border-border bg-linear-to-br from-secondary via-background to-secondary/40 p-5 shadow-sm sm:p-6 md:p-8'>
+      <section className='rounded-xl border border-border bg-card p-5 sm:p-8'>
         <div className='grid gap-6 md:grid-cols-[1fr_auto] md:items-center'>
           <div>
-            <p className='text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground'>
-              Away from the keyboard
-            </p>
-            <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
+            <Eyebrow>Away from the keyboard</Eyebrow>
+            <h2 className='mt-3 text-balance text-2xl font-semibold tracking-tighter sm:text-3xl'>
               Family time, trails, games, projects, and the next thing to learn.
             </h2>
             <p className='mt-3 max-w-3xl leading-7 text-muted-foreground'>
@@ -374,7 +365,7 @@ export default async function Home() {
           </div>
           <Link
             href='/about'
-            className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 font-semibold no-underline transition hover:bg-secondary md:w-auto'
+            className='inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-border px-5 text-sm font-medium no-underline transition-colors hover:border-foreground/30 hover:bg-secondary md:w-auto'
           >
             Get the full story <LuArrowUpRight className='h-4 w-4' />
           </Link>

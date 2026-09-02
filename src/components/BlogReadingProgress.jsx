@@ -25,9 +25,9 @@ export default function BlogReadingProgress() {
   }, []);
 
   return (
-    <div className='fixed inset-x-0 top-0 z-50 h-1 bg-border/40'>
+    <div className='fixed inset-x-0 top-0 z-50 h-0.5 bg-border/40'>
       <div
-        className='h-full bg-primary transition-[width] duration-150 ease-out'
+        className='h-full bg-brand transition-[width] duration-150 ease-out'
         style={{ width: `${Math.min(Math.max(progress, 0), 1) * 100}%` }}
       />
     </div>

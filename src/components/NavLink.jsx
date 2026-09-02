@@ -10,12 +10,17 @@ export default function NavLink({ href, children }) {
   return (
     <Link
       className={cn(
-        'cursor-pointer rounded-lg px-4 py-2 hover:bg-secondary border hover:border-border',
-        active ? 'bg-secondary border-border' : 'border-transparent',
+        'relative cursor-pointer rounded-md px-3 py-2 uppercase tracking-[0.08em] transition-colors',
+        active
+          ? 'text-foreground'
+          : 'text-muted-foreground hover:text-foreground',
       )}
       href={href}
     >
       {children}
+      {active && (
+        <span className='absolute inset-x-3 -bottom-px h-px bg-brand' />
+      )}
     </Link>
   );
 }

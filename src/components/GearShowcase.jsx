@@ -53,10 +53,10 @@ function GearImage({ item }) {
 
   if (!imageUrl) {
     return (
-      <div className='flex h-full min-h-56 items-center justify-center bg-linear-to-br from-secondary via-background to-primary/10 p-6 text-center'>
+      <div className='flex h-full min-h-56 items-center justify-center bg-card p-6 text-center'>
         <div>
           <LuBox className='mx-auto h-8 w-8 text-muted-foreground' />
-          <p className='mt-4 text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+          <p className='mt-4 font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
             {categoryLabel(item.category)}
           </p>
         </div>
@@ -79,20 +79,20 @@ function GearImage({ item }) {
 function GearCard({ item }) {
   const href = item.affiliateUrl || item.productUrl;
   const CardContent = (
-    <article className='group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg'>
+    <article className='group flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-foreground/30'>
       <div className='relative h-56 overflow-hidden border-border border-b bg-muted'>
         <GearImage item={item} />
-        <div className='absolute inset-x-0 bottom-0 flex flex-wrap gap-2 bg-linear-to-t from-background/90 to-transparent p-4'>
-          <span className='rounded-full border border-border bg-background/90 px-3 py-1 text-xs font-semibold shadow-sm backdrop-blur'>
+        <div className='absolute inset-x-0 bottom-0 flex flex-wrap gap-2 bg-linear-to-t from-background via-background/80 to-transparent p-4'>
+          <span className='rounded-full border border-border bg-background/90 px-3 py-1 text-xs font-semibold'>
             {categoryLabel(item.category)}
           </span>
           {item.recommended && (
-            <span className='inline-flex items-center gap-1 rounded-full border border-border bg-background/90 px-3 py-1 text-xs font-semibold shadow-sm backdrop-blur'>
+            <span className='inline-flex items-center gap-1 rounded-full border border-border bg-background/90 px-3 py-1 text-xs font-semibold'>
               <LuBadgeCheck className='h-3.5 w-3.5' /> Recommended
             </span>
           )}
           {item.owned && (
-            <span className='inline-flex items-center gap-1 rounded-full border border-border bg-background/90 px-3 py-1 text-xs font-semibold shadow-sm backdrop-blur'>
+            <span className='inline-flex items-center gap-1 rounded-full border border-border bg-background/90 px-3 py-1 text-xs font-semibold'>
               <LuHeart className='h-3.5 w-3.5' /> In use
             </span>
           )}
@@ -101,11 +101,11 @@ function GearCard({ item }) {
 
       <div className='flex flex-1 flex-col gap-4 p-5'>
         <div className='flex items-start justify-between gap-4'>
-          <h2 className='text-balance text-xl font-bold tracking-tight sm:text-2xl'>
+          <h2 className='text-balance text-xl font-semibold tracking-tighter sm:text-2xl'>
             {item.name}
           </h2>
           {href && (
-            <LuArrowUpRight className='mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1' />
+            <LuArrowUpRight className='mt-1 h-5 w-5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-1' />
           )}
         </div>
         {item.description && (
@@ -137,14 +137,14 @@ function GearCard({ item }) {
 function EmptyGearState() {
   return (
     <div className='grid gap-6 lg:grid-cols-[0.9fr_1.1fr]'>
-      <div className='rounded-3xl border border-border bg-card p-6 shadow-sm'>
+      <div className='rounded-xl border border-border bg-card p-6'>
         <div className='flex items-center gap-2 text-muted-foreground'>
           <LuInfo className='h-5 w-5' />
-          <p className='text-xs font-bold uppercase tracking-[0.25em]'>
+          <p className='font-mono text-xs uppercase tracking-[0.15em]'>
             Coming soon
           </p>
         </div>
-        <h2 className='mt-4 text-3xl font-bold tracking-tight'>
+        <h2 className='mt-4 text-3xl font-semibold tracking-tighter'>
           Gear items are not published yet.
         </h2>
         <p className='mt-3 leading-7 text-muted-foreground'>
@@ -157,7 +157,7 @@ function EmptyGearState() {
         {SETUP_BUNDLES.map((bundle) => (
           <div
             key={bundle.label}
-            className='rounded-3xl border border-border bg-secondary/40 p-5 shadow-sm'
+            className='rounded-xl border border-border bg-secondary/40 p-5'
           >
             <LuSparkles className='h-5 w-5 text-muted-foreground' />
             <h3 className='mt-4 font-bold'>{bundle.label}</h3>
@@ -193,11 +193,11 @@ export default function GearShowcase({ gearItems }) {
 
   return (
     <section className='space-y-8'>
-      <div className='flex flex-col gap-4 rounded-3xl border border-border bg-secondary/40 p-4 md:flex-row md:items-center md:justify-between'>
+      <div className='flex flex-col gap-4 rounded-xl border border-border bg-secondary/40 p-4 md:flex-row md:items-center md:justify-between'>
         <div>
           <div className='flex items-center gap-2'>
             <LuFilter className='h-4 w-4 text-muted-foreground' />
-            <p className='text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground'>
+            <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
               Browse setup
             </p>
           </div>
@@ -213,9 +213,9 @@ export default function GearShowcase({ gearItems }) {
               type='button'
               onClick={() => setActiveCategory(category)}
               className={cn(
-                'shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition',
+                'shrink-0 rounded-full border px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.08em] transition-colors',
                 activeCategory === category
-                  ? 'border-primary bg-primary text-primary-foreground'
+                  ? 'border-brand bg-brand text-brand-foreground'
                   : 'border-border bg-background text-muted-foreground hover:text-foreground',
               )}
             >
@@ -231,7 +231,7 @@ export default function GearShowcase({ gearItems }) {
         ))}
       </div>
 
-      <div className='rounded-3xl border border-border bg-card/70 p-5 text-sm leading-6 text-muted-foreground'>
+      <div className='rounded-xl border border-border bg-card/70 p-5 text-sm leading-6 text-muted-foreground'>
         Some links may be affiliate links. I only list gear, tools, or services
         I use, have used, or would genuinely recommend for a similar setup.
       </div>

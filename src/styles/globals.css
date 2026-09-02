@@ -1,81 +1,97 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
-@import '@fontsource/poppins/400.css';
-@import '@fontsource/poppins/500.css';
-@import '@fontsource/poppins/600.css';
-@import '@fontsource/poppins/700.css';
-@import '@fontsource/poppins/800.css';
-@import '@fontsource/poppins/900.css';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * Design language: near-monochrome canvas + one electric-lime accent used
+ * sparingly. No drop shadows — elevation comes from hairline borders and tone.
+ * Light = "warm paper", dark = "void command center".
+ */
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+
+  --background: #f6f4ee;
+  --foreground: #191917;
+  --card: #ffffff;
+  --card-foreground: #191917;
+  --popover: #ffffff;
+  --popover-foreground: #191917;
+  --primary: #191917;
+  --primary-foreground: #f6f4ee;
+  --secondary: #edeae1;
+  --secondary-foreground: #191917;
+  --muted: #edeae1;
+  --muted-foreground: #63615a;
+  --accent: #e6e2d6;
+  --accent-foreground: #191917;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #d5d1c3;
+  --border-strong: #191917;
+  --input: #d5d1c3;
+  --ring: #b8d900;
+
+  --brand: #b8d900;
+  --brand-foreground: #1a1a1a;
+
+  --chart-1: #b8d900;
+  --chart-2: #1a1a1a;
+  --chart-3: #6b6b63;
+  --chart-4: #a4a49a;
+  --chart-5: #d8d6cc;
+
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #1a1a1a;
+  --sidebar-primary-foreground: #fafaf7;
+  --sidebar-accent: #f1f0ea;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #e5e3db;
+  --sidebar-ring: #b8d900;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #08090a;
+  --foreground: #f7f8f8;
+  --card: #0f1011;
+  --card-foreground: #f7f8f8;
+  --popover: #0f1011;
+  --popover-foreground: #f7f8f8;
+  --primary: #f7f8f8;
+  --primary-foreground: #08090a;
+  --secondary: #161718;
+  --secondary-foreground: #f7f8f8;
+  --muted: #161718;
+  --muted-foreground: #a7a7a7;
+  --accent: #1d1e1f;
+  --accent-foreground: #f7f8f8;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #23252a;
+  --border-strong: #383b3f;
+  --input: #23252a;
+  --ring: #d4f24e;
+
+  --brand: #d4f24e;
+  --brand-foreground: #08090a;
+
+  --chart-1: #d4f24e;
+  --chart-2: #f7f8f8;
+  --chart-3: #a7a7a7;
+  --chart-4: #6c6f75;
+  --chart-5: #383b3f;
+
+  --sidebar: #0f1011;
+  --sidebar-foreground: #f7f8f8;
+  --sidebar-primary: #f7f8f8;
+  --sidebar-primary-foreground: #08090a;
+  --sidebar-accent: #161718;
+  --sidebar-accent-foreground: #f7f8f8;
+  --sidebar-border: #23252a;
+  --sidebar-ring: #d4f24e;
 }
 
 @theme {
@@ -86,7 +102,15 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1440px;
   --breakpoint-3xl: 1536px;
-  
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system,
+    sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', Menlo,
+    monospace;
+
+  --tracking-tightest: -0.04em;
+  --tracking-tighter: -0.028em;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -104,8 +128,11 @@
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -133,6 +160,55 @@
   scrollbar-width: none; /* Firefox */
 }
 
-body {
-  font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+/* Subtle blueprint grid for hero panels and empty states. */
+@utility bg-blueprint {
+  background-image: linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-border) 55%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-border) 55%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 32px 32px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: var(--tracking-tighter);
+  }
+
+  ::selection {
+    background-color: var(--color-brand);
+    color: var(--color-brand-foreground);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

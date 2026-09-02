@@ -107,7 +107,7 @@ export default async function BlogPost({ params }) {
             parentLabel='Blog'
             title={post.title}
           />
-          <div className='rounded-3xl border border-border bg-secondary/40 p-4 shadow-sm sm:p-5 md:p-8'>
+          <div className='rounded-xl border border-border bg-secondary/40 p-4 sm:p-5 md:p-8'>
             <div className='flex flex-wrap items-center gap-3 pb-6 text-sm font-medium text-muted-foreground'>
               <span>{readingTime} min read</span>
               {publishedDate && (
@@ -122,7 +122,7 @@ export default async function BlogPost({ params }) {
         </div>
 
         {coverImageUrl && (
-          <div className='overflow-hidden rounded-3xl border border-border bg-muted/20 shadow-2xl'>
+          <div className='overflow-hidden rounded-xl border border-border bg-muted/20'>
             <Image
               src={coverImageUrl}
               alt={coverImage?.alt || post.title}

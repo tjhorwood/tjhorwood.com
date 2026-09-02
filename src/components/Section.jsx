@@ -16,7 +16,7 @@ export default function Section({
     >
       <h2
         className={cn(
-          'shrink-0 text-neutral-600 md:w-28 dark:text-neutral-400',
+          'shrink-0 font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground md:w-28 md:pt-1',
           headingClass,
           headingAlignment === 'right' && 'md:text-right',
         )}

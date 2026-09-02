@@ -118,7 +118,7 @@ function hasText(value) {
 
 function Pill({ children }) {
   return (
-    <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm backdrop-blur'>
+    <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground'>
       {children}
     </span>
   );
@@ -128,11 +128,11 @@ function CaseStudySection({ eyebrow, title, children }) {
   if (!children) return null;
 
   return (
-    <section className='rounded-3xl border border-border bg-card/70 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg'>
-      <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+    <section className='rounded-xl border border-border bg-card/70 p-6 transition hover:-translate-y-0.5 hover:border-foreground/30'>
+      <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
         {eyebrow}
       </p>
-      <h2 className='mt-3 text-2xl font-bold tracking-tight'>{title}</h2>
+      <h2 className='mt-3 text-2xl font-semibold tracking-tighter'>{title}</h2>
       <div className='mt-4 leading-7 text-muted-foreground'>{children}</div>
     </section>
   );
@@ -143,7 +143,7 @@ function DetailItem({ label, value }) {
 
   return (
     <div className='rounded-2xl border border-border bg-background/70 p-4'>
-      <dt className='text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground'>
+      <dt className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
         {label}
       </dt>
       <dd className='mt-2 font-semibold text-foreground capitalize'>{value}</dd>
@@ -162,13 +162,13 @@ function ArchitectureStrip({ project, technologies }) {
   ];
 
   return (
-    <section className='rounded-3xl border border-border bg-secondary/40 p-6 shadow-sm'>
+    <section className='rounded-xl border border-border bg-secondary/40 p-6'>
       <div className='flex flex-col gap-2 md:flex-row md:items-end md:justify-between'>
         <div>
-          <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+          <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
             Architecture
           </p>
-          <h2 className='mt-2 text-2xl font-bold tracking-tight'>
+          <h2 className='mt-2 text-2xl font-semibold tracking-tighter'>
             How this project fits together
           </h2>
         </div>
@@ -200,10 +200,10 @@ function ProjectImageFrame({ image, priority = false, title }) {
 
   if (!imageUrl) {
     return (
-      <div className='flex min-h-80 items-center justify-center rounded-3xl border border-border bg-linear-to-br from-secondary via-background to-primary/10 p-8 text-center'>
+      <div className='flex min-h-80 items-center justify-center rounded-xl border border-border bg-card p-8 text-center'>
         <div>
           <LuLayers className='mx-auto h-10 w-10 text-muted-foreground' />
-          <p className='mt-4 text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground'>
+          <p className='mt-4 font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
             Project case study
           </p>
         </div>
@@ -212,11 +212,11 @@ function ProjectImageFrame({ image, priority = false, title }) {
   }
 
   return (
-    <div className='overflow-hidden rounded-3xl border border-border bg-muted/20 shadow-2xl'>
+    <div className='overflow-hidden rounded-xl border border-border bg-muted/20'>
       <div className='flex gap-1.5 border-border border-b bg-secondary px-4 py-3'>
-        <span className='h-2.5 w-2.5 rounded-full bg-red-400' />
-        <span className='h-2.5 w-2.5 rounded-full bg-yellow-400' />
-        <span className='h-2.5 w-2.5 rounded-full bg-green-400' />
+        <span className='h-2.5 w-2.5 rounded-full border border-border' />
+        <span className='h-2.5 w-2.5 rounded-full border border-border' />
+        <span className='h-2.5 w-2.5 rounded-full border border-border' />
       </div>
       <Image
         src={imageUrl}
@@ -238,7 +238,7 @@ function RelatedProjectCard({ project }) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className='group overflow-hidden rounded-3xl border border-border bg-card no-underline shadow-sm transition hover:-translate-y-1 hover:shadow-lg'
+      className='group overflow-hidden rounded-xl border border-border bg-card no-underline transition hover:-translate-y-0.5 hover:border-foreground/30'
     >
       <div className='h-44 overflow-hidden border-border border-b bg-muted'>
         {imageUrl ? (
@@ -251,16 +251,18 @@ function RelatedProjectCard({ project }) {
             loading='lazy'
           />
         ) : (
-          <div className='flex h-full items-center justify-center bg-secondary text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground'>
+          <div className='flex h-full items-center justify-center bg-secondary font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
             Project
           </div>
         )}
       </div>
       <div className='p-5'>
-        <p className='text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground'>
+        <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
           {getCategoryName(project)}
         </p>
-        <h3 className='mt-2 text-xl font-bold'>{project.title}</h3>
+        <h3 className='mt-2 text-xl font-semibold tracking-tighter'>
+          {project.title}
+        </h3>
         <p className='mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground'>
           {project.summary}
         </p>
@@ -292,7 +294,7 @@ export default async function ProjectPage({ params }) {
       </AnimatedContent>
 
       <AnimatedContent delay={0.1}>
-        <section className='grid gap-6 rounded-3xl border border-border bg-linear-to-br from-secondary/60 via-background to-background p-4 shadow-sm sm:p-5 lg:grid-cols-[0.9fr_1.1fr] lg:p-8'>
+        <section className='grid gap-6 rounded-xl border border-border bg-card p-4 sm:p-5 lg:grid-cols-[0.9fr_1.1fr] lg:p-8'>
           <div className='flex flex-col justify-between gap-8'>
             <div className='space-y-6'>
               <div className='flex flex-wrap gap-2'>
@@ -302,7 +304,7 @@ export default async function ProjectPage({ params }) {
               </div>
 
               <div className='space-y-4'>
-                <h1 className='text-balance text-4xl font-bold tracking-tightest sm:text-5xl md:text-6xl'>
+                <h1 className='text-balance text-4xl font-semibold tracking-tightest sm:text-5xl md:text-6xl'>
                   {project.title}
                 </h1>
                 <p className='max-w-3xl text-lg leading-8 text-muted-foreground'>
@@ -314,7 +316,7 @@ export default async function ProjectPage({ params }) {
                 {project.liveUrl && (
                   <Link
                     href={project.liveUrl}
-                    className='inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 sm:w-auto'
+                    className='inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand px-5 py-3 font-medium text-brand-foreground transition hover:bg-brand/90 sm:w-auto'
                   >
                     Visit live site <LuExternalLink className='h-4 w-4' />
                   </Link>
@@ -357,10 +359,10 @@ export default async function ProjectPage({ params }) {
 
       <AnimatedContent delay={0.15}>
         <section className='grid gap-6 lg:grid-cols-[0.7fr_1.3fr]'>
-          <div className='rounded-3xl border border-border bg-card p-6 shadow-sm'>
+          <div className='rounded-xl border border-border bg-card p-6'>
             <div className='flex items-center gap-2 text-muted-foreground'>
               <LuLayers className='h-5 w-5' />
-              <p className='text-xs font-bold uppercase tracking-[0.25em]'>
+              <p className='font-mono text-xs uppercase tracking-[0.15em]'>
                 Stack
               </p>
             </div>
@@ -406,7 +408,7 @@ export default async function ProjectPage({ params }) {
 
       {project.richContent && (
         <AnimatedContent delay={0.25}>
-          <section className='mx-auto max-w-5xl overflow-hidden rounded-3xl border border-border bg-card/40 p-5 shadow-sm sm:p-6 md:p-8'>
+          <section className='mx-auto max-w-5xl overflow-hidden rounded-xl border border-border bg-card/40 p-5 sm:p-6 md:p-8'>
             <RichText content={project.richContent} />
           </section>
         </AnimatedContent>
@@ -417,10 +419,10 @@ export default async function ProjectPage({ params }) {
           <section className='hidden space-y-6 lg:block'>
             <div className='flex items-end justify-between gap-4'>
               <div>
-                <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+                <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
                   Interactive preview
                 </p>
-                <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
+                <h2 className='mt-2 text-balance text-2xl font-semibold tracking-tighter sm:text-3xl'>
                   Try the live experience
                 </h2>
               </div>
@@ -443,10 +445,10 @@ export default async function ProjectPage({ params }) {
         <AnimatedContent delay={0.35}>
           <section className='space-y-6'>
             <div>
-              <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+              <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
                 Gallery
               </p>
-              <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
+              <h2 className='mt-2 text-balance text-2xl font-semibold tracking-tighter sm:text-3xl'>
                 Screenshots and visual notes
               </h2>
             </div>
@@ -466,7 +468,7 @@ export default async function ProjectPage({ params }) {
                   return (
                     <figure
                       key={screenshot.id ?? imageUrl}
-                      className='overflow-hidden rounded-3xl border border-border bg-card shadow-sm'
+                      className='overflow-hidden rounded-xl border border-border bg-card'
                     >
                       <Image
                         src={imageUrl}
@@ -495,10 +497,10 @@ export default async function ProjectPage({ params }) {
           <section className='space-y-6'>
             <div className='flex flex-col gap-3 md:flex-row md:items-end md:justify-between'>
               <div>
-                <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+                <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
                   Keep exploring
                 </p>
-                <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
+                <h2 className='mt-2 text-balance text-2xl font-semibold tracking-tighter sm:text-3xl'>
                   Related projects
                 </h2>
               </div>

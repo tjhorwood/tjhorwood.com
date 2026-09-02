@@ -152,8 +152,8 @@ function StrengthIcon({ label }) {
 
 function HeroStat({ label, value }) {
   return (
-    <div className='rounded-2xl border border-border bg-background/80 p-4 shadow-sm backdrop-blur'>
-      <p className='text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground'>
+    <div className='rounded-2xl border border-border bg-background/80 p-4'>
+      <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
         {label}
       </p>
       <p className='mt-2 text-lg font-bold'>{value}</p>
@@ -166,7 +166,7 @@ function ProfileImage({ profile }) {
 
   if (!imageUrl) {
     return (
-      <div className='flex h-full min-h-72 items-center justify-center rounded-3xl border border-border bg-linear-to-br from-secondary via-background to-primary/10'>
+      <div className='flex h-full min-h-72 items-center justify-center rounded-xl border border-border bg-card'>
         <div className='text-center'>
           <LuTerminal className='mx-auto h-10 w-10 text-muted-foreground' />
           <p className='mt-4 font-mono text-sm text-muted-foreground'>
@@ -178,7 +178,7 @@ function ProfileImage({ profile }) {
   }
 
   return (
-    <div className='overflow-hidden rounded-3xl border border-border bg-muted shadow-2xl'>
+    <div className='overflow-hidden rounded-xl border border-border bg-muted'>
       <Image
         src={imageUrl}
         alt={`${profile.name ?? 'Taylor Horwood'} profile photo`}
@@ -193,23 +193,24 @@ function ProfileImage({ profile }) {
 
 function AboutHero({ aboutPage, profile, resumeUrl, workCount }) {
   return (
-    <section className='grid gap-6 rounded-3xl border border-border bg-linear-to-br from-secondary/60 via-background to-background p-4 shadow-sm sm:p-6 lg:grid-cols-[1.1fr_0.9fr] lg:p-8'>
-      <div className='flex flex-col justify-between gap-8'>
+    <section className='relative grid gap-6 overflow-hidden rounded-xl border border-border bg-card p-4 sm:p-6 lg:grid-cols-[1.1fr_0.9fr] lg:p-8'>
+      <div className='pointer-events-none absolute inset-0 bg-blueprint opacity-60' />
+      <div className='relative flex flex-col justify-between gap-8'>
         <div className='space-y-6'>
           <div className='flex flex-wrap gap-2'>
-            <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm backdrop-blur'>
+            <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground'>
               DevOps / SRE
             </span>
-            <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm backdrop-blur'>
+            <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground'>
               Homelab operator
             </span>
-            <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm backdrop-blur'>
+            <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground'>
               Builder
             </span>
           </div>
 
           <div className='space-y-4'>
-            <h1 className='text-balance text-4xl font-bold tracking-tightest sm:text-5xl md:text-6xl'>
+            <h1 className='text-balance text-4xl font-semibold tracking-tightest sm:text-5xl md:text-6xl'>
               {aboutPage.title ?? 'About Me'}
             </h1>
             <p className='max-w-3xl text-pretty text-lg leading-8 text-muted-foreground sm:text-xl sm:leading-9'>
@@ -225,7 +226,7 @@ function AboutHero({ aboutPage, profile, resumeUrl, workCount }) {
           <div className='flex flex-wrap items-center gap-3'>
             <Link
               href='/projects'
-              className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 sm:w-auto'
+              className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand px-5 font-medium text-brand-foreground transition hover:bg-brand/90 sm:w-auto'
             >
               View projects <LuArrowUpRight className='h-4 w-4' />
             </Link>
@@ -239,7 +240,7 @@ function AboutHero({ aboutPage, profile, resumeUrl, workCount }) {
               <a
                 href={resumeUrl}
                 download
-                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-primary px-5 font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 sm:w-auto'
+                className='inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-brand px-5 font-medium text-brand-foreground transition hover:bg-brand/90 sm:w-auto'
               >
                 <LuDownload className='h-4 w-4' /> Resume
               </a>
@@ -254,7 +255,7 @@ function AboutHero({ aboutPage, profile, resumeUrl, workCount }) {
         </div>
       </div>
 
-      <div className='space-y-4'>
+      <div className='relative space-y-4'>
         <ProfileImage profile={profile} />
         <div className='grid grid-cols-1 gap-2 xs:grid-cols-2 sm:grid-cols-3'>
           {PERSONAL_CHIPS.map(({ icon: Icon, label }) => (
@@ -278,10 +279,10 @@ function StorySection({ paragraphs, strengths }) {
         {STORY_CARDS.map(({ description, icon: Icon, title }) => (
           <article
             key={title}
-            className='rounded-3xl border border-border bg-card p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-6'
+            className='rounded-xl border border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-foreground/30 sm:p-6'
           >
             <Icon className='h-6 w-6 text-muted-foreground' />
-            <h2 className='mt-5 text-balance text-2xl font-bold tracking-tight'>
+            <h2 className='mt-5 text-balance text-2xl font-semibold tracking-tighter'>
               {title}
             </h2>
             <p className='mt-3 leading-7 text-muted-foreground'>
@@ -292,8 +293,8 @@ function StorySection({ paragraphs, strengths }) {
       </div>
 
       <div className='grid gap-6 lg:grid-cols-[1.2fr_0.8fr]'>
-        <article className='rounded-3xl border border-border bg-card/70 p-5 shadow-sm sm:p-6 md:p-8'>
-          <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+        <article className='rounded-xl border border-border bg-card/70 p-5 sm:p-6 md:p-8'>
+          <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
             The short version
           </p>
           <div className='mt-5 space-y-5 leading-8 text-muted-foreground'>
@@ -310,7 +311,7 @@ function StorySection({ paragraphs, strengths }) {
               return (
                 <article
                   key={label}
-                  className='rounded-3xl border border-border bg-secondary/40 p-5 shadow-sm'
+                  className='rounded-xl border border-border bg-secondary/40 p-5'
                 >
                   <Icon className='h-5 w-5 text-muted-foreground' />
                   <h3 className='mt-4 font-bold'>{label}</h3>
@@ -332,12 +333,14 @@ function CapabilityPanel({ capability, technologies }) {
   const Icon = capability.icon;
 
   return (
-    <article className='rounded-3xl border border-border bg-card p-5 shadow-sm sm:p-6'>
+    <article className='rounded-xl border border-border bg-card p-5 sm:p-6'>
       <div className='flex items-center gap-3'>
         <div className='rounded-2xl border border-border bg-secondary p-3'>
           <Icon className='h-5 w-5 text-muted-foreground' />
         </div>
-        <h2 className='text-xl font-bold tracking-tight'>{capability.title}</h2>
+        <h2 className='text-xl font-semibold tracking-tighter'>
+          {capability.title}
+        </h2>
       </div>
       <div className='mt-5 flex flex-wrap gap-2'>
         {selectedTechnologies.map(({ colorClass, icon: TechIcon, name }) => (
@@ -357,10 +360,10 @@ function CapabilitiesSection({ technologies }) {
   return (
     <section className='space-y-6'>
       <div>
-        <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+        <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
           Capabilities
         </p>
-        <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
+        <h2 className='mt-2 text-balance text-2xl font-semibold tracking-tighter sm:text-3xl'>
           The stack behind the way I work
         </h2>
       </div>
@@ -379,12 +382,12 @@ function CapabilitiesSection({ technologies }) {
 
 function NowSection() {
   return (
-    <section className='grid gap-5 rounded-3xl border border-border bg-linear-to-br from-secondary via-background to-secondary/40 p-5 sm:p-6 md:grid-cols-[0.8fr_1.2fr] md:p-8'>
+    <section className='grid gap-5 rounded-xl border border-border bg-card p-5 sm:p-6 md:grid-cols-[0.8fr_1.2fr] md:p-8'>
       <div>
-        <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+        <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
           Now
         </p>
-        <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
+        <h2 className='mt-2 text-balance text-2xl font-semibold tracking-tighter sm:text-3xl'>
           What I am currently exploring
         </h2>
       </div>
@@ -392,7 +395,7 @@ function NowSection() {
         {NOW_ITEMS.map((item) => (
           <div
             key={item}
-            className='rounded-2xl border border-border bg-background/80 p-4 leading-7 text-muted-foreground shadow-sm'
+            className='rounded-2xl border border-border bg-background/80 p-4 leading-7 text-muted-foreground'
           >
             {item}
           </div>
@@ -407,10 +410,10 @@ function WorkTimeline({ items }) {
     <section className='space-y-6'>
       <div className='flex flex-col gap-3 md:flex-row md:items-end md:justify-between'>
         <div>
-          <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+          <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
             Work
           </p>
-          <h2 className='mt-2 text-balance text-2xl font-bold tracking-tight sm:text-3xl'>
+          <h2 className='mt-2 text-balance text-2xl font-semibold tracking-tighter sm:text-3xl'>
             Experience timeline
           </h2>
         </div>
@@ -428,7 +431,7 @@ function WorkTimeline({ items }) {
               key={`${item.company}-${item.title}-${item.time}`}
               className='relative pl-11 sm:pl-14'
             >
-              <div className='absolute top-5 left-0 flex h-8 w-8 items-center sm:h-10 sm:w-10 justify-center rounded-full border border-border bg-background shadow-sm'>
+              <div className='absolute top-5 left-0 flex h-8 w-8 items-center sm:h-10 sm:w-10 justify-center rounded-full border border-border bg-background'>
                 {logoUrl ? (
                   <Image
                     src={logoUrl}
@@ -442,7 +445,7 @@ function WorkTimeline({ items }) {
                   <LuBriefcaseBusiness className='h-4 w-4 text-muted-foreground' />
                 )}
               </div>
-              <article className='rounded-3xl border border-border bg-card p-4 shadow-sm sm:p-5'>
+              <article className='rounded-xl border border-border bg-card p-4 sm:p-5'>
                 <div className='flex flex-col gap-2 md:flex-row md:items-start md:justify-between'>
                   <div>
                     <h3 className='text-balance text-lg font-bold sm:text-xl'>
@@ -491,14 +494,14 @@ function CrossLinks() {
         <Link
           key={item.href}
           href={item.href}
-          className='group rounded-3xl border border-border bg-card p-5 no-underline shadow-sm transition hover:-translate-y-1 hover:shadow-lg sm:p-6'
+          className='group rounded-xl border border-border bg-card p-5 no-underline transition hover:-translate-y-0.5 hover:border-foreground/30 sm:p-6'
         >
-          <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+          <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
             {item.label}
           </p>
-          <h2 className='mt-3 flex items-center justify-between text-2xl font-bold'>
+          <h2 className='mt-3 flex items-center justify-between text-2xl font-semibold tracking-tighter'>
             {item.title}
-            <LuArrowUpRight className='h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1' />
+            <LuArrowUpRight className='h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-1' />
           </h2>
         </Link>
       ))}

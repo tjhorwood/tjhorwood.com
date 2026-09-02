@@ -47,9 +47,9 @@ export default function Header({ links = defaultLinks }) {
   return (
     <header
       ref={headerRef}
-      className='sticky top-0 z-20 mx-auto h-16 max-w-screen-3xl border-border border-b bg-background/95 backdrop-blur md:h-18'
+      className='sticky top-0 z-20 mx-auto h-16 max-w-screen-3xl border-border border-b bg-background/80 backdrop-blur-md md:h-18'
     >
-      <nav className='mx-auto flex h-full items-center justify-between gap-2 px-3 py-2 sm:px-4 md:py-3'>
+      <nav className='mx-auto flex h-full max-w-6xl items-center justify-between gap-2 px-4 py-2 sm:px-6 md:py-3'>
         <Link
           href='/'
           className='shrink-0 cursor-pointer text-primary'
@@ -59,7 +59,7 @@ export default function Header({ links = defaultLinks }) {
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className='hidden items-center gap-1 md:flex'>
+        <ul className='hidden items-center gap-1 md:flex font-mono text-sm'>
           {links.map(({ id, href, label }) => (
             <li key={id}>
               <NavLink href={href}>{label}</NavLink>
@@ -83,16 +83,16 @@ export default function Header({ links = defaultLinks }) {
       </nav>
       {/* Mobile Menu */}
       {isOpen && (
-        <div className='absolute inset-x-3 top-full rounded-2xl border border-border bg-background p-2 shadow-xl md:hidden'>
-          <div className='flex flex-col items-stretch gap-2'>
+        <div className='absolute inset-x-4 top-full rounded-xl border border-border bg-background p-2 md:hidden'>
+          <div className='flex flex-col items-stretch gap-2 font-mono text-sm'>
             {links.map(({ id, href, label }) => (
               <Button
                 key={id}
                 asChild
-                variant='default'
+                variant='secondary'
                 size='lg'
                 className={cn(
-                  'h-12 w-full justify-start rounded-xl text-primary',
+                  'h-12 w-full justify-start rounded-lg text-foreground',
                   interactiveSurfaceClass,
                 )}
               >

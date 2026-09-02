@@ -2,7 +2,7 @@
 
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
-import { CgDarkMode } from 'react-icons/cg';
+import { LuMoon, LuSun } from 'react-icons/lu';
 import { Button } from '@/components/ui/button';
 
 export function ThemeSwitcher() {
@@ -28,9 +28,13 @@ export function ThemeSwitcher() {
       onClick={toggleTheme}
       variant='secondary'
       size='icon'
-      className='cursor-pointer border-transparent border hover:border-border bg-background hover:bg-secondary shadow-none'
+      className='cursor-pointer border border-border bg-background hover:bg-secondary hover:border-foreground/30'
     >
-      <CgDarkMode className='size-6' />
+      {resolvedTheme === 'dark' ? (
+        <LuSun className='size-5' />
+      ) : (
+        <LuMoon className='size-5' />
+      )}
       <span className='sr-only'>Toggle theme</span>
     </Button>
   );

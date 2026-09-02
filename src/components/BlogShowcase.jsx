@@ -46,15 +46,14 @@ function TopicArtwork({ featured = false, post }) {
   const topic = taxonomy[0] ?? 'Blog';
 
   return (
-    <div className='relative flex h-full min-h-64 overflow-hidden bg-linear-to-br from-secondary via-background to-primary/10 p-6'>
-      <div className='absolute inset-0 opacity-40 [background-image:linear-gradient(to_right,currentColor_1px,transparent_1px),linear-gradient(to_bottom,currentColor_1px,transparent_1px)] [background-size:28px_28px] text-border' />
-      <div className='absolute top-8 right-8 h-32 w-32 rounded-full bg-primary/10 blur-3xl' />
-      <div className='relative mt-auto w-full rounded-2xl border border-border bg-background/80 p-4 shadow-sm backdrop-blur'>
+    <div className='relative flex h-full min-h-64 overflow-hidden bg-card p-6'>
+      <div className='absolute inset-0 bg-blueprint opacity-70' />
+      <div className='relative mt-auto w-full rounded-2xl border border-border bg-background/80 p-4'>
         <div className='mb-4 flex items-center gap-2 text-muted-foreground'>
           <LuTerminal className='h-4 w-4' />
           <span className='font-mono text-xs'>~/notes/{post.slug}</span>
         </div>
-        <p className='text-xs font-bold uppercase tracking-[0.3em] text-muted-foreground'>
+        <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
           {topic}
         </p>
         <div className='mt-4 space-y-2 font-mono text-xs text-muted-foreground'>
@@ -64,7 +63,7 @@ function TopicArtwork({ featured = false, post }) {
         </div>
       </div>
       {featured && (
-        <span className='absolute top-5 left-5 rounded-full border border-border bg-background/90 px-3 py-1 text-xs font-semibold shadow-sm backdrop-blur'>
+        <span className='absolute top-5 left-5 rounded-full border border-border bg-background/90 px-3 py-1 text-xs font-semibold'>
           Featured guide
         </span>
       )}
@@ -129,7 +128,7 @@ function FeaturedPost({ post }) {
   if (!post) return null;
 
   return (
-    <article className='group overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-xl'>
+    <article className='group overflow-hidden rounded-xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-foreground/30'>
       <Link
         href={`/blog/${post.slug}`}
         className='grid no-underline lg:min-h-[30rem] lg:grid-cols-[1.15fr_0.85fr]'
@@ -140,7 +139,7 @@ function FeaturedPost({ post }) {
         <div className='flex flex-col gap-6 p-6 md:p-8'>
           <div className='space-y-4'>
             <MetaRow post={post} />
-            <h2 className='text-balance text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl'>
+            <h2 className='text-balance text-2xl font-semibold tracking-tighter sm:text-3xl md:text-4xl'>
               {post.title}
             </h2>
             {post.excerpt && (
@@ -161,7 +160,7 @@ function FeaturedPost({ post }) {
 
 function PostCard({ post }) {
   return (
-    <article className='group h-full overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg'>
+    <article className='group h-full overflow-hidden rounded-xl border border-border bg-card transition hover:-translate-y-0.5 hover:border-foreground/30'>
       <Link
         href={`/blog/${post.slug}`}
         className='flex h-full flex-col no-underline'
@@ -171,7 +170,7 @@ function PostCard({ post }) {
         </div>
         <div className='flex flex-1 flex-col gap-4 p-5'>
           <MetaRow post={post} />
-          <h2 className='text-balance text-xl font-bold tracking-tight sm:text-2xl'>
+          <h2 className='text-balance text-xl font-semibold tracking-tighter sm:text-2xl'>
             {post.title}
           </h2>
           {post.excerpt && (
@@ -209,9 +208,9 @@ export default function BlogShowcase({ posts }) {
 
   return (
     <section className='space-y-8'>
-      <div className='flex flex-col gap-4 rounded-3xl border border-border bg-secondary/40 p-4 md:flex-row md:items-center md:justify-between'>
+      <div className='flex flex-col gap-4 rounded-xl border border-border bg-secondary/40 p-4 md:flex-row md:items-center md:justify-between'>
         <div>
-          <p className='text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground'>
+          <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
             Blog
           </p>
           <p className='mt-1 text-sm text-muted-foreground'>
@@ -225,9 +224,9 @@ export default function BlogShowcase({ posts }) {
               type='button'
               onClick={() => setActiveTopic(topic)}
               className={cn(
-                'shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition',
+                'shrink-0 rounded-full border px-3.5 py-1.5 font-mono text-xs uppercase tracking-[0.08em] transition-colors',
                 activeTopic === topic
-                  ? 'border-primary bg-primary text-primary-foreground'
+                  ? 'border-brand bg-brand text-brand-foreground'
                   : 'border-border bg-background text-muted-foreground hover:text-foreground',
               )}
             >
@@ -247,12 +246,12 @@ export default function BlogShowcase({ posts }) {
         </div>
       )}
 
-      <div className='grid gap-4 rounded-3xl border border-border bg-linear-to-br from-secondary via-background to-secondary/40 p-6 md:grid-cols-[1fr_auto] md:items-center'>
+      <div className='grid gap-4 rounded-xl border border-border bg-card p-6 md:grid-cols-[1fr_auto] md:items-center'>
         <div>
-          <p className='text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground'>
+          <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
             Follow along
           </p>
-          <h2 className='mt-2 text-2xl font-bold tracking-tight'>
+          <h2 className='mt-2 text-2xl font-semibold tracking-tighter'>
             Practical notes from things I am building and operating.
           </h2>
           <p className='mt-2 text-muted-foreground'>
