@@ -66,11 +66,21 @@ export const Projects: CollectionConfig = {
       type: 'select',
     },
     {
+      admin: {
+        description:
+          "Show this project in the homepage 'Selected projects' section (max 3).",
+        position: 'sidebar',
+      },
       defaultValue: false,
       name: 'featured',
       type: 'checkbox',
     },
     {
+      admin: {
+        description:
+          'Order within the homepage showcase — lowest number shown first.',
+        position: 'sidebar',
+      },
       defaultValue: 0,
       name: 'featuredOrder',
       type: 'number',

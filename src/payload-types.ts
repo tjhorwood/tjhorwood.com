@@ -310,7 +310,13 @@ export interface Project {
   summary: string;
   lifecycle?: ('active' | 'completed' | 'archived' | 'concept') | null;
   projectType: 'web' | 'application' | 'homelab' | 'open-source' | 'other';
+  /**
+   * Show this project in the homepage 'Selected projects' section (max 3).
+   */
   featured?: boolean | null;
+  /**
+   * Order within the homepage showcase — lowest number shown first.
+   */
   featuredOrder?: number | null;
   visibility: 'public' | 'unlisted' | 'private';
   heroImage?: (number | null) | Media;

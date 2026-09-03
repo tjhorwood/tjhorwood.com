@@ -6,7 +6,7 @@ import Link from '@/components/Link';
 import { getMediaAlt, getMediaUrl } from '@/lib/media';
 import { getProfile } from '@/payload/queries/getGlobals';
 import { getPosts } from '@/payload/queries/getPosts';
-import { getProjects } from '@/payload/queries/getProjects';
+import { getFeaturedProjects } from '@/payload/queries/getProjects';
 
 export const dynamic = 'force-dynamic';
 
@@ -65,10 +65,10 @@ function ProjectRow({ project }) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className='group flex items-start gap-5 py-6 no-underline'
+      className='group flex flex-col gap-4 py-6 no-underline sm:flex-row sm:items-start sm:gap-6'
     >
       {imageUrl && (
-        <div className='hidden w-28 shrink-0 overflow-hidden rounded-lg border border-border bg-muted sm:block'>
+        <div className='w-full shrink-0 overflow-hidden rounded-lg border border-border bg-muted sm:w-56 lg:w-72'>
           <Image
             src={imageUrl}
             alt={getMediaAlt(image, project.title)}
@@ -131,9 +131,9 @@ function PostRow({ post }) {
 }
 
 export default async function Home() {
-  const [profile, projects, posts] = await Promise.all([
+  const [profile, featuredProjects, posts] = await Promise.all([
     getProfile(),
-    getProjects(),
+    getFeaturedProjects(3),
     getPosts(),
   ]);
 
@@ -142,7 +142,6 @@ export default async function Home() {
     '/api/payload/media/file/profile.webp',
   );
   const resumeUrl = getMediaUrl(profile.resume);
-  const featuredProjects = projects.docs.slice(0, 3);
   const latestPosts = posts.docs.slice(0, 3);
   const socialLinks = (profile.socialLinks ?? [])
     .slice()

@@ -47,9 +47,9 @@ export default function Header({ links = defaultLinks }) {
   return (
     <header
       ref={headerRef}
-      className='sticky top-0 z-20 mx-auto h-16 max-w-screen-3xl border-border border-b bg-background/80 backdrop-blur-md md:h-18'
+      className='sticky top-0 z-20 mx-auto h-16 border-border border-b bg-background/80 backdrop-blur-md md:h-18 w-full'
     >
-      <nav className='mx-auto flex h-full max-w-6xl items-center justify-between gap-2 px-4 py-2 sm:px-6 md:py-3'>
+      <nav className='mx-auto flex h-full max-w-screen-3xl items-center justify-between gap-2 px-4 py-2 sm:px-6 md:py-3'>
         <Link
           href='/'
           className='shrink-0 cursor-pointer text-primary'
