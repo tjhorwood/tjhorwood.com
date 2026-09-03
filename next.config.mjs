@@ -33,6 +33,7 @@ const nextConfig = {
       },
     ];
   },
+  allowedDevOrigins: ['192.168.4.253'],
   images: {
     remotePatterns: [
       {

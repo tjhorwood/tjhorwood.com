@@ -32,6 +32,8 @@ services:
       GARAGE_DEFAULT_SECRET_KEY: ${S3_SECRET_ACCESS_KEY:?set S3_SECRET_ACCESS_KEY in .env}
       GARAGE_METRICS_TOKEN: ${GARAGE_METRICS_TOKEN:?set GARAGE_METRICS_TOKEN in .env}
       GARAGE_RPC_SECRET: ${GARAGE_RPC_SECRET:?set GARAGE_RPC_SECRET in .env}
+    ports:
+      - "127.0.0.1:3900:3900"
     expose:
       - '3900'
       - '3901'
@@ -71,7 +73,7 @@ services:
       S3_ENDPOINT: ${S3_ENDPOINT:-http://garage:3900}
       S3_REGION: ${S3_REGION:-garage}
       S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:?set S3_SECRET_ACCESS_KEY in .env}
-    image: thorwood/tjhorwood:latest
+    image: registry.tjhorwood.com/tjhorwood/tjhorwood:latest
     ports:
       - '3000:3000'
     restart: unless-stopped
