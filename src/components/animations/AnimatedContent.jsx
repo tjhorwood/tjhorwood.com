@@ -1,83 +1,23 @@
-'use client';
+import { cn } from '@/lib/utils';
 
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useRef } from 'react';
-
-gsap.registerPlugin(ScrollTrigger);
-
-const AnimatedContent = ({
+/**
+ * Minimal one-shot entrance: a short fade + rise that runs on render via a
+ * pure CSS animation. No scroll dependency, no animation library, no
+ * hydration gate — the content is always rendered and ends fully visible
+ * even if the animation is skipped (see `prefers-reduced-motion` in
+ * globals.css). Prop surface kept compatible with the previous version.
+ */
+export default function AnimatedContent({
   children,
   className = '',
-  distance = 24,
-  direction = 'vertical',
-  reverse = false,
-  duration = 0.5,
-  ease = 'power2.out',
-  initialOpacity = 0,
-  animateOpacity = true,
-  scale = 1,
-  threshold = 0,
   delay = 0,
-  onComplete,
-}) => {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const axis = direction === 'horizontal' ? 'x' : 'y';
-    const offset = reverse ? -distance : distance;
-    const startPct = (1 - threshold) * 100;
-
-    gsap.set(el, {
-      [axis]: offset,
-      opacity: animateOpacity ? initialOpacity : 1,
-      scale,
-    });
-
-    gsap.to(el, {
-      [axis]: 0,
-      delay,
-      duration,
-      ease,
-      onComplete,
-      opacity: 1,
-      scale: 1,
-      scrollTrigger: {
-        once: true,
-        start: `top ${startPct}%`,
-        toggleActions: 'play none none none',
-        trigger: el,
-      },
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => {
-        t.kill();
-      });
-      gsap.killTweensOf(el);
-    };
-  }, [
-    distance,
-    direction,
-    reverse,
-    duration,
-    ease,
-    initialOpacity,
-    animateOpacity,
-    scale,
-    threshold,
-    delay,
-    onComplete,
-  ]);
-
+}) {
   return (
-    <div ref={ref} className={className}>
+    <div
+      className={cn('animate-rise-in', className)}
+      style={delay ? { animationDelay: `${delay}s` } : undefined}
+    >
       {children}
     </div>
   );
-};
-
-export default AnimatedContent;
+}

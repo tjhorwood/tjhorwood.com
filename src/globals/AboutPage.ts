@@ -9,11 +9,17 @@ export const AboutPage: GlobalConfig = {
   },
   admin: {
     group: 'Pages',
+    livePreview: {
+      url: '/about',
+    },
   },
   fields: [
     { defaultValue: 'About Me', name: 'title', required: true, type: 'text' },
     { defaultValue: 'Just a quick glimpse.', name: 'intro', type: 'text' },
     {
+      admin: {
+        description: 'The main "short version" story, one paragraph per row.',
+      },
       fields: [{ name: 'content', required: true, type: 'textarea' }],
       name: 'paragraphs',
       type: 'array',

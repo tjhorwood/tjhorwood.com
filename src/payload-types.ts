@@ -912,6 +912,9 @@ export interface AboutPage {
   id: number;
   title: string;
   intro?: string | null;
+  /**
+   * The main "short version" story, one paragraph per row.
+   */
   paragraphs?:
     | {
         content: string;

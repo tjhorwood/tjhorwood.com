@@ -26,7 +26,7 @@ export default function RootNotFound() {
           <div>
             <Link
               href='/'
-              className='inline-flex h-11 items-center justify-center rounded-lg bg-brand px-5 text-sm font-medium text-brand-foreground no-underline transition hover:bg-brand/90'
+              className='inline-flex h-11 items-center justify-center rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground no-underline transition hover:bg-primary/90'
             >
               Return home
             </Link>

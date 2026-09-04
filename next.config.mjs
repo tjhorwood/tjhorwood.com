@@ -25,6 +25,7 @@ const securityHeaders = [
 ];
 
 const nextConfig = {
+  allowedDevOrigins: ['192.168.4.253', "100.91.6.124"],
   async headers() {
     return [
       {
@@ -33,7 +34,6 @@ const nextConfig = {
       },
     ];
   },
-  allowedDevOrigins: ['192.168.4.253'],
   images: {
     remotePatterns: [
       {

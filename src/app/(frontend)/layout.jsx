@@ -1,9 +1,11 @@
 import Script from 'next/script';
+import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
+import RefreshRouteOnSave from '@/components/RefreshRouteOnSave';
 import { getMediaUrl } from '@/lib/media';
 import { mediaAbsoluteUrl, normalizeSiteUrl } from '@/lib/seo';
-import { getSiteSettings } from '@/payload/queries/getGlobals';
+import { getProfile, getSiteSettings } from '@/payload/queries/getGlobals';
 import '@/styles/globals.css';
 
 export async function generateMetadata() {
@@ -50,7 +52,14 @@ export async function generateMetadata() {
 }
 
 export default async function RootLayout({ children }) {
-  const settings = await getSiteSettings();
+  const [settings, profile] = await Promise.all([
+    getSiteSettings(),
+    getProfile(),
+  ]);
+
+  const navLinks = (settings.navLinks ?? [])
+    .toSorted((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+    .filter(({ href }) => href !== '/');
 
   return (
     <html lang='en' className='scrollbar-hide' suppressHydrationWarning>
@@ -74,20 +83,18 @@ export default async function RootLayout({ children }) {
             `,
           }}
         />
+        <RefreshRouteOnSave />
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
           enableSystem
           disableTransitionOnChange
         >
-          <Header
-            links={(settings.navLinks ?? [])
-              .toSorted((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
-              .filter(({ href }) => href !== '/')}
-          />
-          <div className='mx-auto max-w-screen-2xl px-4 pt-10 pb-24 sm:px-6 md:pt-16 md:pb-40'>
+          <Header links={navLinks} email={profile.email} />
+          <div className='mx-auto w-full max-w-6xl px-4 pt-10 pb-20 sm:px-6 md:pt-16 md:pb-28 lg:px-10 2xl:max-w-[84rem] 3xl:max-w-[90rem]'>
             <main className='grow'>{children}</main>
           </div>
+          <Footer profile={profile} links={navLinks} />
         </ThemeProvider>
       </body>
     </html>

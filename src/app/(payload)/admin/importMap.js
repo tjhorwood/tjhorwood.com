@@ -32,6 +32,8 @@ import {
   RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
 } from '@payloadcms/richtext-lexical/rsc';
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client';
+import { Icon as Icon_22ecfa0add6ea3a2202bd7524740e10d } from '../../../components/admin/Icon.tsx';
+import { Logo as Logo_f6725385e1c85d4569908fa222b1f780 } from '../../../components/admin/Logo.tsx';
 
 /** @type import('payload').ImportMap */
 export const importMap = {
@@ -95,4 +97,6 @@ export const importMap = {
     RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   '@payloadcms/storage-s3/client#S3ClientUploadHandler':
     S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
+  '/components/admin/Icon.tsx#Icon': Icon_22ecfa0add6ea3a2202bd7524740e10d,
+  '/components/admin/Logo.tsx#Logo': Logo_f6725385e1c85d4569908fa222b1f780,
 };

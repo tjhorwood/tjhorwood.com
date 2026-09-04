@@ -21,7 +21,7 @@ function CodeSnippetBlock({ fields }) {
     <figure className='not-prose my-8 overflow-hidden rounded-xl border border-border bg-secondary'>
       <figcaption className='flex items-center justify-between border-border border-b px-4 py-2.5 font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
         <span>Code snippet</span>
-        <span className='text-brand'>{language}</span>
+        <span className='text-foreground'>{language}</span>
       </figcaption>
       <pre className='overflow-x-auto p-4 font-mono text-xs leading-6 sm:text-sm'>
         <code>{code}</code>
@@ -111,7 +111,7 @@ export default function RichText({ content }) {
   const nodes = content?.root?.children;
   if (!Array.isArray(nodes) || nodes.length === 0) return null;
   return (
-    <div className='prose prose-neutral max-w-none overflow-hidden break-words prose-sm dark:prose-invert sm:prose-lg prose-headings:font-semibold prose-headings:tracking-tighter prose-a:font-medium prose-a:text-foreground prose-a:decoration-brand prose-a:decoration-2 prose-a:underline-offset-4 hover:prose-a:text-brand prose-img:rounded-xl prose-img:border prose-img:border-border prose-code:rounded prose-code:bg-secondary prose-code:px-1.5 prose-code:py-0.5 prose-code:font-mono prose-code:text-sm prose-code:font-normal prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none prose-blockquote:border-l-brand'>
+    <div className='prose prose-neutral max-w-none overflow-hidden break-words prose-sm dark:prose-invert sm:prose-lg prose-headings:font-semibold prose-headings:tracking-tighter prose-a:font-medium prose-a:text-foreground prose-a:decoration-foreground/40 prose-a:decoration-2 prose-a:underline-offset-4 hover:prose-a:decoration-foreground prose-img:rounded-2xl prose-img:border prose-img:border-border prose-code:rounded prose-code:bg-secondary prose-code:px-1.5 prose-code:py-0.5 prose-code:font-mono prose-code:text-sm prose-code:font-normal prose-code:text-foreground prose-code:before:content-none prose-code:after:content-none prose-blockquote:border-l-border'>
       {renderChildren(nodes)}
     </div>
   );

@@ -9,6 +9,9 @@ export const Profile: GlobalConfig = {
   },
   admin: {
     group: 'Content',
+    livePreview: {
+      url: '/',
+    },
   },
   fields: [
     { name: 'name', required: true, type: 'text' },

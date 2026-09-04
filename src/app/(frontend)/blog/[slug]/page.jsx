@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import BlogReadingProgress from '@/components/BlogReadingProgress';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import PageIntro from '@/components/PageIntro';
 import RichText from '@/components/RichText';
 import { mediaAbsoluteUrl, normalizeSiteUrl } from '@/lib/seo';
 import { getSiteSettings } from '@/payload/queries/getGlobals';
@@ -100,43 +99,40 @@ export default async function BlogPost({ params }) {
   return (
     <>
       <BlogReadingProgress />
-      <article className='mx-auto flex max-w-6xl flex-col gap-8 sm:gap-10'>
-        <div>
+      <article className='mx-auto flex max-w-3xl flex-col gap-10'>
+        <header>
           <Breadcrumbs
             parentHref='/blog'
             parentLabel='Blog'
             title={post.title}
           />
-          <div className='rounded-xl border border-border bg-secondary/40 p-4 sm:p-5 md:p-8'>
-            <div className='flex flex-wrap items-center gap-3 pb-6 text-sm font-medium text-muted-foreground'>
-              <span>{readingTime} min read</span>
-              {publishedDate && (
-                <>
-                  <span aria-hidden='true'>•</span>
-                  <time dateTime={post.publishedAt}>{publishedDate}</time>
-                </>
-              )}
-            </div>
-            <PageIntro title={post.title} descriptions={post.excerpt} />
-          </div>
-        </div>
+          <p className='font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground'>
+            {[publishedDate, `${readingTime} min read`]
+              .filter(Boolean)
+              .join('  ·  ')}
+          </p>
+          <h1 className='mt-4 text-display font-semibold'>{post.title}</h1>
+          {post.excerpt && (
+            <p className='mt-5 text-pretty text-lg leading-8 text-muted-foreground'>
+              {post.excerpt}
+            </p>
+          )}
+        </header>
 
         {coverImageUrl && (
-          <div className='overflow-hidden rounded-xl border border-border bg-muted/20'>
+          <div className='overflow-hidden rounded-3xl border border-border bg-muted'>
             <Image
               src={coverImageUrl}
               alt={coverImage?.alt || post.title}
               width={coverImageDimensions.width}
               height={coverImageDimensions.height}
-              className='max-h-[34rem] min-h-56 w-full object-cover'
+              className='max-h-[32rem] min-h-56 w-full object-cover'
               priority
             />
           </div>
         )}
 
-        <div className='mx-auto w-full max-w-6xl'>
-          <RichText content={post.content} />
-        </div>
+        <RichText content={post.content} />
       </article>
     </>
   );

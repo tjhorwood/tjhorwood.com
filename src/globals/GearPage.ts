@@ -9,6 +9,9 @@ export const GearPage: GlobalConfig = {
   },
   admin: {
     group: 'Pages',
+    livePreview: {
+      url: '/gear',
+    },
   },
   fields: [
     { defaultValue: 'Gear', name: 'title', required: true, type: 'text' },

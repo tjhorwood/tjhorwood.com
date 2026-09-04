@@ -6,92 +6,95 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design language: near-monochrome canvas + one electric-lime accent used
- * sparingly. No drop shadows — elevation comes from hairline borders and tone.
- * Light = "warm paper", dark = "void command center".
+ * Design language: pure-monochrome zinc system, card-forward (Awesomic-style).
+ * No drop shadows — elevation comes from hairline borders and tone. Big rounded
+ * cards, inverted dark feature blocks. Colour appears only in photography and
+ * tech icons. Light = white/zinc paper, dark = zinc-950 void. No accent hue.
  */
 :root {
-  --radius: 0.625rem;
+  --radius: 1rem;
 
-  --background: #f6f4ee;
-  --foreground: #191917;
+  --background: #fafafa;
+  --foreground: #18181b;
   --card: #ffffff;
-  --card-foreground: #191917;
+  --card-foreground: #18181b;
   --popover: #ffffff;
-  --popover-foreground: #191917;
-  --primary: #191917;
-  --primary-foreground: #f6f4ee;
-  --secondary: #edeae1;
-  --secondary-foreground: #191917;
-  --muted: #edeae1;
-  --muted-foreground: #63615a;
-  --accent: #e6e2d6;
-  --accent-foreground: #191917;
+  --popover-foreground: #18181b;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #52525b;
+  --accent: #ececee;
+  --accent-foreground: #18181b;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
-  --border: #d5d1c3;
-  --border-strong: #191917;
-  --input: #d5d1c3;
-  --ring: #b8d900;
+  --border: #e4e4e7;
+  --border-strong: #18181b;
+  --input: #e4e4e7;
+  --ring: #71717a;
 
-  --brand: #b8d900;
-  --brand-foreground: #1a1a1a;
+  /* No accent hue — kept as tokens so existing `brand` utilities resolve to
+   * plain foreground-on-background (monochrome). */
+  --brand: var(--foreground);
+  --brand-foreground: var(--background);
 
-  --chart-1: #b8d900;
-  --chart-2: #1a1a1a;
-  --chart-3: #6b6b63;
-  --chart-4: #a4a49a;
-  --chart-5: #d8d6cc;
+  --chart-1: #18181b;
+  --chart-2: #52525b;
+  --chart-3: #a1a1aa;
+  --chart-4: #d4d4d8;
+  --chart-5: #ececee;
 
   --sidebar: #ffffff;
-  --sidebar-foreground: #1a1a1a;
-  --sidebar-primary: #1a1a1a;
-  --sidebar-primary-foreground: #fafaf7;
-  --sidebar-accent: #f1f0ea;
-  --sidebar-accent-foreground: #1a1a1a;
-  --sidebar-border: #e5e3db;
-  --sidebar-ring: #b8d900;
+  --sidebar-foreground: #18181b;
+  --sidebar-primary: #18181b;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f4f4f5;
+  --sidebar-accent-foreground: #18181b;
+  --sidebar-border: #e4e4e7;
+  --sidebar-ring: #71717a;
 }
 
 .dark {
-  --background: #08090a;
-  --foreground: #f7f8f8;
-  --card: #0f1011;
-  --card-foreground: #f7f8f8;
-  --popover: #0f1011;
-  --popover-foreground: #f7f8f8;
-  --primary: #f7f8f8;
-  --primary-foreground: #08090a;
-  --secondary: #161718;
-  --secondary-foreground: #f7f8f8;
-  --muted: #161718;
-  --muted-foreground: #a7a7a7;
-  --accent: #1d1e1f;
-  --accent-foreground: #f7f8f8;
+  --background: #09090b;
+  --foreground: #fafafa;
+  --card: #18181b;
+  --card-foreground: #fafafa;
+  --popover: #18181b;
+  --popover-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #09090b;
+  --secondary: #27272a;
+  --secondary-foreground: #fafafa;
+  --muted: #27272a;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #fafafa;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #23252a;
-  --border-strong: #383b3f;
-  --input: #23252a;
-  --ring: #d4f24e;
+  --border: #27272a;
+  --border-strong: #3f3f46;
+  --input: #27272a;
+  --ring: #a1a1aa;
 
-  --brand: #d4f24e;
-  --brand-foreground: #08090a;
+  --brand: var(--foreground);
+  --brand-foreground: var(--background);
 
-  --chart-1: #d4f24e;
-  --chart-2: #f7f8f8;
-  --chart-3: #a7a7a7;
-  --chart-4: #6c6f75;
-  --chart-5: #383b3f;
+  --chart-1: #fafafa;
+  --chart-2: #a1a1aa;
+  --chart-3: #71717a;
+  --chart-4: #3f3f46;
+  --chart-5: #27272a;
 
-  --sidebar: #0f1011;
-  --sidebar-foreground: #f7f8f8;
-  --sidebar-primary: #f7f8f8;
-  --sidebar-primary-foreground: #08090a;
-  --sidebar-accent: #161718;
-  --sidebar-accent-foreground: #f7f8f8;
-  --sidebar-border: #23252a;
-  --sidebar-ring: #d4f24e;
+  --sidebar: #18181b;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #fafafa;
+  --sidebar-primary-foreground: #09090b;
+  --sidebar-accent: #27272a;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #27272a;
+  --sidebar-ring: #a1a1aa;
 }
 
 @theme {
@@ -110,6 +113,19 @@
 
   --tracking-tightest: -0.04em;
   --tracking-tighter: -0.028em;
+
+  /* Editorial type scale — one confident display step, one headline step.
+   * clamp() min values are sized for a ~320px viewport so long words
+   * ("Infrastructure", "National League Gaming") never overflow on phones. */
+  --text-display: clamp(2.375rem, 1.55rem + 4.1vw, 4.75rem);
+  --text-display--line-height: 1.03;
+  --text-display--letter-spacing: -0.038em;
+  --text-headline: clamp(1.625rem, 1.3rem + 1.6vw, 2.5rem);
+  --text-headline--line-height: 1.12;
+  --text-headline--letter-spacing: -0.03em;
+  --text-title: clamp(1.1875rem, 1.08rem + 0.55vw, 1.5rem);
+  --text-title--line-height: 1.25;
+  --text-title--letter-spacing: -0.02em;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -138,10 +154,12 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 4px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -158,21 +176,6 @@
   }
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-}
-
-/* Subtle blueprint grid for hero panels and empty states. */
-@utility bg-blueprint {
-  background-image: linear-gradient(
-      to right,
-      color-mix(in oklab, var(--color-border) 55%, transparent) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      color-mix(in oklab, var(--color-border) 55%, transparent) 1px,
-      transparent 1px
-    );
-  background-size: 32px 32px;
 }
 
 @layer base {
@@ -194,11 +197,100 @@
   h3,
   h4 {
     letter-spacing: var(--tracking-tighter);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   ::selection {
-    background-color: var(--color-brand);
-    color: var(--color-brand-foreground);
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+}
+
+/* Inverted feature block — flips to the opposite end of the zinc ramp in both
+ * themes (light page → near-black block, dark page → near-white block). Used
+ * for the site footer CTA and case-study call-outs. Remaps the child-facing
+ * surface tokens so `text-muted-foreground`, `border-border`, `bg-secondary`
+ * etc. keep working inside the block. */
+@utility surface-invert {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+  --color-foreground: var(--color-primary-foreground);
+  --color-background: var(--color-primary);
+  --color-muted-foreground: color-mix(
+    in oklab,
+    var(--color-primary-foreground) 62%,
+    transparent
+  );
+  --color-border: color-mix(
+    in oklab,
+    var(--color-primary-foreground) 16%,
+    transparent
+  );
+  --color-secondary: color-mix(
+    in oklab,
+    var(--color-primary-foreground) 10%,
+    transparent
+  );
+  --color-card: color-mix(
+    in oklab,
+    var(--color-primary-foreground) 6%,
+    transparent
+  );
+}
+
+/* One-shot entrance used by <AnimatedContent>. Runs on render; if animations
+ * are unavailable or reduced, the element simply shows at its final state. */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-rise-in {
+  animation: rise-in 0.5s ease-out both;
+}
+
+/* Section divider: content sits on the bare canvas, separated by a single
+ * hairline that floats in a balanced band of whitespace — equal space above
+ * and below the rule. This utility owns the entire inter-section rhythm, so
+ * the page wrapper must NOT also add a flex `gap` or `space-y` between them. */
+@utility section-rule {
+  margin-top: calc(var(--spacing) * 12);
+  border-top: 1px solid
+    color-mix(in oklab, var(--color-border) 70%, transparent);
+  padding-top: calc(var(--spacing) * 12);
+
+  @media (min-width: 768px) {
+    margin-top: calc(var(--spacing) * 16);
+    padding-top: calc(var(--spacing) * 16);
+  }
+
+  @media (min-width: 1280px) {
+    margin-top: calc(var(--spacing) * 20);
+    padding-top: calc(var(--spacing) * 20);
+  }
+}
+
+/* Same vertical rhythm without the hairline — for the first gap after a
+ * page's lead/hero block. */
+@utility section-gap {
+  margin-top: calc(var(--spacing) * 12);
+
+  @media (min-width: 768px) {
+    margin-top: calc(var(--spacing) * 16);
+  }
+
+  @media (min-width: 1280px) {
+    margin-top: calc(var(--spacing) * 20);
   }
 }
 

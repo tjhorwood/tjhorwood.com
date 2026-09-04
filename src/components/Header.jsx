@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { LuAlignJustify, LuX } from 'react-icons/lu';
+import { LuAlignJustify, LuArrowUpRight, LuX } from 'react-icons/lu';
 import Link from '@/components/Link';
 import Logo from '@/components/Logo';
 import NavLink from '@/components/NavLink';
 import { ThemeSwitcher } from '@/components/ThemeSwitcher';
 import { Button } from '@/components/ui/button';
-import { interactiveSurfaceClass } from '@/lib/styles';
+import { primaryActionClass } from '@/lib/styles';
 import { cn } from '@/lib/utils';
 
 export const defaultLinks = [
@@ -17,9 +17,12 @@ export const defaultLinks = [
   { href: '/gear', id: 'gear', label: 'Gear' },
 ];
 
-export default function Header({ links = defaultLinks }) {
+export default function Header({
+  links = defaultLinks,
+  email = 'contact@tjhorwood.com',
+}) {
   const [isOpen, setIsOpen] = useState(false);
-  const headerRef = useRef(null); // Create a ref for the header element
+  const headerRef = useRef(null);
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
@@ -33,23 +36,21 @@ export default function Header({ links = defaultLinks }) {
       }
     };
 
-    // Add event listener when the menu is open
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
-    // Cleanup the event listener
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]); // Re-run effect when isOpen changes
+  }, [isOpen]);
 
   return (
     <header
       ref={headerRef}
-      className='sticky top-0 z-20 mx-auto h-16 border-border border-b bg-background/80 backdrop-blur-md md:h-18 w-full'
+      className='sticky top-0 z-20 mx-auto w-full border-border border-b bg-background/70 backdrop-blur-md'
     >
-      <nav className='mx-auto flex h-full max-w-screen-3xl items-center justify-between gap-2 px-4 py-2 sm:px-6 md:py-3'>
+      <nav className='mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-2 px-4 sm:px-6 md:h-18 lg:px-10 2xl:max-w-[84rem] 3xl:max-w-[90rem]'>
         <Link
           href='/'
           className='shrink-0 cursor-pointer text-primary'
@@ -59,7 +60,7 @@ export default function Header({ links = defaultLinks }) {
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className='hidden items-center gap-1 md:flex font-mono text-sm'>
+        <ul className='hidden items-center gap-0.5 font-mono text-[0.8rem] md:flex'>
           {links.map(({ id, href, label }) => (
             <li key={id}>
               <NavLink href={href}>{label}</NavLink>
@@ -67,44 +68,53 @@ export default function Header({ links = defaultLinks }) {
           ))}
         </ul>
 
-        <div className='flex h-8 w-8 items-center justify-center ml-auto md:ml-0'>
+        <div className='flex items-center gap-2'>
           <ThemeSwitcher />
-        </div>
-        <div className='relative md:hidden'>
-          <Button variant='ghost' onClick={toggleMenu} className='z-50'>
-            {isOpen ? (
-              <LuX className='size-6' />
-            ) : (
-              <LuAlignJustify className='size-6' />
-            )}
-            <span className='sr-only'>Toggle Menu</span>
-          </Button>
+          <Link
+            href={`mailto:${email}`}
+            className={cn(primaryActionClass, 'hidden h-10 md:inline-flex')}
+          >
+            Get in touch <LuArrowUpRight className='h-4 w-4' />
+          </Link>
+          <div className='relative md:hidden'>
+            <Button
+              variant='ghost'
+              size='icon'
+              onClick={toggleMenu}
+              className='z-50'
+            >
+              {isOpen ? (
+                <LuX className='size-6' />
+              ) : (
+                <LuAlignJustify className='size-6' />
+              )}
+              <span className='sr-only'>Toggle Menu</span>
+            </Button>
+          </div>
         </div>
       </nav>
+
       {/* Mobile Menu */}
       {isOpen && (
-        <div className='absolute inset-x-4 top-full rounded-xl border border-border bg-background p-2 md:hidden'>
-          <div className='flex flex-col items-stretch gap-2 font-mono text-sm'>
+        <div className='absolute inset-x-4 top-full rounded-3xl border border-border bg-card p-2 md:hidden'>
+          <div className='flex flex-col items-stretch gap-1.5 font-mono text-sm'>
             {links.map(({ id, href, label }) => (
-              <Button
+              <Link
                 key={id}
-                asChild
-                variant='secondary'
-                size='lg'
-                className={cn(
-                  'h-12 w-full justify-start rounded-lg text-foreground',
-                  interactiveSurfaceClass,
-                )}
+                href={href}
+                onClick={() => setIsOpen(false)}
+                className='flex h-12 w-full items-center rounded-2xl border border-border bg-background px-4 text-foreground uppercase tracking-[0.08em] transition-colors hover:border-foreground/30'
               >
-                <Link
-                  href={href}
-                  className='w-full'
-                  onClick={() => setIsOpen(false)}
-                >
-                  {label}
-                </Link>
-              </Button>
+                {label}
+              </Link>
             ))}
+            <Link
+              href={`mailto:${email}`}
+              onClick={() => setIsOpen(false)}
+              className={cn(primaryActionClass, 'mt-1 h-12 w-full rounded-2xl')}
+            >
+              Get in touch <LuArrowUpRight className='h-4 w-4' />
+            </Link>
           </div>
         </div>
       )}

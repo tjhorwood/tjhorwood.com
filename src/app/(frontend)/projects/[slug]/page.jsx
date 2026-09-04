@@ -1,19 +1,19 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { FaGithub } from 'react-icons/fa';
-import {
-  LuArrowUpRight,
-  LuBookOpen,
-  LuExternalLink,
-  LuLayers,
-  LuWorkflow,
-} from 'react-icons/lu';
+import { LuArrowUpRight, LuBookOpen, LuExternalLink } from 'react-icons/lu';
 import AnimatedContent from '@/components/animations/AnimatedContent';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Link from '@/components/Link';
+import ProjectCard from '@/components/ProjectCard';
 import ProjectPreviewWrapper from '@/components/ProjectPreviewWrapper';
 import RichText from '@/components/RichText';
 import { mediaAbsoluteUrl, normalizeSiteUrl } from '@/lib/seo';
+import {
+  cardSurfaceClass,
+  primaryActionClass,
+  secondaryActionClass,
+} from '@/lib/styles';
 import { getSiteSettings } from '@/payload/queries/getGlobals';
 import { getProject } from '@/payload/queries/getProject';
 import { getProjects } from '@/payload/queries/getProjects';
@@ -94,14 +94,12 @@ function getCategoryName(project) {
   return category.name;
 }
 
-function getTechnologyName(technology) {
-  if (!technology || typeof technology === 'number') return null;
-
-  return technology.name;
-}
-
 function getTechnologyNames(project) {
-  return (project.technologies ?? []).map(getTechnologyName).filter(Boolean);
+  return (project.technologies ?? [])
+    .map((technology) =>
+      !technology || typeof technology === 'number' ? null : technology.name,
+    )
+    .filter(Boolean);
 }
 
 function getYear(project) {
@@ -116,158 +114,51 @@ function hasText(value) {
   return typeof value === 'string' && value.trim().length > 0;
 }
 
-function Pill({ children }) {
-  return (
-    <span className='rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-semibold text-muted-foreground'>
-      {children}
-    </span>
-  );
-}
-
-function CaseStudySection({ eyebrow, title, children }) {
-  if (!children) return null;
-
-  return (
-    <section className='rounded-xl border border-border bg-card/70 p-6 transition hover:-translate-y-0.5 hover:border-foreground/30'>
-      <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
-        {eyebrow}
-      </p>
-      <h2 className='mt-3 text-2xl font-semibold tracking-tighter'>{title}</h2>
-      <div className='mt-4 leading-7 text-muted-foreground'>{children}</div>
-    </section>
-  );
-}
-
-function DetailItem({ label, value }) {
-  if (!value) return null;
-
-  return (
-    <div className='rounded-2xl border border-border bg-background/70 p-4'>
-      <dt className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
-        {label}
-      </dt>
-      <dd className='mt-2 font-semibold text-foreground capitalize'>{value}</dd>
-    </div>
-  );
-}
-
-function ArchitectureStrip({ project, technologies }) {
-  const steps = [
-    technologies[0] ?? 'Frontend',
-    project.projectType === 'homelab' ? 'Docker / LXC' : 'CMS / App',
-    technologies.find((technology) =>
-      /postgres|sql|database/i.test(technology),
-    ) ?? 'Data',
-    project.liveUrl ? 'Public route' : 'Case study',
-  ];
-
-  return (
-    <section className='rounded-xl border border-border bg-secondary/40 p-6'>
-      <div className='flex flex-col gap-2 md:flex-row md:items-end md:justify-between'>
-        <div>
-          <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
-            Architecture
-          </p>
-          <h2 className='mt-2 text-2xl font-semibold tracking-tighter'>
-            How this project fits together
-          </h2>
-        </div>
-        <LuWorkflow className='h-6 w-6 text-muted-foreground' />
-      </div>
-      <div className='mt-6 grid gap-3 md:grid-cols-4'>
-        {steps.map((step, index) => (
-          <div
-            key={`${step}-${index}`}
-            className='relative rounded-2xl border border-border bg-background p-4'
-          >
-            <span className='text-xs font-bold text-muted-foreground'>
-              0{index + 1}
-            </span>
-            <p className='mt-2 font-semibold'>{step}</p>
-            {index < steps.length - 1 && (
-              <LuArrowUpRight className='absolute top-4 right-4 hidden h-4 w-4 text-muted-foreground md:block' />
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ProjectImageFrame({ image, priority = false, title }) {
+function ImageFrame({ image, priority = false, title, className }) {
   const imageUrl = getImageUrl(image, 'hero');
-  const imageDimensions = getImageDimensions(image, 'hero');
+  const dimensions = getImageDimensions(image, 'hero');
 
-  if (!imageUrl) {
-    return (
-      <div className='flex min-h-80 items-center justify-center rounded-xl border border-border bg-card p-8 text-center'>
-        <div>
-          <LuLayers className='mx-auto h-10 w-10 text-muted-foreground' />
-          <p className='mt-4 font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
-            Project case study
-          </p>
-        </div>
-      </div>
-    );
-  }
+  if (!imageUrl) return null;
 
   return (
-    <div className='overflow-hidden rounded-xl border border-border bg-muted/20'>
-      <div className='flex gap-1.5 border-border border-b bg-secondary px-4 py-3'>
-        <span className='h-2.5 w-2.5 rounded-full border border-border' />
-        <span className='h-2.5 w-2.5 rounded-full border border-border' />
-        <span className='h-2.5 w-2.5 rounded-full border border-border' />
-      </div>
+    <div
+      className={`overflow-hidden rounded-3xl border border-border bg-muted ${className ?? ''}`}
+    >
       <Image
         src={imageUrl}
-        alt={image?.alt || `${title} hero image`}
-        width={imageDimensions.width}
-        height={imageDimensions.height}
-        className='max-h-[34rem] w-full object-cover object-top'
+        alt={image?.alt || `${title} screenshot`}
+        width={dimensions.width}
+        height={dimensions.height}
+        className='max-h-[32rem] w-full object-cover object-top'
         {...(priority ? { priority: true } : { loading: 'lazy' })}
       />
     </div>
   );
 }
 
-function RelatedProjectCard({ project }) {
-  const image = project.thumbnailImage || project.heroImage;
-  const imageUrl = getImageUrl(image, 'card');
-  const imageDimensions = getImageDimensions(image, 'card');
-
+function MetaItem({ label, value }) {
+  if (!value) return null;
   return (
-    <Link
-      href={`/projects/${project.slug}`}
-      className='group overflow-hidden rounded-xl border border-border bg-card no-underline transition hover:-translate-y-0.5 hover:border-foreground/30'
-    >
-      <div className='h-44 overflow-hidden border-border border-b bg-muted'>
-        {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={image?.alt || project.title}
-            width={imageDimensions.width}
-            height={imageDimensions.height}
-            className='h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105'
-            loading='lazy'
-          />
-        ) : (
-          <div className='flex h-full items-center justify-center bg-secondary font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
-            Project
-          </div>
-        )}
-      </div>
-      <div className='p-5'>
-        <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
-          {getCategoryName(project)}
-        </p>
-        <h3 className='mt-2 text-xl font-semibold tracking-tighter'>
-          {project.title}
-        </h3>
-        <p className='mt-2 line-clamp-2 text-sm leading-6 text-muted-foreground'>
-          {project.summary}
-        </p>
-      </div>
-    </Link>
+    <div>
+      <dt className='font-mono text-[0.7rem] uppercase tracking-[0.16em] text-muted-foreground'>
+        {label}
+      </dt>
+      <dd className='mt-1.5 font-medium capitalize'>{value}</dd>
+    </div>
+  );
+}
+
+function CaseStudyBlock({ index, title, children }) {
+  if (!children) return null;
+  return (
+    <div className={`${cardSurfaceClass} p-6`}>
+      <p className='font-mono text-[0.7rem] uppercase tracking-[0.16em] text-muted-foreground'>
+        {index} · {title}
+      </p>
+      <p className='mt-3 text-pretty text-sm leading-7 text-muted-foreground'>
+        {children}
+      </p>
+    </div>
   );
 }
 
@@ -287,148 +178,124 @@ export default async function ProjectPage({ params }) {
     .filter((candidate) => candidate.id !== project.id)
     .slice(0, 3);
 
+  const hasCaseStudy =
+    hasText(project.problem) ||
+    hasText(project.approach) ||
+    hasText(project.results);
+
   return (
-    <div className='mx-auto max-w-7xl space-y-9 sm:space-y-14'>
+    <div className='mx-auto max-w-5xl'>
+      <Breadcrumbs title={project.title} />
+
       <AnimatedContent>
-        <Breadcrumbs title={project.title} />
-      </AnimatedContent>
-
-      <AnimatedContent delay={0.1}>
-        <section className='grid gap-6 rounded-xl border border-border bg-card p-4 sm:p-5 lg:grid-cols-[0.9fr_1.1fr] lg:p-8'>
-          <div className='flex flex-col justify-between gap-8'>
-            <div className='space-y-6'>
-              <div className='flex flex-wrap gap-2'>
-                <Pill>{getCategoryName(project)}</Pill>
-                {project.lifecycle && <Pill>{project.lifecycle}</Pill>}
-                {year && <Pill>{year}</Pill>}
-              </div>
-
-              <div className='space-y-4'>
-                <h1 className='text-balance text-4xl font-semibold tracking-tightest sm:text-5xl md:text-6xl'>
-                  {project.title}
-                </h1>
-                <p className='max-w-3xl text-lg leading-8 text-muted-foreground'>
-                  {project.summary}
-                </p>
-              </div>
-
-              <div className='flex flex-wrap gap-3'>
-                {project.liveUrl && (
-                  <Link
-                    href={project.liveUrl}
-                    className='inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand px-5 py-3 font-medium text-brand-foreground transition hover:bg-brand/90 sm:w-auto'
-                  >
-                    Visit live site <LuExternalLink className='h-4 w-4' />
-                  </Link>
-                )}
-                {project.repositoryUrl && (
-                  <Link
-                    href={project.repositoryUrl}
-                    className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 py-3 font-semibold transition hover:bg-secondary sm:w-auto'
-                  >
-                    <FaGithub className='h-5 w-5' /> View code
-                  </Link>
-                )}
-                {project.documentationUrl && (
-                  <Link
-                    href={project.documentationUrl}
-                    className='inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-5 py-3 font-semibold transition hover:bg-secondary sm:w-auto'
-                  >
-                    <LuBookOpen className='h-5 w-5' /> Docs
-                  </Link>
-                )}
-              </div>
-            </div>
-
-            <dl className='grid gap-3 sm:grid-cols-3'>
-              <DetailItem label='Role' value={project.role} />
-              <DetailItem label='Status' value={project.lifecycle} />
-              <DetailItem label='Year' value={year} />
-            </dl>
-          </div>
-
-          <div className='min-w-0'>
-            <ProjectImageFrame
-              image={heroImage}
-              priority
-              title={project.title}
-            />
-          </div>
-        </section>
-      </AnimatedContent>
-
-      <AnimatedContent delay={0.15}>
-        <section className='grid gap-6 lg:grid-cols-[0.7fr_1.3fr]'>
-          <div className='rounded-xl border border-border bg-card p-6'>
-            <div className='flex items-center gap-2 text-muted-foreground'>
-              <LuLayers className='h-5 w-5' />
-              <p className='font-mono text-xs uppercase tracking-[0.15em]'>
-                Stack
-              </p>
-            </div>
-            <div className='mt-5 flex flex-wrap gap-2'>
-              {technologies.length > 0 ? (
-                technologies.map((technology) => (
-                  <span
-                    key={technology}
-                    className='rounded-full border border-border bg-secondary px-3 py-1.5 text-sm font-semibold'
-                  >
-                    {technology}
-                  </span>
-                ))
-              ) : (
-                <p className='text-sm text-muted-foreground'>
-                  Stack details are being updated.
-                </p>
+        <header className='flex flex-col gap-6'>
+          <p className='font-mono text-[0.7rem] uppercase tracking-[0.18em] text-muted-foreground'>
+            {[getCategoryName(project), project.lifecycle, year]
+              .filter(Boolean)
+              .join('  ·  ')}
+          </p>
+          <h1 className='text-display font-semibold'>{project.title}</h1>
+          <p className='max-w-2xl text-pretty text-lg leading-8 text-muted-foreground'>
+            {project.summary}
+          </p>
+          {(project.liveUrl ||
+            project.repositoryUrl ||
+            project.documentationUrl) && (
+            <div className='flex flex-wrap gap-3'>
+              {project.liveUrl && (
+                <Link href={project.liveUrl} className={primaryActionClass}>
+                  Visit live site <LuExternalLink className='h-4 w-4' />
+                </Link>
+              )}
+              {project.repositoryUrl && (
+                <Link
+                  href={project.repositoryUrl}
+                  className={secondaryActionClass}
+                >
+                  <FaGithub className='h-4 w-4' /> View code
+                </Link>
+              )}
+              {project.documentationUrl && (
+                <Link
+                  href={project.documentationUrl}
+                  className={secondaryActionClass}
+                >
+                  <LuBookOpen className='h-4 w-4' /> Docs
+                </Link>
               )}
             </div>
-          </div>
-
-          <ArchitectureStrip project={project} technologies={technologies} />
-        </section>
+          )}
+        </header>
       </AnimatedContent>
 
-      {(hasText(project.problem) ||
-        hasText(project.approach) ||
-        hasText(project.results)) && (
-        <AnimatedContent delay={0.2}>
-          <div className='grid gap-5 lg:grid-cols-3'>
-            <CaseStudySection eyebrow='01' title='Problem'>
+      {heroImage && (
+        <AnimatedContent delay={0.05}>
+          <ImageFrame
+            image={heroImage}
+            priority
+            title={project.title}
+            className='section-gap'
+          />
+        </AnimatedContent>
+      )}
+
+      <AnimatedContent delay={0.05}>
+        <dl
+          className={`section-gap grid grid-cols-2 gap-x-6 gap-y-8 p-6 sm:grid-cols-4 sm:p-7 ${cardSurfaceClass}`}
+        >
+          <MetaItem label='Role' value={project.role} />
+          <MetaItem label='Status' value={project.lifecycle} />
+          <MetaItem label='Year' value={year} />
+          {technologies.length > 0 && (
+            <div className='col-span-2 sm:col-span-1'>
+              <dt className='font-mono text-[0.7rem] uppercase tracking-[0.16em] text-muted-foreground'>
+                Stack
+              </dt>
+              <dd className='mt-1.5 font-medium'>{technologies.join(', ')}</dd>
+            </div>
+          )}
+        </dl>
+      </AnimatedContent>
+
+      {hasCaseStudy && (
+        <AnimatedContent delay={0.05}>
+          <div className='section-rule grid gap-10 md:grid-cols-3'>
+            <CaseStudyBlock index='01' title='Problem'>
               {hasText(project.problem) ? project.problem : null}
-            </CaseStudySection>
-            <CaseStudySection eyebrow='02' title='Approach'>
+            </CaseStudyBlock>
+            <CaseStudyBlock index='02' title='Approach'>
               {hasText(project.approach) ? project.approach : null}
-            </CaseStudySection>
-            <CaseStudySection eyebrow='03' title='Result'>
+            </CaseStudyBlock>
+            <CaseStudyBlock index='03' title='Result'>
               {hasText(project.results) ? project.results : null}
-            </CaseStudySection>
+            </CaseStudyBlock>
           </div>
         </AnimatedContent>
       )}
 
       {project.richContent && (
-        <AnimatedContent delay={0.25}>
-          <section className='mx-auto max-w-5xl overflow-hidden rounded-xl border border-border bg-card/40 p-5 sm:p-6 md:p-8'>
+        <AnimatedContent delay={0.05}>
+          <div className='section-rule'>
             <RichText content={project.richContent} />
-          </section>
+          </div>
         </AnimatedContent>
       )}
 
       {project.liveUrl && (
-        <AnimatedContent delay={0.3}>
-          <section className='hidden space-y-6 lg:block'>
+        <AnimatedContent delay={0.05}>
+          <section className='section-rule hidden space-y-6 lg:block'>
             <div className='flex items-end justify-between gap-4'>
               <div>
-                <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
+                <p className='font-mono text-[0.7rem] uppercase tracking-[0.16em] text-muted-foreground'>
                   Interactive preview
                 </p>
-                <h2 className='mt-2 text-balance text-2xl font-semibold tracking-tighter sm:text-3xl'>
+                <h2 className='mt-2 text-headline font-semibold'>
                   Try the live experience
                 </h2>
               </div>
               <Link
                 href={project.liveUrl}
-                className='inline-flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2 text-sm font-semibold transition hover:bg-secondary'
+                className='inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground'
               >
                 Open full site <LuExternalLink className='h-4 w-4' />
               </Link>
@@ -441,79 +308,58 @@ export default async function ProjectPage({ params }) {
         </AnimatedContent>
       )}
 
-      {(heroImage || project.screenshots?.length > 0) && (
-        <AnimatedContent delay={0.35}>
-          <section className='space-y-6'>
-            <div>
-              <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
-                Gallery
-              </p>
-              <h2 className='mt-2 text-balance text-2xl font-semibold tracking-tighter sm:text-3xl'>
-                Screenshots and visual notes
-              </h2>
+      {project.screenshots?.length > 0 && (
+        <AnimatedContent delay={0.05}>
+          <section className='section-rule space-y-6'>
+            <h2 className='text-headline font-semibold'>Gallery</h2>
+            <div className='grid gap-6 sm:grid-cols-2'>
+              {project.screenshots.map((screenshot) => {
+                const image = screenshot.image;
+                const imageUrl = getImageUrl(image, 'hero');
+                const dimensions = getImageDimensions(image, 'hero');
+                if (!imageUrl) return null;
+
+                return (
+                  <figure
+                    key={screenshot.id ?? imageUrl}
+                    className='overflow-hidden rounded-3xl border border-border bg-muted'
+                  >
+                    <Image
+                      src={imageUrl}
+                      alt={image?.alt || screenshot.caption || project.title}
+                      width={dimensions.width}
+                      height={dimensions.height}
+                      className='max-h-[28rem] w-full object-cover object-top'
+                      loading='lazy'
+                    />
+                    {screenshot.caption && (
+                      <figcaption className='border-t border-border px-4 py-3 text-sm text-muted-foreground'>
+                        {screenshot.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                );
+              })}
             </div>
-
-            {heroImage && (
-              <ProjectImageFrame image={heroImage} title={project.title} />
-            )}
-
-            {project.screenshots?.length > 0 && (
-              <div className='grid gap-6 md:grid-cols-2'>
-                {project.screenshots.map((screenshot) => {
-                  const image = screenshot.image;
-                  const imageUrl = getImageUrl(image, 'hero');
-                  const imageDimensions = getImageDimensions(image, 'hero');
-                  if (!imageUrl) return null;
-
-                  return (
-                    <figure
-                      key={screenshot.id ?? imageUrl}
-                      className='overflow-hidden rounded-xl border border-border bg-card'
-                    >
-                      <Image
-                        src={imageUrl}
-                        alt={image?.alt || screenshot.caption || project.title}
-                        width={imageDimensions.width}
-                        height={imageDimensions.height}
-                        className='w-full object-cover object-top'
-                        loading='lazy'
-                      />
-                      {screenshot.caption && (
-                        <figcaption className='border-border border-t px-4 py-3 text-sm text-muted-foreground'>
-                          {screenshot.caption}
-                        </figcaption>
-                      )}
-                    </figure>
-                  );
-                })}
-              </div>
-            )}
           </section>
         </AnimatedContent>
       )}
 
       {relatedProjects.length > 0 && (
-        <AnimatedContent delay={0.4}>
-          <section className='space-y-6'>
-            <div className='flex flex-col gap-3 md:flex-row md:items-end md:justify-between'>
-              <div>
-                <p className='font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground'>
-                  Keep exploring
-                </p>
-                <h2 className='mt-2 text-balance text-2xl font-semibold tracking-tighter sm:text-3xl'>
-                  Related projects
-                </h2>
-              </div>
+        <AnimatedContent delay={0.05}>
+          <section className='section-rule'>
+            <div className='flex items-baseline justify-between gap-4'>
+              <h2 className='text-headline font-semibold'>Related projects</h2>
               <Link
                 href='/projects'
-                className='inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition hover:text-foreground'
+                className='hidden items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-foreground sm:inline-flex'
               >
-                Back to all projects <LuArrowUpRight className='h-4 w-4' />
+                All projects <LuArrowUpRight className='h-3.5 w-3.5' />
               </Link>
             </div>
-            <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+            <div className='mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
               {relatedProjects.map((relatedProject) => (
-                <RelatedProjectCard
+                <ProjectCard
                   key={relatedProject.id ?? relatedProject.slug}
                   project={relatedProject}
                 />

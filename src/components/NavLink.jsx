@@ -1,3 +1,5 @@
+'use client';
+
 import cn from 'clsx';
 import { usePathname } from 'next/navigation';
 
@@ -10,17 +12,14 @@ export default function NavLink({ href, children }) {
   return (
     <Link
       className={cn(
-        'relative cursor-pointer rounded-md px-3 py-2 uppercase tracking-[0.08em] transition-colors',
+        'cursor-pointer rounded-full px-3.5 py-2 uppercase tracking-[0.08em] transition-colors',
         active
-          ? 'text-foreground'
+          ? 'bg-secondary text-foreground'
           : 'text-muted-foreground hover:text-foreground',
       )}
       href={href}
     >
       {children}
-      {active && (
-        <span className='absolute inset-x-3 -bottom-px h-px bg-brand' />
-      )}
     </Link>
   );
 }
